@@ -69,10 +69,6 @@ fun BottomNavigationMenu() {
                 .size(width = 357.dp, height = 176.dp)
                 .offset(y = (-66).dp)
                 .clip(RoundedCornerShape(38.dp))
-<<<<<<< HEAD
-        )
-        {
-=======
         ) {
             Row {
                 NavigationBarItem(
@@ -106,10 +102,8 @@ fun BottomNavigationMenu() {
                     },
                 )
             }
->>>>>>> c9fcc8be80395f866a23d121b19ecc678e3a3884
 
         }
-
     }
 }
 
@@ -118,6 +112,6 @@ fun BottomNavigationMenu() {
 @Composable
 fun GreetingPreview() {
     DevEmpowerTheme {
-        BottomNavigationMenu()
-    }
+        Greeting("Android")
+        }
 }
