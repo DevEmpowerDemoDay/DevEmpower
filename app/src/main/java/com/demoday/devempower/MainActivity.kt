@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
@@ -39,8 +40,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DevEmpowerTheme {
+                val uranium_blue = colorResource(id = R.color.uranium_blue)
+                val celadon = colorResource(id = R.color.celadon)
+                val davys_gray = colorResource(id = R.color.davys_gray)
+                val white_smoke = colorResource(id = R.color.white_smoke)
+                val indigo_dye = colorResource(id = R.color.indigo_dye)
+
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
+                    containerColor = uranium_blue,
                     bottomBar = { BottomNavigationMenu() }) { innerPadding ->
                     Greeting(name = "Matheus", Modifier.padding(innerPadding))
                 }
@@ -57,13 +65,21 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+
+
 @Composable
 fun BottomNavigationMenu() {
+    val uranium_blue = colorResource(id = R.color.uranium_blue)
+    val celadon = colorResource(id = R.color.celadon)
+    val davys_gray = colorResource(id = R.color.davys_gray)
+    val white_smoke = colorResource(id = R.color.white_smoke)
+    val indigo_dye = colorResource(id = R.color.indigo_dye)
+
     val selectedIndex = remember { mutableStateOf(0) } // Para rastrear qual botão está selecionado
 
     Box(modifier = Modifier.fillMaxSize()) {
         NavigationBar(
-            containerColor = Color.Gray,
+            containerColor = indigo_dye,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .size(width = 357.dp, height = 176.dp)
