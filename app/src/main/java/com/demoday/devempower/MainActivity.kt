@@ -19,6 +19,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,41 +42,45 @@ class MainActivity : ComponentActivity() {
         setContent {
             DevEmpowerTheme {
                 Inicio()
-            }}}}
-
-
-            @Composable
-fun Inicio() {
-                val uranium_blue = colorResource(id = R.color.uranium_blue)
-                val celadon = colorResource(id = R.color.celadon)
-                val davys_gray = colorResource(id = R.color.davys_gray)
-                val white_smoke = colorResource(id = R.color.white_smoke)
-                val indigo_dye = colorResource(id = R.color.indigo_dye)
-                val navController = rememberNavController()
-
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    content = { innerPadding ->
-                        Column(
-                            modifier = Modifier
-                                .padding(innerPadding)
-                                .fillMaxSize(),
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ){
-
-                            NavHost(navController = navController, startDestination = "login") {
-                                composable("login") { Splash(navController) }
-                                composable("login") { BottomNavigationMenu(navController) }
-
-
-
-                            }
-                        }
-                    },
-
-                    )
             }
+        }
+    }
+}
+
+
+@Composable
+fun Inicio() {
+    val uranium_blue = colorResource(id = R.color.uranium_blue)
+    val celadon = colorResource(id = R.color.celadon)
+    val davys_gray = colorResource(id = R.color.davys_gray)
+    val white_smoke = colorResource(id = R.color.white_smoke)
+    val indigo_dye = colorResource(id = R.color.indigo_dye)
+    val navController = rememberNavController()
+
+
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        content = { innerPadding ->
+
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                NavHost(navController = navController, startDestination = "splash") {
+                    composable("splash") { Splash(navController) }
+                    composable("login") { BottomNavigationMenu(navController) }
+
+
+                }
+            }
+        },
+
+        )
+}
 
 @Composable
 fun Splash(navController: NavController) {
@@ -82,28 +90,39 @@ fun Splash(navController: NavController) {
     val white_smoke = colorResource(id = R.color.white_smoke)
     val indigo_dye = colorResource(id = R.color.indigo_dye)
 
-Column(
-    modifier = Modifier
-    .fillMaxSize()
-        .background(color = uranium_blue),
-    verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
-)
-{
-    Image(
-        painter = painterResource(R.drawable.vector),
-        contentDescription = ""
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = uranium_blue),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     )
-    Text(text ="DevEmpower",
-        fontSize = 32.sp,
-        color = Color(0xFFFF005377))
+    {
+        Image(
+            painter = painterResource(R.drawable.vector),
+            contentDescription = "",
+            modifier = Modifier.padding(top = 180.dp)
+        )
 
-    Image(
-        painter = painterResource(R.drawable.logotipo),
-contentDescription = ""    )
-}
-}
+        Text(
+            modifier = Modifier.padding(19.dp),
+            text = AnnotatedString.Builder().apply {
+                append("Dev")
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Empower")
+                }
+            }.toAnnotatedString(),
+            fontSize = 32.sp,
+            color = Color(0xFFFF005377)
+        )
 
+        Image(
+            modifier = Modifier.padding(top =180.dp),
+            painter = painterResource(R.drawable.logotipo),
+            contentDescription = ""
+        )
+    }
+}
 
 
 @Preview
