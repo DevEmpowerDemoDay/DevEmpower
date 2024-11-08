@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +22,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
@@ -139,22 +141,14 @@ fun Splash(navController: NavController) {
     )
     {
         Image(
-            painter = painterResource(R.drawable.logo),
+            painter = painterResource(R.drawable.novo_projeto),
             contentDescription = "",
             modifier = Modifier.padding(top = 180.dp)
+                .size(width = 270.dp, height = 185.dp)
+
         )
 
-        Text(
-            modifier = Modifier.padding(19.dp),
-            text = AnnotatedString.Builder().apply {
-                append("Dev")
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("Empower")
-                }
-            }.toAnnotatedString(),
-            fontSize = 32.sp,
-            color = Color(0xFFFF005377)
-        )
+
 
         Image(
             modifier = Modifier.padding(top = 180.dp),
@@ -343,36 +337,30 @@ fun Login(navController: NavController) {
                     )
                 )
             }
-            Box(
-                modifier = Modifier
-                    .padding(top = 10.dp)
-                    .size(width = 131.dp, height = 40.dp)
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(Color(0xFF005377), Color(0xFF009ADD))
-                        ),
-                        shape = RoundedCornerShape(10.dp) // Borda levemente arredondada
-                    )
-            ) {
+
                 Button(
                     onClick = { /* ação ao clicar */ },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Transparent
                     ),
-                    shape = RoundedCornerShape(10.dp),
+
                     modifier = Modifier
                         .size(width = 131.dp, height = 40.dp)
                         .fillMaxSize()
+                        .background(
+                            brush = Brush.linearGradient(
+                                colors = listOf(Color(0xFF005377), Color(0xFF009ADD))
+                            ),
+                            shape = RoundedCornerShape(10.dp)
+                        )
                 ) {
                     Text(
                         text = "Entrar",
                         color = Color.White,
-                        fontSize = 22.sp,
-                        modifier = Modifier
-                            .align(alignment = Alignment.CenterVertically)
+                        fontSize = 22.sp
 
                     )
-                }
+
             }
 
 
@@ -399,6 +387,75 @@ fun Login(navController: NavController) {
                         .size(width = 109.dp, height = 50.dp)
                 )
             }
+
+            Text(
+                "Entrar com contas de redes sociais:",
+                color = Color(0xFF005377),
+                modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .padding(top = 2.dp)
+            )
+            Image(
+                painter = painterResource(R.drawable.group_105),
+                contentDescription = "",
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .size(width = 120.dp, height = 80.dp)
+            )
+            Box(
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .size(width = 281.dp, height = 48.dp)
+                    .background(
+                        brush = Brush.linearGradient(
+                            colors = listOf(Color(0xFF005377), Color(0xFF009ADD))
+                        ),
+                        shape = RoundedCornerShape(10.dp)
+                    )
+            ) {
+                Button(
+                    onClick = { /* ação ao clicar */ },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent
+                    ),
+                    shape = RoundedCornerShape(10.dp),
+                    modifier = Modifier
+                        .size(width = 281.dp, height = 48.dp)
+                        .fillMaxSize()
+                ) {
+
+            Row {
+
+                    Text(
+                        text = "Não tem uma conta?",
+                        color = Color.White,
+                        fontSize = 14.sp,
+                        modifier = Modifier
+                            .align(alignment = Alignment.CenterVertically)
+                    )
+                Text(
+                    text = "Cadastre-se",
+                    color = Color.White,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .align(alignment = Alignment.CenterVertically)
+                        .padding(start = 5.dp))
+                }}
+            }
+            Spacer(modifier = Modifier.padding(10.dp))
+            Text(
+                "Ao continuar, estou de acordo com os Termos de Uso e com o Aviso de Privacidade ",
+                color = Color.Black,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Medium,
+                textDecoration = TextDecoration.Underline,
+                fontSize = 15.sp,
+                modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .padding(top = 2.dp)
+                )
+
         }
 
     }
