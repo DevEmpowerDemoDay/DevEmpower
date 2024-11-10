@@ -345,7 +345,7 @@ fun Login(navController: NavController) {
                     ),
 
                     modifier = Modifier
-                        .size(width = 131.dp, height = 30.dp)
+                        .size(width = 131.dp, height = 50.dp)
                         .background(
                             brush = Brush.linearGradient(
                                 colors = listOf(Color(0xFF005377), Color(0xFF009ADD))
