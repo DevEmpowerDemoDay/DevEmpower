@@ -345,8 +345,7 @@ fun Login(navController: NavController) {
                     ),
 
                     modifier = Modifier
-                        .size(width = 131.dp, height = 40.dp)
-                        .fillMaxSize()
+                        .size(width = 131.dp, height = 30.dp)
                         .background(
                             brush = Brush.linearGradient(
                                 colors = listOf(Color(0xFF005377), Color(0xFF009ADD))
@@ -357,7 +356,9 @@ fun Login(navController: NavController) {
                     Text(
                         text = "Entrar",
                         color = Color.White,
-                        fontSize = 22.sp
+                        fontSize =25.sp,
+                        modifier = Modifier
+                            .align(alignment = Alignment.CenterVertically)
 
                     )
 
