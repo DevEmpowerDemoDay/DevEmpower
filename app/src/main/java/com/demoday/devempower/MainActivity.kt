@@ -34,9 +34,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
+=======
+>>>>>>> dev
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -53,6 +56,11 @@ import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import kotlinx.coroutines.delay
 
+val uranium_blue = Color(0xFFFFAEDFF7)
+val celadon = Color(0xFFFFA8D5BA)
+val davys_gray = Color(0xFFFF5c5c5c)
+val white_smoke = Color(0xFFFFF5F5F5)
+val indigo_dye = Color(0xFFFF005377)
 
 // cores
 val uranium_blue = Color(0xFFAEDFF7)
@@ -64,7 +72,6 @@ val indigo_dye = Color(0xFF00005377)
 val splashScreenDuration = 1500L // 1500 ms = 1.5 sec
 
 class MainActivity : ComponentActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,12 +118,15 @@ fun Inicio() {
 
 @Composable
 fun Splash(navController: NavController) {
+<<<<<<< HEAD
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
         navController.navigate("telaalt") {
             popUpTo("splash") { inclusive = true }
         }
     }
+=======
+>>>>>>> dev
 
     Column(
         modifier = Modifier
