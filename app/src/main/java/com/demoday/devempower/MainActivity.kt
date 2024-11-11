@@ -40,9 +40,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -59,9 +62,11 @@ val uranium_blue = Color(0xFFAEDFF7)
 val celadon = Color(0xFFA8D5BA)
 val davys_gray = Color(0xFF5C5C5C)
 val white_smoke = Color(0xFFF5F5F5)
-val indigo_dye = Color(0xFF00005377)
+val indigo_dye = Color(0xFF005377)
+val bright_blue = Color(0xFF009ADD)
 
-val splashScreenDuration = 1500L // 1500 ms = 1.5 sec
+
+const val splashScreenDuration = 1500L // 1500 ms = 1.5 sec
 
 class MainActivity : ComponentActivity() {
 
@@ -98,7 +103,7 @@ fun Inicio() {
                     composable("home") { BottomNavigationMenu(navController) }
                     composable("telaalt") { TelaAlt(navController) }
                     composable("login") { Login(navController) }
-                    composable("recsenha") { RecuperaoSenha(navController) }
+                    composable("recsenha") { RecuperacaoSenha(navController) }
 
 
                 }
@@ -117,7 +122,6 @@ fun Splash(navController: NavController) {
         }
     }
 
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -129,7 +133,8 @@ fun Splash(navController: NavController) {
         Image(
             painter = painterResource(R.drawable.novo_projeto),
             contentDescription = "",
-            modifier = Modifier.padding(top = 180.dp)
+            modifier = Modifier
+                .padding(top = 180.dp)
                 .size(width = 270.dp, height = 185.dp)
 
         )
@@ -202,6 +207,7 @@ fun Login(navController: NavController) {
         mutableStateOf("")
     }
     var rememberMe by remember { mutableStateOf(false) }
+
     Column(
         modifier = Modifier.paint(
             painter = painterResource(R.drawable.background1),
@@ -223,8 +229,8 @@ fun Login(navController: NavController) {
             Text(
                 text = "Login",
                 fontSize = 32.sp,
-                fontWeight = FontWeight.Medium,
-                color = Color(0xFFFF005377),
+                fontWeight = FontWeight.Bold,
+                color = indigo_dye,
                 modifier = Modifier
                     .padding(top = 20.dp)
 
@@ -253,7 +259,7 @@ fun Login(navController: NavController) {
                 modifier = Modifier
                     .width(334.82.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF005377),
+                    focusedBorderColor = indigo_dye,
                     unfocusedBorderColor = indigo_dye
 
                 )
@@ -274,14 +280,14 @@ fun Login(navController: NavController) {
                     .padding(top = 8.dp)
                     .width(334.82.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF005377),
+                    focusedBorderColor = indigo_dye,
                     unfocusedBorderColor = indigo_dye
 
                 )
             )
             Text("Esqueci minha senha",
                 fontSize = 16.sp,
-                color = Color(0xFFFF005377),
+                color = indigo_dye,
                 textDecoration = TextDecoration.Underline,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier
@@ -296,7 +302,7 @@ fun Login(navController: NavController) {
                 Text(
                     "Lembrar de mim",
                     fontSize = 16.sp,
-                    color = Color(0xFF005377)
+                    color = indigo_dye
                 )
                 Switch(
                     modifier = Modifier
@@ -306,34 +312,34 @@ fun Login(navController: NavController) {
                     onCheckedChange = { rememberMe = it },
                     colors = SwitchDefaults.colors(
                         uncheckedThumbColor = indigo_dye,
-                        checkedTrackColor = Color(0xFFFF005377)
+                        checkedTrackColor = indigo_dye,
                     )
                 )
             }
 
-                Button(
-                    onClick = { /* ação ao clicar */ },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Transparent
-                    ),
+            Button(
+                onClick = { /* ação ao clicar */ },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent
+                ),
 
-                    modifier = Modifier
-                        .size(width = 131.dp, height = 50.dp)
-                        .background(
-                            brush = Brush.linearGradient(
-                                colors = listOf(Color(0xFF005377), Color(0xFF009ADD))
-                            ),
-                            shape = RoundedCornerShape(10.dp)
-                        )
-                ) {
-                    Text(
-                        text = "Entrar",
-                        color = Color.White,
-                        fontSize =25.sp,
-                        modifier = Modifier
-                            .align(alignment = Alignment.CenterVertically)
-
+                modifier = Modifier
+                    .size(width = 131.dp, height = 50.dp)
+                    .background(
+                        brush = Brush.linearGradient(
+                            colors = listOf(indigo_dye, bright_blue)
+                        ),
+                        shape = RoundedCornerShape(10.dp)
                     )
+            ) {
+                Text(
+                    text = "Entrar",
+                    color = Color.White,
+                    fontSize = 25.sp,
+                    modifier = Modifier
+                        .align(alignment = Alignment.CenterVertically)
+
+                )
 
             }
 
@@ -347,12 +353,13 @@ fun Login(navController: NavController) {
                     modifier = Modifier
                         .size(width = 109.dp, height = 50.dp)
                 )
-                Text("OU",
+                Text(
+                    "OU",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium,
                     color = Color(0xFF005377),
-                    modifier = Modifier.
-                padding(start = 10.dp, end = 10.dp))
+                    modifier = Modifier.padding(start = 10.dp, end = 10.dp)
+                )
 
                 Image(
                     painter = painterResource(R.drawable.line_6),
@@ -364,7 +371,7 @@ fun Login(navController: NavController) {
 
             Text(
                 "Entrar com contas de redes sociais:",
-                color = Color(0xFF005377),
+                color = indigo_dye,
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
                     .padding(top = 2.dp)
@@ -382,7 +389,7 @@ fun Login(navController: NavController) {
                     .size(width = 281.dp, height = 48.dp)
                     .background(
                         brush = Brush.linearGradient(
-                            colors = listOf(Color(0xFF005377), Color(0xFF009ADD))
+                            colors = listOf(indigo_dye, bright_blue)
                         ),
                         shape = RoundedCornerShape(10.dp)
                     )
@@ -398,27 +405,38 @@ fun Login(navController: NavController) {
                         .fillMaxSize()
                 ) {
 
-            Row {
-                    Text(
-                        text = "Não tem uma conta?",
-                        color = Color.White,
-                        fontSize = 14.sp,
-                        modifier = Modifier
-                            .align(alignment = Alignment.CenterVertically)
-                    )
-                Text(
-                    text = "Cadastre-se",
-                    color = Color.White,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .align(alignment = Alignment.CenterVertically)
-                        .padding(start = 5.dp))
-                }}
+                    Row {
+                        Text(
+                            text = "Não tem uma conta?",
+                            color = Color.White,
+                            fontSize = 14.sp,
+                            modifier = Modifier
+                                .align(alignment = Alignment.CenterVertically)
+                        )
+                        Text(
+                            text = "Cadastre-se",
+                            color = Color.White,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .align(alignment = Alignment.CenterVertically)
+                                .padding(start = 5.dp)
+                        )
+                    }
+                }
             }
             Spacer(modifier = Modifier.padding(10.dp))
             Text(
-                "Ao continuar, estou de acordo com os Termos de Uso e com o Aviso de Privacidade ",
+                AnnotatedString.Builder().apply {
+                    append("Ao continuar, estou de acordo com os ")
+                    withStyle(style = SpanStyle(color = indigo_dye)) {
+                        append("Termos de Uso")
+                    }
+                    append(" e com o ")
+                    withStyle(style = SpanStyle(color = indigo_dye)) {
+                        append("Aviso de Privacidade")
+                    }
+                }.toAnnotatedString(),
                 color = Color.Black,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Medium,
@@ -427,16 +445,15 @@ fun Login(navController: NavController) {
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
                     .padding(top = 2.dp)
-                )
+            )
 
         }
 
     }
 }
 
-
 @Composable
-fun RecuperaoSenha(navController: NavController) {
+fun RecuperacaoSenha(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -447,7 +464,6 @@ fun RecuperaoSenha(navController: NavController) {
     ) {
     }
 }
-
 
 @Preview
 @Composable
@@ -472,3 +488,4 @@ private fun preview3() {
         Login(rememberNavController())
     }
 }
+
