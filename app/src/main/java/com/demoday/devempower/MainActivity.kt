@@ -15,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -32,9 +31,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 
+val uranium_blue = Color(0xFFFFAEDFF7)
+val celadon = Color(0xFFFFA8D5BA)
+val davys_gray = Color(0xFFFF5c5c5c)
+val white_smoke = Color(0xFFFFF5F5F5)
+val indigo_dye = Color(0xFFFF005377)
 
 class MainActivity : ComponentActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +53,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Inicio() {
-    val uranium_blue = colorResource(id = R.color.uranium_blue)
-    val celadon = colorResource(id = R.color.celadon)
-    val davys_gray = colorResource(id = R.color.davys_gray)
-    val white_smoke = colorResource(id = R.color.white_smoke)
-    val indigo_dye = colorResource(id = R.color.indigo_dye)
     val navController = rememberNavController()
 
 
@@ -84,11 +82,6 @@ fun Inicio() {
 
 @Composable
 fun Splash(navController: NavController) {
-    val uranium_blue = colorResource(id = R.color.uranium_blue)
-    val celadon = colorResource(id = R.color.celadon)
-    val davys_gray = colorResource(id = R.color.davys_gray)
-    val white_smoke = colorResource(id = R.color.white_smoke)
-    val indigo_dye = colorResource(id = R.color.indigo_dye)
 
     Column(
         modifier = Modifier
