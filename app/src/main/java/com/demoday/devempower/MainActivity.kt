@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,14 +14,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
@@ -34,25 +31,18 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,6 +53,15 @@ import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import kotlinx.coroutines.delay
 
+
+// cores
+val uranium_blue = Color(0xFFAEDFF7)
+val celadon = Color(0xFFA8D5BA)
+val davys_gray = Color(0xFF5C5C5C)
+val white_smoke = Color(0xFFF5F5F5)
+val indigo_dye = Color(0xFF00005377)
+
+val splashScreenDuration = 1500L // 1500 ms = 1.5 sec
 
 class MainActivity : ComponentActivity() {
 
@@ -81,13 +80,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Inicio() {
-    val uranium_blue = colorResource(id = R.color.uranium_blue)
-    val celadon = colorResource(id = R.color.celadon)
-    val davys_gray = colorResource(id = R.color.davys_gray)
-    val white_smoke = colorResource(id = R.color.white_smoke)
-    val indigo_dye = colorResource(id = R.color.indigo_dye)
     val navController = rememberNavController()
-
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -118,13 +111,6 @@ fun Inicio() {
 
 @Composable
 fun Splash(navController: NavController) {
-    val uranium_blue = colorResource(id = R.color.uranium_blue)
-    val celadon = colorResource(id = R.color.celadon)
-    val davys_gray = colorResource(id = R.color.davys_gray)
-    val white_smoke = colorResource(id = R.color.white_smoke)
-    val indigo_dye = colorResource(id = R.color.indigo_dye)
-    val splashScreenDuration = 3000L // 3000 ms = 3 segundos
-
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
         navController.navigate("telaalt") {
@@ -148,8 +134,6 @@ fun Splash(navController: NavController) {
 
         )
 
-
-
         Image(
             modifier = Modifier.padding(top = 180.dp),
             painter = painterResource(R.drawable.logotipo),
@@ -160,12 +144,6 @@ fun Splash(navController: NavController) {
 
 @Composable
 fun TelaAlt(navController: NavController) {
-    val uranium_blue = colorResource(id = R.color.uranium_blue)
-    val celadon = colorResource(id = R.color.celadon)
-    val davys_gray = colorResource(id = R.color.davys_gray)
-    val white_smoke = colorResource(id = R.color.white_smoke)
-    val indigo_dye = colorResource(id = R.color.indigo_dye)
-    val splashScreenDuration = 3000L // 3000 ms = 3 segundos
 
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
@@ -217,11 +195,6 @@ fun TelaAlt(navController: NavController) {
 @Composable
 fun Login(navController: NavController) {
 
-    val uranium_blue = colorResource(id = R.color.uranium_blue)
-    val celadon = colorResource(id = R.color.celadon)
-    val davys_gray = colorResource(id = R.color.davys_gray)
-    val white_smoke = colorResource(id = R.color.white_smoke)
-    val indigo_dye = colorResource(id = R.color.indigo_dye)
     var email by remember {
         mutableStateOf("")
     }
@@ -426,7 +399,6 @@ fun Login(navController: NavController) {
                 ) {
 
             Row {
-
                     Text(
                         text = "Não tem uma conta?",
                         color = Color.White,

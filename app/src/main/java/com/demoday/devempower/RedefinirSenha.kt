@@ -29,6 +29,6 @@ fun passoword() {
 @Composable
 private fun preview() {
 DevEmpowerTheme {
-    passoword()git
+    passoword()
 }
 }
