@@ -60,12 +60,12 @@ fun RedefinirSenha(navController: NavController) {
             "Redefinir a senha",
             fontSize = 25.sp,
             fontWeight = FontWeight.Medium,
-            color = Color(0xFFFF005377)
+            color = indigo_dye
         )
 
         Image(
             painter = painterResource(R.drawable.blue_line),
-            contentDescription = "",
+            contentDescription = "linha az",
             modifier = Modifier
                 .size(width = 163.dp, height = 4.dp)
         )
@@ -116,13 +116,13 @@ fun RedefinirSenha(navController: NavController) {
                 .size(width = 234.dp, height = 42.dp)
                 .background(
                     brush = Brush.linearGradient(
-                        colors = listOf(Color(0xFF005377), Color(0xFF009ADD))
+                        colors = listOf(indigo_dye, bright_blue)
                     ), shape = RoundedCornerShape(10.dp)
                 )
         ) {
             androidx.compose.material3.Text(
                 text = "Enviar",
-                color = Color.White,
+                color = white_smoke,
                 fontSize = 25.sp,
                 modifier = Modifier.align(alignment = Alignment.CenterVertically)
 

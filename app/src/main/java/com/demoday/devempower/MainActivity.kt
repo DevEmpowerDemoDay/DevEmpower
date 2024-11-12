@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -224,7 +225,9 @@ fun Login(navController: NavController) {
 
             )
             Image(
-                painter = painterResource(R.drawable.blue_line), contentDescription = "Linha azul"
+                painter = painterResource(R.drawable.gradient_line),
+                contentDescription = "Linha azul",
+                modifier = Modifier.width(175.dp).height(10.dp)
             )
             OutlinedTextField(
                 value = email,
