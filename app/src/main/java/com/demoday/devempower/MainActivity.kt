@@ -449,7 +449,32 @@ fun Login(navController: NavController) {
                 }
             }
             Spacer(modifier = Modifier.padding(10.dp))
-
+            Column {
+                Row {
+                    Text("Ao continuar, estou de acordo com os",
+                        fontSize = 13.sp)
+                    Spacer(modifier = Modifier.padding(start = 1.dp))
+                    Text("Termos de Uso",
+                        fontSize = 13.sp,
+                        color = indigo_dye,
+                        textDecoration = TextDecoration.Underline,
+                        modifier = Modifier
+                            .clickable {  })
+                }
+                Row {
+                    Text("e com o ",
+                        fontSize = 13.sp,
+                        modifier = Modifier
+                            .padding(start = 70.dp))
+                    Spacer(modifier = Modifier.padding(start = 1.dp))
+                    Text("Aviso de Privacidade ",
+                        fontSize = 13.sp,
+                        color = indigo_dye,
+                        textDecoration = TextDecoration.Underline,
+                        modifier = Modifier
+                            .clickable {  })
+                }
+            }
         }
 
     }
