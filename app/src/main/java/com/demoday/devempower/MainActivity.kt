@@ -107,8 +107,7 @@ fun Inicio() {
                     composable("home") { BottomNavigationMenu(navController) }
                     composable("telaalt") { TelaAlt(navController) }
                     composable("login") { Login(navController) }
-                    composable("recsenha") { RecuperaoSenha(navController) }
-
+                    composable("recsenha") { RecuperarSenha(navController) }
 
                 }
             }
@@ -480,17 +479,6 @@ fun Login(navController: NavController) {
     }
 }
 
-
-@Composable
-fun RecuperaoSenha(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .paint(
-                painter = painterResource(R.drawable.background1), contentScale = ContentScale.Crop
-            ),
-    ) {}
-}
 
 
 @Preview
