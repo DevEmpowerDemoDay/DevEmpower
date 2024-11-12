@@ -35,7 +35,7 @@ fun BottomNavigationMenu(navController: NavController) {
     val white_smoke = colorResource(id = R.color.white_smoke)
     val indigo_dye = colorResource(id = R.color.indigo_dye)
 
-    val selectedIndex = remember { mutableStateOf(0) } // Para rastrear qual botão está selecionado
+    val selectedIndex = remember { mutableStateOf(0) }
 
         Box(modifier = Modifier.fillMaxSize()) {
         NavigationBar(
@@ -60,7 +60,7 @@ fun BottomNavigationMenu(navController: NavController) {
                             tint = Color.Black,
                         )
                     },
-                    modifier = Modifier.weight(1f) // Adicione esta linha
+                    modifier = Modifier.weight(1f)
                 )
 
                 NavigationBarItem(
@@ -85,7 +85,7 @@ fun BottomNavigationMenu(navController: NavController) {
 
 @Preview
 @Composable
-private fun BottonPreview() {
+private fun BottomPreview() {
     DevEmpowerTheme {
         BottomNavigationMenu(rememberNavController())
     }

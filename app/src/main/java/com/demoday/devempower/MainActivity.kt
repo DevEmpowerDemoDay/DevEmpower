@@ -97,7 +97,7 @@ fun Inicio() {
                     composable("home") { BottomNavigationMenu(navController) }
                     composable("telaalt") { TelaAlt(navController) }
                     composable("login") { Login(navController) }
-                    composable("recsenha") { RecuperaoSenha(navController) }
+                    composable("recsenha") { RecuperacaoSenha(navController) }
 
 
                 }
@@ -159,7 +159,8 @@ fun TelaAlt(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painter = painterResource(R.drawable.background_color), contentScale = ContentScale.Crop
+                painter = painterResource(R.drawable.background_color),
+                contentScale = ContentScale.Crop
             ),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -176,7 +177,7 @@ fun TelaAlt(navController: NavController) {
 
 
         Text(
-            "Junte-se a nós na jornada de transformação para o " + "mundo da tecnologia. Aqui, você irá desenvolver suas soft " + "skills e se preparar para brilhar no mercado de trabalho.",
+            "Junte-se a nós na jornada de transformação para o " + "mundo da tecnologia. Aqui, você irá desenvolver suas soft " + "skills e se preparar para brilhar no mercado de trackball.",
             fontSize = 14.sp,
             color = Color.Black,
             modifier = Modifier.padding(20.dp)
@@ -425,28 +426,32 @@ fun Login(navController: NavController) {
             Spacer(modifier = Modifier.padding(10.dp))
             Column {
                 Row {
-                    Text("Ao continuar, estou de acordo com os",
-                        fontSize = 13.sp)
+                    Text(
+                        "Ao continuar, estou de acordo com os",
+                        fontSize = 13.sp
+                    )
                     Spacer(modifier = Modifier.padding(start = 1.dp))
                     Text("Termos de Uso",
                         fontSize = 13.sp,
                         color = indigo_dye,
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
-                            .clickable {  })
+                            .clickable { })
                 }
                 Row {
-                    Text("e com o ",
+                    Text(
+                        "e com o ",
                         fontSize = 13.sp,
                         modifier = Modifier
-                            .padding(start = 70.dp))
+                            .padding(start = 70.dp)
+                    )
                     Spacer(modifier = Modifier.padding(start = 1.dp))
                     Text("Aviso de Privacidade ",
                         fontSize = 13.sp,
                         color = indigo_dye,
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
-                            .clickable {  })
+                            .clickable { })
                 }
             }
         }
@@ -456,12 +461,13 @@ fun Login(navController: NavController) {
 
 
 @Composable
-fun RecuperaoSenha(navController: NavController) {
+fun RecuperacaoSenha(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painter = painterResource(R.drawable.background_color), contentScale = ContentScale.Crop
+                painter = painterResource(R.drawable.background_color),
+                contentScale = ContentScale.Crop
             ),
     ) {}
 }
