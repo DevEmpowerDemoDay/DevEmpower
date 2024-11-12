@@ -37,7 +37,7 @@ fun BottomNavigationMenu(navController: NavController) {
 
     val selectedIndex = remember { mutableStateOf(0) } // Para rastrear qual botão está selecionado
 
-    Box(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier.fillMaxSize()) {
         NavigationBar(
             containerColor = indigo_dye,
             modifier = Modifier
