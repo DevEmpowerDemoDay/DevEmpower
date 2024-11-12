@@ -41,6 +41,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,11 +57,15 @@ import kotlinx.coroutines.delay
 
 
 val uranium_blue = Color(0xFFAEDFF7)
+val midnight_blue = Color(0xFF16144D)
 val celadon = Color(0xFFA8D5BA)
 val davys_gray = Color(0xFF5C5C5C)
 val white_smoke = Color(0xFFF5F5F5)
 val indigo_dye = Color(0xFF005377)
 val bright_blue = Color(0xFF009ADD)
+val fontPoppins = FontFamily(Font(R.font.poppins))
+
+
 
 class MainActivity : ComponentActivity() {
 
