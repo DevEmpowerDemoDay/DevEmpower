@@ -107,6 +107,8 @@ fun Inicio() {
                     composable("recsenha") { RedefinirSenha(navController) }
                     composable("mudarsenha") { MudarSenha(navController) }
                     composable("senhaalterada"){ SenhaAlterada(navController) }
+                    composable("cadastro"){ Cadastro(navController) }
+                    composable("novocadastro"){NewCadastro(navController)}
                 }
             }
         },
@@ -210,7 +212,8 @@ fun Login(navController: NavController) {
     var rememberMe by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier.paint(
-            painter = painterResource(R.drawable.background_color), contentScale = ContentScale.Crop
+            painter = painterResource(R.drawable.background_color),
+            contentScale = ContentScale.Crop
         ),
     ) {
         Column(
@@ -235,7 +238,9 @@ fun Login(navController: NavController) {
             Image(
                 painter = painterResource(R.drawable.gradient_line),
                 contentDescription = "Linha azul",
-                modifier = Modifier.width(175.dp).height(10.dp)
+                modifier = Modifier
+                    .width(175.dp)
+                    .height(10.dp)
             )
             OutlinedTextField(
                 value = email,
@@ -403,7 +408,7 @@ fun Login(navController: NavController) {
                     )
             ) {
                 Button(
-                    onClick = { /* ação ao clicar */ },
+                    onClick = { navController.navigate("cadastro") },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Transparent
                     ),
