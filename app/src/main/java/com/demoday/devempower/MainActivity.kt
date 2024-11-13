@@ -63,7 +63,7 @@ val davys_gray = Color(0xFF5C5C5C)
 val white_smoke = Color(0xFFF5F5F5)
 val indigo_dye = Color(0xFF005377)
 val bright_blue = Color(0xFF009ADD)
-val fontPoppins = FontFamily(Font(R.font.poppins))
+val fontPoppins = FontFamily(Font(R.font.poppins,FontWeight.Normal))
 
 
 
@@ -290,6 +290,7 @@ fun Login(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 45.dp)
+                    .padding(end = 180.dp)
                     .clickable { navController.navigate("recsenha") })
 
             Row(
