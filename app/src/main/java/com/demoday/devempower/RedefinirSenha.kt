@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -49,8 +50,6 @@ import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-
-
 fun RedefinirSenha(navController: NavController) {
 
     Column(
@@ -69,7 +68,7 @@ fun RedefinirSenha(navController: NavController) {
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,
             color = midnight_blue,
-            //fontFamily = fontPoppins,
+            fontFamily = fontPoppins,
             modifier = Modifier
                 .padding(top = 230.dp)
         )
@@ -95,7 +94,7 @@ fun RedefinirSenha(navController: NavController) {
                 Text(
                     "Sem problemas!",
                     fontSize = 13.sp,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = midnight_blue
                 )
             }
@@ -106,7 +105,7 @@ fun RedefinirSenha(navController: NavController) {
                 Text(
                     " Vamos ajudá-lo a criar uma nova",
                     fontSize = 13.sp,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = midnight_blue
                 )
             }
@@ -127,7 +126,7 @@ fun RedefinirSenha(navController: NavController) {
             Text(
                 "associado à sua conta. Enviaremos um",
                 fontSize = 13.sp,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontWeight = FontWeight.SemiBold,
                 color = midnight_blue
             )
@@ -156,17 +155,14 @@ fun RedefinirSenha(navController: NavController) {
                     "Email",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
             },
             modifier = Modifier
-                .width(274.43.dp),
+                .width(321.62.dp),
             shape = RoundedCornerShape(7.dp),
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color(0xFFF3F3F3)
-            ),
             textStyle = TextStyle(
-                fontSize = 16.sp,
+                fontSize = 13.sp,
                 textAlign = TextAlign.Start
             ),
             singleLine = true
@@ -192,7 +188,7 @@ fun RedefinirSenha(navController: NavController) {
                 text = "Enviar",
                 color = white_smoke,
                 fontSize = 20.sp,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 modifier = Modifier
                     .align(alignment = Alignment.CenterVertically)
 
@@ -223,7 +219,7 @@ fun MudarSenha(navController: NavController) {
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,
             color = midnight_blue,
-            //fontFamily = fontPoppins,
+            fontFamily = fontPoppins,
             modifier = Modifier
                 .padding(top = 230.dp)
         )
@@ -241,12 +237,17 @@ fun MudarSenha(navController: NavController) {
             mutableStateOf("")
         }
 
-        Row {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 50.dp)
+        ) {
             Text(
                 "Nova Senha:",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Normal,
-                //fontFamily = fontPoppins,
+                fontSize = 13.sp,
+                color = midnight_blue,
+                fontWeight = FontWeight.SemiBold,
+                fontFamily = fontPoppins,
             )
         }
 
@@ -256,14 +257,10 @@ fun MudarSenha(navController: NavController) {
             value = senha,
             onValueChange = { novoTexto -> senha = novoTexto },
             modifier = Modifier
-                .width(274.43.dp)
-                .height(45.dp),
+                .width(321.62.dp),
             shape = RoundedCornerShape(7.dp),
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color(0xFFF3F3F3)
-            ),
             textStyle = TextStyle(
-                fontSize = 18.sp,
+                fontSize = 13.sp,
                 textAlign = TextAlign.Start
             ),
             singleLine = true
@@ -275,12 +272,17 @@ fun MudarSenha(navController: NavController) {
             mutableStateOf("")
         }
 
-        Row {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 50.dp)
+        ) {
             Text(
-                "Nova Senha:",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Normal,
-                //fontFamily = fontPoppins,
+                "Repita a nova Senha:",
+                fontSize = 13.sp,
+                color = midnight_blue,
+                fontWeight = FontWeight.SemiBold,
+                fontFamily = fontPoppins,
             )
         }
 
@@ -290,14 +292,10 @@ fun MudarSenha(navController: NavController) {
             value = confirma,
             onValueChange = { novoTexto -> confirma = novoTexto },
             modifier = Modifier
-                .width(274.43.dp)
-                .height(45.dp),
+                .width(321.62.dp)   ,
             shape = RoundedCornerShape(7.dp),
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color(0xFFF3F3F3)
-            ),
             textStyle = TextStyle(
-                fontSize = 18.sp,
+                fontSize = 13.sp,
                 textAlign = TextAlign.Start
             ),
             singleLine = true
@@ -320,7 +318,7 @@ fun MudarSenha(navController: NavController) {
                 text = "Redefinir",
                 color = white_smoke,
                 fontSize = 20.sp,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 modifier = Modifier
                     .align(alignment = Alignment.CenterVertically)
             )
@@ -354,6 +352,7 @@ fun SenhaAlterada(navController: NavController) {
         Text(
             "Senha alterada!",
             fontSize = 28.sp,
+            fontFamily = fontPoppins,
             fontWeight = FontWeight.SemiBold,
             color = midnight_blue
         )

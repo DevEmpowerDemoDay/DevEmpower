@@ -290,6 +290,7 @@ fun Login(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 45.dp)
+                    .padding(end = 180.dp)
                     .clickable { navController.navigate("recsenha") })
 
             Row(
