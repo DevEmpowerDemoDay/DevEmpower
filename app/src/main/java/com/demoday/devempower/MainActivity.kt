@@ -105,6 +105,8 @@ fun Inicio() {
                     composable("telaalt") { TelaAlt(navController) }
                     composable("login") { Login(navController) }
                     composable("recsenha") { RedefinirSenha(navController) }
+                    composable("mudarsenha") { MudarSenha(navController) }
+                    composable("senhaalterada"){ SenhaAlterada(navController) }
                 }
             }
         },
