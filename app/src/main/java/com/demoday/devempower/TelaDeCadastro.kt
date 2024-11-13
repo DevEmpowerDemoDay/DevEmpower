@@ -51,7 +51,7 @@ fun Cadastro(navController: NavController) {
     ) {
         Column(
             modifier = Modifier
-                .padding(top = 60.dp)
+                .padding(top = 45.dp)
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -81,14 +81,14 @@ fun Cadastro(navController: NavController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 40.dp)
+                    .padding(start = 50.dp)
             ) {
                 androidx.compose.material.Text(
                     "Nome: ",
                     fontSize = 18.sp,
                     color = midnight_blue,
                     fontWeight = FontWeight.Normal,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
             }
 
@@ -118,14 +118,14 @@ fun Cadastro(navController: NavController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 40.dp)
+                    .padding(start = 50.dp)
             ) {
                 androidx.compose.material.Text(
                     "Email: ",
                     fontSize = 18.sp,
                     color = midnight_blue,
                     fontWeight = FontWeight.Normal,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
             }
 
@@ -155,14 +155,14 @@ fun Cadastro(navController: NavController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 40.dp)
+                    .padding(start = 50.dp)
             ) {
                 androidx.compose.material.Text(
                     "Senha: ",
                     fontSize = 18.sp,
                     color = midnight_blue,
                     fontWeight = FontWeight.Normal,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
             }
 
@@ -192,14 +192,14 @@ fun Cadastro(navController: NavController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 40.dp)
+                    .padding(start = 50.dp)
             ) {
                 androidx.compose.material.Text(
                     "Confirmar Senha: ",
                     fontSize = 18.sp,
                     color = midnight_blue,
                     fontWeight = FontWeight.Normal,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
             }
 
@@ -240,7 +240,7 @@ fun Cadastro(navController: NavController) {
                     text = "Cadastrar",
                     color = white_smoke,
                     fontSize = 20.sp,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     modifier = Modifier
                         .align(alignment = Alignment.CenterVertically)
                 )
@@ -252,12 +252,14 @@ fun Cadastro(navController: NavController) {
                 Row {
                     Text(
                         "Ao continuar, estou de acordo com os",
-                        fontSize = 13.sp
+                        fontSize = 13.sp,
+                        fontFamily = fontPoppins
                     )
                     Spacer(modifier = Modifier.padding(start = 1.dp))
                     Text("Termos de Uso",
                         fontSize = 13.sp,
                         color = indigo_dye,
+                        fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
                             .clickable { })
@@ -266,6 +268,7 @@ fun Cadastro(navController: NavController) {
                     Text(
                         "e com o ",
                         fontSize = 13.sp,
+                        fontFamily = fontPoppins,
                         modifier = Modifier
                             .padding(start = 70.dp)
                     )
@@ -273,6 +276,7 @@ fun Cadastro(navController: NavController) {
                     Text("Aviso de Privacidade ",
                         fontSize = 13.sp,
                         color = indigo_dye,
+                        fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
                             .clickable { })
@@ -308,12 +312,14 @@ fun Cadastro(navController: NavController) {
                         text = "Já tem uma conta ?",
                         color = Color.White,
                         fontSize = 14.sp,
+                        fontFamily = fontPoppins,
                         modifier = Modifier.align(alignment = Alignment.CenterVertically)
                     )
                     Text(
                         text = "Conecte-se",
                         color = Color.White,
                         fontSize = 14.sp,
+                        fontFamily = fontPoppins,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .align(alignment = Alignment.CenterVertically)
@@ -352,7 +358,7 @@ fun NewCadastro(navController: NavController) {
             "Conta Cadastrada\n" +
                     "   com Sucesso !",
             fontSize = 28.sp,
-            //fontFamily = fontPoppins,
+            fontFamily = fontPoppins,
             fontWeight = FontWeight.SemiBold,
             color = midnight_blue
         )

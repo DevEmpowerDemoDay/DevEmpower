@@ -88,7 +88,7 @@ fun RedefinirSenha(navController: NavController) {
                     "Esqueceu sua senha?",
                     fontSize = 13.sp,
                     color = bright_blue,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
                 Spacer(modifier = Modifier.padding(start = 5.dp))
                 Text(
@@ -117,7 +117,7 @@ fun RedefinirSenha(navController: NavController) {
             Text(
                 "Por favor, insira o endereço de e-mail",
                 fontSize = 13.sp,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontWeight = FontWeight.SemiBold,
                 color = midnight_blue
             )
@@ -135,7 +135,7 @@ fun RedefinirSenha(navController: NavController) {
             Text(
                 "link para redefinir sua senha.",
                 fontSize = 13.sp,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontWeight = FontWeight.SemiBold,
                 color = midnight_blue
             )
