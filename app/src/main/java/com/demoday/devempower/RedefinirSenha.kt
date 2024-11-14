@@ -88,7 +88,7 @@ fun RedefinirSenha(navController: NavController) {
                     "Esqueceu sua senha?",
                     fontSize = 13.sp,
                     color = bright_blue,
-                    fontFamily = fontPoppins,
+                    //fontFamily = fontPoppins,
                 )
                 Spacer(modifier = Modifier.padding(start = 5.dp))
                 Text(
@@ -115,32 +115,16 @@ fun RedefinirSenha(navController: NavController) {
 
         Row {
             Text(
-                "Por favor, insira o endereço de e-mail",
+                "Por favor, insira o endereço de e-mail \n" +
+                        "associado a sua conta. Enviaremos um \n" +
+                        "link para redefinir sua senha.",
                 fontSize = 13.sp,
-                fontFamily = fontPoppins,
+                //fontFamily = fontPoppins,
                 fontWeight = FontWeight.SemiBold,
-                color = midnight_blue
+                color = midnight_blue,
+                textAlign = TextAlign.Center
             )
         }
-        Row {
-            Text(
-                "associado à sua conta. Enviaremos um",
-                fontSize = 13.sp,
-                fontFamily = fontPoppins,
-                fontWeight = FontWeight.SemiBold,
-                color = midnight_blue
-            )
-        }
-        Row {
-            Text(
-                "link para redefinir sua senha.",
-                fontSize = 13.sp,
-                fontFamily = fontPoppins,
-                fontWeight = FontWeight.SemiBold,
-                color = midnight_blue
-            )
-        }
-
         Spacer(modifier = Modifier.padding(top = 15.dp))
 
         var email by remember {
@@ -382,4 +366,3 @@ private fun SenhaPreview() {
         SenhaAlterada(rememberNavController())
     }
 }
-
