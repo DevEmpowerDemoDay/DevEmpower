@@ -116,7 +116,7 @@ fun RedefinirSenha(navController: NavController) {
         Row {
             Text(
                 "Por favor, insira o endereço de e-mail \n" +
-                        "associado à sua conta. Enviaremos um \n" +
+                        "associado a sua conta. Enviaremos um \n" +
                         "link para redefinir sua senha.",
                 fontSize = 13.sp,
                 //fontFamily = fontPoppins,

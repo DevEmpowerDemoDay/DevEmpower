@@ -349,8 +349,8 @@ fun NewCadastro(navController: NavController) {
             )
     ) {
         androidx.compose.material.Text(
-            "Conta Cadastrada\n" +
-                    "   com Sucesso !",
+            "Conta cadastrada\n" +
+                    "com sucesso!",
             fontSize = 28.sp,
             //fontFamily = fontPoppins,
             fontWeight = FontWeight.SemiBold,
