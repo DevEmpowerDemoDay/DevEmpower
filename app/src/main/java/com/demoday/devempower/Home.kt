@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,12 +23,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
@@ -104,7 +111,10 @@ fun Home(navController: NavController) {
                 .background(bright_blue)
                 .align(Alignment.CenterHorizontally),
             contentPadding = PaddingValues(0.dp),
-            colors = ButtonDefaults.buttonColors(backgroundColor = bright_blue, contentColor = white_smoke)
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = bright_blue,
+                contentColor = white_smoke
+            )
         ) {
             Row(
                 Modifier
@@ -131,6 +141,108 @@ fun Home(navController: NavController) {
                 )
             }
         }
+
+        // Explorar por Categorias
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .align(Alignment.CenterHorizontally)
+        ) {
+            Text(
+                text = buildAnnotatedString {
+                    append("Explorar por ")
+                    withStyle(
+                        style = SpanStyle(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            fontFamily = fontPoppins
+                        )
+                    ) {
+                        append("Categorias")
+                    }
+                },
+                color = indigo_dye,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding(top = 10.dp)
+            )
+        }
+
+        Row(
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(150.dp)
+                    .height(150.dp)
+                    .border(2.dp, color = indigo_dye)
+                    .paint(
+                        painter = painterResource(R.drawable.comunidade_asset),
+                        contentScale = ContentScale.FillWidth
+                    )
+                    .weight(1f)
+            ) {
+                ContentBox(
+                    "Conteúdo",
+                    Modifier
+                        .width(150.dp)
+                        .height(26.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(indigo_dye)
+                        .align(Alignment.BottomCenter)
+                        .zIndex(1f)
+                )
+            }
+
+            Spacer(modifier = Modifier.width(8.dp))  // Espaço entre os dois Box
+
+            Box(
+                modifier = Modifier
+                    .width(150.dp)
+                    .height(150.dp)
+                    .border(2.dp, color = indigo_dye)
+                    .paint(
+                        painter = painterResource(R.drawable.conteudo_asset),
+                        contentScale = ContentScale.FillWidth
+                    )
+                    .weight(1f)
+            ) {
+                ContentBox(
+                    "Conteúdo",
+                    Modifier
+                        .width(150.dp)
+                        .height(26.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(indigo_dye)
+                        .align(Alignment.BottomCenter)
+                        .zIndex(1f)
+                )
+            }
+        }
+
+
+    }
+}
+
+
+@Composable
+fun ContentBox(text: String, modifier: Modifier) {
+    Box(
+        modifier = modifier
+    ) {
+        Text(
+            text,
+            color = white_smoke,
+            fontSize = 20.sp,
+            textAlign = TextAlign.Center,
+            fontFamily = fontPoppins,
+            modifier = Modifier
+                .align(Alignment.Center)
+        )
     }
 }
 
