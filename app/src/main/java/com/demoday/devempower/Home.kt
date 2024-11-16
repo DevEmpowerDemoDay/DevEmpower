@@ -6,13 +6,13 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRowScopeInstance.weight
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -108,18 +108,17 @@ fun Home(navController: NavController) {
             modifier = Modifier
                 .width(200.dp)
                 .height(40.dp)
+                .offset(y = (-20).dp)
                 .clip(RoundedCornerShape(4.dp))
                 .background(bright_blue)
                 .align(Alignment.CenterHorizontally),
             contentPadding = PaddingValues(0.dp),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = bright_blue,
-                contentColor = white_smoke
+                backgroundColor = bright_blue, contentColor = white_smoke
             )
         ) {
             Row(
-                Modifier
-                    .fillMaxSize(),
+                Modifier.fillMaxSize(),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -143,7 +142,7 @@ fun Home(navController: NavController) {
             }
         }
 
-        // Explorar por Categorias
+        // Texto do "Explorar por Categorias"
         Box(
             Modifier
                 .fillMaxWidth()
@@ -154,18 +153,12 @@ fun Home(navController: NavController) {
                     append("Explorar por ")
                     withStyle(
                         style = SpanStyle(
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            fontFamily = fontPoppins
+                            fontWeight = FontWeight.Bold, fontSize = 20.sp, fontFamily = fontPoppins
                         )
                     ) {
                         append("Categorias")
                     }
-                },
-                color = indigo_dye,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .padding(top = 10.dp)
+                }, color = indigo_dye, modifier = Modifier.align(Alignment.Center)
             )
         }
 
@@ -180,7 +173,6 @@ fun Home(navController: NavController) {
                 modifier = Modifier
                     .width(150.dp)
                     .height(150.dp)
-                    .border(2.dp, color = indigo_dye)
                     .paint(
                         painter = painterResource(R.drawable.comunidade_asset),
                         contentScale = ContentScale.FillWidth
@@ -192,7 +184,8 @@ fun Home(navController: NavController) {
                     "Comunidade",
                     Modifier
                         .width(150.dp)
-                        .height(26.dp)
+                        .height(30.dp)
+                        .offset(y = 22.dp)
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
@@ -205,7 +198,6 @@ fun Home(navController: NavController) {
                 modifier = Modifier
                     .width(150.dp)
                     .height(150.dp)
-                    .border(2.dp, color = indigo_dye)
                     .paint(
                         painter = painterResource(R.drawable.conteudo_asset),
                         contentScale = ContentScale.FillWidth
@@ -216,12 +208,26 @@ fun Home(navController: NavController) {
                     "Conteúdo",
                     Modifier
                         .width(150.dp)
-                        .height(26.dp)
+                        .height(30.dp)
+                        .offset(y = 22.dp)
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
+                        .zIndex(2f)  // Garantir que o texto fique acima da borda
                 )
             }
+
+        }
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 40.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(30.dp)
+        ) {
+            ContainerEvents("Eventos")
+            ContainerEvents("Materiais")
         }
 
 
@@ -230,7 +236,55 @@ fun Home(navController: NavController) {
 
 
 @Composable
-fun ContentContainer() {}
+fun ContainerEvents(text: String) {
+
+    Box(
+        modifier = Modifier
+            .width(326.dp)
+            .height(63.dp)
+            .border(1.dp, color = indigo_dye, shape = RoundedCornerShape(8.dp))
+
+    ) {
+
+        Row(
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(R.drawable.event_asset),
+                contentDescription = "Icon",
+                modifier = Modifier
+                    .padding(10.dp)
+                    .size(50.dp)
+            )
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Top,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .offset(x = (-25).dp, y = (-2).dp)
+            ) {
+                Text(
+                    text,
+                    color = indigo_dye,
+                    fontFamily = fontPoppins,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    "10 $text disponíveis",
+                    color = indigo_dye,
+                    fontFamily = fontPoppins,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+    }
+}
+
 
 @Composable
 fun ContentBox(text: String, modifier: Modifier) {
@@ -245,6 +299,7 @@ fun ContentBox(text: String, modifier: Modifier) {
             fontFamily = fontPoppins,
             modifier = Modifier
                 .align(Alignment.Center)
+                .zIndex(1f)
         )
     }
 }
@@ -253,6 +308,6 @@ fun ContentBox(text: String, modifier: Modifier) {
 @Composable
 private fun BottomPreview() {
     DevEmpowerTheme {
-        Home(rememberNavController())
+        ContainerEvents("teste")
     }
 }
