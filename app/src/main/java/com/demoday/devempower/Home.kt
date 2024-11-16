@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRowScopeInstance.weight
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -185,20 +186,20 @@ fun Home(navController: NavController) {
                         contentScale = ContentScale.FillWidth
                     )
                     .weight(1f)
+                    .padding(horizontal = 5.dp)
             ) {
                 ContentBox(
-                    "Conteúdo",
+                    "Comunidade",
                     Modifier
                         .width(150.dp)
                         .height(26.dp)
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
-                        .zIndex(1f)
                 )
             }
 
-            Spacer(modifier = Modifier.width(8.dp))  // Espaço entre os dois Box
+            Spacer(modifier = Modifier.width(8.dp))
 
             Box(
                 modifier = Modifier
@@ -219,7 +220,6 @@ fun Home(navController: NavController) {
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
-                        .zIndex(1f)
                 )
             }
         }
@@ -228,6 +228,9 @@ fun Home(navController: NavController) {
     }
 }
 
+
+@Composable
+fun ContentContainer() {}
 
 @Composable
 fun ContentBox(text: String, modifier: Modifier) {
