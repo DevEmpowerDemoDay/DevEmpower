@@ -2,9 +2,12 @@ package com.demoday.devempower
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -36,8 +39,7 @@ fun Home(navController: NavController) {
     )
 
     systemUiController.setNavigationBarColor(
-        uranium_blue,
-        darkIcons = true
+        uranium_blue, darkIcons = true
     )
 
     Column(
@@ -45,9 +47,10 @@ fun Home(navController: NavController) {
             .fillMaxSize()
             .background(uranium_blue)
     ) {
-
+        //Menu suspenso
         Box(
             modifier = Modifier
+                .padding(horizontal = 5.dp)
                 .width(399.dp)
                 .height(263.dp)
                 .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
@@ -63,7 +66,8 @@ fun Home(navController: NavController) {
                 Image(
                     painter = painterResource(R.drawable.logo),
                     contentDescription = "Logo",
-                    modifier = Modifier.padding(vertical = 20.dp)
+                    modifier = Modifier
+                        .padding(vertical = 20.dp)
                         .size(70.dp)
                         .clip(RoundedCornerShape(50.dp))
                         .background(white_smoke)
@@ -87,6 +91,41 @@ fun Home(navController: NavController) {
             }
         }
 
+        // Botão Acessar Perfil
+        Box(
+            Modifier
+                .width(200.dp)
+                .height(40.dp)
+                .clip(RoundedCornerShape(4.dp))
+                .background(bright_blue)
+                .align(Alignment.CenterHorizontally)
+        ) {
+            Row(
+                Modifier
+                    .align(Alignment.Center)
+                    .fillMaxSize(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Acessar perfil",
+                    color = white_smoke,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 20.sp,
+                    fontFamily = fontPoppins
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Image(
+                    painter = painterResource(R.drawable.icon),
+                    contentDescription = "Icon",
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .size(20.dp)
+                        .border(2.dp, white_smoke, RoundedCornerShape(50.dp))
+                )
+            }
+        }
     }
 }
 
