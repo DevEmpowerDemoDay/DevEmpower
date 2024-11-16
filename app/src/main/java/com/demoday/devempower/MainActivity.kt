@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -40,12 +41,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -57,18 +56,19 @@ import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import kotlinx.coroutines.delay
 
 
-// cores
 val uranium_blue = Color(0xFFAEDFF7)
+val midnight_blue = Color(0xFF16144D)
 val celadon = Color(0xFFA8D5BA)
 val davys_gray = Color(0xFF5C5C5C)
 val white_smoke = Color(0xFFF5F5F5)
 val indigo_dye = Color(0xFF005377)
 val bright_blue = Color(0xFF009ADD)
+val fontPoppins = FontFamily(Font(R.font.poppins,FontWeight.Normal))
 
 
-const val splashScreenDuration = 1500L // 1500 ms = 1.5 sec
 
 class MainActivity : ComponentActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +85,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Inicio() {
     val navController = rememberNavController()
+
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -103,9 +104,11 @@ fun Inicio() {
                     composable("home") { BottomNavigationMenu(navController) }
                     composable("telaalt") { TelaAlt(navController) }
                     composable("login") { Login(navController) }
-                    composable("recsenha") { RecuperacaoSenha(navController) }
-
-
+                    composable("recsenha") { RedefinirSenha(navController) }
+                    composable("mudarsenha") { MudarSenha(navController) }
+                    composable("senhaalterada"){ SenhaAlterada(navController) }
+                    composable("cadastro"){ Cadastro(navController) }
+                    composable("novocadastro"){NewCadastro(navController)}
                 }
             }
         },
@@ -115,6 +118,8 @@ fun Inicio() {
 
 @Composable
 fun Splash(navController: NavController) {
+    val splashScreenDuration = 1500L // 1500 ms = 1.5 segundos
+
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
         navController.navigate("telaalt") {
@@ -128,27 +133,29 @@ fun Splash(navController: NavController) {
             .background(color = uranium_blue),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    )
-    {
+    ) {
         Image(
-            painter = painterResource(R.drawable.novo_projeto),
-            contentDescription = "",
+            painter = painterResource(R.drawable.logo_with_text),
+            contentDescription = "Logo DevEmpower",
             modifier = Modifier
                 .padding(top = 180.dp)
                 .size(width = 270.dp, height = 185.dp)
 
         )
 
+
+
         Image(
             modifier = Modifier.padding(top = 180.dp),
-            painter = painterResource(R.drawable.logotipo),
-            contentDescription = ""
+            painter = painterResource(R.drawable.logo_proa),
+            contentDescription = "LogoDevEmpower"
         )
     }
 }
 
 @Composable
 fun TelaAlt(navController: NavController) {
+    val splashScreenDuration = 2000L // 2000 ms = 2 segundos
 
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
@@ -161,7 +168,7 @@ fun TelaAlt(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painter = painterResource(R.drawable.background1),
+                painter = painterResource(R.drawable.background_color),
                 contentScale = ContentScale.Crop
             ),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -170,7 +177,7 @@ fun TelaAlt(navController: NavController) {
         Text(
             text = "Bem vindo (a) ,",
             fontSize = 20.sp,
-            color = Color(0xFFFF005377),
+            color = indigo_dye,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .padding(20.dp)
@@ -179,17 +186,14 @@ fun TelaAlt(navController: NavController) {
 
 
         Text(
-            "Junte-se a nós na jornada de transformação para o " +
-                    "mundo da tecnologia. Aqui, você irá desenvolver suas soft " +
-                    "skills e se preparar para brilhar no mercado de trabalho.",
+            "Junte-se a nós na jornada de transformação para o " + "mundo da tecnologia. Aqui, você irá desenvolver suas soft " + "skills e se preparar para brilhar no mercado de trackball.",
             fontSize = 14.sp,
             color = Color.Black,
-            modifier = Modifier
-                .padding(20.dp)
+            modifier = Modifier.padding(20.dp)
         )
         Image(
-            painter = painterResource(R.drawable.group_63),
-            contentDescription = "",
+            painter = painterResource(R.drawable.woman_phone_asset),
+            contentDescription = "Mulher com celular",
             modifier = Modifier
                 .size(width = 346.dp, height = 346.dp)
                 .padding(top = 29.dp)
@@ -199,7 +203,6 @@ fun TelaAlt(navController: NavController) {
 
 @Composable
 fun Login(navController: NavController) {
-
     var email by remember {
         mutableStateOf("")
     }
@@ -207,10 +210,9 @@ fun Login(navController: NavController) {
         mutableStateOf("")
     }
     var rememberMe by remember { mutableStateOf(false) }
-
     Column(
         modifier = Modifier.paint(
-            painter = painterResource(R.drawable.background1),
+            painter = painterResource(R.drawable.background_color),
             contentScale = ContentScale.Crop
         ),
     ) {
@@ -222,22 +224,23 @@ fun Login(navController: NavController) {
         ) {
             Image(
                 painter = painterResource(R.drawable.logo),
-                contentDescription = "",
-                modifier = Modifier
-                    .size(70.dp)
+                contentDescription = "Logo DevEmpower",
+                modifier = Modifier.size(70.dp)
             )
             Text(
                 text = "Login",
                 fontSize = 32.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Medium,
                 color = indigo_dye,
-                modifier = Modifier
-                    .padding(top = 20.dp)
+                modifier = Modifier.padding(top = 20.dp)
 
             )
             Image(
-                painter = painterResource(R.drawable.line_9),
-                contentDescription = ""
+                painter = painterResource(R.drawable.gradient_line),
+                contentDescription = "Linha azul",
+                modifier = Modifier
+                    .width(175.dp)
+                    .height(10.dp)
             )
             OutlinedTextField(
                 value = email,
@@ -251,18 +254,17 @@ fun Login(navController: NavController) {
                 },
                 leadingIcon = {
                     Image(
-                        painter = painterResource(R.drawable.vector),
+                        painter = painterResource(R.drawable.mail_asset),
                         contentDescription = "Ícone do campo de texto",
                         modifier = Modifier.size(20.dp)
                     )
                 },
-                modifier = Modifier
-                    .width(334.82.dp),
+                modifier = Modifier.width(334.82.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = indigo_dye,
-                    unfocusedBorderColor = indigo_dye
+                    focusedBorderColor = indigo_dye, unfocusedBorderColor = indigo_dye
 
-                )
+                ),
+                singleLine = true
             )
 
             OutlinedTextField(
@@ -271,7 +273,7 @@ fun Login(navController: NavController) {
                 label = { Text("Senha", fontSize = 16.sp, fontWeight = FontWeight.Medium) },
                 leadingIcon = {
                     Image(
-                        painter = painterResource(R.drawable.vector1),
+                        painter = painterResource(R.drawable.hide_password),
                         contentDescription = "Ícone do campo de texto",
                         modifier = Modifier.size(20.dp)
                     )
@@ -280,10 +282,10 @@ fun Login(navController: NavController) {
                     .padding(top = 8.dp)
                     .width(334.82.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = indigo_dye,
-                    unfocusedBorderColor = indigo_dye
+                    focusedBorderColor = indigo_dye, unfocusedBorderColor = indigo_dye
 
-                )
+                ),
+                singleLine = true
             )
             Text("Esqueci minha senha",
                 fontSize = 16.sp,
@@ -293,16 +295,14 @@ fun Login(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 45.dp)
-                    .clickable { navController.navigate("recsenha") }
-            )
+                    .padding(end = 180.dp)
+                    .clickable { navController.navigate("recsenha") })
 
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Lembrar de mim",
-                    fontSize = 16.sp,
-                    color = indigo_dye
+                    "Lembrar de mim", fontSize = 16.sp, color = indigo_dye
                 )
                 Switch(
                     modifier = Modifier
@@ -311,15 +311,13 @@ fun Login(navController: NavController) {
                     checked = rememberMe,
                     onCheckedChange = { rememberMe = it },
                     colors = SwitchDefaults.colors(
-                        uncheckedThumbColor = indigo_dye,
-                        checkedTrackColor = indigo_dye,
+                        uncheckedThumbColor = indigo_dye, checkedTrackColor = indigo_dye
                     )
                 )
             }
 
             Button(
-                onClick = { /* ação ao clicar */ },
-                colors = ButtonDefaults.buttonColors(
+                onClick = { /* ação ao clicar */ }, colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent
                 ),
 
@@ -328,16 +326,14 @@ fun Login(navController: NavController) {
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(indigo_dye, bright_blue)
-                        ),
-                        shape = RoundedCornerShape(10.dp)
+                        ), shape = RoundedCornerShape(10.dp)
                     )
             ) {
                 Text(
                     text = "Entrar",
                     color = Color.White,
                     fontSize = 25.sp,
-                    modifier = Modifier
-                        .align(alignment = Alignment.CenterVertically)
+                    modifier = Modifier.align(alignment = Alignment.CenterVertically)
 
                 )
 
@@ -348,24 +344,22 @@ fun Login(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
-                    painter = painterResource(R.drawable.line_6),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .size(width = 109.dp, height = 50.dp)
+                    painter = painterResource(R.drawable.blue_line2),
+                    contentDescription = "Linha azul",
+                    modifier = Modifier.size(width = 109.dp, height = 50.dp)
                 )
                 Text(
                     "OU",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xFF005377),
+                    color = indigo_dye,
                     modifier = Modifier.padding(start = 10.dp, end = 10.dp)
                 )
 
                 Image(
-                    painter = painterResource(R.drawable.line_6),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .size(width = 109.dp, height = 50.dp)
+                    painter = painterResource(R.drawable.blue_line2),
+                    contentDescription = "Linha azul",
+                    modifier = Modifier.size(width = 109.dp, height = 50.dp)
                 )
             }
 
@@ -376,13 +370,33 @@ fun Login(navController: NavController) {
                     .padding(horizontal = 20.dp)
                     .padding(top = 2.dp)
             )
-            Image(
-                painter = painterResource(R.drawable.group_105),
-                contentDescription = "",
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .size(width = 120.dp, height = 80.dp)
-            )
+
+            Row(
+                modifier = Modifier.padding(top = 5.dp)
+            ) {
+                Image(
+                    painter = painterResource(
+                        R.drawable.facebook_icon
+                    ),
+                    contentDescription = "Logo Facebook",
+                    modifier = Modifier
+                        .size(width = 48.15.dp, height = 47.23.dp)
+                        .clickable { }
+                )
+                Spacer(modifier = Modifier.padding(start = 20.dp))
+                Image(
+                    painter = painterResource(
+                        R.drawable.google_icon
+                    ),
+                    contentDescription = "Logo Facebook",
+                    modifier = Modifier
+                        .size(width = 48.15.dp, height = 47.23.dp)
+                        .clickable { }
+
+                )
+            }
+
+
             Box(
                 modifier = Modifier
                     .padding(top = 10.dp)
@@ -390,12 +404,11 @@ fun Login(navController: NavController) {
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(indigo_dye, bright_blue)
-                        ),
-                        shape = RoundedCornerShape(10.dp)
+                        ), shape = RoundedCornerShape(10.dp)
                     )
             ) {
                 Button(
-                    onClick = { /* ação ao clicar */ },
+                    onClick = { navController.navigate("cadastro") },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Transparent
                     ),
@@ -406,12 +419,12 @@ fun Login(navController: NavController) {
                 ) {
 
                     Row {
+
                         Text(
                             text = "Não tem uma conta?",
                             color = Color.White,
                             fontSize = 14.sp,
-                            modifier = Modifier
-                                .align(alignment = Alignment.CenterVertically)
+                            modifier = Modifier.align(alignment = Alignment.CenterVertically)
                         )
                         Text(
                             text = "Cadastre-se",
@@ -426,44 +439,41 @@ fun Login(navController: NavController) {
                 }
             }
             Spacer(modifier = Modifier.padding(10.dp))
-            Text(
-                AnnotatedString.Builder().apply {
-                    append("Ao continuar, estou de acordo com os ")
-                    withStyle(style = SpanStyle(color = indigo_dye)) {
-                        append("Termos de Uso")
-                    }
-                    append(" e com o ")
-                    withStyle(style = SpanStyle(color = indigo_dye)) {
-                        append("Aviso de Privacidade")
-                    }
-                }.toAnnotatedString(),
-                color = Color.Black,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Medium,
-                textDecoration = TextDecoration.Underline,
-                fontSize = 15.sp,
-                modifier = Modifier
-                    .padding(horizontal = 20.dp)
-                    .padding(top = 2.dp)
-            )
-
+            Column {
+                Row {
+                    Text(
+                        "Ao continuar, estou de acordo com os",
+                        fontSize = 13.sp
+                    )
+                    Spacer(modifier = Modifier.padding(start = 1.dp))
+                    Text("Termos de Uso",
+                        fontSize = 13.sp,
+                        color = indigo_dye,
+                        textDecoration = TextDecoration.Underline,
+                        modifier = Modifier
+                            .clickable { })
+                }
+                Row {
+                    Text(
+                        "e com o ",
+                        fontSize = 13.sp,
+                        modifier = Modifier
+                            .padding(start = 70.dp)
+                    )
+                    Spacer(modifier = Modifier.padding(start = 1.dp))
+                    Text("Aviso de Privacidade ",
+                        fontSize = 13.sp,
+                        color = indigo_dye,
+                        textDecoration = TextDecoration.Underline,
+                        modifier = Modifier
+                            .clickable { })
+                }
+            }
         }
 
     }
 }
 
-@Composable
-fun RecuperacaoSenha(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .paint(
-                painter = painterResource(R.drawable.background1),
-                contentScale = ContentScale.Crop
-            ),
-    ) {
-    }
-}
 
 @Preview
 @Composable
@@ -488,4 +498,3 @@ private fun preview3() {
         Login(rememberNavController())
     }
 }
-
