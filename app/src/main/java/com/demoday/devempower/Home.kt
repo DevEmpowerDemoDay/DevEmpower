@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -54,7 +57,7 @@ fun Home(navController: NavController) {
                 .width(399.dp)
                 .height(263.dp)
                 .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
-                .background(indigo_dye)
+                .background(indigo_dye),
         ) {
 
             Column(
@@ -92,17 +95,19 @@ fun Home(navController: NavController) {
         }
 
         // Botão Acessar Perfil
-        Box(
-            Modifier
+        Button(
+            onClick = { /* Ação do botão */ },
+            modifier = Modifier
                 .width(200.dp)
                 .height(40.dp)
                 .clip(RoundedCornerShape(4.dp))
                 .background(bright_blue)
-                .align(Alignment.CenterHorizontally)
+                .align(Alignment.CenterHorizontally),
+            contentPadding = PaddingValues(0.dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = bright_blue, contentColor = white_smoke)
         ) {
             Row(
                 Modifier
-                    .align(Alignment.Center)
                     .fillMaxSize(),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -120,9 +125,9 @@ fun Home(navController: NavController) {
                     painter = painterResource(R.drawable.icon),
                     contentDescription = "Icon",
                     modifier = Modifier
-                        .align(Alignment.CenterVertically)
                         .size(20.dp)
                         .border(2.dp, white_smoke, RoundedCornerShape(50.dp))
+                        .align(Alignment.CenterVertically)
                 )
             }
         }
