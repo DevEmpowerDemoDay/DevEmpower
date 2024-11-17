@@ -31,7 +31,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.paint
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -52,6 +54,8 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 fun Home(navController: NavController) {
     val systemUiController = rememberSystemUiController()
 
+
+    // define cores da barra de status e da barra de navegação
     systemUiController.setStatusBarColor(
         indigo_dye
     )
@@ -68,7 +72,6 @@ fun Home(navController: NavController) {
         //Menu suspenso
         Box(
             modifier = Modifier
-                .padding(horizontal = 5.dp)
                 .width(399.dp)
                 .height(263.dp)
                 .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
@@ -116,10 +119,9 @@ fun Home(navController: NavController) {
                 .width(200.dp)
                 .height(40.dp)
                 .offset(y = (-20).dp)
-                .clip(RoundedCornerShape(4.dp))
+                .clip(RoundedCornerShape(8.dp))
                 .background(bright_blue)
                 .align(Alignment.CenterHorizontally),
-            contentPadding = PaddingValues(0.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = bright_blue, contentColor = white_smoke
             )
@@ -136,14 +138,13 @@ fun Home(navController: NavController) {
                     fontSize = 20.sp,
                     fontFamily = fontPoppins
                 )
-                Spacer(modifier = Modifier.width(8.dp))
-
+                Spacer(modifier = Modifier.width(4.dp))
                 Image(
                     painter = painterResource(R.drawable.icon),
                     contentDescription = "Icon",
                     modifier = Modifier
-                        .size(20.dp)
-                        .border(2.dp, white_smoke, RoundedCornerShape(50.dp))
+                        .fillMaxSize()
+                        .offset(y = 2.dp)
                         .align(Alignment.CenterVertically)
                 )
             }
@@ -197,6 +198,7 @@ fun Home(navController: NavController) {
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
+                        .clickable { }
                 )
             }
 
@@ -223,7 +225,6 @@ fun Home(navController: NavController) {
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
-                        .zIndex(2f)  // Garantir que o texto fique acima da borda
                         .clickable {}
                 )
             }
@@ -252,20 +253,30 @@ fun Home(navController: NavController) {
 fun BottomBar(navController: NavController) {
     val selected by remember { mutableStateOf(false) }
 
-    Box(modifier = Modifier.fillMaxWidth()) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp)
+    ) {
         BottomNavigation(
             modifier = Modifier
-                .clip(RoundedCornerShape(38.dp))
                 .width(357.dp)
-                .padding(top = 15.dp)
-                .height(56.dp)
+                .height(66.dp)
+                .padding(top = 5.dp)
                 .align(Alignment.Center)
                 .padding(horizontal = 30.dp)
                 .clip(RoundedCornerShape(38.dp)),
             backgroundColor = indigo_dye,
-        ) {
+
+            ) {
+
             BottomNavigationItem(
-                icon = { BottomIcon(painterResource(R.drawable.comunidade_icon)) },
+                icon = {
+                    BottomIcon(
+                        painterResource(R.drawable.comunidade_icon),
+                        "Ícone da aba de Comunidade, um grupo de pessoas"
+                    )
+                },
                 onClick = {
                     // navController.navigate("splash")
                 },
@@ -273,30 +284,46 @@ fun BottomBar(navController: NavController) {
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = 25.dp)
                     .align(Alignment.CenterVertically)
+                    .drawBehind {
+                        drawRoundRect(
+                            indigo_dye,
+                            cornerRadius = CornerRadius(30.dp.toPx())
+                        )
+                    }
             )
 
 
             BottomNavigationItem(
-                icon = { BottomIcon(painterResource(R.drawable.home_icon)) },
+                icon = {
+                    BottomIcon(
+                        painterResource(R.drawable.home_icon),
+                        "Ícone da aba de Home, Casa"
+                    )
+                },
                 onClick = {},
                 selected = false,
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = 25.dp)
                     .align(Alignment.CenterVertically)
             )
 
             BottomNavigationItem(
-                icon = { BottomIcon(painterResource(R.drawable.material_icon)) },
+                icon = {
+                    BottomIcon(
+                        painterResource(R.drawable.material_icon),
+                        "Ícone da aba de Material, quebra-cabeça"
+                    )
+                },
                 onClick = {},
                 selected = false,
-                modifier =Modifier
+                modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = 25.dp)
                     .align(Alignment.CenterVertically)
             )
         }
@@ -305,11 +332,11 @@ fun BottomBar(navController: NavController) {
 
 
 @Composable
-fun BottomIcon(painter: Painter) {
+fun BottomIcon(painter: Painter, description: String) {
     val iconSize = 22.dp
     Icon(
         painter = painter,
-        contentDescription = "Icone da aba de comunidade, um grupo de pessoas",
+        contentDescription = description,
         tint = white_smoke,
         modifier = Modifier.size(iconSize)
     )
