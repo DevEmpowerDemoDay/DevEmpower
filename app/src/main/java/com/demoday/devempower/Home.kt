@@ -3,6 +3,7 @@ package com.demoday.devempower
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,14 +18,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -37,7 +45,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -173,6 +180,7 @@ fun Home(navController: NavController) {
                 modifier = Modifier
                     .width(150.dp)
                     .height(150.dp)
+                    .padding(10.dp)
                     .paint(
                         painter = painterResource(R.drawable.comunidade_asset),
                         contentScale = ContentScale.FillWidth
@@ -198,11 +206,13 @@ fun Home(navController: NavController) {
                 modifier = Modifier
                     .width(150.dp)
                     .height(150.dp)
+                    .padding(10.dp)
                     .paint(
                         painter = painterResource(R.drawable.conteudo_asset),
                         contentScale = ContentScale.FillWidth
                     )
                     .weight(1f)
+
             ) {
                 ContentBox(
                     "Conteúdo",
@@ -214,6 +224,7 @@ fun Home(navController: NavController) {
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
                         .zIndex(2f)  // Garantir que o texto fique acima da borda
+                        .clickable {}
                 )
             }
 
@@ -230,8 +241,78 @@ fun Home(navController: NavController) {
             ContainerEvents("Materiais")
         }
 
+        Spacer(modifier = Modifier.height(20.dp))
+
+        BottomBar(navController)
 
     }
+}
+
+@Composable
+fun BottomBar(navController: NavController) {
+    val selected by remember { mutableStateOf(false) }
+
+    Box(modifier = Modifier.fillMaxWidth()) {
+        BottomNavigation(
+            modifier = Modifier
+                .clip(RoundedCornerShape(38.dp))
+                .width(357.dp)
+                .padding(top = 15.dp)
+                .height(56.dp)
+                .align(Alignment.Center)
+                .padding(horizontal = 30.dp)
+                .clip(RoundedCornerShape(38.dp)),
+            backgroundColor = indigo_dye,
+        ) {
+            BottomNavigationItem(
+                icon = { BottomIcon(painterResource(R.drawable.comunidade_icon)) },
+                onClick = {
+                    // navController.navigate("splash")
+                },
+                selected = selected,
+                modifier = Modifier
+                    .width(30.dp)
+                    .height(50.dp)
+                    .padding(horizontal = 20.dp)
+                    .align(Alignment.CenterVertically)
+            )
+
+
+            BottomNavigationItem(
+                icon = { BottomIcon(painterResource(R.drawable.home_icon)) },
+                onClick = {},
+                selected = false,
+                modifier = Modifier
+                    .width(30.dp)
+                    .height(50.dp)
+                    .padding(horizontal = 20.dp)
+                    .align(Alignment.CenterVertically)
+            )
+
+            BottomNavigationItem(
+                icon = { BottomIcon(painterResource(R.drawable.material_icon)) },
+                onClick = {},
+                selected = false,
+                modifier =Modifier
+                    .width(30.dp)
+                    .height(50.dp)
+                    .padding(horizontal = 20.dp)
+                    .align(Alignment.CenterVertically)
+            )
+        }
+    }
+}
+
+
+@Composable
+fun BottomIcon(painter: Painter) {
+    val iconSize = 22.dp
+    Icon(
+        painter = painter,
+        contentDescription = "Icone da aba de comunidade, um grupo de pessoas",
+        tint = white_smoke,
+        modifier = Modifier.size(iconSize)
+    )
 }
 
 
@@ -290,6 +371,7 @@ fun ContainerEvents(text: String) {
 fun ContentBox(text: String, modifier: Modifier) {
     Box(
         modifier = modifier
+
     ) {
         Text(
             text,
