@@ -421,10 +421,11 @@ fun ContainerEvents(text: String) {
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    "10 $text disponíveis",
+                    "10 disponíveis",
                     color = indigo_dye,
                     fontFamily = fontPoppins,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
                 )
             }
         }
