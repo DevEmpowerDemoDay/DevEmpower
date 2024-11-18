@@ -1,5 +1,6 @@
 package com.demoday.devempower
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -7,7 +8,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,6 +34,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Fill
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -251,25 +255,24 @@ fun Home(navController: NavController) {
 
 @Composable
 fun BottomBar(navController: NavController) {
-    val selected by remember { mutableStateOf(false) }
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 20.dp)
-    ) {
-        BottomNavigation(
+    Box(modifier = Modifier.fillMaxSize()) {
+        // Elemento de fundo (decorativo)
+        Box(
             modifier = Modifier
-                .width(357.dp)
-                .height(66.dp)
-                .padding(top = 5.dp)
-                .align(Alignment.Center)
-                .padding(horizontal = 30.dp)
-                .clip(RoundedCornerShape(38.dp)),
-            backgroundColor = indigo_dye,
+                .fillMaxSize()
+                .padding(horizontal = 15.dp, vertical = 15.dp)
+                .align(Alignment.Center) // Centralizado dentro do BottomBar
+                .background(indigo_dye, shape = RoundedCornerShape(38.dp))
+        )
 
-            ) {
-
+        // BottomNavigation com os itens que ignoram o fundo
+        BottomNavigation(
+            modifier = Modifier.fillMaxSize(),
+            backgroundColor = Color.Transparent,
+            elevation = 0.dp
+        ) {
+            // Primeiro item de navegação
             BottomNavigationItem(
                 icon = {
                     BottomIcon(
@@ -280,21 +283,25 @@ fun BottomBar(navController: NavController) {
                 onClick = {
                     // navController.navigate("splash")
                 },
-                selected = selected,
+                selected = false,
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
-                    .padding(horizontal = 25.dp)
+                    .padding(horizontal = 40.dp)
+                    .border(0.dp, Color.Transparent) // Garantir que não tenha borda
                     .align(Alignment.CenterVertically)
                     .drawBehind {
                         drawRoundRect(
-                            indigo_dye,
-                            cornerRadius = CornerRadius(30.dp.toPx())
+                            color = indigo_dye, // Cor de fundo
+                            size = size,
+                            cornerRadius = CornerRadius(30.dp.toPx()),
+                            style = Fill
                         )
+
                     }
             )
 
-
+            // Segundo item de navegação
             BottomNavigationItem(
                 icon = {
                     BottomIcon(
@@ -307,10 +314,27 @@ fun BottomBar(navController: NavController) {
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
-                    .padding(horizontal = 25.dp)
+                    .offset(y = (-16).dp)
+                    .padding(horizontal = 40.dp)
+                    .border(0.dp, Color.Transparent) // Garantir que não tenha borda
                     .align(Alignment.CenterVertically)
+                    .drawBehind {
+                        drawRoundRect(
+                            color = indigo_dye, // Cor de fundo
+                            size = size,
+                            cornerRadius = CornerRadius(30.dp.toPx()),
+                            style = Fill
+                        )
+                        drawRoundRect(
+                            color = uranium_blue, // Cor da borda
+                            size = size,
+                            cornerRadius = CornerRadius(30.dp.toPx()),
+                            style = Stroke(width = 4.dp.toPx()) // Largura da borda
+                        )
+                    }
             )
 
+            // Terceiro item de navegação
             BottomNavigationItem(
                 icon = {
                     BottomIcon(
@@ -323,8 +347,18 @@ fun BottomBar(navController: NavController) {
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
-                    .padding(horizontal = 25.dp)
+                    .padding(horizontal = 40.dp)
+                    .border(0.dp, Color.Transparent) // Garantir que não tenha borda
                     .align(Alignment.CenterVertically)
+                    .drawBehind {
+                        drawRoundRect(
+                            color = indigo_dye, // Cor de fundo
+                            size = size,
+                            cornerRadius = CornerRadius(30.dp.toPx()),
+                            style = Fill
+                        )
+                    }
+
             )
         }
     }
@@ -338,8 +372,14 @@ fun BottomIcon(painter: Painter, description: String) {
         painter = painter,
         contentDescription = description,
         tint = white_smoke,
-        modifier = Modifier.size(iconSize)
+        modifier = Modifier
+            .size(iconSize)
+            .background(indigo_dye)
     )
+}
+
+fun selectedButton() {
+
 }
 
 
