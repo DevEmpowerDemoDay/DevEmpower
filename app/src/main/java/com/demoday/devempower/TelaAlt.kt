@@ -1,6 +1,7 @@
 package com.demoday.devempower
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,11 +21,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 
 @Composable
 fun TelaAlt(navController: NavController) {
     val splashScreenDuration = 2000L // 2000 ms = 2 segundos
+
+    val systemUiController = rememberSystemUiController()
+
+
+    // define cores da barra de status e da barra de navegação
+    systemUiController.setStatusBarColor(
+        uranium_blue
+    )
+
+    systemUiController.setNavigationBarColor(
+        uranium_blue, darkIcons = true
+    )
 
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
@@ -36,10 +50,7 @@ fun TelaAlt(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .paint(
-                painter = painterResource(R.drawable.background_color),
-                contentScale = ContentScale.Crop
-            ),
+            .background(uranium_blue),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {

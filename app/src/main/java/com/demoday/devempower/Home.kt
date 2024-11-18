@@ -1,10 +1,11 @@
 package com.demoday.devempower
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,8 +26,6 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,7 +33,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -256,17 +254,19 @@ fun Home(navController: NavController) {
 @Composable
 fun BottomBar(navController: NavController) {
 
+    val interactionSource = remember { MutableInteractionSource() } // Lembrar a fonte de interação
+
+
     Box(modifier = Modifier.fillMaxSize()) {
         // Elemento de fundo (decorativo)
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 15.dp, vertical = 15.dp)
+                .padding(15.dp)
                 .align(Alignment.Center) // Centralizado dentro do BottomBar
                 .background(indigo_dye, shape = RoundedCornerShape(38.dp))
         )
 
-        // BottomNavigation com os itens que ignoram o fundo
         BottomNavigation(
             modifier = Modifier.fillMaxSize(),
             backgroundColor = Color.Transparent,
@@ -281,15 +281,21 @@ fun BottomBar(navController: NavController) {
                     )
                 },
                 onClick = {
-                    // navController.navigate("splash")
+
                 },
                 selected = false,
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
                     .padding(horizontal = 40.dp)
-                    .border(0.dp, Color.Transparent) // Garantir que não tenha borda
                     .align(Alignment.CenterVertically)
+                    .clickable(
+                        interactionSource,
+                        indication = null,
+                        onClick = {
+                            navController.navigate("comunidade")
+                        }
+                    )
                     .drawBehind {
                         drawRoundRect(
                             color = indigo_dye, // Cor de fundo
@@ -309,14 +315,13 @@ fun BottomBar(navController: NavController) {
                         "Ícone da aba de Home, Casa"
                     )
                 },
-                onClick = {},
+                onClick = {navController.navigate("telaalt")},
                 selected = false,
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
                     .offset(y = (-16).dp)
                     .padding(horizontal = 40.dp)
-                    .border(0.dp, Color.Transparent) // Garantir que não tenha borda
                     .align(Alignment.CenterVertically)
                     .drawBehind {
                         drawRoundRect(
@@ -348,7 +353,6 @@ fun BottomBar(navController: NavController) {
                     .width(30.dp)
                     .height(50.dp)
                     .padding(horizontal = 40.dp)
-                    .border(0.dp, Color.Transparent) // Garantir que não tenha borda
                     .align(Alignment.CenterVertically)
                     .drawBehind {
                         drawRoundRect(
@@ -377,11 +381,6 @@ fun BottomIcon(painter: Painter, description: String) {
             .background(indigo_dye)
     )
 }
-
-fun selectedButton() {
-
-}
-
 
 @Composable
 fun ContainerEvents(text: String) {
