@@ -28,20 +28,32 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun Login(navController: NavController) {
+    val systemUiController = rememberSystemUiController()
+
+
+    // define cores da barra de status e da barra de navegação
+    systemUiController.setStatusBarColor(
+        uranium_blue
+    )
+
+    systemUiController.setNavigationBarColor(
+        uranium_blue, darkIcons = true
+    )
+
+
     var email by remember {
         mutableStateOf("")
     }
@@ -50,10 +62,7 @@ fun Login(navController: NavController) {
     }
     var rememberMe by remember { mutableStateOf(false) }
     Column(
-        modifier = Modifier.paint(
-            painter = painterResource(R.drawable.background_color),
-            contentScale = ContentScale.Crop
-        ),
+        modifier = Modifier.background(uranium_blue),
     ) {
         Column(
             modifier = Modifier

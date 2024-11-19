@@ -4,10 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,8 +26,6 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +33,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Fill
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -63,6 +65,7 @@ fun Home(navController: NavController) {
     systemUiController.setNavigationBarColor(
         uranium_blue, darkIcons = true
     )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -73,7 +76,7 @@ fun Home(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(263.dp)
-                .clip(RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 40.dp))
+                    .clip(RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 30.dp))
                 .background(indigo_dye),
         ) {
 
@@ -250,25 +253,26 @@ fun Home(navController: NavController) {
 
 @Composable
 fun BottomBar(navController: NavController) {
-    val selected by remember { mutableStateOf(false) }
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 20.dp)
-    ) {
-        BottomNavigation(
+    val interactionSource = remember { MutableInteractionSource() } // Lembrar a fonte de interação
+
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        // Elemento de fundo (decorativo)
+        Box(
             modifier = Modifier
-                .width(357.dp)
-                .height(66.dp)
-                .padding(top = 5.dp)
-                .align(Alignment.Center)
-                .padding(horizontal = 30.dp)
-                .clip(RoundedCornerShape(38.dp)),
-            backgroundColor = indigo_dye,
+                .fillMaxSize()
+                .padding(15.dp)
+                .align(Alignment.Center) // Centralizado dentro do BottomBar
+                .background(indigo_dye, shape = RoundedCornerShape(38.dp))
+        )
 
-            ) {
-
+        BottomNavigation(
+            modifier = Modifier.fillMaxSize(),
+            backgroundColor = Color.Transparent,
+            elevation = 0.dp
+        ) {
+            // Primeiro item de navegação
             BottomNavigationItem(
                 icon = {
                     BottomIcon(
@@ -277,24 +281,33 @@ fun BottomBar(navController: NavController) {
                     )
                 },
                 onClick = {
-                    // navController.navigate("splash")
+
                 },
-                selected = selected,
+                selected = false,
                 modifier = Modifier
                     .width(30.dp)
-                    .offset(y = (-25).dp)
                     .height(50.dp)
-                    .padding(horizontal = 25.dp)
+                    .padding(horizontal = 40.dp)
                     .align(Alignment.CenterVertically)
+                    .clickable(
+                        interactionSource,
+                        indication = null,
+                        onClick = {
+                            navController.navigate("comunidade")
+                        }
+                    )
                     .drawBehind {
                         drawRoundRect(
-                            indigo_dye,
-                            cornerRadius = CornerRadius(30.dp.toPx())
+                            color = indigo_dye, // Cor de fundo
+                            size = size,
+                            cornerRadius = CornerRadius(30.dp.toPx()),
+                            style = Fill
                         )
+
                     }
             )
 
-
+            // Segundo item de navegação
             BottomNavigationItem(
                 icon = {
                     BottomIcon(
@@ -302,15 +315,31 @@ fun BottomBar(navController: NavController) {
                         "Ícone da aba de Home, Casa"
                     )
                 },
-                onClick = {},
+                onClick = {navController.navigate("telaalt")},
                 selected = false,
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
-                    .padding(horizontal = 25.dp)
+                    .offset(y = (-16).dp)
+                    .padding(horizontal = 40.dp)
                     .align(Alignment.CenterVertically)
+                    .drawBehind {
+                        drawRoundRect(
+                            color = indigo_dye, // Cor de fundo
+                            size = size,
+                            cornerRadius = CornerRadius(30.dp.toPx()),
+                            style = Fill
+                        )
+                        drawRoundRect(
+                            color = uranium_blue, // Cor da borda
+                            size = size,
+                            cornerRadius = CornerRadius(30.dp.toPx()),
+                            style = Stroke(width = 4.dp.toPx()) // Largura da borda
+                        )
+                    }
             )
 
+            // Terceiro item de navegação
             BottomNavigationItem(
                 icon = {
                     BottomIcon(
@@ -323,8 +352,17 @@ fun BottomBar(navController: NavController) {
                 modifier = Modifier
                     .width(30.dp)
                     .height(50.dp)
-                    .padding(horizontal = 25.dp)
+                    .padding(horizontal = 40.dp)
                     .align(Alignment.CenterVertically)
+                    .drawBehind {
+                        drawRoundRect(
+                            color = indigo_dye, // Cor de fundo
+                            size = size,
+                            cornerRadius = CornerRadius(30.dp.toPx()),
+                            style = Fill
+                        )
+                    }
+
             )
         }
     }
@@ -338,10 +376,11 @@ fun BottomIcon(painter: Painter, description: String) {
         painter = painter,
         contentDescription = description,
         tint = white_smoke,
-        modifier = Modifier.size(iconSize)
+        modifier = Modifier
+            .size(iconSize)
+            .background(indigo_dye)
     )
 }
-
 
 @Composable
 fun ContainerEvents(text: String) {
@@ -382,10 +421,11 @@ fun ContainerEvents(text: String) {
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    "10 $text disponíveis",
+                    "10 disponíveis",
                     color = indigo_dye,
                     fontFamily = fontPoppins,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
                 )
             }
         }
