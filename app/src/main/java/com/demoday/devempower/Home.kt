@@ -63,7 +63,6 @@ fun Home(navController: NavController) {
     systemUiController.setNavigationBarColor(
         uranium_blue, darkIcons = true
     )
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -72,9 +71,9 @@ fun Home(navController: NavController) {
         //Menu suspenso
         Box(
             modifier = Modifier
-                .width(399.dp)
+                .fillMaxWidth()
                 .height(263.dp)
-                .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
+                .clip(RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 40.dp))
                 .background(indigo_dye),
         ) {
 
@@ -283,6 +282,7 @@ fun BottomBar(navController: NavController) {
                 selected = selected,
                 modifier = Modifier
                     .width(30.dp)
+                    .offset(y = (-25).dp)
                     .height(50.dp)
                     .padding(horizontal = 25.dp)
                     .align(Alignment.CenterVertically)
