@@ -74,9 +74,9 @@ fun Home(navController: NavController) {
         //Menu suspenso
         Box(
             modifier = Modifier
-                .width(399.dp)
+                .fillMaxWidth()
                 .height(263.dp)
-                .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
+                    .clip(RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 30.dp))
                 .background(indigo_dye),
         ) {
 
