@@ -116,7 +116,7 @@ fun Home(navController: NavController) {
 
         // Botão Acessar Perfil
         Button(
-            onClick = { /* Ação do botão */ },
+            onClick = { navController.navigate("perfil1")},
             modifier = Modifier
                 .width(200.dp)
                 .height(40.dp)
