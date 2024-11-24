@@ -63,6 +63,7 @@ val davys_gray = Color(0xFF5C5C5C)
 val white_smoke = Color(0xFFF5F5F5)
 val indigo_dye = Color(0xFF005377)
 val bright_blue = Color(0xFF009ADD)
+val pale_sky_blue = Color(0xFFD2EAF6)
 val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 
 
@@ -108,6 +109,9 @@ fun Inicio() {
                     composable("senhaalterada") { SenhaAlterada(navController) }
                     composable("cadastro") { Cadastro(navController) }
                     composable("novocadastro") { NewCadastro(navController) }
+                    composable("perfil1") { PerfilAtividade(navController) }
+                    composable("perfil2") { PerfilDesempenho(navController) }
+                    composable("perfil3") { PerfilPontuação(navController) }
                 }
             }
         },
