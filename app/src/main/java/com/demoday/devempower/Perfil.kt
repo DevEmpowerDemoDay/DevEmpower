@@ -64,19 +64,18 @@ fun PerfilAtividade(navController: NavController) {
 
             Row(
                 modifier = Modifier
-                    .padding(top = 60.dp, start = 25.dp)
+                    .padding(top = 60.dp)
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start
+                horizontalArrangement = Arrangement.Center
             ) {
-                Image(
-                    painter = painterResource(R.drawable.return_icon),
-                    contentDescription = "botão de voltar",
-                   modifier = Modifier
-                        .size(40.dp)
-                       .clickable { navController.navigate("home") }
-               )
-               Spacer(modifier = Modifier.padding(start = 100.dp))
+//                Image(
+//                    painter = painterResource(R.drawable.return_icon),
+//                    contentDescription = "botão de voltar",
+//                   modifier = Modifier
+//                        .size(40.dp)
+//                       .clickable { navController.navigate("home") }
+//               )
                 Image(
                     painter = painterResource(R.drawable.logo),
                     contentDescription = "Logo",
@@ -90,13 +89,13 @@ fun PerfilAtividade(navController: NavController) {
                 )
             }
 
-            Text("DevKotlin",
-                fontSize = 36.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = indigo_dye,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth())
+//            Text("DevKotlin",
+//                fontSize = 36.sp,
+//                fontWeight = FontWeight.SemiBold,
+//                color = indigo_dye,
+//                textAlign = TextAlign.Center,
+//                modifier = Modifier
+//                    .fillMaxWidth())
             Box(
                 modifier = Modifier
                     .size(width = 350.dp, height = 590.dp)
@@ -120,6 +119,7 @@ fun PerfilAtividade(navController: NavController) {
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
+                        fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth())
@@ -152,7 +152,8 @@ fun PerfilAtividade(navController: NavController) {
                             Column {
                                 Text("Testes técnicos",
                                     fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_testes_tecnicos),
@@ -191,7 +192,8 @@ fun PerfilAtividade(navController: NavController) {
                             Column {
                                 Text("Live Coding",
                                     fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_live_coding),
@@ -208,6 +210,7 @@ fun PerfilAtividade(navController: NavController) {
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
+                        fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -240,7 +243,8 @@ fun PerfilAtividade(navController: NavController) {
                             Column {
                                 Text("Oratória",
                                     fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_100_),
@@ -278,7 +282,8 @@ fun PerfilAtividade(navController: NavController) {
                             Column {
                                 Text("Pitch perfeito",
                                     fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_100_),
@@ -369,7 +374,8 @@ Spacer(modifier = Modifier.padding(top = 50.dp))
                         "MANUTENÇÃO",
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Bold,
-                        color = midnight_blue
+                        color = indigo_dye,
+                        fontFamily = fontPoppins
                     )
 
                     Image(painter = painterResource(R.drawable.logo_with_text),
@@ -390,9 +396,8 @@ fun PerfilPontuação(navController: NavController) {
     var selected3 by remember { mutableStateOf(false) }
     Box(
         modifier = Modifier
-            .paint(
-                painter = painterResource(R.drawable.background_color),
-                contentScale = ContentScale.Crop
+            .background(
+                color = uranium_blue
             )
             .fillMaxSize()
     ) {
@@ -452,7 +457,8 @@ fun PerfilPontuação(navController: NavController) {
                         "MANUTENÇÃO",
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Bold,
-                        color = midnight_blue
+                        color = indigo_dye,
+                        fontFamily = fontPoppins
                     )
 
                     Image(painter = painterResource(R.drawable.logo_with_text),
@@ -498,14 +504,15 @@ fun NavegaçãoPerfil(navController: NavController) {
             Image(
                 painter = painterResource(R.drawable.pontuacao_icon),
                 contentDescription = "pontuação",
-                colorFilter = ColorFilter.tint(if (selected1) Color.White else midnight_blue),
+                colorFilter = ColorFilter.tint(if (selected1) Color.White else indigo_dye),
                 modifier = Modifier
                     .size(if (selected1) 30.dp else 25.dp)
             )
             Text(
-                "pontuação",
-                color = if (selected1) white_smoke else midnight_blue,
-                fontSize = 13.sp
+                "Pontuação",
+                color = if (selected1) white_smoke else indigo_dye,
+                fontSize = 13.sp,
+                fontFamily = fontPoppins
             )
         }
     }
@@ -535,14 +542,15 @@ fun NavegaçãoPerfil(navController: NavController) {
             Image(
                 painter = painterResource(R.drawable.desempenho_icon),
                 contentDescription = "desempenho",
-                colorFilter = ColorFilter.tint(if (selected2) Color.White else midnight_blue),
+                colorFilter = ColorFilter.tint(if (selected2) Color.White else indigo_dye),
                 modifier = Modifier
                     .size(if (selected2) 30.dp else 25.dp)
             )
             Text(
-                "desempenho",
-                color = if (selected2) white_smoke else midnight_blue,
-                fontSize = 13.sp
+                "Desempenho",
+                color = if (selected2) white_smoke else indigo_dye,
+                fontSize = 13.sp,
+                fontFamily = fontPoppins
             )
         }
     }
@@ -571,15 +579,16 @@ fun NavegaçãoPerfil(navController: NavController) {
         ) {
             Image(
                 painter = painterResource(R.drawable.atividade_icon),
-                contentDescription = "pontuação",
-                colorFilter = ColorFilter.tint(if (selected3) Color.White else midnight_blue),
+                contentDescription = "atidades",
+                colorFilter = ColorFilter.tint(if (selected3) Color.White else indigo_dye),
                 modifier = Modifier
                     .size(if (selected3) 30.dp else 25.dp)
             )
             Text(
                 "Atividades",
-                color = if (selected3) white_smoke else midnight_blue,
-                fontSize = 13.sp
+                color = if (selected3) white_smoke else indigo_dye,
+                fontSize = 13.sp,
+                fontFamily = fontPoppins
             )
         }
     }
