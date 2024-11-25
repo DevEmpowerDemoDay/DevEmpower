@@ -99,7 +99,7 @@ fun Inicio() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                NavHost(navController = navController, startDestination = "perfil1") {
+                NavHost(navController = navController, startDestination = "home") {
                     composable("splash") { Splash(navController) }
                     composable("home") { Home(navController) }
                     composable("telaalt") { TelaAlt(navController) }
@@ -110,7 +110,7 @@ fun Inicio() {
                     composable("cadastro") { Cadastro(navController) }
                     composable("novocadastro") { NewCadastro(navController) }
                     composable("perfil1") { PerfilAtividade(navController) }
-                    composable("perfil2") { PerfilDesempenho(navController) }
+                    composable("perfil2") { PerfilInformaçãoes(navController) }
                     composable("perfil3") { PerfilPontuação(navController) }
                 }
             }
