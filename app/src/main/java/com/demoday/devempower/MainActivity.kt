@@ -99,7 +99,7 @@ fun Inicio() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                NavHost(navController = navController, startDestination = "home") {
+                NavHost(navController = navController, startDestination = "perfil3") {
                     composable("splash") { Splash(navController) }
                     composable("home") { Home(navController) }
                     composable("telaalt") { TelaAlt(navController) }

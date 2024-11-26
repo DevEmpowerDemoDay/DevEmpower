@@ -14,12 +14,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,10 +36,13 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -445,6 +451,11 @@ fun PerfilAtividade(navController: NavController) {
 @Composable
 fun PerfilInformaçãoes(navController: NavController) {
     val systemUiController = rememberSystemUiController()
+    var nome_completo by remember { mutableStateOf("") }
+    var apelido by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var idade by remember { mutableStateOf("") }
+    var linkedin by remember { mutableStateOf("") }
 
 
     // define cores da barra de status e da barra de navegação
@@ -660,22 +671,161 @@ fun PerfilInformaçãoes(navController: NavController) {
                         }
 
                     }
-                    Spacer(modifier = Modifier.padding(top = 50.dp))
+                    Spacer(modifier = Modifier.padding(top = 20.dp))
+                    Image(
+                        painter = painterResource(R.drawable.edit_profile_icon),
+                        contentDescription = "Icon que simboliza atualização da foto de perfil",
+                        modifier = Modifier
+                            .size(width = 67.33.dp, height = 65.dp)
+                            .clickable { }
+                    )
                     Text(
-                        "MANUTENÇÃO",
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Bold,
+                        "Editar ícone e cores",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
                         fontFamily = fontPoppins
                     )
+                    Column {
+                        Text(
+                            "Nome Completo:",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = indigo_dye,
+                            fontFamily = fontPoppins,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .padding(top = 5.dp)
+                                .width(300.62.dp)
+                                .align(alignment = Alignment.CenterHorizontally)
+                        )
+                        OutlinedTextField(
+                            value = nome_completo,
+                            onValueChange = { newtext -> nome_completo = newtext },
+                            modifier = Modifier
+                                .width(300.62.dp),
+                            shape = RoundedCornerShape(7.dp),
+                            textStyle = TextStyle(
+                                fontSize = 13.sp,
+                                textAlign = TextAlign.Start
+                            ),
+                            singleLine = true
+                        )
+                    }
+                    Column {
+                        Text(
+                            "Apelido:",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = indigo_dye,
+                            fontFamily = fontPoppins,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .padding(top = 5.dp)
+                                .width(300.62.dp)
+                                .align(alignment = Alignment.CenterHorizontally)
+                        )
+                        OutlinedTextField(
+                            value = apelido,
+                            onValueChange = { newtext -> apelido = newtext },
+                            modifier = Modifier
+                                .width(300.62.dp),
+                            shape = RoundedCornerShape(7.dp),
+                            textStyle = TextStyle(
+                                fontSize = 13.sp,
+                                textAlign = TextAlign.Start
+                            ),
+                            singleLine = true
+                        )
 
-                    Image(
-                        painter = painterResource(R.drawable.logo_with_text),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(200.dp)
-                    )
+                    }
+                    Column {
+                        Text(
+                            "E-mail:",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = indigo_dye,
+                            fontFamily = fontPoppins,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .padding(top = 5.dp)
+                                .width(300.62.dp)
+                                .align(alignment = Alignment.CenterHorizontally)
+                        )
+                        OutlinedTextField(
+                            value = email,
+                            onValueChange = { newtext -> email = newtext },
+                            modifier = Modifier
+                                .width(300.62.dp),
+                            shape = RoundedCornerShape(7.dp),
+                            textStyle = TextStyle(
+                                fontSize = 13.sp,
+                                textAlign = TextAlign.Start
+                            ),
+                            singleLine = true
+                        )
 
+                    }
+                    Row {
+                        Column {
+                            Text(
+                                "Idade:",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = indigo_dye,
+                                fontFamily = fontPoppins,
+                                textAlign = TextAlign.Start,
+                                modifier = Modifier
+                                    .padding(top = 5.dp)
+                                    .width(73.dp)
+                                    .align(alignment = Alignment.CenterHorizontally)
+                            )
+                            OutlinedTextField(value = idade, onValueChange = {
+                                idade = it
+                            },
+                                keyboardOptions = KeyboardOptions.Default.copy(
+                                    keyboardType = KeyboardType.Number
+                                ),
+                                modifier = Modifier
+                                    .width(73.dp),
+                                shape = RoundedCornerShape(7.dp),
+                                textStyle = TextStyle(
+                                    fontSize = 13.sp,
+                                    textAlign = TextAlign.Start
+                                ),
+                                singleLine = true
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.padding(start = 10.dp))
+
+                        Column {
+                            Text(
+                                "LinkedIn:",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = indigo_dye,
+                                fontFamily = fontPoppins,
+                                textAlign = TextAlign.Start,
+                                modifier = Modifier
+                                    .padding(top = 5.dp)
+                                    .width(212.dp)
+                                    .align(alignment = Alignment.CenterHorizontally)
+                            )
+                            OutlinedTextField(value = linkedin, onValueChange = {
+                                linkedin = it
+                            },
+                                modifier = Modifier
+                                    .width(212.dp),
+                                shape = RoundedCornerShape(7.dp),
+                                textStyle = TextStyle(
+                                    fontSize = 13.sp,
+                                    textAlign = TextAlign.Start
+                                ),
+                                singleLine = true
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -712,13 +862,6 @@ fun PerfilPontuação(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
-//                Image(
-//                    painter = painterResource(R.drawable.return_icon),
-//                    contentDescription = "botão de voltar",
-//                   modifier = Modifier
-//                        .size(40.dp)
-//                       .clickable { navController.navigate("home") }
-//               )
                 Image(
                     painter = painterResource(R.drawable.logo),
                     contentDescription = "Logo",
@@ -799,7 +942,7 @@ fun PerfilPontuação(navController: NavController) {
                                     "Pontuação",
                                     color = white_smoke,
                                     fontSize = 13.sp,
-                                    fontFamily = fontPoppins
+                                    //fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -853,7 +996,7 @@ fun PerfilPontuação(navController: NavController) {
                                     "Informações",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                    fontFamily = fontPoppins
+                                    //fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -908,27 +1051,66 @@ fun PerfilPontuação(navController: NavController) {
                                     "Atividades",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                    fontFamily = fontPoppins
+                                    //fontFamily = fontPoppins
                                 )
                             }
                         }
 
                     }
-                    Spacer(modifier = Modifier.padding(top = 50.dp))
-                    Text(
-                        "MANUTENÇÃO",
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = indigo_dye,
-                        fontFamily = fontPoppins
-                    )
+
+
+                    Spacer(modifier = Modifier.padding(top = 20.dp))
 
                     Image(
-                        painter = painterResource(R.drawable.logo_with_text),
+                        painter = painterResource(R.drawable.icon_pontua__o_trofeu),
                         contentDescription = "",
                         modifier = Modifier
-                            .size(200.dp)
+                            .size(80.dp)
                     )
+                    Text(
+                        "Pontuação",
+                        color = midnight_blue,
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Medium,
+                        //fontFamily = fontPoppins
+                        )
+                    Text(
+                        "590",
+                        color = indigo_dye,
+                        fontSize = 36.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        //fontFamily = fontPoppins
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.progress_bar_pontuacao),
+                        contentDescription = "Barra de progresso de pontuação"
+                    )
+                    Text(
+                        "RECOMPENSAS",
+                        color = indigo_dye,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        //fontFamily = fontPoppins
+                    )
+                    Row(
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.medalha_oratoria),
+                            contentDescription = "Medalha oratória",
+                            modifier = Modifier
+                                .size(width = 150.5.dp, height = 75.dp)
+                        )
+                        Image(
+                            painter = painterResource(R.drawable.medalha_oratoria),
+                            contentDescription = "Medalha oratória",
+                            modifier = Modifier
+                                .size(width = 160.5.dp, height = 75.dp))
+
+                    }
 
                 }
             }
