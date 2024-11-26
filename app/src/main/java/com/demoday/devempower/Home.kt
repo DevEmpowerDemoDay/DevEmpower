@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -76,7 +77,7 @@ fun Home(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(263.dp)
-                    .clip(RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 30.dp))
+                .clip(RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 30.dp))
                 .background(indigo_dye),
         ) {
 
@@ -116,7 +117,7 @@ fun Home(navController: NavController) {
 
         // Botão Acessar Perfil
         Button(
-            onClick = { navController.navigate("perfil1")},
+            onClick = { navController.navigate("perfil1") },
             modifier = Modifier
                 .width(200.dp)
                 .height(40.dp)
@@ -240,8 +241,8 @@ fun Home(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
-            ContainerEvents("Eventos")
-            ContainerEvents("Materiais")
+            ContainerEvents("Eventos On-line")
+            ContainerEvents("Materiais de aula")
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -315,7 +316,7 @@ fun BottomBar(navController: NavController) {
                         "Ícone da aba de Home, Casa"
                     )
                 },
-                onClick = {navController.navigate("telaalt")},
+                onClick = { navController.navigate("telaalt") },
                 selected = false,
                 modifier = Modifier
                     .width(30.dp)
@@ -395,7 +396,10 @@ fun ContainerEvents(text: String) {
 
         Row(
             horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .clickable { }//adicionar route para Eventos e Material de aula
+                .fillMaxWidth()
         ) {
             Image(
                 painter = painterResource(R.drawable.event_asset),
@@ -408,26 +412,31 @@ fun ContainerEvents(text: String) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(x = (-25).dp, y = (-2).dp)
             ) {
                 Text(
                     text,
                     color = indigo_dye,
                     fontFamily = fontPoppins,
-                    fontSize = 18.sp,
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.SemiBold,
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    "10 disponíveis",
+                    "10 Materiais Disponíveis",
                     color = indigo_dye,
                     fontFamily = fontPoppins,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp
+                    fontSize = 14.sp
                 )
             }
+
+            Image(
+                painter = painterResource(R.drawable.arrow),
+                contentDescription = "Icon",
+                modifier = Modifier
+                    .padding(start = 20.dp)
+                    .size(25.dp)
+            )
         }
 
     }
@@ -457,6 +466,6 @@ fun ContentBox(text: String, modifier: Modifier) {
 @Composable
 private fun BottomPreview() {
     DevEmpowerTheme {
-        ContainerEvents("teste")
+        Home(rememberNavController())
     }
 }
