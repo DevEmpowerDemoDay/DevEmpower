@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -197,7 +196,7 @@ fun Home(navController: NavController) {
                     Modifier
                         .width(150.dp)
                         .height(30.dp)
-                        .offset(y = 22.dp)
+                        .offset(y = 24.dp)
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
@@ -224,7 +223,7 @@ fun Home(navController: NavController) {
                     Modifier
                         .width(150.dp)
                         .height(30.dp)
-                        .offset(y = 22.dp)
+                        .offset(y = 24.dp)
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
@@ -241,8 +240,8 @@ fun Home(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
-            ContainerEvents("Eventos On-line")
-            ContainerEvents("Materiais de aula")
+            ContainerEvents("Mentorias")
+            ContainerEvents("Materiais")
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -393,49 +392,35 @@ fun ContainerEvents(text: String) {
             .border(1.dp, color = indigo_dye, shape = RoundedCornerShape(8.dp))
 
     ) {
-
         Row(
-            horizontalArrangement = Arrangement.Start,
+            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
+                .fillMaxSize()
                 .clickable { }//adicionar route para Eventos e Material de aula
-                .fillMaxWidth()
-        ) {
+                .padding(horizontal = 15.dp)        ) {
             Image(
                 painter = painterResource(R.drawable.event_asset),
                 contentDescription = "Icon",
                 modifier = Modifier
-                    .padding(10.dp)
-                    .size(50.dp)
+                    .size(60.dp)
             )
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top,
-            ) {
-                Text(
-                    text,
-                    color = indigo_dye,
-                    fontFamily = fontPoppins,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    "10 Materiais Disponíveis",
-                    color = indigo_dye,
-                    fontFamily = fontPoppins,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp
-                )
-            }
-
+            Text(
+                text,
+                color = indigo_dye,
+                fontFamily = fontPoppins,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                letterSpacing = 2.sp,
+                modifier = Modifier.padding(end = 15.dp)
+            )
             Image(
                 painter = painterResource(R.drawable.arrow),
                 contentDescription = "Icon",
                 modifier = Modifier
-                    .padding(start = 20.dp)
-                    .size(25.dp)
+                    .size(35.dp)
+
             )
         }
 
@@ -447,12 +432,11 @@ fun ContainerEvents(text: String) {
 fun ContentBox(text: String, modifier: Modifier) {
     Box(
         modifier = modifier
-
     ) {
         Text(
             text,
             color = white_smoke,
-            fontSize = 20.sp,
+            fontSize = 18.sp,
             textAlign = TextAlign.Center,
             fontFamily = fontPoppins,
             modifier = Modifier
