@@ -298,6 +298,7 @@ fun BottomBar(navController: NavController) {
                 },
                 onClick = {
                     selectedIndex.intValue = 0 // Define o índice do item selecionado como 0
+                    navController.navigate("comunidade")
                 },
                 selected = selectedIndex.intValue == 0,
                 modifier = if (selectedIndex.intValue == 0) selectedItem else unselectedItem
@@ -308,11 +309,12 @@ fun BottomBar(navController: NavController) {
                 icon = {
                     BottomIcon(
                         painterResource(R.drawable.home_icon),
-                        "Ícone da aba de Home, Casa"
+                        "Ícone da aba de Home, Casa",
                     )
                 },
                 onClick = {
-                    selectedIndex.intValue = 1 // Define o índice do item selecionado como 1
+                    selectedIndex.intValue = 1
+                    navController.navigate("home") // Define o índice do item selecionado como 1
                 },
                 selected = selectedIndex.intValue == 1,
                 modifier = if (selectedIndex.intValue == 1) selectedItem else unselectedItem
