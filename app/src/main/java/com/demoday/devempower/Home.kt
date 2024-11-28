@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,6 +25,8 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -197,7 +198,7 @@ fun Home(navController: NavController) {
                     Modifier
                         .width(150.dp)
                         .height(30.dp)
-                        .offset(y = 22.dp)
+                        .offset(y = 24.dp)
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
@@ -224,7 +225,7 @@ fun Home(navController: NavController) {
                     Modifier
                         .width(150.dp)
                         .height(30.dp)
-                        .offset(y = 22.dp)
+                        .offset(y = 24.dp)
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
@@ -241,8 +242,8 @@ fun Home(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
-            ContainerEvents("Eventos On-line")
-            ContainerEvents("Materiais de aula")
+            ContainerEvents("Mentorias")
+            ContainerEvents("Materiais")
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -254,9 +255,7 @@ fun Home(navController: NavController) {
 
 @Composable
 fun BottomBar(navController: NavController) {
-
-    val interactionSource = remember { MutableInteractionSource() } // Lembrar a fonte de interação
-
+    val selectedIndex = remember { mutableIntStateOf(1) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         // Elemento de fundo (decorativo)
@@ -273,6 +272,21 @@ fun BottomBar(navController: NavController) {
             backgroundColor = Color.Transparent,
             elevation = 0.dp
         ) {
+            val selectedItem = Modifier
+                .width(30.dp)
+                .height(50.dp)
+                .offset(y = (-20).dp)
+                .padding(horizontal = 40.dp)
+                .border(4.dp, color = uranium_blue, shape = RoundedCornerShape(30.dp))
+                .align(Alignment.CenterVertically)
+                .background(indigo_dye, shape = RoundedCornerShape(30.dp))
+
+            val unselectedItem = Modifier
+                .width(30.dp)
+                .height(50.dp)
+                .padding(horizontal = 40.dp)
+                .align(Alignment.CenterVertically)
+
             // Primeiro item de navegação
             BottomNavigationItem(
                 icon = {
@@ -282,30 +296,10 @@ fun BottomBar(navController: NavController) {
                     )
                 },
                 onClick = {
-
+                    selectedIndex.intValue = 0 // Define o índice do item selecionado como 0
                 },
-                selected = false,
-                modifier = Modifier
-                    .width(30.dp)
-                    .height(50.dp)
-                    .padding(horizontal = 40.dp)
-                    .align(Alignment.CenterVertically)
-                    .clickable(
-                        interactionSource,
-                        indication = null,
-                        onClick = {
-                            navController.navigate("comunidade")
-                        }
-                    )
-                    .drawBehind {
-                        drawRoundRect(
-                            color = indigo_dye, // Cor de fundo
-                            size = size,
-                            cornerRadius = CornerRadius(30.dp.toPx()),
-                            style = Fill
-                        )
-
-                    }
+                selected = selectedIndex.intValue == 0,
+                modifier = if (selectedIndex.intValue == 0) selectedItem else unselectedItem
             )
 
             // Segundo item de navegação
@@ -316,28 +310,11 @@ fun BottomBar(navController: NavController) {
                         "Ícone da aba de Home, Casa"
                     )
                 },
-                onClick = { navController.navigate("telaalt") },
-                selected = false,
-                modifier = Modifier
-                    .width(30.dp)
-                    .height(50.dp)
-                    .offset(y = (-16).dp)
-                    .padding(horizontal = 40.dp)
-                    .align(Alignment.CenterVertically)
-                    .drawBehind {
-                        drawRoundRect(
-                            color = indigo_dye, // Cor de fundo
-                            size = size,
-                            cornerRadius = CornerRadius(30.dp.toPx()),
-                            style = Fill
-                        )
-                        drawRoundRect(
-                            color = uranium_blue, // Cor da borda
-                            size = size,
-                            cornerRadius = CornerRadius(30.dp.toPx()),
-                            style = Stroke(width = 4.dp.toPx()) // Largura da borda
-                        )
-                    }
+                onClick = {
+                    selectedIndex.intValue = 1 // Define o índice do item selecionado como 1
+                },
+                selected = selectedIndex.intValue == 1,
+                modifier = if (selectedIndex.intValue == 1) selectedItem else unselectedItem
             )
 
             // Terceiro item de navegação
@@ -348,22 +325,11 @@ fun BottomBar(navController: NavController) {
                         "Ícone da aba de Material, quebra-cabeça"
                     )
                 },
-                onClick = {},
-                selected = false,
-                modifier = Modifier
-                    .width(30.dp)
-                    .height(50.dp)
-                    .padding(horizontal = 40.dp)
-                    .align(Alignment.CenterVertically)
-                    .drawBehind {
-                        drawRoundRect(
-                            color = indigo_dye, // Cor de fundo
-                            size = size,
-                            cornerRadius = CornerRadius(30.dp.toPx()),
-                            style = Fill
-                        )
-                    }
-
+                onClick = {
+                    selectedIndex.intValue = 2 // Define o índice do item selecionado como 2
+                },
+                selected = selectedIndex.intValue == 2,
+                modifier = if (selectedIndex.intValue == 2) selectedItem else unselectedItem
             )
         }
     }
@@ -393,49 +359,30 @@ fun ContainerEvents(text: String) {
             .border(1.dp, color = indigo_dye, shape = RoundedCornerShape(8.dp))
 
     ) {
-
         Row(
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .clickable { }//adicionar route para Eventos e Material de aula
-                .fillMaxWidth()
         ) {
             Image(
                 painter = painterResource(R.drawable.event_asset),
                 contentDescription = "Icon",
                 modifier = Modifier
-                    .padding(10.dp)
-                    .size(50.dp)
+                    .size(60.dp)
             )
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top,
-            ) {
-                Text(
-                    text,
-                    color = indigo_dye,
-                    fontFamily = fontPoppins,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    "10 Materiais Disponíveis",
-                    color = indigo_dye,
-                    fontFamily = fontPoppins,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp
-                )
-            }
-
+            Text(
+                text,
+                color = indigo_dye,
+                fontFamily = fontPoppins,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                letterSpacing = 2.sp,
+                modifier = Modifier.padding(end = 15.dp)
+            )
             Image(
                 painter = painterResource(R.drawable.arrow),
                 contentDescription = "Icon",
                 modifier = Modifier
-                    .padding(start = 20.dp)
-                    .size(25.dp)
+                    .size(35.dp)
+
             )
         }
 
@@ -447,12 +394,11 @@ fun ContainerEvents(text: String) {
 fun ContentBox(text: String, modifier: Modifier) {
     Box(
         modifier = modifier
-
     ) {
         Text(
             text,
             color = white_smoke,
-            fontSize = 20.sp,
+            fontSize = 18.sp,
             textAlign = TextAlign.Center,
             fontFamily = fontPoppins,
             modifier = Modifier
