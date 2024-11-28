@@ -328,6 +328,7 @@ fun BottomBar(navController: NavController) {
                 },
                 onClick = {
                     selectedIndex.intValue = 2 // Define o índice do item selecionado como 2
+                    navController.navigate("material")
                 },
                 selected = selectedIndex.intValue == 2,
                 modifier = if (selectedIndex.intValue == 2) selectedItem else unselectedItem

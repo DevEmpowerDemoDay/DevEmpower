@@ -223,6 +223,116 @@ fun Materiais(navController: NavController) {
                     }
                 }
             }
+            Row(
+                modifier = Modifier
+                    .padding(top = 12.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .clip(shape = RoundedCornerShape(19.dp))
+                        .background(pale_sky_blue)
+                        .size(width = 171.dp, height = 168.dp)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.entrevistas_material),
+                        contentDescription = "material de aula entrevistas",
+                        modifier = Modifier
+                            .size(width = 297.dp, height = 198.dp)
+                            .fillMaxSize()
+                            .align(alignment = Alignment.Center)
+                    )
+                    Card(
+                        colors = CardDefaults.cardColors(indigo_dye),
+                        shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
+                        modifier = Modifier
+                            .size(width = 171.dp, height = 56.dp)
+                            .fillMaxSize()
+                            .align(alignment = Alignment.BottomCenter)
+
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .fillMaxSize()
+                        ) {
+                            Text(
+                                "case",
+                                color = white_smoke,
+                                fontSize = 14.sp,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier
+                                    .padding(5.dp)
+                            )
+
+
+                            Text(
+                                "Entrevistas",
+                                color = white_smoke,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                textAlign = TextAlign.Center,
+                            )
+
+                        }
+                    }
+                }
+                Spacer(
+                    modifier = Modifier
+                        .padding(10.dp)
+                )
+                Box(
+                    modifier = Modifier
+                        .clip(shape = RoundedCornerShape(19.dp))
+                        .background(pale_sky_blue)
+                        .size(width = 171.dp, height = 168.dp)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.testes_tecnicos_material),
+                        contentDescription = "material de aula testes técnicos",
+                        modifier = Modifier
+                            .size(width = 297.dp, height = 198.dp)
+                            .fillMaxSize()
+                            .align(alignment = Alignment.Center)
+                    )
+                    Card(
+                        colors = CardDefaults.cardColors(indigo_dye),
+                        shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
+                        modifier = Modifier
+                            .size(width = 171.dp, height = 56.dp)
+                            .fillMaxSize()
+                            .align(alignment = Alignment.BottomCenter)
+
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .fillMaxSize()
+                        ) {
+                            Text(
+                                "live Coding",
+                                color = white_smoke,
+                                fontSize = 14.sp,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier
+                                    .padding(5.dp)
+                            )
+
+
+                            Text(
+                                "Testes Técnicos",
+                                color = white_smoke,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                textAlign = TextAlign.Center,
+                            )
+
+                        }
+                    }
+                }
+            }
+            BottomBar(navController)
         }
     }
 

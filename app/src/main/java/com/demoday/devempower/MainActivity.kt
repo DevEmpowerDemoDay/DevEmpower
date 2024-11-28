@@ -112,6 +112,7 @@ fun Inicio() {
                     composable("perfil1") { PerfilAtividade(navController) }
                     composable("perfil2") { PerfilInformaçãoes(navController) }
                     composable("perfil3") { PerfilPontuação(navController) }
+                    composable("material") { Materiais(navController) }
                 }
             }
         },
