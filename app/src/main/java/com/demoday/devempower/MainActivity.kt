@@ -118,7 +118,6 @@ fun Inicio() {
                     composable("introdução1") { IntroduçãoAula1(navController) }
                     composable("introdução2") { IntroduçãoAula2(navController) }
                     composable("introdução3") { IntroduçãoAula3(navController) }
-
                 }
             }
         },
