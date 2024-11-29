@@ -2,6 +2,7 @@ package com.demoday.devempower
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -53,16 +54,19 @@ fun Materiais(navController: NavController) {
                 "  Aulas",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
             )
-            Text(
+            Text( modifier = Modifier
+                .padding(start = 10.dp, end = 10.dp),
                 text = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
                             fontSize = 18.sp,
-                            color = indigo_dye
+                            color = indigo_dye,
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("Assista os vídeos e teste seus conhecimentos com ")
@@ -71,6 +75,7 @@ fun Materiais(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -82,13 +87,16 @@ fun Materiais(navController: NavController) {
                 modifier = Modifier
                     .clip(shape = RoundedCornerShape(19.dp))
                     .background(pale_sky_blue)
-                    .size(width = 375.dp, height = 214.dp)
+                    .size(width = 375.dp, height = 200.dp)
+                    .clickable {
+
+                    }
             ) {
                 Image(
-                    painter = painterResource(R.drawable.devempower_material),
+                    painter = painterResource(R.drawable.logo_with_text),
                     contentDescription = "material de aula DevEmpower",
                     modifier = Modifier
-                        .size(width = 297.dp, height = 198.dp)
+                        .size(width = 297.dp, height = 180.dp)
                         .fillMaxSize()
                         .align(alignment = Alignment.Center)
                 )
@@ -102,14 +110,15 @@ fun Materiais(navController: NavController) {
 
                 ) {
                     Text(
-                        "DevEmpower",
+                        " DevEmpower",
                         color = white_smoke,
                         fontSize = 24.sp,
-                        fontWeight = FontWeight.Medium,
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
-                            .padding(5.dp)
-                            .fillMaxSize(),
+                            .fillMaxSize()
+                            .padding(top = 5.dp)
 
                         )
                 }
@@ -122,7 +131,7 @@ fun Materiais(navController: NavController) {
                     modifier = Modifier
                         .clip(shape = RoundedCornerShape(19.dp))
                         .background(pale_sky_blue)
-                        .size(width = 171.dp, height = 168.dp)
+                        .size(width = 171.dp, height = 150.dp)
                 ) {
                     Image(
                         painter = painterResource(R.drawable.entrevistas_material),
@@ -136,7 +145,7 @@ fun Materiais(navController: NavController) {
                         colors = CardDefaults.cardColors(indigo_dye),
                         shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
                         modifier = Modifier
-                            .size(width = 171.dp, height = 56.dp)
+                            .size(width = 171.dp, height = 51.dp)
                             .fillMaxSize()
                             .align(alignment = Alignment.BottomCenter)
 
@@ -151,17 +160,18 @@ fun Materiais(navController: NavController) {
                                 "case",
                                 color = white_smoke,
                                 fontSize = 14.sp,
+                                fontWeight = FontWeight.Normal,
+                                fontFamily = fontPoppins,
                                 textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .padding(5.dp)
                             )
 
 
                             Text(
                                 "Entrevistas",
                                 color = white_smoke,
-                                fontSize = 16.sp,
+                                fontSize = 17.sp,
                                 fontWeight = FontWeight.SemiBold,
+                                fontFamily = fontPoppins,
                                 textAlign = TextAlign.Center,
                             )
 
@@ -176,7 +186,7 @@ fun Materiais(navController: NavController) {
                     modifier = Modifier
                         .clip(shape = RoundedCornerShape(19.dp))
                         .background(pale_sky_blue)
-                        .size(width = 171.dp, height = 168.dp)
+                        .size(width = 171.dp, height = 150.dp)
                 ) {
                     Image(
                         painter = painterResource(R.drawable.testes_tecnicos_material),
@@ -190,7 +200,7 @@ fun Materiais(navController: NavController) {
                         colors = CardDefaults.cardColors(indigo_dye),
                         shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
                         modifier = Modifier
-                            .size(width = 171.dp, height = 56.dp)
+                            .size(width = 171.dp, height = 51.dp)
                             .fillMaxSize()
                             .align(alignment = Alignment.BottomCenter)
 
@@ -205,9 +215,10 @@ fun Materiais(navController: NavController) {
                                 "live Coding",
                                 color = white_smoke,
                                 fontSize = 14.sp,
+                                fontWeight = FontWeight.Normal,
+                                fontFamily = fontPoppins,
                                 textAlign = TextAlign.Center,
                                 modifier = Modifier
-                                    .padding(5.dp)
                             )
 
 
@@ -216,6 +227,7 @@ fun Materiais(navController: NavController) {
                                 color = white_smoke,
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold,
+                                fontFamily = fontPoppins,
                                 textAlign = TextAlign.Center,
                             )
 
@@ -231,7 +243,7 @@ fun Materiais(navController: NavController) {
                     modifier = Modifier
                         .clip(shape = RoundedCornerShape(19.dp))
                         .background(pale_sky_blue)
-                        .size(width = 171.dp, height = 168.dp)
+                        .size(width = 171.dp, height = 150.dp)
                 ) {
                     Image(
                         painter = painterResource(R.drawable.entrevistas_material),
@@ -245,7 +257,7 @@ fun Materiais(navController: NavController) {
                         colors = CardDefaults.cardColors(indigo_dye),
                         shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
                         modifier = Modifier
-                            .size(width = 171.dp, height = 56.dp)
+                            .size(width = 171.dp, height = 51.dp)
                             .fillMaxSize()
                             .align(alignment = Alignment.BottomCenter)
 
@@ -260,9 +272,10 @@ fun Materiais(navController: NavController) {
                                 "case",
                                 color = white_smoke,
                                 fontSize = 14.sp,
+                                fontWeight = FontWeight.Normal,
+                                fontFamily = fontPoppins,
                                 textAlign = TextAlign.Center,
                                 modifier = Modifier
-                                    .padding(5.dp)
                             )
 
 
@@ -285,7 +298,7 @@ fun Materiais(navController: NavController) {
                     modifier = Modifier
                         .clip(shape = RoundedCornerShape(19.dp))
                         .background(pale_sky_blue)
-                        .size(width = 171.dp, height = 168.dp)
+                        .size(width = 171.dp, height = 150.dp)
                 ) {
                     Image(
                         painter = painterResource(R.drawable.testes_tecnicos_material),
@@ -299,7 +312,7 @@ fun Materiais(navController: NavController) {
                         colors = CardDefaults.cardColors(indigo_dye),
                         shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
                         modifier = Modifier
-                            .size(width = 171.dp, height = 56.dp)
+                            .size(width = 171.dp, height = 51.dp)
                             .fillMaxSize()
                             .align(alignment = Alignment.BottomCenter)
 
@@ -314,9 +327,9 @@ fun Materiais(navController: NavController) {
                                 "live Coding",
                                 color = white_smoke,
                                 fontSize = 14.sp,
+                                fontWeight = FontWeight.Normal,
+                                fontFamily = fontPoppins,
                                 textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .padding(5.dp)
                             )
 
 
@@ -340,10 +353,28 @@ fun Materiais(navController: NavController) {
 }
 
 
+@Composable
+fun IntroduçãoAula1(modifier: Modifier = Modifier) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(uranium_blue)
+    ) {}
+}
+
+
 @Preview
 @Composable
 private fun Materiaspreview() {
     DevEmpowerTheme {
         Materiais(rememberNavController())
+    }
+}
+
+@Preview
+@Composable
+private fun IntroduçãoMateriaspreview () {
+    DevEmpowerTheme {
+        IntroduçãoAula1()
     }
 }
