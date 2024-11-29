@@ -53,6 +53,7 @@ android {
 
 dependencies {
 
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -70,6 +71,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("androidx.navigation:navigation-compose:2.5.3")
     implementation ("androidx.compose.ui:ui:1.5.1")
-    implementation ("androidx.compose.material:material:1.5.1")
+    implementation("androidx.compose.material:material:1.5.4")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
+
+
 
 }
