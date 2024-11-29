@@ -2,6 +2,7 @@ package com.demoday.devempower
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,8 +22,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -59,7 +63,7 @@ fun Materiais(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
             )
-            Text( modifier = Modifier
+            Text(modifier = Modifier
                 .padding(start = 10.dp, end = 10.dp),
                 text = buildAnnotatedString {
                     withStyle(
@@ -89,7 +93,7 @@ fun Materiais(navController: NavController) {
                     .background(pale_sky_blue)
                     .size(width = 375.dp, height = 200.dp)
                     .clickable {
-
+                        navController.navigate("introdução1")
                     }
             ) {
                 Image(
@@ -120,230 +124,58 @@ fun Materiais(navController: NavController) {
                             .fillMaxSize()
                             .padding(top = 5.dp)
 
-                        )
+                    )
                 }
             }
             Row(
                 modifier = Modifier
                     .padding(top = 12.dp)
             ) {
-                Box(
-                    modifier = Modifier
-                        .clip(shape = RoundedCornerShape(19.dp))
-                        .background(pale_sky_blue)
-                        .size(width = 171.dp, height = 150.dp)
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.entrevistas_material),
-                        contentDescription = "material de aula entrevistas",
-                        modifier = Modifier
-                            .size(width = 297.dp, height = 198.dp)
-                            .fillMaxSize()
-                            .align(alignment = Alignment.Center)
-                    )
-                    Card(
-                        colors = CardDefaults.cardColors(indigo_dye),
-                        shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
-                        modifier = Modifier
-                            .size(width = 171.dp, height = 51.dp)
-                            .fillMaxSize()
-                            .align(alignment = Alignment.BottomCenter)
-
-                    ) {
-                        Column(
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .fillMaxSize()
-                        ) {
-                            Text(
-                                "case",
-                                color = white_smoke,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontFamily = fontPoppins,
-                                textAlign = TextAlign.Center,
-                            )
 
 
-                            Text(
-                                "Entrevistas",
-                                color = white_smoke,
-                                fontSize = 17.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                fontFamily = fontPoppins,
-                                textAlign = TextAlign.Center,
-                            )
+                Botões_Materiais(
+                    Text_descrição = "Imagem aula de entrevistas",
+                    Text_titulo = "Case",
+                    Text_aula = "Entrevistas",
+                    Painter = painterResource(R.drawable.entrevistas_material),
+                    navController
+                )
 
-                        }
-                    }
-                }
+
                 Spacer(
                     modifier = Modifier
                         .padding(10.dp)
                 )
-                Box(
-                    modifier = Modifier
-                        .clip(shape = RoundedCornerShape(19.dp))
-                        .background(pale_sky_blue)
-                        .size(width = 171.dp, height = 150.dp)
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.testes_tecnicos_material),
-                        contentDescription = "material de aula testes técnicos",
-                        modifier = Modifier
-                            .size(width = 297.dp, height = 198.dp)
-                            .fillMaxSize()
-                            .align(alignment = Alignment.Center)
-                    )
-                    Card(
-                        colors = CardDefaults.cardColors(indigo_dye),
-                        shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
-                        modifier = Modifier
-                            .size(width = 171.dp, height = 51.dp)
-                            .fillMaxSize()
-                            .align(alignment = Alignment.BottomCenter)
-
-                    ) {
-                        Column(
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .fillMaxSize()
-                        ) {
-                            Text(
-                                "live Coding",
-                                color = white_smoke,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontFamily = fontPoppins,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier
-                            )
-
-
-                            Text(
-                                "Testes Técnicos",
-                                color = white_smoke,
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                fontFamily = fontPoppins,
-                                textAlign = TextAlign.Center,
-                            )
-
-                        }
-                    }
-                }
+                Botões_Materiais(
+                    Text_descrição = "Imagem aula de testes técnicos",
+                    Text_titulo = "Live Coding",
+                    Text_aula = "Testes Técnicos",
+                    Painter = painterResource(R.drawable.testes_tecnicos_material),
+                    navController
+                )
             }
             Row(
                 modifier = Modifier
                     .padding(top = 12.dp)
             ) {
-                Box(
-                    modifier = Modifier
-                        .clip(shape = RoundedCornerShape(19.dp))
-                        .background(pale_sky_blue)
-                        .size(width = 171.dp, height = 150.dp)
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.entrevistas_material),
-                        contentDescription = "material de aula entrevistas",
-                        modifier = Modifier
-                            .size(width = 297.dp, height = 198.dp)
-                            .fillMaxSize()
-                            .align(alignment = Alignment.Center)
-                    )
-                    Card(
-                        colors = CardDefaults.cardColors(indigo_dye),
-                        shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
-                        modifier = Modifier
-                            .size(width = 171.dp, height = 51.dp)
-                            .fillMaxSize()
-                            .align(alignment = Alignment.BottomCenter)
-
-                    ) {
-                        Column(
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .fillMaxSize()
-                        ) {
-                            Text(
-                                "case",
-                                color = white_smoke,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontFamily = fontPoppins,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier
-                            )
-
-
-                            Text(
-                                "Entrevistas",
-                                color = white_smoke,
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                textAlign = TextAlign.Center,
-                            )
-
-                        }
-                    }
-                }
+                Botões_Materiais(
+                    Text_descrição = "Imagem aula comunicação",
+                    Text_titulo = "Oratória",
+                    Text_aula = "Comunicação",
+                    Painter = painterResource(R.drawable.orat_ria_material),
+                    navController
+                )
                 Spacer(
                     modifier = Modifier
                         .padding(10.dp)
                 )
-                Box(
-                    modifier = Modifier
-                        .clip(shape = RoundedCornerShape(19.dp))
-                        .background(pale_sky_blue)
-                        .size(width = 171.dp, height = 150.dp)
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.testes_tecnicos_material),
-                        contentDescription = "material de aula testes técnicos",
-                        modifier = Modifier
-                            .size(width = 297.dp, height = 198.dp)
-                            .fillMaxSize()
-                            .align(alignment = Alignment.Center)
-                    )
-                    Card(
-                        colors = CardDefaults.cardColors(indigo_dye),
-                        shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
-                        modifier = Modifier
-                            .size(width = 171.dp, height = 51.dp)
-                            .fillMaxSize()
-                            .align(alignment = Alignment.BottomCenter)
-
-                    ) {
-                        Column(
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .fillMaxSize()
-                        ) {
-                            Text(
-                                "live Coding",
-                                color = white_smoke,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontFamily = fontPoppins,
-                                textAlign = TextAlign.Center,
-                            )
-
-
-                            Text(
-                                "Testes Técnicos",
-                                color = white_smoke,
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                textAlign = TextAlign.Center,
-                            )
-
-                        }
-                    }
-                }
+                Botões_Materiais(
+                    Text_descrição = "Imagem aula de curriculo",
+                    Text_titulo = "Currículo Ideal",
+                    Text_aula = "Profissional",
+                    Painter = painterResource(R.drawable.profissional_material),
+                    navController
+                )
             }
             BottomBar(navController)
         }
@@ -352,14 +184,65 @@ fun Materiais(navController: NavController) {
 
 }
 
-
 @Composable
-fun IntroduçãoAula1(modifier: Modifier = Modifier) {
-    Column(
+fun Botões_Materiais(
+    Text_descrição: String,
+    Text_titulo: String,
+    Text_aula: String,
+    Painter: Painter,
+    navController: NavController
+) {
+    Box(
         modifier = Modifier
-            .fillMaxSize()
-            .background(uranium_blue)
-    ) {}
+            .clip(shape = RoundedCornerShape(19.dp))
+            .background(pale_sky_blue)
+            .size(width = 171.dp, height = 150.dp)
+    ) {
+        Image(
+            painter = Painter,
+            contentDescription = Text_descrição,
+            modifier = Modifier
+                .size(width = 297.dp, height = 198.dp)
+                .fillMaxSize()
+                .align(alignment = Alignment.Center)
+        )
+        Card(
+            colors = CardDefaults.cardColors(indigo_dye),
+            shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
+            modifier = Modifier
+                .size(width = 171.dp, height = 51.dp)
+                .fillMaxSize()
+                .align(alignment = Alignment.BottomCenter)
+
+        ) {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
+                Text(
+                    text = Text_titulo,
+                    color = white_smoke,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontFamily = fontPoppins,
+                    textAlign = TextAlign.Center,
+                )
+
+
+                Text(
+                    text = Text_aula,
+                    color = white_smoke,
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = fontPoppins,
+                    textAlign = TextAlign.Center,
+                )
+
+            }
+        }
+    }
 }
 
 
@@ -368,13 +251,5 @@ fun IntroduçãoAula1(modifier: Modifier = Modifier) {
 private fun Materiaspreview() {
     DevEmpowerTheme {
         Materiais(rememberNavController())
-    }
-}
-
-@Preview
-@Composable
-private fun IntroduçãoMateriaspreview () {
-    DevEmpowerTheme {
-        IntroduçãoAula1()
     }
 }
