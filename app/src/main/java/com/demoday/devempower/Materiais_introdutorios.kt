@@ -26,6 +26,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -79,8 +81,29 @@ fun IntroduçãoAula1(navController: NavController) {
                     .size(width = 250.dp, height = 100.dp)
                     .fillMaxWidth()
                     .align(alignment = Alignment.TopCenter)
-                    .offset(y = (-50).dp)
-            ) {  }
+                    .offset(y = (-65).dp)
+            ) {
+
+
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+
+                    Text(
+                        "DevEmpower",
+                        fontSize = 25.sp,
+                        color = white_smoke,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = fontPoppins,
+                        textDecoration = TextDecoration.Underline,
+
+                        )
+                }
+            }
             Text(modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 60.dp),
                 text = buildAnnotatedString {
@@ -157,21 +180,21 @@ fun IntroduçãoAula1(navController: NavController) {
                         colors = CardDefaults.cardColors(indigo_dye),
                         modifier = Modifier
                             .size(width = 160.dp, height = 14.dp)
-                    ) {  }
+                    ) { }
                     Card(
                         colors = CardDefaults.cardColors(indigo_dye),
                         modifier = Modifier
                             .size(width = 60.dp, height = 14.dp)
                             .padding(start = 10.dp)
                             .alpha(0.5f)
-                    ) {  }
+                    ) { }
                     Card(
                         colors = CardDefaults.cardColors(indigo_dye),
                         modifier = Modifier
                             .size(width = 60.dp, height = 14.dp)
                             .padding(start = 10.dp)
                             .alpha(0.5f)
-                    ) {  }
+                    ) { }
                 }
             }
 
@@ -222,8 +245,29 @@ fun IntroduçãoAula2(navController: NavController) {
                     .size(width = 250.dp, height = 100.dp)
                     .fillMaxWidth()
                     .align(alignment = Alignment.TopCenter)
-                    .offset(y = (-50).dp)
-            ) {  }
+                    .offset(y = (-65).dp)
+            ) {
+
+
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+
+                    Text(
+                        "DevEmpower",
+                        fontSize = 25.sp,
+                        color = white_smoke,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = fontPoppins,
+                        textDecoration = TextDecoration.Underline,
+
+                        )
+                }
+            }
             Text(modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 75.dp),
                 text = buildAnnotatedString {
@@ -301,21 +345,21 @@ fun IntroduçãoAula2(navController: NavController) {
                         modifier = Modifier
                             .size(width = 60.dp, height = 14.dp)
                             .alpha(0.5f)
-                    ) {  }
+                    ) { }
                     Card(
                         colors = CardDefaults.cardColors(indigo_dye),
                         modifier = Modifier
                             .size(width = 160.dp, height = 14.dp)
                             .padding(start = 10.dp)
 
-                    ) {  }
+                    ) { }
                     Card(
                         colors = CardDefaults.cardColors(indigo_dye),
                         modifier = Modifier
                             .size(width = 60.dp, height = 14.dp)
                             .padding(start = 10.dp)
                             .alpha(0.5f)
-                    ) {  }
+                    ) { }
                 }
             }
 
@@ -365,8 +409,29 @@ fun IntroduçãoAula3(navController: NavController) {
                     .size(width = 250.dp, height = 100.dp)
                     .fillMaxWidth()
                     .align(alignment = Alignment.TopCenter)
-                    .offset(y = (-50).dp)
-            ) {  }
+                    .offset(y = (-65).dp)
+            ) {
+
+
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+
+                    Text(
+                        "DevEmpower",
+                        fontSize = 25.sp,
+                        color = white_smoke,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = fontPoppins,
+                        textDecoration = TextDecoration.Underline,
+
+                        )
+                }
+            }
             Text(modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 60.dp),
                 text = buildAnnotatedString {
@@ -383,7 +448,7 @@ fun IntroduçãoAula3(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = fontPoppins,
+                             fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -444,21 +509,21 @@ fun IntroduçãoAula3(navController: NavController) {
                         modifier = Modifier
                             .size(width = 60.dp, height = 14.dp)
                             .alpha(0.5f)
-                    ) {  }
+                    ) { }
                     Card(
                         colors = CardDefaults.cardColors(indigo_dye),
                         modifier = Modifier
                             .size(width = 60.dp, height = 14.dp)
                             .padding(start = 10.dp)
                             .alpha(0.5f)
-                    ) {  }
+                    ) { }
                     Card(
                         colors = CardDefaults.cardColors(indigo_dye),
                         modifier = Modifier
                             .size(width = 160.dp, height = 14.dp)
                             .padding(start = 10.dp)
 
-                    ) {  }
+                    ) { }
                 }
             }
 
@@ -490,4 +555,4 @@ private fun IntroduçãoMateriaspreview3() {
     DevEmpowerTheme {
         IntroduçãoAula3(rememberNavController())
     }
-    }
+}
