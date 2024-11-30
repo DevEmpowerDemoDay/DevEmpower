@@ -99,7 +99,7 @@ fun  Inicio() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                NavHost(navController = navController, startDestination = "material") {
+                NavHost(navController = navController, startDestination = "splash") {
                     composable("splash") { Splash(navController) }
                     composable("home") { Home(navController) }
                     composable("telaalt") { TelaAlt(navController) }
@@ -118,6 +118,7 @@ fun  Inicio() {
                     composable("introdução1") { IntroduçãoAula1(navController) }
                     composable("introdução2") { IntroduçãoAula2(navController) }
                     composable("introdução3") { IntroduçãoAula3(navController) }
+                    composable("personalização") { tela_avatares(navController) }
                 }
             }
         },

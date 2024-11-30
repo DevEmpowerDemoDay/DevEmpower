@@ -78,7 +78,7 @@ fun Home(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(263.dp)
+                .height(240.dp)
                 .clip(RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 30.dp))
                 .background(indigo_dye),
         ) {
@@ -88,6 +88,7 @@ fun Home(navController: NavController) {
                     .padding(horizontal = 14.dp)
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
                     painter = painterResource(R.drawable.logo),
@@ -193,6 +194,7 @@ fun Home(navController: NavController) {
                     )
                     .weight(1f)
                     .padding(horizontal = 5.dp)
+                    .clickable {  navController.navigate("comunidade") }
             ) {
                 ContentBox(
                     "Comunidade",
@@ -239,12 +241,12 @@ fun Home(navController: NavController) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 40.dp),
+                .padding(top = 50.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
-            ContainerEvents("Mentorias")
-            ContainerEvents("Materiais")
+            ContainerEvents("Horarios disponiveis","Mentorias de Dev", onClick = {navController.navigate("material")})
+            ContainerEvents("10 Materiais Disponíveis","Materiais de aula", onClick = {navController.navigate("material")})
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -278,7 +280,7 @@ fun BottomBar(navController: NavController) {
                 .height(50.dp)
                 .offset(y = (-20).dp)
                 .padding(horizontal = 40.dp)
-                .border(4.dp, color = uranium_blue, shape = RoundedCornerShape(30.dp))
+                .border(4.dp, color = uranium_blue, shape = RoundedCornerShape(40.dp))
                 .align(Alignment.CenterVertically)
                 .background(indigo_dye, shape = RoundedCornerShape(30.dp))
 
@@ -342,7 +344,7 @@ fun BottomBar(navController: NavController) {
 
 @Composable
 fun BottomIcon(painter: Painter, description: String) {
-    val iconSize = 22.dp
+    val iconSize = 25.dp
     Icon(
         painter = painter,
         contentDescription = description,
@@ -354,16 +356,21 @@ fun BottomIcon(painter: Painter, description: String) {
 }
 
 @Composable
-fun ContainerEvents(text: String) {
+fun ContainerEvents(text_subtitulo:String,text_titulo: String,  onClick: () -> Unit) {
 
     Box(
         modifier = Modifier
             .width(326.dp)
-            .height(63.dp)
+            .height(70.dp)
             .border(1.dp, color = indigo_dye, shape = RoundedCornerShape(8.dp))
+            .clickable { onClick() }
 
     ) {
         Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .padding(horizontal = 15.dp)
+                .fillMaxSize()
         ) {
             Image(
                 painter = painterResource(R.drawable.event_asset),
@@ -371,21 +378,33 @@ fun ContainerEvents(text: String) {
                 modifier = Modifier
                     .size(60.dp)
             )
-            Text(
-                text,
-                color = indigo_dye,
-                fontFamily = fontPoppins,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                letterSpacing = 2.sp,
-                modifier = Modifier.padding(end = 15.dp)
-            )
+            Column {
+
+                Text(
+                    text = text_titulo,
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Bold,
+                   fontFamily = fontPoppins,
+                    color = indigo_dye,
+                    modifier = Modifier
+                        .padding(start = 2.dp)
+                )
+                Text(
+                    text = text_subtitulo,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                   fontFamily = fontPoppins,
+                    color = indigo_dye,
+                    modifier = Modifier
+                        .padding(start = 10.dp)
+                )
+            }
             Image(
                 painter = painterResource(R.drawable.arrow),
                 contentDescription = "Icon",
                 modifier = Modifier
                     .size(35.dp)
+                    .padding(start = 10.dp)
 
             )
         }

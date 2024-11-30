@@ -103,6 +103,7 @@ fun Materiais(navController: NavController) {
                     modifier = Modifier
                         .size(width = 297.dp, height = 180.dp)
                         .fillMaxSize()
+                        .align(alignment = Alignment.Center)
                 )
 
 
@@ -116,14 +117,14 @@ fun Materiais(navController: NavController) {
 
                 ) {
                     Text(
-                        " DevEmpower",
+                        " Sobre nós",
                         color = white_smoke,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
-                            .fillMaxSize()
+                            .fillMaxWidth()
                             .padding(top = 5.dp)
 
                     )
@@ -226,10 +227,10 @@ fun Botões_Materiais(
                 Text(
                     text = Text_titulo,
                     color = white_smoke,
-                    fontSize = 14.sp,
+                    fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = fontPoppins,
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Center
                 )
 
 
@@ -240,6 +241,8 @@ fun Botões_Materiais(
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = fontPoppins,
                     textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .offset(y = (-5).dp)
                 )
 
             }
