@@ -46,18 +46,19 @@ fun tela_avatares(navController: NavController) {
         ) {
             Box(
                 modifier = Modifier
+                    .padding(top = 60.dp)
                     .size(width = 373.dp, height = 642.dp)
-                    .border(2.dp, color = indigo_dye, shape = RoundedCornerShape(50.dp))
+                    .border(5.dp, color = indigo_dye, shape = RoundedCornerShape(50.dp))
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                 ) {
                     Card(modifier = Modifier
-                        .size(width = 242.dp, height = 116.dp)
+                        .size(width = 220.dp, height = 96.dp)
                         .fillMaxWidth()
                         .align(alignment = Alignment.CenterHorizontally)
-                        .offset(y= -80.dp),
+                        .offset(y= -75.dp),
                         colors = CardDefaults.cardColors(indigo_dye),
 
                     ) {
@@ -70,7 +71,7 @@ fun tela_avatares(navController: NavController) {
 //                            fontFamily = fontPoppins,
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    .padding(top = 25.dp)
+                                    .padding(top = 20.dp)
 
                             )
                     }
