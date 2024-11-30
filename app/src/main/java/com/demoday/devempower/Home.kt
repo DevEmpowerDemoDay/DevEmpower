@@ -298,6 +298,7 @@ fun BottomBar(navController: NavController) {
                 },
                 onClick = {
                     selectedIndex.intValue = 0 // Define o índice do item selecionado como 0
+                    navController.navigate("comunidade")
                 },
                 selected = selectedIndex.intValue == 0,
                 modifier = if (selectedIndex.intValue == 0) selectedItem else unselectedItem
@@ -313,6 +314,7 @@ fun BottomBar(navController: NavController) {
                 },
                 onClick = {
                     selectedIndex.intValue = 1 // Define o índice do item selecionado como 1
+                    navController.navigate("home")
                 },
                 selected = selectedIndex.intValue == 1,
                 modifier = if (selectedIndex.intValue == 1) selectedItem else unselectedItem
@@ -328,6 +330,7 @@ fun BottomBar(navController: NavController) {
                 },
                 onClick = {
                     selectedIndex.intValue = 2 // Define o índice do item selecionado como 2
+                    navController.navigate("material")
                 },
                 selected = selectedIndex.intValue == 2,
                 modifier = if (selectedIndex.intValue == 2) selectedItem else unselectedItem

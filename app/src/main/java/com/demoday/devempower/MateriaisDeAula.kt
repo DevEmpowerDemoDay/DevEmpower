@@ -96,14 +96,17 @@ fun Materiais(navController: NavController) {
                         navController.navigate("introdução1")
                     }
             ) {
-                Image(
-                    painter = painterResource(R.drawable.logo_with_text),
-                    contentDescription = "material de aula DevEmpower",
-                    modifier = Modifier
-                        .size(width = 297.dp, height = 180.dp)
-                        .fillMaxSize()
-                        .align(alignment = Alignment.Center)
-                )
+                Row {
+                    Image(
+                        painter = painterResource(R.drawable.logo_with_text),
+                        contentDescription = "material de aula DevEmpower",
+                        modifier = Modifier
+                            .size(width = 297.dp, height = 180.dp)
+                            .fillMaxSize()
+                    )
+
+
+                }
                 Card(
                     colors = CardDefaults.cardColors(indigo_dye),
                     shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),

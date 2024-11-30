@@ -83,7 +83,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun Inicio() {
+fun  Inicio() {
     val navController = rememberNavController()
 
 

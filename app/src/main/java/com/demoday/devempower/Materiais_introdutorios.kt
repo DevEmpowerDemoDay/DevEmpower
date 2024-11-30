@@ -82,22 +82,22 @@ fun IntroduçãoAula1(navController: NavController) {
                     .offset(y = (-50).dp)
             ) {  }
             Text(modifier = Modifier
-                .padding(start = 20.dp, end = 20.dp, top = 75.dp),
+                .padding(start = 20.dp, end = 20.dp, top = 60.dp),
                 text = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             color = indigo_dye,
-                            //fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("Você já ouviu falar sobre  ")
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -105,8 +105,8 @@ fun IntroduçãoAula1(navController: NavController) {
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
-                            //fontFamily = fontPoppins,
+                            fontSize = 20.sp,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -114,9 +114,9 @@ fun IntroduçãoAula1(navController: NavController) {
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -229,18 +229,18 @@ fun IntroduçãoAula2(navController: NavController) {
                 text = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             color = indigo_dye,
-                            //fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("A ")
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -248,8 +248,8 @@ fun IntroduçãoAula2(navController: NavController) {
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
-                            //fontFamily = fontPoppins,
+                            fontSize = 20.sp,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -257,9 +257,9 @@ fun IntroduçãoAula2(navController: NavController) {
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -368,22 +368,22 @@ fun IntroduçãoAula3(navController: NavController) {
                     .offset(y = (-50).dp)
             ) {  }
             Text(modifier = Modifier
-                .padding(start = 20.dp, end = 20.dp, top = 75.dp),
+                .padding(start = 20.dp, end = 20.dp, top = 60.dp),
                 text = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             color = indigo_dye,
-                            //fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("Com conteúdos práticos e simulações, a  ")
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -391,8 +391,8 @@ fun IntroduçãoAula3(navController: NavController) {
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
-                            //fontFamily = fontPoppins,
+                            fontSize = 20.sp,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -400,9 +400,9 @@ fun IntroduçãoAula3(navController: NavController) {
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
