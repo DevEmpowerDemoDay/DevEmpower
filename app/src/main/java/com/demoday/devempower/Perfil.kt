@@ -45,20 +45,19 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Composable
 fun PerfilAtividade(navController: NavController) {
-    val systemUiController = rememberSystemUiController()
-
-    systemUiController.setStatusBarColor(
-        uranium_blue
-    )
-
-    systemUiController.setNavigationBarColor(
-        uranium_blue, darkIcons = true
-    )
+////    val systemUiController = rememberSystemUiController()
+//
+//    systemUiController.setStatusBarColor(
+//        uranium_blue
+//    )
+//
+//    systemUiController.setNavigationBarColor(
+//        uranium_blue, darkIcons = true
+//    )
     Box(
         modifier = Modifier
             .background(uranium_blue)
@@ -402,9 +401,13 @@ fun PerfilAtividade(navController: NavController) {
     }
 }
 
+
+
+//}
+
 @Composable
 fun PerfilInformaçãoes(navController: NavController) {
-    val systemUiController = rememberSystemUiController()
+//    val systemUiController = rememberSystemUiController()
     var nome_completo by remember { mutableStateOf("") }
     var apelido by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -413,13 +416,13 @@ fun PerfilInformaçãoes(navController: NavController) {
 
 
     // define cores da barra de status e da barra de navegação
-    systemUiController.setStatusBarColor(
+//    systemUiController.setStatusBarColor(
         uranium_blue
-    )
+//    )
 
-    systemUiController.setNavigationBarColor(
-        uranium_blue, darkIcons = true
-    )
+////    systemUiController.setNavigationBarColor(
+//        uranium_blue, darkIcons = true
+//    )
     Box(
         modifier = Modifier
             .background(uranium_blue)
@@ -613,7 +616,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                         contentDescription = "Icon que simboliza atualização da foto de perfil",
                         modifier = Modifier
                             .size(width = 67.33.dp, height = 65.dp)
-                            .clickable { })
+                            .clickable {navController.navigate("personalização")})
                     Text(
                         "Editar ícone e cores",
                         fontSize = 14.sp,
@@ -763,15 +766,15 @@ fun PerfilInformaçãoes(navController: NavController) {
 
 @Composable
 fun PerfilPontuação(navController: NavController) {
-    val systemUiController = rememberSystemUiController()
+//    val systemUiController = rememberSystemUiController()
 
-    systemUiController.setStatusBarColor(
-        uranium_blue
-    )
-
-    systemUiController.setNavigationBarColor(
-        uranium_blue, darkIcons = true
-    )
+//    systemUiController.setStatusBarColor(
+//        uranium_blue
+//    )
+//
+//    systemUiController.setNavigationBarColor(
+//        uranium_blue, darkIcons = true
+//    )
     Box(
         modifier = Modifier
             .background(uranium_blue)
