@@ -176,7 +176,7 @@ fun Home(navController: NavController) {
         // Texto do "Explorar por Categorias"
         Box(
             Modifier
-                .fillMaxWidth()
+                    .fillMaxWidth()
                 .align(Alignment.CenterHorizontally)
         ) {
             Text(
