@@ -242,7 +242,7 @@ fun Comunidade(navController: NavController) {
 
         Spacer(modifier = Modifier.padding(top = 20.dp))
 
-        BottomBar(navController)
+//        BottomBar(navController)
 
 
     }
