@@ -59,6 +59,7 @@ fun TelaAlt(navController: NavController) {
             fontSize = 20.sp,
             color = indigo_dye,
             fontWeight = FontWeight.Bold,
+            fontFamily = fontPoppins,
             modifier = Modifier
                 .padding(20.dp)
                 .fillMaxWidth()
@@ -68,7 +69,8 @@ fun TelaAlt(navController: NavController) {
         Text(
             "Junte-se a nós na jornada de transformação para o " + "mundo da tecnologia. Aqui, você irá desenvolver suas soft " + "skills e se preparar para brilhar no mercado de trackball.",
             fontSize = 14.sp,
-            color = Color.Black,
+            color = indigo_dye,
+            fontFamily = fontPoppins,
             modifier = Modifier.padding(20.dp)
         )
         Image(

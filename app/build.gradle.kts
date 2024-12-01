@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.foundation.layout.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -73,6 +74,9 @@ dependencies {
     implementation ("androidx.compose.ui:ui:1.5.1")
     implementation("androidx.compose.material:material:1.5.4")
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
+
+
+
 
 
 
