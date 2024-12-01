@@ -107,7 +107,7 @@ fun Home(navController: NavController) {
                         " Desenvolvedor",
                         color = white_smoke,
                         fontSize = 40.sp,
-                        fontFamily = fontPoppins,
+                        //fontFamily = fontPoppins,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.align(Alignment.CenterHorizontally),
                         textAlign = TextAlign.Center
@@ -142,7 +142,7 @@ fun Home(navController: NavController) {
                     color = white_smoke,
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
-                    fontFamily = fontPoppins
+                    //fontFamily = fontPoppins
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Image(
@@ -167,7 +167,8 @@ fun Home(navController: NavController) {
                     append("Explorar por ")
                     withStyle(
                         style = SpanStyle(
-                            fontWeight = FontWeight.Bold, fontSize = 20.sp, fontFamily = fontPoppins
+                            fontWeight = FontWeight.Bold, fontSize = 20.sp,
+                            //fontFamily = fontPoppins
                         )
                     ) {
                         append("Categorias")
@@ -384,7 +385,7 @@ fun ContainerEvents(text_subtitulo:String,text_titulo: String,  onClick: () -> U
                     text = text_titulo,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
-                   fontFamily = fontPoppins,
+//                   fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 2.dp)
