@@ -99,7 +99,7 @@ fun  Inicio() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                NavHost(navController = navController, startDestination = "material") {
+                NavHost(navController = navController, startDestination = "introdução1") {
                     composable("splash") { Splash(navController) }
                     composable("home") { Home(navController) }
                     composable("telaalt") { TelaAlt(navController) }
@@ -119,6 +119,13 @@ fun  Inicio() {
                     composable("introdução2") { IntroduçãoAula2(navController) }
                     composable("introdução3") { IntroduçãoAula3(navController) }
                     composable("personalização") { tela_avatares(navController) }
+                    composable("quizz") { Quizz_Pergunta1(navController) }
+                    composable("quizz2") { Quizz_Correção1(navController) }
+                    composable("quizz3") { Quizz_Pergunta2(navController) }
+                    composable("quizz4") { Quizz_Correção2(navController) }
+                    composable("quizz5") { Quizz_Pergunta3(navController) }
+                    composable("quizz6") { Quizz_Correção3(navController) }
+
                 }
             }
         },

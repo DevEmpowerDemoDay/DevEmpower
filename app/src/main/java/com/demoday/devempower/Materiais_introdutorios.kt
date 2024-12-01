@@ -265,7 +265,7 @@ fun IntroduçãoAula2(navController: NavController) {
                         color = white_smoke,
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Medium,
-                       // fontFamily = fontPoppins,
+                        // fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
 
                         )
@@ -397,7 +397,10 @@ fun IntroduçãoAula3(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(uranium_blue)
-            .clickable { navController.navigate("aula") }
+            .clickable {
+                navController.navigate("quizz")
+                condition = true
+            }
     ) {
         Box(
             modifier = Modifier
