@@ -1,5 +1,9 @@
 package com.demoday.devempower
 
+import android.app.AlertDialog
+import android.content.Context
+import android.view.Gravity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -30,6 +34,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -49,6 +54,7 @@ import kotlinx.coroutines.delay
 var condition = false
 val correto = Color(0xFF00440C)
 val errado = Color(0xFF670000)
+
 
 @Composable
 fun timer(navController: NavController) {
@@ -96,6 +102,7 @@ fun timer(navController: NavController) {
 
 @Composable
 fun Quizz_Pergunta1(navController: NavController) {
+    val context = LocalContext.current
     var valor = 0
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val paddingValue = (screenWidth * 0.12)
@@ -146,8 +153,8 @@ fun Quizz_Pergunta1(navController: NavController) {
 
             val paddingValue1 = (screenWidth * 0.05)
             Text(
-                "A DevEmpower foca principalmente em ajudar desenvolvedores " +
-                        "a melhorarem suas soft skills",
+                "Você acertou! A DevEmpower realmente ajuda" +
+                        " desenvolvedores a aprimorarem suas soft skills.",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
                 //fontFamily = fontPoppins,
@@ -166,6 +173,10 @@ fun Quizz_Pergunta1(navController: NavController) {
                 onClick = {
                     navController.navigate("quizz2")
                     condition = false
+                    val toast = Toast.makeText(context, "Você acertou! A DevEmpower " +
+                            "realmente ajuda desenvolvedores a aprimorarem suas soft skills.!", Toast.LENGTH_SHORT)
+                    toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 100) // Posição no topo
+                    toast.show()
 
                 },
                 modifier = Modifier
@@ -218,12 +229,14 @@ fun Quizz_Pergunta1(navController: NavController) {
     }
 }
 
+
 @Composable
 fun Quizz_Correção1(navController: NavController) {
     var valor = 0
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val paddingValue = (screenWidth * 0.12)
     val splashScreenDuration = 3000L
+
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
         condition = true
@@ -245,7 +258,6 @@ fun Quizz_Correção1(navController: NavController) {
                 .padding(top = paddingValue.dp)
         ) {
 
-            Spacer(modifier = Modifier.padding(top = paddingValue.dp))
             Card(
                 modifier = Modifier
                     .size(width = 200.dp, height = 200.dp)
