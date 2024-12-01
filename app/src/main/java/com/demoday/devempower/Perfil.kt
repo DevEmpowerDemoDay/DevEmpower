@@ -418,7 +418,6 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
 @Composable
 fun PerfilInformaçãoes(navController: NavController) {
    val systemUiController = rememberSystemUiController()
-    var nome_completo by remember { mutableStateOf("") }
     var apelido by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var idade by remember { mutableStateOf("") }
@@ -660,8 +659,8 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 .align(alignment = Alignment.CenterHorizontally)
                         )
                         OutlinedTextField(
-                            value = nome_completo,
-                            onValueChange = { newtext -> nome_completo = newtext },
+                            value = nome,
+                            onValueChange = { newtext -> nome = newtext },
                             modifier = Modifier
                                 .width(300.62.dp),
                             textStyle = TextStyle(

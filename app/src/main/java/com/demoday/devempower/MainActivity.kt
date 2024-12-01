@@ -65,7 +65,16 @@ val indigo_dye = Color(0xFF005377)
 val bright_blue = Color(0xFF009ADD)
 val pale_sky_blue = Color(0xFFD2EAF6)
 val pale_hex = Color(0xFF03022C)
+val bright_Violet = Color(0xFFFF6135FF)
 val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
+
+// variavel de nome para uso global
+var nome by mutableStateOf("")
+//variavel de comentario para uso da comunidade
+var comentario by mutableStateOf("")
+
+var salvar = nome + comentario
+var comunidade = mutableListOf(salvar)
 
 
 class MainActivity : ComponentActivity() {
@@ -100,7 +109,7 @@ fun  Inicio() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                NavHost(navController = navController, startDestination = "introdução1") {
+                NavHost(navController = navController, startDestination = "home") {
                     composable("splash") { Splash(navController) }
                     composable("home") { Home(navController) }
                     composable("telaalt") { TelaAlt(navController) }
