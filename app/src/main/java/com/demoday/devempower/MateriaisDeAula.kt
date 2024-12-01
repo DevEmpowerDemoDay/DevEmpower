@@ -96,6 +96,7 @@ fun Materiais(navController: NavController) {
                         navController.navigate("introdução1")
                     }
             ) {
+
                 Image(
                     painter = painterResource(R.drawable.logo_with_text),
                     contentDescription = "material de aula DevEmpower",
@@ -104,6 +105,8 @@ fun Materiais(navController: NavController) {
                         .fillMaxSize()
                         .align(alignment = Alignment.Center)
                 )
+
+
                 Card(
                     colors = CardDefaults.cardColors(indigo_dye),
                     shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
@@ -114,14 +117,14 @@ fun Materiais(navController: NavController) {
 
                 ) {
                     Text(
-                        " DevEmpower",
+                        " Sobre nós",
                         color = white_smoke,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
-                            .fillMaxSize()
+                            .fillMaxWidth()
                             .padding(top = 5.dp)
 
                     )
@@ -224,10 +227,10 @@ fun Botões_Materiais(
                 Text(
                     text = Text_titulo,
                     color = white_smoke,
-                    fontSize = 14.sp,
+                    fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = fontPoppins,
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Center
                 )
 
 
@@ -238,6 +241,8 @@ fun Botões_Materiais(
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = fontPoppins,
                     textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .offset(y = (-5).dp)
                 )
 
             }
