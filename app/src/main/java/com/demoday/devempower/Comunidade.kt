@@ -195,7 +195,7 @@ fun Comunidade(navController: NavController) {
                LazyColumn {
                    itemsIndexed(listaDeComentarios){
                        position, _ ->
-                       CardComentario()
+                       CardComentario(nome, comentario)
                    }
                }
 
@@ -249,7 +249,7 @@ fun Comunidade(navController: NavController) {
 }
 
 @Composable
-fun CardComentario() {
+fun CardComentario(nome: String, comentario: String) {
     Spacer(modifier = Modifier.padding(top = 10.dp))
 
     Box(
@@ -468,7 +468,8 @@ fun Camera(navController: NavController) {
                     if (nome.isNotEmpty() && comentario.isNotEmpty()) {
                         // Adiciona o comentário à lista
                         listaDeComentarios.add(
-                            Comentario(nome, comentario))
+                            Comentario(nome, comentario)
+                        )
                     }
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = bright_Violet),
@@ -486,6 +487,7 @@ fun Camera(navController: NavController) {
                 )
 
             }
+
 
         }
     }
