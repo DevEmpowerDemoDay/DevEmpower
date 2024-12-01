@@ -118,11 +118,10 @@ fun Comunidade(navController: NavController) {
                 painter = painterResource(id = R.drawable.bottomback),
                 contentDescription = "Botão de voltar",
                 modifier = Modifier
+                    .offset(x = (-40).dp)
                     .size(35.68.dp)
                     .clickable { navController.navigate("home") }
             )
-
-            Spacer(modifier = Modifier.padding(end = 20.dp))
 
             Card(
                 modifier = Modifier
@@ -130,16 +129,19 @@ fun Comunidade(navController: NavController) {
                 colors = CardDefaults.cardColors(containerColor = indigo_dye),
                 shape = RoundedCornerShape(30.dp)
             ) {
-                Text(
-                    "Comunidade",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center,
-                    color = Color.White,
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(top = 5.dp)
-                )
+                ) {
+                    Text(
+                        "Comunidade",
+                        fontSize = 23.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = Color.White,
+                    )
+                }
             }
         }
 
@@ -163,7 +165,7 @@ fun Comunidade(navController: NavController) {
                     Image(
                         painter = painterResource( id = R.drawable.arrow_blue),
                         contentDescription = "Ícone do campo de texto",
-                        modifier = Modifier.size(27.dp).offset(x = 300.dp)
+                        modifier = Modifier.size(27.dp).offset(x = 300.dp).clickable {  }
                     )
                 },
                 modifier = Modifier
