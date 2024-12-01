@@ -244,6 +244,7 @@ fun Quizz_Correção1(navController: NavController) {
             popUpTo("quizz2") { inclusive = true }
         }
     }
+
     Column(
         modifier = Modifier
             .background(uranium_blue)
@@ -257,6 +258,8 @@ fun Quizz_Correção1(navController: NavController) {
                 .fillMaxSize()
                 .padding(top = paddingValue.dp)
         ) {
+
+            timer(navController)
 
             Card(
                 modifier = Modifier
@@ -494,6 +497,7 @@ fun Quizz_Correção2(navController: NavController) {
             popUpTo("quizz4") { inclusive = true }
         }
     }
+
     Column(
         modifier = Modifier
             .background(uranium_blue)
@@ -507,7 +511,7 @@ fun Quizz_Correção2(navController: NavController) {
                 .fillMaxSize()
                 .padding(top = paddingValue.dp)
         ) {
-
+            timer(navController)
             Spacer(modifier = Modifier.padding(top = paddingValue.dp))
             Card(
                 modifier = Modifier
@@ -758,6 +762,7 @@ fun Quizz_Correção3(navController: NavController) {
                 .fillMaxSize()
                 .padding(top = paddingValue.dp)
         ) {
+            timer(navController)
 
             Spacer(modifier = Modifier.padding(top = paddingValue.dp))
             Card(
