@@ -64,6 +64,7 @@ val white_smoke = Color(0xFFF5F5F5)
 val indigo_dye = Color(0xFF005377)
 val bright_blue = Color(0xFF009ADD)
 val pale_sky_blue = Color(0xFFD2EAF6)
+val pale_hex = Color(0xFF03022C)
 val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 
 
@@ -126,6 +127,7 @@ fun  Inicio() {
                     composable("quizz5") { Quizz_Pergunta3(navController) }
                     composable("quizz6") { Quizz_Correção3(navController) }
                     composable("aprovação_quizz") { Aprovação_Quizz(navController) }
+                    composable("camera") { Camera(navController) }
 
                 }
             }
