@@ -125,6 +125,7 @@ fun  Inicio() {
                     composable("quizz4") { Quizz_Correção2(navController) }
                     composable("quizz5") { Quizz_Pergunta3(navController) }
                     composable("quizz6") { Quizz_Correção3(navController) }
+                    composable("aprovação_quizz") { Aprovação_Quizz(navController) }
 
                 }
             }

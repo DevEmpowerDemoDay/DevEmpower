@@ -4,11 +4,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
@@ -29,9 +31,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -724,8 +729,8 @@ fun Quizz_Correção3(navController: NavController) {
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
         condition = true
-        navController.navigate("introdução1") {
-            popUpTo("quizz5") { inclusive = true }
+        navController.navigate("aprovação_quizz") {
+            popUpTo("quizz6") { inclusive = true }
         }
     }
     Column(
@@ -842,25 +847,135 @@ fun Quizz_Correção3(navController: NavController) {
     }
 }
 
+@Composable
+fun Aprovação_Quizz(navController: NavController) {
+    val screenWidth = LocalConfiguration.current.screenWidthDp
+    val paddingValue = (screenWidth * 0.12)
+    val paddingValue1 = (screenWidth * 0.05)
+    Column(
+        modifier = Modifier
+            .background(uranium_blue)
+            .fillMaxSize()
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = paddingValue.dp)
+        ) {
+            Image(
+                painter = painterResource(R.drawable.aprova__o_quizz),
+                contentDescription = "Aprovação",
+                modifier = Modifier
+                    .size(width = 350.dp, height = 350.dp)
+                    .fillMaxWidth()
+            )
+            Box() {
+                Text(
+                    "PARABÉNS",
+                    fontSize = 40.sp,
+                    fontWeight = FontWeight.Bold,
+                    //fontFamily = fontPoppins,
+                    color = indigo_dye
+                )
+                Image(
+                    painter = painterResource(R.drawable.parabens_icon),
+                    contentDescription = "Parabéns icone",
+                    modifier = Modifier
+                        .size(25.dp)
+                        .align(Alignment.TopEnd)
+                        .offset(x = 10.dp, y = (-2).dp)
+                )
+            }
+            Text(
+                modifier = Modifier
+                    .padding(
+                        start = paddingValue1.dp,
+                        end = paddingValue1.dp,
+                        top = paddingValue1.dp
+                    ),
+                text = buildAnnotatedString {
+                    withStyle(
+                        style = SpanStyle(
+                            fontSize = 24.sp,
+                            color = indigo_dye,
+                            //fontFamily = fontPoppins
+                        )
+                    ) {
+                        append("Você ")
+                    }
+                    withStyle(
+                        style = SpanStyle(
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            //fontFamily = fontPoppins,
+                            color = indigo_dye
+                        )
+                    ) {
+                        append("concluiu")
+                    }
+                    withStyle(
+                        style = SpanStyle(
+                            fontSize = 24.sp,
+                            //fontFamily = fontPoppins,
+                            color = indigo_dye
+                        )
+                    ) {
+                        append(" a primeira aula sobre a ")
+                    }
+                    withStyle(
+                        style = SpanStyle(
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            //fontFamily = fontPoppins,
+                            color = indigo_dye
+                        )
+                    ) {
+                        append("DevEmpower ")
+                    }
+                    withStyle(
+                        style = SpanStyle(
+                            fontSize = 24.sp,
+                            //fontFamily = fontPoppins,
+                            color = indigo_dye
+                        )
+                    ) {
+                        append("agora poderá avançar ")
+                    }
 
+                },
+                textAlign = TextAlign.Center
+            )
 
+            Spacer(modifier = Modifier.padding(paddingValue.dp))
+            Button(
+                colors = ButtonDefaults.buttonColors(indigo_dye),
+                onClick = {
+                    navController.navigate("material")
+                },
+                modifier = Modifier
+                    .size(width = 280.dp, height = 80.dp)
 
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    Text(
+                        "Finalizar",
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Bold,
+                        //fontFamily = fontPoppins
+                    )
+                }
+            }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+    }
+}
 
 
 @Preview
@@ -896,6 +1011,7 @@ private fun AulaPreview3() {
         Quizz_Correção2(rememberNavController())
     }
 }
+
 @Preview
 @Composable
 private fun AulaPreview4() {
@@ -903,6 +1019,7 @@ private fun AulaPreview4() {
         Quizz_Pergunta3(rememberNavController())
     }
 }
+
 @Preview
 @Composable
 private fun AulaPreview5() {
@@ -910,3 +1027,12 @@ private fun AulaPreview5() {
         Quizz_Correção3(rememberNavController())
     }
 }
+
+@Preview
+@Composable
+private fun AulaPreview6() {
+    DevEmpowerTheme {
+        Aprovação_Quizz(rememberNavController())
+    }
+}
+
