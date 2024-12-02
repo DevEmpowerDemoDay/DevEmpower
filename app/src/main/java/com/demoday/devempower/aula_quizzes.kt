@@ -120,9 +120,10 @@ fun card_feedback() {
         colors = CardDefaults.cardColors(indigo_dye,),
         modifier = Modifier
             .fillMaxWidth()
+            .padding(end = 10.dp, start = 10.dp)
             .size(width = 370.dp, height = 185.dp)
             .clip(shape = RoundedCornerShape(30.dp))
-            .border(3.dp, color = corborda)
+            .border(5.dp, color = corborda, shape = RoundedCornerShape(30.dp))
 
 
     ) {
@@ -133,13 +134,15 @@ fun card_feedback() {
                 .fillMaxSize()
         ) {
             Text( certoouerrado,
-                fontSize = 19.sp,
+                fontSize = 17.sp,
                 color = certoouerradocor,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
                 //fontFamily = fontPoppins,
                 modifier = Modifier
                     .fillMaxWidth()
+                   .padding(start = 5.dp,end = 5.dp)
+
             )
             Text(
                 texto,
