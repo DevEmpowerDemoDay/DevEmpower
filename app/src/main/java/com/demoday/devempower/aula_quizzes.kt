@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -49,11 +50,23 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import kotlinx.coroutines.delay
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
+import kotlin.math.round
 
 
 var condition = false
 val correto = Color(0xFF00440C)
 val errado = Color(0xFF670000)
+var corborda = correto
+var certoouerradocor = correto
+var certoouerrado = ""
+var feedbackcorreto1 = "Perfeito! A DevEmpower realmente foca no desenvolvimento das soft skills dos desenvolvedores para o sucesso no mercado de trabalho."
+var feedbackerrado1 = "Quase lá! A DevEmpower ajuda desenvolvedores a aprimorar suas soft skills, essenciais para se destacarem em processos seletivos."
+var feedbackcorreto2 = "Perfeito! O polvo representa inteligência, adaptabilidade e a força de uma rede de apoio na identidade da DevEmpower."
+var feedbackerrado2 = "Não só inteligência! O polvo também simboliza adaptabilidade e a força de uma rede de apoio na identidade da DevEmpower."
+var feedbackcorreto3 = "Isso mesmo! A DevEmpower vai além de materiais de aula, oferecendo mentorias, quizzes interativos e diversas ferramentas para aprendizado."
+var feedbackerrado3 = "A DevEmpower também oferece mentorias e quizzes interativos, indo além de apenas materiais de aula para apoiar seu desenvolvimento."
+var texto = ""
 
 
 @Composable
@@ -100,6 +113,49 @@ fun timer(navController: NavController) {
     }
 }
 
+
+@Composable
+fun card_feedback() {
+    Card(
+        colors = CardDefaults.cardColors(indigo_dye,),
+        modifier = Modifier
+            .fillMaxWidth()
+            .size(width = 370.dp, height = 185.dp)
+            .clip(shape = RoundedCornerShape(30.dp))
+            .border(3.dp, color = corborda)
+
+
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Text( certoouerrado,
+                fontSize = 19.sp,
+                color = certoouerradocor,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+                //fontFamily = fontPoppins,
+                modifier = Modifier
+                    .fillMaxWidth()
+            )
+            Text(
+                texto,
+                fontSize = 19.sp,
+                color = white_smoke,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+                //fontFamily = fontPoppins,
+                modifier = Modifier
+                    .fillMaxWidth()
+
+            )
+        }
+    }
+
+}
 @Composable
 fun Quizz_Pergunta1(navController: NavController) {
     val context = LocalContext.current
@@ -153,8 +209,8 @@ fun Quizz_Pergunta1(navController: NavController) {
 
             val paddingValue1 = (screenWidth * 0.05)
             Text(
-                "Você acertou! A DevEmpower realmente ajuda" +
-                        " desenvolvedores a aprimorarem suas soft skills.",
+                "A DevEmpower foca principalmente em ajudar desenvolvedores " +
+                        "a melhorarem suas soft skills",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
                 //fontFamily = fontPoppins,
@@ -173,11 +229,10 @@ fun Quizz_Pergunta1(navController: NavController) {
                 onClick = {
                     navController.navigate("quizz2")
                     condition = false
-                    val toast = Toast.makeText(context, "Você acertou! A DevEmpower " +
-                            "realmente ajuda desenvolvedores a aprimorarem suas soft skills.!", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 100) // Posição no topo
-                    toast.show()
-
+                    corborda = correto
+                    texto = feedbackcorreto1
+                    certoouerrado = "Resposta Correta!"
+                    certoouerradocor = correto
                 },
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -203,7 +258,10 @@ fun Quizz_Pergunta1(navController: NavController) {
                 onClick = {
                     navController.navigate("quizz2")
                     condition = false
-
+                    corborda = errado
+                    texto = feedbackerrado1
+                    certoouerrado = "Resposta Incorreta!"
+                    certoouerradocor = errado
                 },
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -235,7 +293,7 @@ fun Quizz_Correção1(navController: NavController) {
     var valor = 0
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val paddingValue = (screenWidth * 0.12)
-    val splashScreenDuration = 3000L
+    val splashScreenDuration = 7000L
 
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
@@ -358,7 +416,7 @@ fun Quizz_Correção1(navController: NavController) {
 
         }
     }
-
+    card_feedback()
 }
 
 @Composable
@@ -434,6 +492,10 @@ fun Quizz_Pergunta2(navController: NavController) {
                 onClick = {
                     navController.navigate("quizz4")
                     condition = false
+                    corborda = errado
+                    texto = feedbackerrado2
+                    certoouerrado = "Resposta Inorreta!"
+                    certoouerradocor = errado
                 },
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -459,6 +521,10 @@ fun Quizz_Pergunta2(navController: NavController) {
                 onClick = {
                     navController.navigate("quizz4")
                     condition = false
+                    corborda = correto
+                    texto = feedbackcorreto2
+                    certoouerrado = "Resposta Correta!"
+                    certoouerradocor = correto
                 },
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -489,7 +555,7 @@ fun Quizz_Correção2(navController: NavController) {
     var valor = 0
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val paddingValue = (screenWidth * 0.12)
-    val splashScreenDuration = 3000L
+    val splashScreenDuration = 7000L
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
         condition = true
@@ -512,7 +578,7 @@ fun Quizz_Correção2(navController: NavController) {
                 .padding(top = paddingValue.dp)
         ) {
             timer(navController)
-            Spacer(modifier = Modifier.padding(top = paddingValue.dp))
+
             Card(
                 modifier = Modifier
                     .size(width = 200.dp, height = 200.dp)
@@ -610,6 +676,7 @@ fun Quizz_Correção2(navController: NavController) {
 
         }
     }
+    card_feedback()
 }
 
 @Composable
@@ -684,6 +751,10 @@ fun Quizz_Pergunta3(navController: NavController) {
                 onClick = {
                     navController.navigate("quizz6")
                     condition = false
+                    corborda = errado
+                    texto = feedbackerrado3
+                    certoouerrado = "Resposta Incorreta!"
+                    certoouerradocor = errado
 
                 },
                 modifier = Modifier
@@ -710,6 +781,10 @@ fun Quizz_Pergunta3(navController: NavController) {
                 onClick = {
                     navController.navigate("quizz6")
                     condition = false
+                    corborda = correto
+                    texto = feedbackcorreto3
+                    certoouerrado = "Resposta Correta!"
+                    certoouerradocor = correto
 
                 },
                 modifier = Modifier
@@ -741,7 +816,7 @@ fun Quizz_Correção3(navController: NavController) {
     var valor = 0
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val paddingValue = (screenWidth * 0.12)
-    val splashScreenDuration = 3000L
+    val splashScreenDuration = 7000L
     LaunchedEffect(Unit) {
         delay(splashScreenDuration)
         condition = true
@@ -764,7 +839,6 @@ fun Quizz_Correção3(navController: NavController) {
         ) {
             timer(navController)
 
-            Spacer(modifier = Modifier.padding(top = paddingValue.dp))
             Card(
                 modifier = Modifier
                     .size(width = 200.dp, height = 200.dp)
@@ -862,6 +936,7 @@ fun Quizz_Correção3(navController: NavController) {
 
         }
     }
+    card_feedback()
 }
 
 @Composable
