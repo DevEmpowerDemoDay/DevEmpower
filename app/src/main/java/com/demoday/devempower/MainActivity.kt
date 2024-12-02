@@ -68,13 +68,18 @@ val pale_hex = Color(0xFF03022C)
 val bright_Violet = Color(0xFFFF6135FF)
 val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 
-// variavel de nome para uso global
-var nome by mutableStateOf("")
-//variavel de comentario para uso da comunidade
-var comentario by mutableStateOf("")
+data class ComentarioCard(
+    var nome: String,
+    var comentario: String,
+    var salvar: String
+)
 
-var salvar = nome + comentario
-var comunidade = mutableListOf(salvar)
+// variavel de nome para uso global
+var nome by mutableStateOf("Maykon")
+//variavel de comentario para uso da comunidade
+var comentario by mutableStateOf("Ola bom dia ")
+
+
 
 
 class MainActivity : ComponentActivity() {
