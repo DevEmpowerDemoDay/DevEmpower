@@ -142,7 +142,6 @@ fun card_feedback() {
                 modifier = Modifier
                     .fillMaxWidth()
                    .padding(start = 5.dp,end = 5.dp)
-
             )
             Text(
                 texto,
