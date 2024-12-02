@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.TextField
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -54,7 +55,9 @@ class Calendario {
                         openDatePicker = false
                     },
                     confirmButton = {
-                        Button(onClick = {
+                        Button(
+                            colors = ButtonDefaults.buttonColors(indigo_dye),
+                            onClick = {
                             date = state.selectedDateMillis?.toString() ?: ""
                             openDatePicker = false
                             navController.navigate("mentores")

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
@@ -141,11 +142,17 @@ fun Mentores(navController: NavController) {
 fun Mentores1(Text_nome:String,Text_descricao:String,painter: Painter) {
 Box(
     modifier = Modifier
-        .size(width = 300.dp, height = 181.dp)
+        .size(width = 320.dp, height = 181.dp)
         .padding(top = 20.dp)
         .border(3.dp, Color.Transparent, shape = RoundedCornerShape(30.dp))
         .background(indigo_dye.copy(alpha = 0.5f),shape = RoundedCornerShape(30.dp))
 ){
+    Box(
+        modifier = Modifier
+            .size(width = 320.dp, height = 181.dp)
+            .border(3.dp, white_smoke, shape = RoundedCornerShape(30.dp))
+
+    ){}
 Row(
     horizontalArrangement = Arrangement.Start,
     verticalAlignment = Alignment.CenterVertically,
@@ -157,7 +164,7 @@ Row(
         contentDescription = Text_descricao,
         modifier = Modifier
             .size(width = 125.dp, height = 125.dp)
-            .offset(x = -10.dp)
+            .offset(x = -20.dp)
     )
     Column {
     Text(
@@ -167,7 +174,32 @@ Row(
         //fontFamily = fontPoppins,
         color = Color.White,
     )
+        Card(
+            backgroundColor = white_smoke,
+            modifier = Modifier
+                .size(width = 178.dp, height = 0.8.dp)
+        ) {  }
+        Spacer(modifier = Modifier.padding(top = 18.dp))
+        Card(
+            backgroundColor = bright_blue,
+            modifier = Modifier
+                .size(width = 92.dp, height = 32.59.dp)
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                Text(
+                    "9:00",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Medium,
+                    //fontFamily = fontPoppins,
+                    color = Color.White,
+                )
+            }
+        }
 }}
+
 }
 }
 
