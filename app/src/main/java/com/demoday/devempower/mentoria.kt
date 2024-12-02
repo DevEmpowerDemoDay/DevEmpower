@@ -145,7 +145,7 @@ Box(
         .size(width = 320.dp, height = 181.dp)
         .padding(top = 20.dp)
         .border(3.dp, Color.Transparent, shape = RoundedCornerShape(30.dp))
-        .background(indigo_dye.copy(alpha = 0.5f),shape = RoundedCornerShape(30.dp))
+        .background(indigo_dye.copy(alpha = 0.5f), shape = RoundedCornerShape(30.dp))
 ){
     Box(
         modifier = Modifier
@@ -203,6 +203,16 @@ Row(
 }
 }
 
+@Composable
+fun Confirmação_mentoria(navController: NavController) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(uranium_blue)
+    ) {  }
+    
+}
+
 @Preview
 @Composable
 private fun Calendario_Preview() {
@@ -216,6 +226,13 @@ private fun Calendario_Preview() {
 private fun Mentoria_Preview() {
     DevEmpowerTheme {
         Mentores(rememberNavController())
+    }
+}
+@Preview
+@Composable
+private fun MentoriaConfirmação_Preview() {
+    DevEmpowerTheme {
+        Confirmação_mentoria(rememberNavController())
     }
 }
 
