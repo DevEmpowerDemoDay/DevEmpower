@@ -176,7 +176,7 @@ fun Home(navController: NavController) {
         // Texto do "Explorar por Categorias"
         Box(
             Modifier
-                    .fillMaxWidth()
+                .fillMaxWidth()
                 .align(Alignment.CenterHorizontally)
         ) {
             Text(
@@ -266,7 +266,10 @@ fun Home(navController: NavController) {
             ContainerEvents(
                 "Horarios disponiveis",
                 "Mentorias de Dev",
-                onClick = { navController.navigate("material") })
+                onClick = {
+                    navController.navigate("mentoria")
+
+                })
             ContainerEvents(
                 "10 Materiais Disponíveis",
                 "Materiais de aula",
