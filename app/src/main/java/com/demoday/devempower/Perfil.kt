@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
+import com.demoday.devempower.ui.theme.fontPoppinsType
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
@@ -100,8 +101,8 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
                 "DevKotlin",
                 color = indigo_dye,
                 fontSize = 36.sp,
-                fontWeight = FontWeight.Medium,
-                //fontFamily = fontPoppins,
+                fontWeight = FontWeight.Bold,
+               fontFamily = fontPoppinsType,
                 modifier = Modifier.padding(10.dp)
             )
 
