@@ -54,10 +54,9 @@ fun Materiais(navController: NavController) {
             .background(uranium_blue)
     ) {
         Column(
-            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(top = 75.dp)
+                .padding(top = 50.dp)
                 .fillMaxSize()
         ) {
             Text(
@@ -68,9 +67,11 @@ fun Materiais(navController: NavController) {
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(start = 5.dp)
+                    .padding(10.dp)
             )
             Text(modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp),
+                .padding(start = 25.dp, end = 10.dp),
                 text = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
@@ -93,6 +94,7 @@ fun Materiais(navController: NavController) {
                     }
                 }
             )
+            Spacer(modifier = Modifier.padding(top = 20.dp))
             Box(
                 modifier = Modifier
                     .clip(shape = RoundedCornerShape(19.dp))
@@ -188,7 +190,7 @@ fun Materiais(navController: NavController) {
             }
             Spacer(
                 modifier = Modifier
-                    .padding(bottom = paddingValue.dp)
+                    .padding(top = 75.dp)
             )
             Box(
                 modifier = Modifier
