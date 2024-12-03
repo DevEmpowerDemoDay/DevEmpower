@@ -3,6 +3,7 @@ package com.demoday.devempower
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,7 +21,9 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -52,17 +55,83 @@ import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 
-data class Comentario(
-    val nome : String,
-    val comentario: String
-)
 
 
 var listaDeComentarios = mutableStateListOf<String>()
 
+var listaDeNomes = mutableStateListOf<String>()
+
 
 @Composable
+fun CardComentario(nome1: String = "", comentario1: String = "") {
+    Spacer(modifier = Modifier.padding(top = 10.dp))
 
+    Box(
+        modifier = Modifier
+            .width(346.dp)
+            .wrapContentHeight(),// aumenta automaticamente a altura para o conteúdo
+        contentAlignment = Alignment.Center,
+    ) {
+        Card(
+            modifier = Modifier
+                .width(346.dp)
+                .wrapContentHeight(),// aumenta automaticamente a altura para o conteúdo
+            colors = CardDefaults.cardColors(containerColor = pale_sky_blue),
+            shape = RoundedCornerShape(10.dp)
+        )
+        {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .fillMaxWidth()
+
+            ) {
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Spacer(modifier = Modifier.padding(start = 20.dp))
+
+                    Image(
+                        painter = painterResource(id = R.drawable.avatar),
+                        contentDescription = "Avatar",
+                        modifier = Modifier
+                            .size(30.dp)
+                    )
+
+                    Spacer(modifier = Modifier.padding(start = 10.dp))
+
+                    Text(
+                        text = nome1,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium,
+                        // fontFamily = fontPoppins,
+                        color = pale_hex,
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+                Text(
+                    text = comentario1,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal,
+                    // fontFamily = fontPoppins,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 10.dp)
+                        .padding(15.dp)
+                )
+
+            }
+
+
+        }
+    }
+}
+
+@Composable
 fun ComunidadeSplash(navController: NavController) {
 
 
@@ -198,10 +267,15 @@ fun Comunidade(navController: NavController) {
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
 
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    for (i in listaDeComentarios.indices) {
+                        var nome1 = listaDeNomes[i]
+                        var comentario1 = listaDeComentarios[i]
+                        CardComentario(nome1 = nome1, comentario1 = comentario1)
 
-                LazyColumn {
-                    itemsIndexed(name) { position, _ ->
-                        CardComentario(name = name[position], comment = comment[position])
                     }
                 }
 
@@ -255,81 +329,8 @@ fun Comunidade(navController: NavController) {
 }
 
 
-var name = mutableStateListOf<String>()
-
-var comment = mutableStateListOf<String>()
-
 @Composable
-fun CardComentario(name: String, comment: String) {
-    Spacer(modifier = Modifier.padding(top = 10.dp))
-
-    Box(
-        modifier = Modifier
-            .width(346.dp)
-            .wrapContentHeight(),// aumenta automaticamente a altura para o conteúdo
-        contentAlignment = Alignment.Center,
-    ) {
-        Card(
-            modifier = Modifier
-                .width(346.dp)
-                .wrapContentHeight(),// aumenta automaticamente a altura para o conteúdo
-            colors = CardDefaults.cardColors(containerColor = pale_sky_blue),
-            shape = RoundedCornerShape(10.dp)
-        )
-        {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .padding(top = 10.dp)
-                    .fillMaxWidth()
-
-            ) {
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Spacer(modifier = Modifier.padding(start = 20.dp))
-
-                    Image(
-                        painter = painterResource(id = R.drawable.avatar),
-                        contentDescription = "Avatar",
-                        modifier = Modifier
-                            .size(30.dp)
-                    )
-
-                    Spacer(modifier = Modifier.padding(start = 10.dp))
-
-                    Text(
-                        text = name,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium,
-                        // fontFamily = fontPoppins,
-                        color = pale_hex,
-                        textAlign = TextAlign.Center
-                    )
-                }
-
-                Text(
-                    text = comment,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Normal,
-                    // fontFamily = fontPoppins,
-                    color = Color.Black,
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .padding(15.dp)
-                )
-
-            }
-
-
-        }
-    }
-}
-
-@Composable
-fun Camera( navController: NavController) {
+fun Camera(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -427,8 +428,8 @@ fun Camera( navController: NavController) {
             Spacer(modifier = Modifier.padding(top = 5.dp))
 
             OutlinedTextField(
-                value = nome,
-                onValueChange = { newtext -> nome = newtext },
+                value = nome1,
+                onValueChange = { newtext -> nome1 = newtext },
                 modifier = Modifier
                     .width(300.62.dp),
                 textStyle = TextStyle(
@@ -437,6 +438,7 @@ fun Camera( navController: NavController) {
                 singleLine = true
             )
         }
+
 
         Spacer(modifier = Modifier.padding(top = 20.dp))
 
@@ -458,8 +460,8 @@ fun Camera( navController: NavController) {
             Spacer(modifier = Modifier.padding(top = 8.dp))
 
             OutlinedTextField(
-                value = comentario,
-                onValueChange = { newtext -> comentario = newtext },
+                value = comentario1,
+                onValueChange = { newtext -> comentario1 = newtext },
                 modifier = Modifier
                     .width(300.62.dp),
                 textStyle = TextStyle(
@@ -471,21 +473,19 @@ fun Camera( navController: NavController) {
 
         Spacer(modifier = Modifier.padding(top = 10.dp))
 
-//listaDeComentarios.forEach(
-//    content = {
-//        CardComentario(name = name, comment = comment)
-//    }
-//)
-
         Button(
             onClick = {
                 navController.navigate("comentario")
-                if (name.isNotEmpty() && comment.isNotEmpty()) {
+                if (nome1.isNotEmpty() && comentario1.isNotEmpty()) {
                     // Adiciona o comentário à lista
                     listaDeComentarios.add(
-                        "$nome: $comentario"
+                        "$comentario1"
                     )
-
+                    listaDeNomes.add(
+                        "$nome1"
+                    )
+                    nome1 = ""
+                    comentario1 = ""
                 }
             },
             colors = ButtonDefaults.buttonColors(containerColor = bright_Violet),

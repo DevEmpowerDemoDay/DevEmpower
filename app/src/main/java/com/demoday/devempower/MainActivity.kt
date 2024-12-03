@@ -69,11 +69,10 @@ val bright_Violet = Color(0xFFFF6135FF)
 val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 
 // variavel de nome para uso global
-var nome by mutableStateOf("")
+var nome1 by mutableStateOf("")
 
 //variavel de comentario para uso da comunidade
-var comentario by mutableStateOf("")
-
+var comentario1 by mutableStateOf("")
 
 
 class MainActivity : ComponentActivity() {
