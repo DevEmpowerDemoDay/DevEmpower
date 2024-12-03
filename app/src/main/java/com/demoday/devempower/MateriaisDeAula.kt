@@ -222,6 +222,7 @@ fun Materiais(navController: NavController) {
                         painter = painterResource(R.drawable.home_icon),
                         contentDescription = "",
                         modifier = Modifier
+                            .offset(x = 10.dp)
                             .size(26.dp)
                             .clickable { navController.navigate("home") }
                     )
