@@ -115,13 +115,13 @@ fun Home(navController: NavController) {
                         }
                 )
 
-                Column(verticalArrangement = Arrangement.spacedBy((-15).dp)) {
+                Column() {
                     Text(
                         "Bem vindo,", color = white_smoke, fontSize = 15.sp,
-                        //fontFamily = fontPoppins
+                       // fontFamily = fontPoppins
                     )
                     Text(
-                        " Desenvolvedor",
+                        "Desenvolvedor",
                         color = white_smoke,
                         fontSize = 40.sp,
                         //fontFamily = fontPoppins,
@@ -159,7 +159,7 @@ fun Home(navController: NavController) {
                     color = white_smoke,
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
-                    // fontFamily = fontPoppins
+                   // fontFamily = fontPoppins
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Image(
@@ -176,7 +176,7 @@ fun Home(navController: NavController) {
         // Texto do "Explorar por Categorias"
         Box(
             Modifier
-                    .fillMaxWidth()
+                .fillMaxWidth()
                 .align(Alignment.CenterHorizontally)
         ) {
             Text(
@@ -185,7 +185,7 @@ fun Home(navController: NavController) {
                     withStyle(
                         style = SpanStyle(
                             fontWeight = FontWeight.Bold, fontSize = 20.sp,
-                            //fontFamily = fontPoppins
+                           // fontFamily = fontPoppins
                         )
                     ) {
                         append("Categorias")
@@ -266,7 +266,10 @@ fun Home(navController: NavController) {
             ContainerEvents(
                 "Horarios disponiveis",
                 "Mentorias de Dev",
-                onClick = { navController.navigate("material") })
+                onClick = {
+                    navController.navigate("mentoria")
+
+                })
             ContainerEvents(
                 "10 Materiais Disponíveis",
                 "Materiais de aula",
@@ -306,8 +309,8 @@ fun Home(navController: NavController) {
                 )
 
                 androidx.compose.material3.Card(
-                    shape = RoundedCornerShape(50.dp),
                     colors = CardDefaults.cardColors(indigo_dye),
+                    shape = androidx.compose.foundation.shape.CircleShape,
                     modifier = Modifier
                         .size(width = 55.dp, height = 56.dp)
                         .fillMaxWidth()
@@ -320,7 +323,7 @@ fun Home(navController: NavController) {
                         modifier = Modifier
                             .fillMaxSize()
                             .border(
-                                7.dp,
+                                5.dp,
                                 uranium_blue,
                                 shape = androidx.compose.foundation.shape.CircleShape
                             )
@@ -385,7 +388,7 @@ fun ContainerEvents(text_subtitulo: String, text_titulo: String, onClick: () -> 
                     text = text_titulo,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
-                    // fontFamily = fontPoppins,
+                  //  fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 2.dp)
@@ -394,7 +397,7 @@ fun ContainerEvents(text_subtitulo: String, text_titulo: String, onClick: () -> 
                     text = text_subtitulo,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    //fontFamily = fontPoppins,
+                   // fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -425,7 +428,7 @@ fun ContentBox(text: String, modifier: Modifier) {
             color = white_smoke,
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
-            // fontFamily = fontPoppins,
+            //fontFamily = fontPoppins,
             modifier = Modifier
                 .align(Alignment.Center)
                 .zIndex(1f)

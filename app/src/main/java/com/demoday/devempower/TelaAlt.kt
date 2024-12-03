@@ -2,6 +2,7 @@ package com.demoday.devempower
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -40,19 +41,23 @@ fun TelaAlt(navController: NavController) {
         uranium_blue, darkIcons = true
     )
 
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        navController.navigate("login") {
-            popUpTo("login") { inclusive = true }
-        }
-    }
+//    LaunchedEffect(Unit) {
+//        delay(splashScreenDuration)
+//        navController.navigate("login") {
+//            popUpTo("login") { inclusive = true }
+//        }
+//    }
 
     Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .background(uranium_blue),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .background(uranium_blue)
+            .clickable {
+                navController.navigate("login")
+            }
+
     ) {
         Text(
             text = "Bem vindo (a) ,",
