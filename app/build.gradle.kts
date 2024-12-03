@@ -63,7 +63,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.foundation.layout.android)
-    implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
