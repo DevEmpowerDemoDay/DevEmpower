@@ -2,6 +2,7 @@ package com.demoday.devempower
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
@@ -40,8 +41,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -192,6 +196,11 @@ fun ComunidadeSplash(navController: NavController) {
 
 @Composable
 fun Comunidade(navController: NavController) {
+    val screenWidth = LocalConfiguration.current.screenWidthDp
+    val paddingValue = (screenWidth * 0.11)
+    val paddingValue1 = (screenWidth * 0.05)
+    val paddingValue2 = (screenWidth * 0.20)
+    val paddingValue3 = (screenWidth * 0.09)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -242,7 +251,7 @@ fun Comunidade(navController: NavController) {
         Card(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .size(width = 360.dp, height = 563.dp)
+                .size(width = 360.dp, height = 512.dp)
                 .clip(RoundedCornerShape(30.dp)),
             colors = CardDefaults.cardColors(containerColor = indigo_dye),
 
@@ -320,13 +329,88 @@ fun Comunidade(navController: NavController) {
 
 
 
-        Spacer(modifier = Modifier.padding(top = 20.dp))
+        Spacer(modifier = Modifier.width(8.dp))
 
-        BottomBar(navController)
+        Spacer(
+            modifier = Modifier
+                .padding(bottom = paddingValue.dp)
+        )
 
 
-    }
-}
+        Box(
+            modifier = Modifier
+                .size(width = 357.dp, height = 66.dp)
+                .background(indigo_dye, shape = RoundedCornerShape(37.94.dp))
+                .border(5.dp, color = Color.Transparent, shape = RoundedCornerShape(50.dp))
+                .fillMaxWidth()
+                .align(alignment = Alignment.CenterHorizontally)
+
+
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                androidx.compose.material3.Card(
+                    shape = RoundedCornerShape(50.dp),
+                    colors = CardDefaults.cardColors(indigo_dye),
+                    modifier = Modifier
+                        .size(width = 55.dp, height = 56.dp)
+                        .fillMaxWidth()
+                        .align(alignment = Alignment.CenterVertically)
+                        .offset(y = (-30).dp)
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .border(
+                                7.dp,
+                                uranium_blue,
+                                shape = androidx.compose.foundation.shape.CircleShape
+                            )
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.comunidade_icon),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .size(26.dp)
+                        )
+                    }
+                }
+                Image(
+                    painter = painterResource(R.drawable.home_icon),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .size(26.dp)
+                        .clickable { navController.navigate("home") }
+                )
+
+                Image(
+                    painter = painterResource(R.drawable.material_icon),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .size(26.dp)
+                        .clickable {
+                            navController.navigate("material")
+                        }
+                )
+
+            }
+            Box(
+                modifier = Modifier
+                    .size(width = 357.dp, height = 66.dp)
+                    .border(5.dp, color = Color.Transparent, shape = RoundedCornerShape(50.dp))
+
+
+            )
+
+        }
+    }}
+
 
 
 @Composable

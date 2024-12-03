@@ -18,12 +18,15 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
@@ -40,11 +43,13 @@ import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -57,6 +62,12 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun Home(navController: NavController) {
+    val screenWidth = LocalConfiguration.current.screenWidthDp
+    val paddingValue = (screenWidth * 0.11)
+    val paddingValue1 = (screenWidth * 0.05)
+    val paddingValue2 = (screenWidth * 0.20)
+    val paddingValue3 = (screenWidth * 0.09)
+
     val systemUiController = rememberSystemUiController()
 
 
@@ -99,15 +110,21 @@ fun Home(navController: NavController) {
                         .clip(RoundedCornerShape(50.dp))
                         .background(white_smoke)
                         .padding(horizontal = 14.dp)
+                        .clickable {
+                            navController.navigate("home")
+                        }
                 )
 
                 Column(verticalArrangement = Arrangement.spacedBy((-15).dp)) {
-                    Text("Bem vindo,", color = white_smoke, fontSize = 15.sp)
+                    Text(
+                        "Bem vindo,", color = white_smoke, fontSize = 15.sp,
+                        //fontFamily = fontPoppins
+                    )
                     Text(
                         " Desenvolvedor",
                         color = white_smoke,
                         fontSize = 40.sp,
-                        fontFamily = fontPoppins,
+                        //fontFamily = fontPoppins,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.align(Alignment.CenterHorizontally),
                         textAlign = TextAlign.Center
@@ -142,7 +159,7 @@ fun Home(navController: NavController) {
                     color = white_smoke,
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
-                    fontFamily = fontPoppins
+                    // fontFamily = fontPoppins
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Image(
@@ -159,7 +176,7 @@ fun Home(navController: NavController) {
         // Texto do "Explorar por Categorias"
         Box(
             Modifier
-                .fillMaxWidth()
+                    .fillMaxWidth()
                 .align(Alignment.CenterHorizontally)
         ) {
             Text(
@@ -167,7 +184,8 @@ fun Home(navController: NavController) {
                     append("Explorar por ")
                     withStyle(
                         style = SpanStyle(
-                            fontWeight = FontWeight.Bold, fontSize = 20.sp, fontFamily = fontPoppins
+                            fontWeight = FontWeight.Bold, fontSize = 20.sp,
+                            //fontFamily = fontPoppins
                         )
                     ) {
                         append("Categorias")
@@ -194,7 +212,7 @@ fun Home(navController: NavController) {
                     )
                     .weight(1f)
                     .padding(horizontal = 5.dp)
-                    .clickable {  navController.navigate("comunidade") }
+                    .clickable { navController.navigate("comunidade") }
             ) {
                 ContentBox(
                     "Comunidade",
@@ -245,118 +263,101 @@ fun Home(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
-            ContainerEvents("Horarios disponiveis","Mentorias de Dev", onClick = {navController.navigate("material")})
-            ContainerEvents("10 Materiais Disponíveis","Materiais de aula", onClick = {navController.navigate("material")})
+            ContainerEvents(
+                "Horarios disponiveis",
+                "Mentorias de Dev",
+                onClick = { navController.navigate("material") })
+            ContainerEvents(
+                "10 Materiais Disponíveis",
+                "Materiais de aula",
+                onClick = { navController.navigate("material") })
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        BottomBar(navController)
-
-    }
-}
-
-@Composable
-fun BottomBar(navController: NavController) {
-    val selectedIndex = remember { mutableIntStateOf(1) }
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        // Elemento de fundo (decorativo)
-        Box(
+        Spacer(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(15.dp)
-                .align(Alignment.Center) // Centralizado dentro do BottomBar
-                .background(indigo_dye, shape = RoundedCornerShape(38.dp))
+                .padding(bottom = paddingValue.dp)
         )
 
-        BottomNavigation(
-            modifier = Modifier.fillMaxSize(),
-            backgroundColor = Color.Transparent,
-            elevation = 0.dp
+
+        Box(
+            modifier = Modifier
+                .size(width = 357.dp, height = 66.dp)
+                .background(indigo_dye, shape = RoundedCornerShape(37.94.dp))
+                .border(5.dp, color = Color.Transparent, shape = RoundedCornerShape(50.dp))
+                .fillMaxWidth()
+                .align(alignment = Alignment.CenterHorizontally)
+
+
         ) {
-            val selectedItem = Modifier
-                .width(30.dp)
-                .height(50.dp)
-                .offset(y = (-20).dp)
-                .padding(horizontal = 40.dp)
-                .border(4.dp, color = uranium_blue, shape = RoundedCornerShape(40.dp))
-                .align(Alignment.CenterVertically)
-                .background(indigo_dye, shape = RoundedCornerShape(30.dp))
+            Row(
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.comunidade_icon),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .size(30.dp)
+                        .clickable {
+                            navController.navigate("comunidade")
+                        }
+                )
 
-            val unselectedItem = Modifier
-                .width(30.dp)
-                .height(50.dp)
-                .padding(horizontal = 40.dp)
-                .align(Alignment.CenterVertically)
+                androidx.compose.material3.Card(
+                    shape = RoundedCornerShape(50.dp),
+                    colors = CardDefaults.cardColors(indigo_dye),
+                    modifier = Modifier
+                        .size(width = 55.dp, height = 56.dp)
+                        .fillMaxWidth()
+                        .align(alignment = Alignment.CenterVertically)
+                        .offset(y = (-30).dp)
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .border(
+                                7.dp,
+                                uranium_blue,
+                                shape = androidx.compose.foundation.shape.CircleShape
+                            )
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.home_icon),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .size(26.dp)
+                        )
+                    }
+                }
+                Image(
+                    painter = painterResource(R.drawable.material_icon),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .size(26.dp)
+                        .clickable {
+                            navController.navigate("material")
+                        }
+                )
 
-            // Primeiro item de navegação
-            BottomNavigationItem(
-                icon = {
-                    BottomIcon(
-                        painterResource(R.drawable.comunidade_icon),
-                        "Ícone da aba de Comunidade, um grupo de pessoas"
-                    )
-                },
-                onClick = {
-                    selectedIndex.intValue = 0 // Define o índice do item selecionado como 0
-                    navController.navigate("comunidade")
-                },
-                selected = selectedIndex.intValue == 0,
-                modifier = if (selectedIndex.intValue == 0) selectedItem else unselectedItem
+            }
+            Box(
+                modifier = Modifier
+                    .size(width = 357.dp, height = 66.dp)
+                    .border(5.dp, color = Color.Transparent, shape = RoundedCornerShape(50.dp))
+
+
             )
 
-            // Segundo item de navegação
-            BottomNavigationItem(
-                icon = {
-                    BottomIcon(
-                        painterResource(R.drawable.home_icon),
-                        "Ícone da aba de Home, Casa"
-                    )
-                },
-                onClick = {
-                    selectedIndex.intValue = 1 // Define o índice do item selecionado como 1
-                    navController.navigate("home")
-                },
-                selected = selectedIndex.intValue == 1,
-                modifier = if (selectedIndex.intValue == 1) selectedItem else unselectedItem
-            )
-
-            // Terceiro item de navegação
-            BottomNavigationItem(
-                icon = {
-                    BottomIcon(
-                        painterResource(R.drawable.material_icon),
-                        "Ícone da aba de Material, quebra-cabeça"
-                    )
-                },
-                onClick = {
-                    selectedIndex.intValue = 2 // Define o índice do item selecionado como 2
-                    navController.navigate("material")
-                },
-                selected = selectedIndex.intValue == 2,
-                modifier = if (selectedIndex.intValue == 2) selectedItem else unselectedItem
-            )
         }
     }
 }
 
-
 @Composable
-fun BottomIcon(painter: Painter, description: String) {
-    val iconSize = 25.dp
-    Icon(
-        painter = painter,
-        contentDescription = description,
-        tint = white_smoke,
-        modifier = Modifier
-            .size(iconSize)
-            .background(indigo_dye)
-    )
-}
-
-@Composable
-fun ContainerEvents(text_subtitulo:String,text_titulo: String,  onClick: () -> Unit) {
+fun ContainerEvents(text_subtitulo: String, text_titulo: String, onClick: () -> Unit) {
 
     Box(
         modifier = Modifier
@@ -384,7 +385,7 @@ fun ContainerEvents(text_subtitulo:String,text_titulo: String,  onClick: () -> U
                     text = text_titulo,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
-                   fontFamily = fontPoppins,
+                    // fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 2.dp)
@@ -393,7 +394,7 @@ fun ContainerEvents(text_subtitulo:String,text_titulo: String,  onClick: () -> U
                     text = text_subtitulo,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                   fontFamily = fontPoppins,
+                    //fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -424,7 +425,7 @@ fun ContentBox(text: String, modifier: Modifier) {
             color = white_smoke,
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
-            fontFamily = fontPoppins,
+            // fontFamily = fontPoppins,
             modifier = Modifier
                 .align(Alignment.Center)
                 .zIndex(1f)
