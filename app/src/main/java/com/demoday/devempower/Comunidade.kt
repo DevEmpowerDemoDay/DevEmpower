@@ -29,8 +29,11 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,14 +53,19 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 
 data class Comentario(
-    val nome: String,
+    val nome : String,
     val comentario: String
 )
 
-var listaDeComentarios: MutableList<Comentario> = mutableStateListOf()
+
+var listaDeComentarios = mutableStateListOf<String>()
+
 
 @Composable
+
 fun ComunidadeSplash(navController: NavController) {
+
+
     val splashScreenDuration = 500L // 500 ms = 0.5 segundos
 
     val systemUiController = rememberSystemUiController()
@@ -190,14 +198,12 @@ fun Comunidade(navController: NavController) {
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
 
-//                CardComentario()
 
-               LazyColumn {
-                   itemsIndexed(listaDeComentarios){
-                       position, _ ->
-                       CardComentario(nome, comentario)
-                   }
-               }
+                LazyColumn {
+                    itemsIndexed(name) { position, _ ->
+                        CardComentario(name = name[position], comment = comment[position])
+                    }
+                }
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
 
@@ -248,8 +254,13 @@ fun Comunidade(navController: NavController) {
     }
 }
 
+
+var name = mutableStateListOf<String>()
+
+var comment = mutableStateListOf<String>()
+
 @Composable
-fun CardComentario(nome: String, comentario: String) {
+fun CardComentario(name: String, comment: String) {
     Spacer(modifier = Modifier.padding(top = 10.dp))
 
     Box(
@@ -271,7 +282,7 @@ fun CardComentario(nome: String, comentario: String) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .padding(top = 10.dp)
-                .fillMaxWidth()
+                    .fillMaxWidth()
 
             ) {
 
@@ -290,7 +301,7 @@ fun CardComentario(nome: String, comentario: String) {
                     Spacer(modifier = Modifier.padding(start = 10.dp))
 
                     Text(
-                        text = nome,
+                        text = name,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium,
                         // fontFamily = fontPoppins,
@@ -300,7 +311,7 @@ fun CardComentario(nome: String, comentario: String) {
                 }
 
                 Text(
-                    text = comentario,
+                    text = comment,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Normal,
                     // fontFamily = fontPoppins,
@@ -318,7 +329,7 @@ fun CardComentario(nome: String, comentario: String) {
 }
 
 @Composable
-fun Camera(navController: NavController) {
+fun Camera( navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -460,62 +471,66 @@ fun Camera(navController: NavController) {
 
         Spacer(modifier = Modifier.padding(top = 10.dp))
 
+//listaDeComentarios.forEach(
+//    content = {
+//        CardComentario(name = name, comment = comment)
+//    }
+//)
 
+        Button(
+            onClick = {
+                navController.navigate("comentario")
+                if (name.isNotEmpty() && comment.isNotEmpty()) {
+                    // Adiciona o comentário à lista
+                    listaDeComentarios.add(
+                        "$nome: $comentario"
+                    )
 
-            Button(
-                onClick = {
-                    navController.navigate("comentario")
-                    if (nome.isNotEmpty() && comentario.isNotEmpty()) {
-                        // Adiciona o comentário à lista
-                        listaDeComentarios.add(
-                            Comentario(nome, comentario)
-                        )
-                    }
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = bright_Violet),
-                modifier = Modifier
-                    .size(width = 156.dp, height = 42.dp),
-                shape = RoundedCornerShape(10.dp),
+                }
+            },
+            colors = ButtonDefaults.buttonColors(containerColor = bright_Violet),
+            modifier = Modifier
+                .size(width = 156.dp, height = 42.dp),
+            shape = RoundedCornerShape(10.dp),
 
-                ) {
-                Text(
-                    "Publicar",
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center,
-                    color = Color.White,
-                )
-
-            }
-
+            ) {
+            Text(
+                "Publicar",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center,
+                color = Color.White,
+            )
 
         }
-    }
 
-
-    @Preview
-    @Composable
-    private fun Preview() {
-        DevEmpowerTheme {
-            ComunidadeSplash(rememberNavController())
-        }
 
     }
+}
 
-    @Preview
-    @Composable
-    private fun ComunidadPreview() {
-        DevEmpowerTheme {
-            Comunidade(rememberNavController())
-        }
 
+@Preview
+@Composable
+private fun Preview() {
+    DevEmpowerTheme {
+        ComunidadeSplash(rememberNavController())
     }
 
-    @Preview
-    @Composable
-    private fun ComunidadePreview() {
-        DevEmpowerTheme {
-            Camera(rememberNavController())
-        }
+}
 
+@Preview
+@Composable
+private fun ComunidadPreview() {
+    DevEmpowerTheme {
+        Comunidade(rememberNavController())
     }
+
+}
+
+@Preview
+@Composable
+private fun ComunidadePreview() {
+    DevEmpowerTheme {
+        Camera(rememberNavController())
+    }
+}

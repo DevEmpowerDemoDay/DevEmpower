@@ -70,11 +70,10 @@ val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 
 // variavel de nome para uso global
 var nome by mutableStateOf("")
+
 //variavel de comentario para uso da comunidade
 var comentario by mutableStateOf("")
 
-var salvar = nome + comentario
-var comunidade = mutableListOf(salvar)
 
 
 class MainActivity : ComponentActivity() {
