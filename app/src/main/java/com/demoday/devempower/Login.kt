@@ -31,12 +31,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
@@ -165,7 +169,7 @@ fun Login(navController: NavController) {
             }
 
             Button(
-                onClick = {navController.navigate("home")}, colors = ButtonDefaults.buttonColors(
+                onClick = { navController.navigate("home") }, colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent
                 ),
 
@@ -319,5 +323,15 @@ fun Login(navController: NavController) {
             }
         }
 
+    }
+
+
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    DevEmpowerTheme {
+        Login(rememberNavController())
     }
 }

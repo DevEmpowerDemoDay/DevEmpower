@@ -658,6 +658,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 .width(300.62.dp)
                                 .align(alignment = Alignment.CenterHorizontally)
                         )
+                        var nome by remember { mutableStateOf("") }
                         OutlinedTextField(
                             value = nome,
                             onValueChange = { newtext -> nome = newtext },
