@@ -56,7 +56,9 @@ import kotlinx.coroutines.delay
 data class Comentario(
     val nome: String,
     val comentario: String
-)
+){
+
+}
 
 var listaDeComentarios: MutableList<Comentario> = mutableStateListOf()
 

@@ -1,8 +1,11 @@
 package com.demoday.devempower
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,12 +36,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun Mentorias(navController: NavController) {
     Column(
@@ -100,37 +103,44 @@ fun Mentores(navController: NavController) {
                     painter = painterResource(id = R.drawable.mentoria_murilo),
                     Text_descricao = "Foto Murilo",
                     Text_nome = "Murilo",
+                    onClick = {navController.navigate("mentoria_confirm")}
                 )
                     Mentores1(
                         painter = painterResource(id = R.drawable.mentoria_andressa),
                         Text_descricao = "Foto Andressa",
                         Text_nome = "Andressa P.",
+                        onClick = {navController.navigate("mentoria_confirm")}
 
                     )
                     Mentores1(
                         painter = painterResource(id = R.drawable.mentoria_anna),
                         Text_descricao = "Foto Anna",
                         Text_nome = "Anna Cristina",
+                        onClick = {navController.navigate("mentoria_confirm")}
                     )
                     Mentores1(
                         painter = painterResource(id = R.drawable.mentoria_maykon),
                         Text_descricao = "Foto Maykon",
                         Text_nome = "Maykon S.",
+                        onClick = {navController.navigate("mentoria_confirm")}
                     )
                     Mentores1(
                         painter = painterResource(id = R.drawable.mentoria_kauan),
                         Text_descricao = "Foto Kauan",
                         Text_nome = "Kauan L.",
+                        onClick = {navController.navigate("mentoria_confirm")}
                     )
                     Mentores1(
                         painter = painterResource(id = R.drawable.mentoria_victor),
                         Text_descricao = "Foto Victor",
                         Text_nome = "Victor de C.",
+                        onClick = {navController.navigate("mentoria_confirm")}
                     )
                     Mentores1(
                         painter = painterResource(id = R.drawable.mentoria_matheus),
                         Text_descricao = "Foto Matheus",
                         Text_nome = "Matheus O.",
+                      onClick = {navController.navigate("mentores1")}
 
                     )
             }}
@@ -139,13 +149,16 @@ fun Mentores(navController: NavController) {
 }
 
 @Composable
-fun Mentores1(Text_nome:String,Text_descricao:String,painter: Painter) {
+fun Mentores1(Text_nome:String,Text_descricao:String,painter: Painter, onClick: () -> Unit) {
 Box(
     modifier = Modifier
         .size(width = 320.dp, height = 181.dp)
         .padding(top = 20.dp)
         .border(3.dp, Color.Transparent, shape = RoundedCornerShape(30.dp))
         .background(indigo_dye.copy(alpha = 0.5f), shape = RoundedCornerShape(30.dp))
+        .clickable {
+onClick()
+        }
 ){
     Box(
         modifier = Modifier
@@ -204,22 +217,25 @@ Row(
 }
 
 @Composable
-fun Confirmação_mentoria(navController: NavController) {
+fun Confirmação_mentoria(navController: NavController,date:String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(uranium_blue)
-    ) {  }
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Text(date,fontSize = 20.sp, color = Color.White)
+        }
+    }
     
 }
 
-@Preview
-@Composable
-private fun Calendario_Preview() {
-    DevEmpowerTheme {
-        Mentorias(rememberNavController())
-    }
-}
+
 
 @Preview
 @Composable
@@ -232,7 +248,7 @@ private fun Mentoria_Preview() {
 @Composable
 private fun MentoriaConfirmação_Preview() {
     DevEmpowerTheme {
-        Confirmação_mentoria(rememberNavController())
+        Confirmação_mentoria(rememberNavController(), date = "")
     }
 }
 
