@@ -83,6 +83,7 @@ fun Login(navController: NavController) {
                 text = "Login",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Medium,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier.padding(top = 20.dp)
 
@@ -101,7 +102,8 @@ fun Login(navController: NavController) {
                     Text(
                         "E-mail ou nome de usuário",
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = fontPoppins
                     )
                 },
                 leadingIcon = {
@@ -122,7 +124,7 @@ fun Login(navController: NavController) {
             OutlinedTextField(
                 value = senha,
                 onValueChange = { newText -> senha = newText },
-                label = { Text("Senha", fontSize = 16.sp, fontWeight = FontWeight.Medium) },
+                label = { Text("Senha", fontSize = 16.sp, fontWeight = FontWeight.Medium, fontFamily = fontPoppins) },
                 leadingIcon = {
                     Image(
                         painter = painterResource(R.drawable.hide_password),
@@ -144,6 +146,7 @@ fun Login(navController: NavController) {
                 color = indigo_dye,
                 textDecoration = TextDecoration.Underline,
                 fontWeight = FontWeight.Medium,
+                fontFamily = fontPoppins,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 45.dp)
@@ -154,7 +157,7 @@ fun Login(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Lembrar de mim", fontSize = 16.sp, color = indigo_dye
+                    "Lembrar de mim", fontSize = 16.sp, color = indigo_dye, fontFamily = fontPoppins
                 )
                 Switch(
                     modifier = Modifier
@@ -185,6 +188,7 @@ fun Login(navController: NavController) {
                     text = "Entrar",
                     color = Color.White,
                     fontSize = 25.sp,
+                    fontFamily = fontPoppins,
                     modifier = Modifier.align(alignment = Alignment.CenterVertically)
 
                 )
@@ -204,6 +208,7 @@ fun Login(navController: NavController) {
                     "OU",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium,
+                    fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier.padding(start = 10.dp, end = 10.dp)
                 )
@@ -218,6 +223,7 @@ fun Login(navController: NavController) {
             Text(
                 "Entrar com contas de redes sociais:",
                 color = indigo_dye,
+                fontFamily = fontPoppins,
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
                     .padding(top = 2.dp)
@@ -276,6 +282,7 @@ fun Login(navController: NavController) {
                             text = "Não tem uma conta?",
                             color = Color.White,
                             fontSize = 14.sp,
+                            fontFamily = fontPoppins,
                             modifier = Modifier.align(alignment = Alignment.CenterVertically)
                         )
                         Text(
@@ -295,12 +302,14 @@ fun Login(navController: NavController) {
                 Row {
                     Text(
                         "Ao continuar, estou de acordo com os",
-                        fontSize = 13.sp
+                        fontSize = 13.sp,
+                        fontFamily = fontPoppins
                     )
                     Spacer(modifier = Modifier.padding(start = 1.dp))
                     Text("Termos de Uso",
                         fontSize = 13.sp,
                         color = indigo_dye,
+                        fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
                             .clickable { })
@@ -309,6 +318,7 @@ fun Login(navController: NavController) {
                     Text(
                         "e com o ",
                         fontSize = 13.sp,
+                        fontFamily = fontPoppins,
                         modifier = Modifier
                             .padding(start = 70.dp)
                     )
@@ -316,6 +326,7 @@ fun Login(navController: NavController) {
                     Text("Aviso de Privacidade ",
                         fontSize = 13.sp,
                         color = indigo_dye,
+                        fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
                             .clickable { })
