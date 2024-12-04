@@ -314,34 +314,53 @@ fun Home(navController: NavController) {
                         }
                 )
 
+                Box(){
+
+                    Image(
+                        painter = painterResource(R.drawable.bottombar),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(85.dp)
+                            .align(Alignment.Center)
+                            .offset(y = (-11).dp)
+                            .offset(x = 0.5.dp)
+                    )
+
                 androidx.compose.material3.Card(
                     colors = CardDefaults.cardColors(indigo_dye),
                     shape = androidx.compose.foundation.shape.CircleShape,
                     modifier = Modifier
                         .size(width = 55.dp, height = 56.dp)
                         .fillMaxWidth()
-                        .align(alignment = Alignment.CenterVertically)
-                        .offset(y = (-30).dp)
+                        .align(alignment = Alignment.Center)
+                        .offset(y = (-22).dp)
+
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier
                             .fillMaxSize()
-                            .border(
-                                5.dp,
-                                uranium_blue,
-                                shape = androidx.compose.foundation.shape.CircleShape
-                            )
+//                            .border(
+//                                5.dp,
+//                                uranium_blue,
+//                                shape = androidx.compose.foundation.shape.CircleShape
+//                            )
                     ) {
-                        Image(
-                            painter = painterResource(R.drawable.home_icon),
-                            contentDescription = "",
-                            modifier = Modifier
-                                .size(26.dp)
-                        )
+
+                            Image(
+                                painter = painterResource(R.drawable.home_icon),
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .size(26.dp)
+                            )
+
+
                     }
                 }
+                }
+
+
                 Image(
                     painter = painterResource(R.drawable.material_icon),
                     contentDescription = "",
