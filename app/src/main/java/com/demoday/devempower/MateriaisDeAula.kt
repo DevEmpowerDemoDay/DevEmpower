@@ -190,7 +190,7 @@ fun Materiais(navController: NavController) {
             }
             Spacer(
                 modifier = Modifier
-                    .padding(top = 75.dp)
+                    .padding(top = paddingValue3.dp)
             )
             Box(
                 modifier = Modifier

@@ -118,8 +118,9 @@ fun Home(navController: NavController) {
 
                 Column() {
                     Text(
-                        "Bem vindo,", color = white_smoke, fontSize = 15.sp,
-                       fontFamily = fontPoppins                 )
+                        "Bem vindo,", color = white_smoke, fontSize = 15.sp
+                      // fontFamily = fontPoppins
+                                )
                     Text(
                         "Desenvolvedor",
                         color = white_smoke,
@@ -192,7 +193,6 @@ fun Home(navController: NavController) {
                 }, color = indigo_dye,
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .padding( 20.dp)
             )
         }
 
@@ -269,23 +269,19 @@ fun Home(navController: NavController) {
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
             ContainerEvents(
-                "Horarios disponiveis",
-                "Mentorias de Dev",
+                "Mentorias Dev",
                 onClick = {
                     navController.navigate("mentoria")
 
                 })
             ContainerEvents(
-                "10 Materiais Disponíveis",
-                "Materiais de aula",
+                "Materiais de Aula",
                 onClick = { navController.navigate("material") })
         }
 
-        Spacer(
-            modifier = Modifier
-                .padding(bottom = paddingValue.dp)
-        )
 
+
+        Spacer(modifier = Modifier.padding(top = paddingValue3.dp))
 
         Box(
             modifier = Modifier
@@ -366,7 +362,7 @@ fun Home(navController: NavController) {
 }
 
 @Composable
-fun ContainerEvents(text_subtitulo: String, text_titulo: String, onClick: () -> Unit) {
+fun ContainerEvents(text_titulo: String, onClick: () -> Unit) {
 
     Box(
         modifier = Modifier
@@ -394,19 +390,10 @@ fun ContainerEvents(text_subtitulo: String, text_titulo: String, onClick: () -> 
                     text = text_titulo,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
-                  //  fontFamily = fontPoppins,
+                    //fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 2.dp)
-                )
-                Text(
-                    text = text_subtitulo,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                   // fontFamily = fontPoppins,
-                    color = indigo_dye,
-                    modifier = Modifier
-                        .padding(start = 10.dp)
                 )
             }
             Image(

@@ -111,7 +111,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                         text = nome1,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium,
-                        // fontFamily = fontPoppins,
+                         fontFamily = fontPoppins,
                         color = pale_hex,
                         textAlign = TextAlign.Center
                     )
@@ -121,7 +121,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                     text = comentario1,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Normal,
-                    // fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = Color.Black,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -251,7 +251,7 @@ fun Comunidade(navController: NavController) {
         Card(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .size(width = 360.dp, height = 550.dp)
+                .size(width = 360.dp, height = 518.dp)
                 .clip(RoundedCornerShape(30.dp)),
             colors = CardDefaults.cardColors(containerColor = indigo_dye),
 
@@ -333,7 +333,7 @@ fun Comunidade(navController: NavController) {
 
         Spacer(
             modifier = Modifier
-                .padding(bottom = paddingValue.dp)
+                .padding(bottom = paddingValue3.dp)
         )
 
 
@@ -470,7 +470,7 @@ fun Camera(navController: NavController) {
             "Lembre-se de Sorrir ",
             fontSize = 23.sp,
             fontWeight = FontWeight.Bold,
-            // fontFamily = fontPoppins,
+            fontFamily = fontPoppins,
             color = pale_hex,
         )
 
@@ -504,7 +504,7 @@ fun Camera(navController: NavController) {
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = indigo_dye,
-                // fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(top = 5.dp)
@@ -536,7 +536,7 @@ fun Camera(navController: NavController) {
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = indigo_dye,
-                // fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(top = 5.dp)
