@@ -24,8 +24,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -100,46 +102,49 @@ fun Materiais(navController: NavController) {
             Box(
                 modifier = Modifier
                     .clip(shape = RoundedCornerShape(19.dp))
-                    .background(pale_sky_blue)
                     .size(width = 375.dp, height = 200.dp)
                     .clickable {
                         navController.navigate("introdução1")
                     }
             ) {
-
+                // Papel de parede como fundo
                 Image(
-                    painter = painterResource(R.drawable.logo_with_text),
-                    contentDescription = "material de aula DevEmpower",
+                    painter = painterResource(id = R.drawable.papel_de_parede_3_),
+                    contentDescription = "Papel de parede",
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
+                )
+
+                // Logo
+                Image(
+                    painter = painterResource(R.drawable.logo_devempower_horizontal),
+                    contentDescription = "Material de aula DevEmpower",
                     modifier = Modifier
-                        .size(width = 297.dp, height = 180.dp)
-                        .fillMaxSize()
+                        .size(width = 350.dp, height = 400.dp)
                         .align(alignment = Alignment.Center)
                 )
 
-
+                // Card de texto
                 Card(
                     colors = CardDefaults.cardColors(indigo_dye),
                     shape = RoundedCornerShape(bottomStart = 19.dp, bottomEnd = 19.dp),
                     modifier = Modifier
                         .size(width = 375.dp, height = 45.dp)
-                        .fillMaxSize()
                         .align(alignment = Alignment.BottomCenter)
-
                 ) {
                     Text(
-                        " Sobre nós",
+                        "Sobre nós",
                         color = white_smoke,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.SemiBold,
-                        // fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 5.dp)
-
                     )
                 }
             }
+
             Row(
                 modifier = Modifier
                     .padding(top = 12.dp)
