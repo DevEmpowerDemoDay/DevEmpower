@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun Materiais(navController: NavController) {
@@ -50,6 +51,20 @@ fun Materiais(navController: NavController) {
     val paddingValue1 = (screenWidth * 0.05)
     val paddingValue2 = (screenWidth * 0.20)
     val paddingValue3 = (screenWidth * 0.09)
+
+
+    val systemUiController = rememberSystemUiController()
+
+
+    // define cores da barra de status e da barra de navegação
+    systemUiController.setStatusBarColor(
+        indigo_dye
+    )
+
+    systemUiController.setNavigationBarColor(
+        uranium_blue, darkIcons = true
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
