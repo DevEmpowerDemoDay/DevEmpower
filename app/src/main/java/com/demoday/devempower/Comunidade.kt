@@ -60,7 +60,6 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 
 
-
 var listaDeComentarios = mutableStateListOf<String>()
 
 var listaDeNomes = mutableStateListOf<String>()
@@ -84,6 +83,31 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
             shape = RoundedCornerShape(10.dp)
         )
         {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(top = 20.dp)
+            ) {
+                Spacer(modifier = Modifier.padding(start = 20.dp))
+
+                Image(
+                    painter = painterResource(id = R.drawable.avatar),
+                    contentDescription = "Avatar",
+                    modifier = Modifier
+                        .size(40.dp)
+                )
+
+                Spacer(modifier = Modifier.padding(start = 10.dp))
+
+                Text(
+                    text = nome1,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = fontPoppins,
+                    color = pale_hex,
+                    textAlign = TextAlign.Center
+                )
+            }
+
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -93,35 +117,11 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
 
             ) {
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Spacer(modifier = Modifier.padding(start = 20.dp))
-
-                    Image(
-                        painter = painterResource(id = R.drawable.avatar),
-                        contentDescription = "Avatar",
-                        modifier = Modifier
-                            .size(30.dp)
-                    )
-
-                    Spacer(modifier = Modifier.padding(start = 10.dp))
-
-                    Text(
-                        text = nome1,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium,
-                        // fontFamily = fontPoppins,
-                        color = pale_hex,
-                        textAlign = TextAlign.Center
-                    )
-                }
-
                 Text(
                     text = comentario1,
-                    fontSize = 13.sp,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    // fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = Color.Black,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -135,64 +135,6 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
     }
 }
 
-@Composable
-fun ComunidadeSplash(navController: NavController) {
-
-
-    val splashScreenDuration = 500L // 500 ms = 0.5 segundos
-
-    val systemUiController = rememberSystemUiController()
-
-    systemUiController.setStatusBarColor(
-        uranium_blue
-    )
-
-    systemUiController.setNavigationBarColor(
-        uranium_blue, darkIcons = true
-    )
-
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        navController.navigate("comentario") {
-            popUpTo("splash") { inclusive = true }
-        }
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = uranium_blue),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            painter = painterResource(R.drawable.logo),
-            contentDescription = "Logo DevEmpower",
-            modifier = Modifier
-                .padding(top = 180.dp)
-                .size(width = 270.dp, height = 185.dp)
-
-        )
-
-        Spacer(modifier = Modifier.padding(top = 10.dp))
-
-        Text(
-            "Comunidade",
-            fontSize = 32.sp,
-            fontWeight = FontWeight.Medium,
-            color = indigo_dye
-        )
-
-
-
-        Image(
-            modifier = Modifier.padding(top = 180.dp),
-            painter = painterResource(R.drawable.logo_proa),
-            contentDescription = "LogoDevEmpower"
-        )
-    }
-
-}
 
 @Composable
 fun Comunidade(navController: NavController) {
@@ -251,7 +193,7 @@ fun Comunidade(navController: NavController) {
         Card(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .size(width = 360.dp, height = 550.dp)
+                .size(width = 360.dp, height = 518.dp)
                 .clip(RoundedCornerShape(30.dp)),
             colors = CardDefaults.cardColors(containerColor = indigo_dye),
 
@@ -270,7 +212,7 @@ fun Comunidade(navController: NavController) {
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                    // fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = Color(0xFFFFAEDFF7)
                 )
 
@@ -333,7 +275,7 @@ fun Comunidade(navController: NavController) {
 
         Spacer(
             modifier = Modifier
-                .padding(bottom = paddingValue.dp)
+                .padding(bottom = paddingValue3.dp)
         )
 
 
@@ -411,8 +353,8 @@ fun Comunidade(navController: NavController) {
             )
 
         }
-    }}
-
+    }
+}
 
 
 @Composable
@@ -470,7 +412,7 @@ fun Camera(navController: NavController) {
             "Lembre-se de Sorrir ",
             fontSize = 23.sp,
             fontWeight = FontWeight.Bold,
-            // fontFamily = fontPoppins,
+            fontFamily = fontPoppins,
             color = pale_hex,
         )
 
@@ -504,7 +446,7 @@ fun Camera(navController: NavController) {
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = indigo_dye,
-                // fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(top = 5.dp)
@@ -536,7 +478,7 @@ fun Camera(navController: NavController) {
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = indigo_dye,
-                // fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(top = 5.dp)
@@ -574,7 +516,7 @@ fun Camera(navController: NavController) {
                     comentario1 = ""
                 }
             },
-            colors = ButtonDefaults.buttonColors(containerColor = bright_Violet),
+            colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
             modifier = Modifier
                 .size(width = 156.dp, height = 42.dp),
             shape = RoundedCornerShape(10.dp),
@@ -597,16 +539,7 @@ fun Camera(navController: NavController) {
 
 @Preview
 @Composable
-private fun Preview() {
-    DevEmpowerTheme {
-        ComunidadeSplash(rememberNavController())
-    }
-
-}
-
-@Preview
-@Composable
-private fun ComunidadPreview() {
+private fun ComuniPreview() {
     DevEmpowerTheme {
         Comunidade(rememberNavController())
     }
@@ -615,8 +548,9 @@ private fun ComunidadPreview() {
 
 @Preview
 @Composable
-private fun ComunidadePreview() {
+private fun ComunidaPreview() {
     DevEmpowerTheme {
         Camera(rememberNavController())
     }
+
 }
