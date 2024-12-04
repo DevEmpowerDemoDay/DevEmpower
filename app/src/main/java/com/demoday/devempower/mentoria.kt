@@ -39,6 +39,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -68,7 +71,17 @@ fun Mentorias(navController: NavController) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
+@Composable
 
+fun parseDateFromString(dateString: String): LocalDate? {
+    return try {
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault())
+        LocalDate.parse(dateString, formatter)
+    } catch (e: Exception) {
+        null
+    }
+}
 @Composable
 fun Mentores(navController: NavController) {
     Column(
@@ -140,7 +153,7 @@ fun Mentores(navController: NavController) {
                         painter = painterResource(id = R.drawable.mentoria_matheus),
                         Text_descricao = "Foto Matheus",
                         Text_nome = "Matheus O.",
-                      onClick = {navController.navigate("mentores1")}
+                      onClick = {}
 
                     )
             }}
@@ -158,6 +171,7 @@ Box(
         .background(indigo_dye.copy(alpha = 0.5f), shape = RoundedCornerShape(30.dp))
         .clickable {
 onClick()
+
         }
 ){
     Box(
@@ -216,8 +230,15 @@ Row(
 }
 }
 
+
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun Confirmação_mentoria(navController: NavController,date:String) {
+fun Confirmação_mentoria(navController: NavController,dateString: String) {
+    val localDate = parseDateFromString(dateString)
+    Text(
+        text = localDate?.toString() ?: "Data inválida",
+        color = Color.Black
+    )
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -229,10 +250,10 @@ fun Confirmação_mentoria(navController: NavController,date:String) {
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Text(date,fontSize = 20.sp, color = Color.White)
+            Text(dateString,fontSize = 20.sp, color = Color.White)
         }
     }
-    
+
 }
 
 
@@ -242,13 +263,6 @@ fun Confirmação_mentoria(navController: NavController,date:String) {
 private fun Mentoria_Preview() {
     DevEmpowerTheme {
         Mentores(rememberNavController())
-    }
-}
-@Preview
-@Composable
-private fun MentoriaConfirmação_Preview() {
-    DevEmpowerTheme {
-        Confirmação_mentoria(rememberNavController(), date = "")
     }
 }
 

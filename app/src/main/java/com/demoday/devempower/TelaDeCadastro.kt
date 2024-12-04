@@ -1,8 +1,10 @@
 package com.demoday.devempower
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -44,10 +46,10 @@ import kotlinx.coroutines.delay
 @Composable
 fun Cadastro(navController: NavController) {
     Column(
-        modifier = Modifier.paint(
-            painter = painterResource(R.drawable.background_color),
-            contentScale = ContentScale.Crop
-        ),
+        modifier = Modifier
+            .background(uranium_blue)
+            .fillMaxSize()
+
     ) {
         Column(
             modifier = Modifier
@@ -64,6 +66,7 @@ fun Cadastro(navController: NavController) {
                 text = "Cadastro",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Medium,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier.padding(top = 20.dp)
 
@@ -77,6 +80,7 @@ fun Cadastro(navController: NavController) {
             )
 
             Spacer(modifier = Modifier.padding(top = 10.dp))
+
 
             Row(
                 modifier = Modifier
@@ -108,6 +112,7 @@ fun Cadastro(navController: NavController) {
                 shape = RoundedCornerShape(7.dp),
                 textStyle = TextStyle(
                     fontSize = 13.sp,
+                    fontFamily = fontPoppins,
                     textAlign = TextAlign.Start
                 ),
                 singleLine = true
@@ -145,6 +150,7 @@ fun Cadastro(navController: NavController) {
                 shape = RoundedCornerShape(7.dp),
                 textStyle = TextStyle(
                     fontSize = 13.sp,
+                    fontFamily = fontPoppins,
                     textAlign = TextAlign.Start
                 ),
                 singleLine = true
@@ -182,6 +188,7 @@ fun Cadastro(navController: NavController) {
                 shape = RoundedCornerShape(7.dp),
                 textStyle = TextStyle(
                     fontSize = 13.sp,
+                    fontFamily = fontPoppins,
                     textAlign = TextAlign.Start
                 ),
                 singleLine = true
@@ -219,6 +226,7 @@ fun Cadastro(navController: NavController) {
                 shape = RoundedCornerShape(7.dp),
                 textStyle = TextStyle(
                     fontSize = 13.sp,
+                    fontFamily = fontPoppins,
                     textAlign = TextAlign.Start
                 ),
                 singleLine = true
@@ -240,7 +248,7 @@ fun Cadastro(navController: NavController) {
                     text = "Cadastrar",
                     color = white_smoke,
                     fontSize = 20.sp,
-                    fontFamily = fontPoppins,
+                     fontFamily = fontPoppins,
                     modifier = Modifier
                         .align(alignment = Alignment.CenterVertically)
                 )
@@ -312,14 +320,14 @@ fun Cadastro(navController: NavController) {
                         text = "Já tem uma conta ?",
                         color = Color.White,
                         fontSize = 14.sp,
-                        fontFamily = fontPoppins,
+                         fontFamily = fontPoppins,
                         modifier = Modifier.align(alignment = Alignment.CenterVertically)
                     )
                     Text(
                         text = "Conecte-se",
                         color = Color.White,
                         fontSize = 14.sp,
-                        fontFamily = fontPoppins,
+                         fontFamily = fontPoppins,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .align(alignment = Alignment.CenterVertically)
@@ -327,9 +335,12 @@ fun Cadastro(navController: NavController) {
                     )
                 }
             }
+
+
         }
     }
 }
+
 
 @Composable
 fun NewCadastro(navController: NavController) {
@@ -347,17 +358,14 @@ fun NewCadastro(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .paint(
-                painter = painterResource(
-                    R.drawable.background_color
-                ),
-                contentScale = ContentScale.Crop
-            )
+            .background(uranium_blue)
     ) {
         androidx.compose.material.Text(
-            "Conta cadastrada\n" +
+            "Conta cadastrada " +
                     "com sucesso!",
             fontSize = 28.sp,
+            textAlign = TextAlign.Center,
+
             fontFamily = fontPoppins,
             fontWeight = FontWeight.SemiBold,
             color = midnight_blue

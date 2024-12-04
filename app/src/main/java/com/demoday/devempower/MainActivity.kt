@@ -137,7 +137,7 @@ fun  Inicio() {
                     composable("camera") { Camera(navController) }
                     composable("mentoria") { Mentorias(navController) }
                     composable("mentores") { Mentores(navController) }
-                    composable("mentores1") { Confirmação_mentoria(navController,date = "") }
+
 
                 }
             }

@@ -72,7 +72,7 @@ fun TelaAlt(navController: NavController) {
 
 
         Text(
-            "Junte-se a nós na jornada de transformação para o " + "mundo da tecnologia. Aqui, você irá desenvolver suas soft " + "skills e se preparar para brilhar no mercado de trackball.",
+            "Junte-se a nós na jornada de transformação para o " + "mundo da tecnologia. Aqui, você irá desenvolver suas soft " + "skills e se preparar para brilhar no mercado de trabalho.",
             fontSize = 14.sp,
             color = indigo_dye,
             fontFamily = fontPoppins,
