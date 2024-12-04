@@ -118,8 +118,7 @@ fun Home(navController: NavController) {
                 Column() {
                     Text(
                         "Bem vindo,", color = white_smoke, fontSize = 15.sp,
-                       // fontFamily = fontPoppins
-                    )
+                       fontFamily = fontPoppins                 )
                     Text(
                         "Desenvolvedor",
                         color = white_smoke,

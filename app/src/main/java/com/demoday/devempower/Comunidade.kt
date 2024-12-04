@@ -270,7 +270,7 @@ fun Comunidade(navController: NavController) {
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                    // fontFamily = fontPoppins,
+                     fontFamily = fontPoppins,
                     color = Color(0xFFFFAEDFF7)
                 )
 
@@ -572,7 +572,7 @@ fun Camera(navController: NavController) {
                     comentario1 = ""
                 }
             },
-            colors = ButtonDefaults.buttonColors(containerColor = bright_Violet),
+                colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
             modifier = Modifier
                 .size(width = 156.dp, height = 42.dp),
             shape = RoundedCornerShape(10.dp),
