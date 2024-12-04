@@ -51,14 +51,15 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Composable
-fun PerfilAtividade(navController: NavController) { val systemUiController = rememberSystemUiController()
+fun PerfilAtividade(navController: NavController) {
+    val systemUiController = rememberSystemUiController()
 
-   systemUiController.setStatusBarColor(
+    systemUiController.setStatusBarColor(
         uranium_blue
     )
-   systemUiController.setNavigationBarColor(
-       uranium_blue, darkIcons = true
-  )
+    systemUiController.setNavigationBarColor(
+        uranium_blue, darkIcons = true
+    )
     Box(
         modifier = Modifier
             .background(uranium_blue)
@@ -154,7 +155,7 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
                                     "Pontuação",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                   // fontFamily = fontPoppins
+                                    // fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -190,7 +191,7 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
                                     "informações",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                  //  fontFamily = fontPoppins
+                                    //  fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -250,7 +251,7 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
-                       // fontFamily = fontPoppins,
+                        // fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -279,7 +280,7 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
                                     "Testes técnicos",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-                                   // fontFamily = fontPoppins
+                                    // fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_testes_tecnicos),
@@ -314,7 +315,7 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
                                     "Live Coding",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-                                  //  fontFamily = fontPoppins
+                                    //  fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_live_coding),
@@ -331,7 +332,7 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
-                      //  fontFamily = fontPoppins,
+                        //  fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -413,13 +414,11 @@ fun PerfilAtividade(navController: NavController) { val systemUiController = rem
 }
 
 
-
 //}
 
 @Composable
 fun PerfilInformaçãoes(navController: NavController) {
-   val systemUiController = rememberSystemUiController()
-    var nome_completo by remember { mutableStateOf("") }
+    val systemUiController = rememberSystemUiController()
     var apelido by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var idade by remember { mutableStateOf("") }
@@ -427,13 +426,13 @@ fun PerfilInformaçãoes(navController: NavController) {
 
 
     // define cores da barra de status e da barra de navegação
-  systemUiController.setStatusBarColor(
+    systemUiController.setStatusBarColor(
         uranium_blue
-   )
+    )
 
-   systemUiController.setNavigationBarColor(
-      uranium_blue, darkIcons = true
-   )
+    systemUiController.setNavigationBarColor(
+        uranium_blue, darkIcons = true
+    )
     Box(
         modifier = Modifier
             .background(uranium_blue)
@@ -454,11 +453,11 @@ fun PerfilInformaçãoes(navController: NavController) {
                 Image(
                     painter = painterResource(R.drawable.return_icon),
                     contentDescription = "botão de voltar",
-                   modifier = Modifier
-                       .offset(x = (-100).dp)
+                    modifier = Modifier
+                        .offset(x = (-100).dp)
                         .size(40.dp)
-                       .clickable { navController.navigate("home") }
-               )
+                        .clickable { navController.navigate("home") }
+                )
 
 
                 Image(
@@ -628,20 +627,28 @@ fun PerfilInformaçãoes(navController: NavController) {
                                     "Atividades",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                   // fontFamily = fontPoppins
+                                    // fontFamily = fontPoppins
                                 )
                             }
                         }
 
                     }
                     Spacer(modifier = Modifier.padding(top = 20.dp))
-                    Image(painter = painterResource(R.drawable.edit_profile_icon),
-                        contentDescription = "Icon que simboliza atualização da foto de perfil",
-                        modifier = Modifier
-                            .size(width = 67.33.dp, height = 65.dp)
-                            .clickable {navController.navigate("personalização")})
+                    Box() {
+                        Image(painter = painterResource(R.drawable.avatar),
+                            contentDescription = "Icon que simboliza atualização da foto de perfil",
+                            modifier = Modifier
+                                .size(width = 67.33.dp, height = 65.dp)
+                                .clickable { navController.navigate("personalização") })
+                        Image(painter = painterResource(R.drawable.atividade_icon),
+                            contentDescription = "Icon que simboliza atualização da foto de perfil",
+                            modifier = Modifier
+                                .offset(x = 50.dp)
+
+                            )
+                    }
                     Text(
-                        "Editar ícone e cores",
+                        "Editar ícones",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
@@ -653,16 +660,17 @@ fun PerfilInformaçãoes(navController: NavController) {
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = indigo_dye,
-                           // fontFamily = fontPoppins,
+                            // fontFamily = fontPoppins,
                             textAlign = TextAlign.Start,
                             modifier = Modifier
                                 .padding(top = 5.dp)
                                 .width(300.62.dp)
                                 .align(alignment = Alignment.CenterHorizontally)
                         )
+                        var nome by remember { mutableStateOf("") }
                         OutlinedTextField(
-                            value = nome_completo,
-                            onValueChange = { newtext -> nome_completo = newtext },
+                            value = nome,
+                            onValueChange = { newtext -> nome = newtext },
                             modifier = Modifier
                                 .width(300.62.dp),
                             textStyle = TextStyle(
@@ -677,7 +685,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = indigo_dye,
-                           // fontFamily = fontPoppins,
+                            // fontFamily = fontPoppins,
                             textAlign = TextAlign.Start,
                             modifier = Modifier
                                 .padding(top = 5.dp)
@@ -702,7 +710,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = indigo_dye,
-                           // fontFamily = fontPoppins,
+                            // fontFamily = fontPoppins,
                             textAlign = TextAlign.Start,
                             modifier = Modifier
                                 .padding(top = 5.dp)
@@ -728,7 +736,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 color = indigo_dye,
-                               // fontFamily = fontPoppins,
+                                // fontFamily = fontPoppins,
                                 textAlign = TextAlign.Start,
                                 modifier = Modifier
                                     .padding(top = 5.dp)
@@ -760,7 +768,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 color = indigo_dye,
-                               // fontFamily = fontPoppins,
+                                // fontFamily = fontPoppins,
                                 textAlign = TextAlign.Start,
                                 modifier = Modifier
                                     .padding(top = 5.dp)
@@ -794,9 +802,9 @@ fun PerfilPontuação(navController: NavController) {
     systemUiController.setStatusBarColor(
         uranium_blue
     )
-   systemUiController.setNavigationBarColor(
-       uranium_blue, darkIcons = true
-   )
+    systemUiController.setNavigationBarColor(
+        uranium_blue, darkIcons = true
+    )
     Box(
         modifier = Modifier
             .background(uranium_blue)
@@ -807,33 +815,33 @@ fun PerfilPontuação(navController: NavController) {
             modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
-                    modifier = Modifier
-                        .padding(top = 60.dp)
-                        .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+                modifier = Modifier
+                    .padding(top = 60.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
             ) {
-            Image(
-                painter = painterResource(R.drawable.return_icon),
-                contentDescription = "botão de voltar",
-                modifier = Modifier
-                    .offset(x = (-100).dp)
-                    .size(40.dp)
-                    .clickable { navController.navigate("home") }
-            )
+                Image(
+                    painter = painterResource(R.drawable.return_icon),
+                    contentDescription = "botão de voltar",
+                    modifier = Modifier
+                        .offset(x = (-100).dp)
+                        .size(40.dp)
+                        .clickable { navController.navigate("home") }
+                )
 
 
-            Image(
-                painter = painterResource(R.drawable.avatar),
-                contentDescription = "Logo",
-                modifier = Modifier
-                    .size(60.dp)
-                    .clip(RoundedCornerShape(50.dp))
-                    .background(white_smoke)
+                Image(
+                    painter = painterResource(R.drawable.avatar),
+                    contentDescription = "Logo",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .clip(RoundedCornerShape(50.dp))
+                        .background(white_smoke)
 
-            )
-            Spacer(modifier = Modifier.padding(start = 40.dp))
-        }
+                )
+                Spacer(modifier = Modifier.padding(start = 40.dp))
+            }
 
             Text(
                 "DevKotlin",
@@ -1071,7 +1079,7 @@ fun PerfilPontuação(navController: NavController) {
                                     textAlign = TextAlign.Center,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                   // fontFamily = fontPoppins
+                                    // fontFamily = fontPoppins
                                 )
 
                             }
@@ -1104,7 +1112,7 @@ fun PerfilPontuação(navController: NavController) {
                                     textAlign = TextAlign.Center,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                   // fontFamily = fontPoppins
+                                    // fontFamily = fontPoppins
                                 )
 
                             }
@@ -1144,7 +1152,7 @@ fun PerfilPontuação(navController: NavController) {
                                     textAlign = TextAlign.Center,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                   // fontFamily = fontPoppins
+                                    // fontFamily = fontPoppins
                                 )
 
 
@@ -1178,7 +1186,7 @@ fun PerfilPontuação(navController: NavController) {
                                     textAlign = TextAlign.Center,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                   // fontFamily = fontPoppins
+                                    // fontFamily = fontPoppins
                                 )
                             }
                         }

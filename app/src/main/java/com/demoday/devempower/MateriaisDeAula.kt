@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -42,6 +43,11 @@ import com.demoday.devempower.ui.theme.DevEmpowerTheme
 
 @Composable
 fun Materiais(navController: NavController) {
+    val screenWidth = LocalConfiguration.current.screenWidthDp
+    val paddingValue = (screenWidth * 0.11)
+    val paddingValue1 = (screenWidth * 0.05)
+    val paddingValue2 = (screenWidth * 0.20)
+    val paddingValue3 = (screenWidth * 0.09)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,7 +64,7 @@ fun Materiais(navController: NavController) {
                 "  Aulas",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                fontFamily = fontPoppins,
+                //fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -70,7 +76,7 @@ fun Materiais(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 18.sp,
                             color = indigo_dye,
-                            fontFamily = fontPoppins
+                            // fontFamily = fontPoppins
                         )
                     ) {
                         append("Assista os vídeos e teste seus conhecimentos com ")
@@ -79,7 +85,7 @@ fun Materiais(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = fontPoppins,
+                            // fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -121,7 +127,7 @@ fun Materiais(navController: NavController) {
                         color = white_smoke,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.SemiBold,
-                        fontFamily = fontPoppins,
+                        // fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -180,8 +186,86 @@ fun Materiais(navController: NavController) {
                     navController
                 )
             }
-            BottomBar(navController)
+            Spacer(
+                modifier = Modifier
+                    .padding(bottom = paddingValue.dp)
+            )
+            Box(
+                modifier = Modifier
+                    .size(width = 357.dp, height = 66.dp)
+                    .background(indigo_dye, shape = RoundedCornerShape(37.94.dp))
+                    .border(5.dp, color = Color.Transparent, shape = RoundedCornerShape(50.dp))
+                    .fillMaxWidth()
+                    .align(alignment = Alignment.CenterHorizontally)
+
+
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.comunidade_icon),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(30.dp)
+                            .clickable {
+                                navController.navigate("comunidade")
+                            }
+                    )
+
+                    Image(
+                        painter = painterResource(R.drawable.home_icon),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(26.dp)
+                            .clickable { navController.navigate("home") }
+                    )
+
+
+                    Card(
+                        shape = RoundedCornerShape(50.dp),
+                        colors = CardDefaults.cardColors(indigo_dye),
+                        modifier = Modifier
+                            .size(width = 55.dp, height = 56.dp)
+                            .fillMaxWidth()
+                            .align(alignment = Alignment.CenterVertically)
+                            .offset(y = (-30).dp)
+                    ) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .border(
+                                    7.dp,
+                                    uranium_blue,
+                                    shape = androidx.compose.foundation.shape.CircleShape
+                                )
+                        ) {
+                            Image(
+                                painter = painterResource(R.drawable.material_icon),
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .size(26.dp)
+                            )
+                        }
+                    }
+
+                }
+                Box(
+                    modifier = Modifier
+                        .size(width = 357.dp, height = 66.dp)
+                        .border(5.dp, color = Color.Transparent, shape = RoundedCornerShape(50.dp))
+
+
+                )
+
+            }
         }
+
     }
 
 
@@ -229,7 +313,7 @@ fun Botões_Materiais(
                     color = white_smoke,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
-                    fontFamily = fontPoppins,
+                    // fontFamily = fontPoppins,
                     textAlign = TextAlign.Center
                 )
 
@@ -239,7 +323,7 @@ fun Botões_Materiais(
                     color = white_smoke,
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold,
-                    fontFamily = fontPoppins,
+                    // fontFamily = fontPoppins,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .offset(y = (-5).dp)
