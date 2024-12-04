@@ -121,7 +121,6 @@ fun  Inicio() {
                     composable("perfil2") { PerfilInformaçãoes(navController) }
                     composable("perfil3") { PerfilPontuação(navController) }
                     composable("material") { Materiais(navController) }
-                    composable("comunidade") { ComunidadeSplash(navController) }
                     composable("comentario") { Comunidade(navController) }
                     composable("introdução1") { IntroduçãoAula1(navController) }
                     composable("introdução2") { IntroduçãoAula2(navController) }

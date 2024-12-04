@@ -60,7 +60,6 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 
 
-
 var listaDeComentarios = mutableStateListOf<String>()
 
 var listaDeNomes = mutableStateListOf<String>()
@@ -84,6 +83,31 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
             shape = RoundedCornerShape(10.dp)
         )
         {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(top = 20.dp)
+            ) {
+                Spacer(modifier = Modifier.padding(start = 20.dp))
+
+                Image(
+                    painter = painterResource(id = R.drawable.avatar),
+                    contentDescription = "Avatar",
+                    modifier = Modifier
+                        .size(40.dp)
+                )
+
+                Spacer(modifier = Modifier.padding(start = 10.dp))
+
+                Text(
+                    text = nome1,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Medium,
+                   // fontFamily = fontPoppins,
+                    color = pale_hex,
+                    textAlign = TextAlign.Center
+                )
+            }
+
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -93,35 +117,11 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
 
             ) {
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Spacer(modifier = Modifier.padding(start = 20.dp))
-
-                    Image(
-                        painter = painterResource(id = R.drawable.avatar),
-                        contentDescription = "Avatar",
-                        modifier = Modifier
-                            .size(30.dp)
-                    )
-
-                    Spacer(modifier = Modifier.padding(start = 10.dp))
-
-                    Text(
-                        text = nome1,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium,
-                         fontFamily = fontPoppins,
-                        color = pale_hex,
-                        textAlign = TextAlign.Center
-                    )
-                }
-
                 Text(
                     text = comentario1,
-                    fontSize = 13.sp,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    fontFamily = fontPoppins,
+                   //fontFamily = fontPoppins,
                     color = Color.Black,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -135,64 +135,6 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
     }
 }
 
-@Composable
-fun ComunidadeSplash(navController: NavController) {
-
-
-    val splashScreenDuration = 500L // 500 ms = 0.5 segundos
-
-    val systemUiController = rememberSystemUiController()
-
-    systemUiController.setStatusBarColor(
-        uranium_blue
-    )
-
-    systemUiController.setNavigationBarColor(
-        uranium_blue, darkIcons = true
-    )
-
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        navController.navigate("comentario") {
-            popUpTo("splash") { inclusive = true }
-        }
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = uranium_blue),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            painter = painterResource(R.drawable.logo),
-            contentDescription = "Logo DevEmpower",
-            modifier = Modifier
-                .padding(top = 180.dp)
-                .size(width = 270.dp, height = 185.dp)
-
-        )
-
-        Spacer(modifier = Modifier.padding(top = 10.dp))
-
-        Text(
-            "Comunidade",
-            fontSize = 32.sp,
-            fontWeight = FontWeight.Medium,
-            color = indigo_dye
-        )
-
-
-
-        Image(
-            modifier = Modifier.padding(top = 180.dp),
-            painter = painterResource(R.drawable.logo_proa),
-            contentDescription = "LogoDevEmpower"
-        )
-    }
-
-}
 
 @Composable
 fun Comunidade(navController: NavController) {
@@ -270,7 +212,7 @@ fun Comunidade(navController: NavController) {
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                     fontFamily = fontPoppins,
+                   // fontFamily = fontPoppins,
                     color = Color(0xFFFFAEDFF7)
                 )
 
@@ -353,25 +295,35 @@ fun Comunidade(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
+                Box( ){
+
+                    Image(
+                        painter = painterResource(R.drawable.bottombar),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(85.dp)
+                            .offset(y = (-11).dp)
+                            .offset(x = (-10).dp)
+                    )
                 androidx.compose.material3.Card(
                     shape = RoundedCornerShape(50.dp),
                     colors = CardDefaults.cardColors(indigo_dye),
                     modifier = Modifier
                         .size(width = 55.dp, height = 56.dp)
                         .fillMaxWidth()
-                        .align(alignment = Alignment.CenterVertically)
-                        .offset(y = (-30).dp)
+                        .offset(y = (-18).dp)
+                        .offset(x = 5.dp)
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier
                             .fillMaxSize()
-                            .border(
-                                5.dp,
-                                uranium_blue,
-                                shape = androidx.compose.foundation.shape.CircleShape
-                            )
+//                            .border(
+//                                5.dp,
+//                                uranium_blue,
+//                                shape = androidx.compose.foundation.shape.CircleShape
+//                            )
                     ) {
                         Image(
                             painter = painterResource(R.drawable.comunidade_icon),
@@ -381,12 +333,13 @@ fun Comunidade(navController: NavController) {
                         )
                     }
                 }
+                }
                 Image(
                     painter = painterResource(R.drawable.home_icon),
                     contentDescription = "",
                     modifier = Modifier
                         .size(26.dp)
-                        .offset(x = (-15).dp)
+                        .offset(x = (-25).dp)
                         .clickable { navController.navigate("home") }
                 )
 
@@ -394,6 +347,7 @@ fun Comunidade(navController: NavController) {
                     painter = painterResource(R.drawable.material_icon),
                     contentDescription = "",
                     modifier = Modifier
+                        .offset(x = (-5).dp)
                         .size(26.dp)
                         .clickable {
                             navController.navigate("material")
@@ -411,8 +365,8 @@ fun Comunidade(navController: NavController) {
             )
 
         }
-    }}
-
+    }
+}
 
 
 @Composable
@@ -574,7 +528,7 @@ fun Camera(navController: NavController) {
                     comentario1 = ""
                 }
             },
-                colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
+            colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
             modifier = Modifier
                 .size(width = 156.dp, height = 42.dp),
             shape = RoundedCornerShape(10.dp),
@@ -597,16 +551,7 @@ fun Camera(navController: NavController) {
 
 @Preview
 @Composable
-private fun Preview() {
-    DevEmpowerTheme {
-        ComunidadeSplash(rememberNavController())
-    }
-
-}
-
-@Preview
-@Composable
-private fun ComunidadPreview() {
+private fun ComuniPreview() {
     DevEmpowerTheme {
         Comunidade(rememberNavController())
     }
@@ -615,8 +560,9 @@ private fun ComunidadPreview() {
 
 @Preview
 @Composable
-private fun ComunidadePreview() {
+private fun ComunidaPreview() {
     DevEmpowerTheme {
         Camera(rememberNavController())
     }
+
 }

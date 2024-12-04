@@ -94,7 +94,9 @@ fun Materiais(navController: NavController) {
                     }
                 }
             )
+
             Spacer(modifier = Modifier.padding(top = 20.dp))
+
             Box(
                 modifier = Modifier
                     .clip(shape = RoundedCornerShape(19.dp))
@@ -192,6 +194,7 @@ fun Materiais(navController: NavController) {
                 modifier = Modifier
                     .padding(top = paddingValue3.dp)
             )
+
             Box(
                 modifier = Modifier
                     .size(width = 357.dp, height = 66.dp)
@@ -203,11 +206,16 @@ fun Materiais(navController: NavController) {
 
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .fillMaxWidth()
+                        .align(Alignment.Center)
                 ) {
+                    Spacer(
+                        modifier = Modifier
+                            .padding(18.dp)
+                    )
                     Image(
                         painter = painterResource(R.drawable.comunidade_icon),
                         contentDescription = "",
@@ -216,6 +224,10 @@ fun Materiais(navController: NavController) {
                             .clickable {
                                 navController.navigate("comunidade")
                             }
+                    )
+                    Spacer(
+                        modifier = Modifier
+                            .padding(30.dp)
                     )
 
                     Image(
@@ -226,38 +238,59 @@ fun Materiais(navController: NavController) {
                             .size(26.dp)
                             .clickable { navController.navigate("home") }
                     )
-
-
-                    Card(
-                        shape = RoundedCornerShape(50.dp),
-                        colors = CardDefaults.cardColors(indigo_dye),
+                    Spacer(
                         modifier = Modifier
-                            .size(width = 55.dp, height = 56.dp)
-                            .fillMaxWidth()
-                            .align(alignment = Alignment.CenterVertically)
-                            .offset(y = (-30).dp)
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
+                            .padding(30.dp)
+                    )
+
+                    Box( ){
+
+                        Image(
+                            painter = painterResource(R.drawable.bottombar),
+                            contentDescription = "",
                             modifier = Modifier
-                                .fillMaxSize()
-                                .border(
-                                    5.dp,
-                                    uranium_blue,
-                                    shape = androidx.compose.foundation.shape.CircleShape
-                                )
+                                .size(85.dp)
+                                .offset(y = (-11).dp)
+                        )
+
+                        androidx.compose.material3.Card(
+                            colors = CardDefaults.cardColors(indigo_dye),
+                            shape = androidx.compose.foundation.shape.CircleShape,
+                            modifier = Modifier
+                                .size(width = 55.dp, height = 56.dp)
+                                .fillMaxWidth()
+                                .align(alignment = Alignment.Center)
+                                .offset(y = (-22).dp)
+
                         ) {
-                            Image(
-                                painter = painterResource(R.drawable.material_icon),
-                                contentDescription = "",
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center,
                                 modifier = Modifier
-                                    .size(26.dp)
-                            )
+                                    .fillMaxSize()
+
+//                            .border(
+//                                5.dp,
+//                                uranium_blue,
+//                                shape = androidx.compose.foundation.shape.CircleShape
+//                            )
+                            ) {
+
+                                Image(
+                                    painter = painterResource(R.drawable.material_icon),
+                                    contentDescription = "",
+                                    modifier = Modifier
+                                        .size(26.dp)
+                                )
+
+
+                            }
                         }
-                    }
+
 
                 }
+                }
+
                 Box(
                     modifier = Modifier
                         .size(width = 357.dp, height = 66.dp)
@@ -265,6 +298,7 @@ fun Materiais(navController: NavController) {
 
 
                 )
+
 
             }
         }
