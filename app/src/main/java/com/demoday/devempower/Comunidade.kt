@@ -102,7 +102,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                     text = nome1,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Medium,
-                    fontFamily = fontPoppins,
+                   // fontFamily = fontPoppins,
                     color = pale_hex,
                     textAlign = TextAlign.Center
                 )
@@ -121,7 +121,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                     text = comentario1,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    fontFamily = fontPoppins,
+                   //fontFamily = fontPoppins,
                     color = Color.Black,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -212,7 +212,7 @@ fun Comunidade(navController: NavController) {
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                    fontFamily = fontPoppins,
+                   // fontFamily = fontPoppins,
                     color = Color(0xFFFFAEDFF7)
                 )
 
@@ -295,25 +295,35 @@ fun Comunidade(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
+                Box( ){
+
+                    Image(
+                        painter = painterResource(R.drawable.bottombar),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(85.dp)
+                            .offset(y = (-11).dp)
+                            .offset(x = (-10).dp)
+                    )
                 androidx.compose.material3.Card(
                     shape = RoundedCornerShape(50.dp),
                     colors = CardDefaults.cardColors(indigo_dye),
                     modifier = Modifier
                         .size(width = 55.dp, height = 56.dp)
                         .fillMaxWidth()
-                        .align(alignment = Alignment.CenterVertically)
-                        .offset(y = (-30).dp)
+                        .offset(y = (-18).dp)
+                        .offset(x = 5.dp)
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier
                             .fillMaxSize()
-                            .border(
-                                5.dp,
-                                uranium_blue,
-                                shape = androidx.compose.foundation.shape.CircleShape
-                            )
+//                            .border(
+//                                5.dp,
+//                                uranium_blue,
+//                                shape = androidx.compose.foundation.shape.CircleShape
+//                            )
                     ) {
                         Image(
                             painter = painterResource(R.drawable.comunidade_icon),
@@ -323,12 +333,13 @@ fun Comunidade(navController: NavController) {
                         )
                     }
                 }
+                }
                 Image(
                     painter = painterResource(R.drawable.home_icon),
                     contentDescription = "",
                     modifier = Modifier
                         .size(26.dp)
-                        .offset(x = (-15).dp)
+                        .offset(x = (-25).dp)
                         .clickable { navController.navigate("home") }
                 )
 
@@ -336,6 +347,7 @@ fun Comunidade(navController: NavController) {
                     painter = painterResource(R.drawable.material_icon),
                     contentDescription = "",
                     modifier = Modifier
+                        .offset(x = (-5).dp)
                         .size(26.dp)
                         .clickable {
                             navController.navigate("material")
