@@ -243,7 +243,7 @@ fun Materiais(navController: NavController) {
                             modifier = Modifier
                                 .fillMaxSize()
                                 .border(
-                                    7.dp,
+                                    5.dp,
                                     uranium_blue,
                                     shape = androidx.compose.foundation.shape.CircleShape
                                 )
