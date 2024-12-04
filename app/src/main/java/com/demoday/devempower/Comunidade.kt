@@ -251,7 +251,7 @@ fun Comunidade(navController: NavController) {
         Card(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .size(width = 360.dp, height = 512.dp)
+                .size(width = 360.dp, height = 550.dp)
                 .clip(RoundedCornerShape(30.dp)),
             colors = CardDefaults.cardColors(containerColor = indigo_dye),
 
@@ -299,14 +299,14 @@ fun Comunidade(navController: NavController) {
         Button(
             onClick = { navController.navigate("camera") },
             modifier = Modifier
-                .size(width = 320.dp, height = 40.dp),
+                .size(width = 320.dp, height = 50.dp),
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(containerColor = indigo_dye)
         ) {
             Row {
                 Text(
                     "Fazer uma postagem ",
-                    fontSize = 14.sp,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
                     color = Color.White,
                     modifier = Modifier.padding(top = 2.dp)
@@ -318,7 +318,7 @@ fun Comunidade(navController: NavController) {
                     painter = painterResource(id = R.drawable.arrow_blue),
                     contentDescription = "Enviar",
                     modifier = Modifier
-                        .size(22.dp)
+                        .size(25.dp)
                         .offset(x = 20.dp),
                     colorFilter = ColorFilter.tint(Color.White)
                 )
@@ -386,6 +386,7 @@ fun Comunidade(navController: NavController) {
                     contentDescription = "",
                     modifier = Modifier
                         .size(26.dp)
+                        .offset(x = (-15).dp)
                         .clickable { navController.navigate("home") }
                 )
 
@@ -402,6 +403,7 @@ fun Comunidade(navController: NavController) {
             }
             Box(
                 modifier = Modifier
+                    .align(Alignment.BottomCenter)
                     .size(width = 357.dp, height = 66.dp)
                     .border(5.dp, color = Color.Transparent, shape = RoundedCornerShape(50.dp))
 

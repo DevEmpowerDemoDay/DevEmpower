@@ -9,6 +9,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -139,10 +140,9 @@ fun Home(navController: NavController) {
             onClick = { navController.navigate("perfil1") },
             modifier = Modifier
                 .width(200.dp)
-                .height(40.dp)
+                .height(50.dp)
                 .offset(y = (-20).dp)
                 .clip(RoundedCornerShape(8.dp))
-                .background(bright_blue)
                 .align(Alignment.CenterHorizontally),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = bright_blue, contentColor = white_smoke
@@ -160,13 +160,13 @@ fun Home(navController: NavController) {
                     fontSize = 20.sp,
                    // fontFamily = fontPoppins
                 )
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.padding(start = 6.dp))
                 Image(
                     painter = painterResource(R.drawable.icon),
                     contentDescription = "Icon",
                     modifier = Modifier
+                        .size(25.dp)
                         .fillMaxSize()
-                        .offset(y = 2.dp)
                         .align(Alignment.CenterVertically)
                 )
             }
@@ -183,13 +183,16 @@ fun Home(navController: NavController) {
                     append("Explorar por ")
                     withStyle(
                         style = SpanStyle(
-                            fontWeight = FontWeight.Bold, fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold, fontSize = 25.sp,
                            // fontFamily = fontPoppins
                         )
                     ) {
                         append("Categorias")
                     }
-                }, color = indigo_dye, modifier = Modifier.align(Alignment.Center)
+                }, color = indigo_dye,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding( 20.dp)
             )
         }
 
@@ -230,6 +233,9 @@ fun Home(navController: NavController) {
 
             Box(
                 modifier = Modifier
+                    .clickable {
+                        navController.navigate("home")
+                    }
                     .width(150.dp)
                     .height(150.dp)
                     .padding(10.dp)
@@ -348,6 +354,7 @@ fun Home(navController: NavController) {
             }
             Box(
                 modifier = Modifier
+                    .align(Alignment.BottomCenter)
                     .size(width = 357.dp, height = 66.dp)
                     .border(5.dp, color = Color.Transparent, shape = RoundedCornerShape(50.dp))
 
