@@ -65,8 +65,9 @@ val indigo_dye = Color(0xFF005377)
 val bright_blue = Color(0xFF009ADD)
 val pale_sky_blue = Color(0xFFD2EAF6)
 val pale_hex = Color(0xFF03022C)
-val bright_Violet = Color(0xFFFF6135FF)
-val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
+
+val fontPoppins = FontFamily(Font(R.font.poppins_regular, FontWeight.Normal), Font(R.font.poppins_bold, FontWeight.Bold))
+
 
 // variavel de nome para uso global
 var nome1 by mutableStateOf("")
