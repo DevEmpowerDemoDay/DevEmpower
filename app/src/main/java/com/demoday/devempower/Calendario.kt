@@ -3,14 +3,8 @@ package com.demoday.devempower
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.animate
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.TextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DatePicker
@@ -26,18 +20,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.flow.collectLatest
 
 
-import androidx.compose.runtime.*
-import androidx.compose.material3.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 
 import java.time.Instant
-import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -48,9 +36,11 @@ class Calendario {
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     fun calendarioDisponivel(navController: NavController) {
-        var openDatePicker by remember { mutableStateOf(false) }
-        var date by remember { mutableStateOf("") }
 
+
+        var openDatePicker by remember { mutableStateOf(false) }
+        var data by remember { mutableStateOf("") } // Variável para armazenar a data selecionada
+        date = data
         // Usando LaunchedEffect para disparar a ação de abrir o calendário automaticamente
         LaunchedEffect(Unit) {
             openDatePicker = true
@@ -59,23 +49,24 @@ class Calendario {
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
+            // Exibindo a data selecionada
             if (date.isNotEmpty()) {
                 Text(text = "Data selecionada: $date", color = Color.Black)
             }
 
+            // Estado do DatePicker
             val state = rememberDatePickerState()
 
             AnimatedVisibility(visible = openDatePicker) {
                 DatePickerDialog(
-                    onDismissRequest = {
-                        openDatePicker = false
-                    },
+                    onDismissRequest = { openDatePicker = false }, // Fecha o dialog quando descartado
                     confirmButton = {
                         Button(
                             colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
                             onClick = {
                                 val selectedMillis = state.selectedDateMillis
-                                date = if (selectedMillis != null) {
+                                // Atualiza a variável 'date' com a data selecionada
+                                data = if (selectedMillis != null) {
                                     // Convertendo milissegundos para LocalDate
                                     val localDate = Instant.ofEpochMilli(selectedMillis)
                                         .atZone(ZoneId.systemDefault())
@@ -85,8 +76,8 @@ class Calendario {
                                 } else {
                                     ""
                                 }
-                                openDatePicker = false
-                                navController.navigate("mentores")
+                                openDatePicker = false // Fecha o DatePicker
+                                navController.navigate("mentores") // Navega para a tela "mentores"
                             }
                         ) {
                             Text("Confirmar")
@@ -97,14 +88,14 @@ class Calendario {
                             colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
                             onClick = {
                                 openDatePicker = false
-                                navController.navigate("home")
+                                navController.navigate("home") // Navega para a tela "home" caso o usuário cancele
                             }
                         ) {
                             Text("Cancelar")
                         }
                     }
                 ) {
-                    DatePicker(state = state)
+                    DatePicker(state = state) // Exibe o DatePicker
                 }
             }
         }

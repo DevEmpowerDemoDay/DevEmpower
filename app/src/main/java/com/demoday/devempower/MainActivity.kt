@@ -54,6 +54,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import kotlinx.coroutines.delay
+import java.time.LocalDate
 
 
 val uranium_blue = Color(0xFFAEDFF7)
@@ -73,6 +74,7 @@ var nome1 by mutableStateOf("")
 
 //variavel de comentario para uso da comunidade
 var comentario1 by mutableStateOf("")
+var date by mutableStateOf("")
 
 
 class MainActivity : ComponentActivity() {
@@ -135,7 +137,8 @@ fun  Inicio() {
                     composable("aprovação_quizz") { Aprovação_Quizz(navController) }
                     composable("camera") { Camera(navController) }
                     composable("mentoria") { Mentorias(navController) }
-                    composable("mentores") { Mentores(navController) }
+                    composable("mentores") { Mentores(navController,date = "") }
+                    composable("mentoria_confirmação") { Confirmação_mentoria(navController)}
 
 
                 }

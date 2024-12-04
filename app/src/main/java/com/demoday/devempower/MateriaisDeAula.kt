@@ -242,7 +242,7 @@ fun Materiais(navController: NavController) {
                         modifier = Modifier
                             .size(30.dp)
                             .clickable {
-                                navController.navigate("comunidade")
+                                navController.navigate("comentario")
                             }
                     )
                     Spacer(
