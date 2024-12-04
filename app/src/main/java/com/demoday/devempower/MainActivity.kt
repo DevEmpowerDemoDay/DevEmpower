@@ -68,18 +68,11 @@ val pale_hex = Color(0xFF03022C)
 val bright_Violet = Color(0xFFFF6135FF)
 val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 
-data class ComentarioCard(
-    var nome: String,
-    var comentario: String,
-    var salvar: String
-)
-
 // variavel de nome para uso global
-var nome by mutableStateOf("Maykon")
+var nome1 by mutableStateOf("")
+
 //variavel de comentario para uso da comunidade
-var comentario by mutableStateOf("Ola bom dia ")
-
-
+var comentario1 by mutableStateOf("")
 
 
 class MainActivity : ComponentActivity() {
@@ -114,7 +107,7 @@ fun  Inicio() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                NavHost(navController = navController, startDestination = "home") {
+                NavHost(navController = navController, startDestination = "splash") {
                     composable("splash") { Splash(navController) }
                     composable("home") { Home(navController) }
                     composable("telaalt") { TelaAlt(navController) }
@@ -144,6 +137,7 @@ fun  Inicio() {
                     composable("camera") { Camera(navController) }
                     composable("mentoria") { Mentorias(navController) }
                     composable("mentores") { Mentores(navController) }
+
 
                 }
             }

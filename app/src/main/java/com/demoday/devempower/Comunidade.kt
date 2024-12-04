@@ -4,9 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,25 +20,31 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -52,10 +60,85 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 
 
-var listaDeComentarios: MutableList<ComentarioCard> = mutableStateListOf()
+
+var listaDeComentarios = mutableStateListOf<String>()
+
+var listaDeNomes = mutableStateListOf<String>()
+
+
+@Composable
+fun CardComentario(nome1: String = "", comentario1: String = "") {
+    Spacer(modifier = Modifier.padding(top = 10.dp))
+
+    Box(
+        modifier = Modifier
+            .width(346.dp)
+            .wrapContentHeight(),// aumenta automaticamente a altura para o conteúdo
+        contentAlignment = Alignment.Center,
+    ) {
+        Card(
+            modifier = Modifier
+                .width(346.dp)
+                .wrapContentHeight(),// aumenta automaticamente a altura para o conteúdo
+            colors = CardDefaults.cardColors(containerColor = pale_sky_blue),
+            shape = RoundedCornerShape(10.dp)
+        )
+        {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .fillMaxWidth()
+
+            ) {
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Spacer(modifier = Modifier.padding(start = 20.dp))
+
+                    Image(
+                        painter = painterResource(id = R.drawable.avatar),
+                        contentDescription = "Avatar",
+                        modifier = Modifier
+                            .size(30.dp)
+                    )
+
+                    Spacer(modifier = Modifier.padding(start = 10.dp))
+
+                    Text(
+                        text = nome1,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium,
+                        // fontFamily = fontPoppins,
+                        color = pale_hex,
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+                Text(
+                    text = comentario1,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal,
+                    // fontFamily = fontPoppins,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 10.dp)
+                        .padding(15.dp)
+                )
+
+            }
+
+
+        }
+    }
+}
 
 @Composable
 fun ComunidadeSplash(navController: NavController) {
+
+
     val splashScreenDuration = 500L // 500 ms = 0.5 segundos
 
     val systemUiController = rememberSystemUiController()
@@ -100,6 +183,8 @@ fun ComunidadeSplash(navController: NavController) {
             color = indigo_dye
         )
 
+
+
         Image(
             modifier = Modifier.padding(top = 180.dp),
             painter = painterResource(R.drawable.logo_proa),
@@ -116,14 +201,6 @@ fun Comunidade(navController: NavController) {
     val paddingValue1 = (screenWidth * 0.05)
     val paddingValue2 = (screenWidth * 0.20)
     val paddingValue3 = (screenWidth * 0.09)
-
-    data class Cardsave(
-        val nome: String,
-        val comentario: String
-    )
-
-    var comunidade = mutableListOf<Cardsave>()
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -199,14 +276,17 @@ fun Comunidade(navController: NavController) {
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
 
-                LazyColumn {
-                    itemsIndexed(comunidade) { position, _ ->
-                        CardComentario()
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    for (i in listaDeComentarios.indices) {
+                        var nome1 = listaDeNomes[i]
+                        var comentario1 = listaDeComentarios[i]
+                        CardComentario(nome1 = nome1, comentario1 = comentario1)
+
                     }
                 }
-
-                CardComentario()
-                CardComentario()
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
 
@@ -216,50 +296,34 @@ fun Comunidade(navController: NavController) {
 
         Spacer(modifier = Modifier.padding(top = 10.dp))
 
-        OutlinedTextField(
-            value = comentario,
-            onValueChange = { novoTexto ->
-                comentario = novoTexto
-            },
-            label = {
+        Button(
+            onClick = { navController.navigate("camera") },
+            modifier = Modifier
+                .size(width = 320.dp, height = 40.dp),
+            shape = RoundedCornerShape(10.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = indigo_dye)
+        ) {
+            Row {
                 Text(
                     "Fazer uma postagem ",
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
-                    // fontFamily = fontPoppins,
+                    color = Color.White,
+                    modifier = Modifier.padding(top = 2.dp)
                 )
-            },
-            leadingIcon = {
+
+                Spacer(modifier = Modifier.padding(start = 10.dp))
+
                 Image(
                     painter = painterResource(id = R.drawable.arrow_blue),
-                    contentDescription = "Ícone do campo de texto",
+                    contentDescription = "Enviar",
                     modifier = Modifier
-                        .size(27.dp)
-                        .offset(x = 300.dp)
-                        .clickable {
-                            if (nome.isNotEmpty() && comentario.isNotEmpty()) {
-                                comunidade.add(Cardsave(nome, comentario))
-                            }
-                        }
+                        .size(22.dp)
+                        .offset(x = 20.dp),
+                    colorFilter = ColorFilter.tint(Color.White)
                 )
-            },
-            modifier = Modifier
-                .width(360.62.dp)
-                .height(70.dp),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = indigo_dye,
-                unfocusedBorderColor = indigo_dye,
-                unfocusedContainerColor = Color.White,
-                focusedContainerColor = Color.White
-            ),
-            shape = RoundedCornerShape(15.dp),
-            textStyle = TextStyle(
-                fontSize = 13.sp,
-                textAlign = TextAlign.Start
-            ),
-            singleLine = true
-        )
-
+            }
+        }
 
 
 
@@ -345,89 +409,12 @@ fun Comunidade(navController: NavController) {
             )
 
         }
-    }
-}
-
-
-@Composable
-fun CardComentario() {
-    Spacer(modifier = Modifier.padding(top = 10.dp))
-
-    Box(
-        modifier = Modifier
-            .width(346.dp)
-            .wrapContentHeight(),// aumenta automaticamente a altura para o conteúdo
-        contentAlignment = Alignment.Center,
-    ) {
-        Card(
-            modifier = Modifier
-                .width(346.dp)
-                .wrapContentHeight(),// aumenta automaticamente a altura para o conteúdo
-            colors = CardDefaults.cardColors(containerColor = pale_sky_blue),
-            shape = RoundedCornerShape(10.dp)
-        )
-        {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .padding(top = 10.dp)
-                    .fillMaxWidth()
-
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Spacer(modifier = Modifier.padding(start = 20.dp))
-
-                    Image(
-                        painter = painterResource(id = R.drawable.avatar),
-                        contentDescription = "Avatar",
-                        modifier = Modifier
-                            .size(30.dp)
-                    )
-
-                    Spacer(modifier = Modifier.padding(start = 10.dp))
-
-                    Text(
-                        text = nome,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium,
-                        // fontFamily = fontPoppins,
-                        color = pale_hex,
-                        textAlign = TextAlign.Center
-                    )
-                }
-
-                Text(
-                    text = comentario,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Normal,
-                    // fontFamily = fontPoppins,
-                    color = Color.Black,
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .padding(15.dp)
-                )
-
-            }
-
-
-        }
-    }
-}
-
-
-var nome_coment by mutableStateOf("")
-
-var comentario_coment by mutableStateOf("")
+    }}
 
 
 
 @Composable
 fun Camera(navController: NavController) {
-
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -525,8 +512,8 @@ fun Camera(navController: NavController) {
             Spacer(modifier = Modifier.padding(top = 5.dp))
 
             OutlinedTextField(
-                value = nome_coment,
-                onValueChange = { newtext -> nome_coment = newtext },
+                value = nome1,
+                onValueChange = { newtext -> nome1 = newtext },
                 modifier = Modifier
                     .width(300.62.dp),
                 textStyle = TextStyle(
@@ -535,6 +522,7 @@ fun Camera(navController: NavController) {
                 singleLine = true
             )
         }
+
 
         Spacer(modifier = Modifier.padding(top = 20.dp))
 
@@ -556,11 +544,10 @@ fun Camera(navController: NavController) {
             Spacer(modifier = Modifier.padding(top = 8.dp))
 
             OutlinedTextField(
-                value = comentario_coment,
-                onValueChange = { newtext -> comentario_coment = newtext },
+                value = comentario1,
+                onValueChange = { newtext -> comentario1 = newtext },
                 modifier = Modifier
-                    .width(300.62.dp)
-                    .wrapContentHeight(),
+                    .width(300.62.dp),
                 textStyle = TextStyle(
                     fontSize = 18.sp, textAlign = TextAlign.Start
                 ),
@@ -570,37 +557,40 @@ fun Camera(navController: NavController) {
 
         Spacer(modifier = Modifier.padding(top = 10.dp))
 
+        Button(
+            onClick = {
+                navController.navigate("comentario")
+                if (nome1.isNotEmpty() && comentario1.isNotEmpty()) {
+                    // Adiciona o comentário à lista
+                    listaDeComentarios.add(
+                        "$comentario1"
+                    )
+                    listaDeNomes.add(
+                        "$nome1"
+                    )
+                    nome1 = ""
+                    comentario1 = ""
+                }
+            },
+            colors = ButtonDefaults.buttonColors(containerColor = bright_Violet),
+            modifier = Modifier
+                .size(width = 156.dp, height = 42.dp),
+            shape = RoundedCornerShape(10.dp),
 
-//        Button(
-//            onClick = {
-//                navController.navigate("comentario")
-//                if (nome_coment.isNotEmpty() && comentario_coment.isNotEmpty()) {
-//                    // Adiciona o comentário como um par (nome, comentário)
-//                    comunidade.add(Pair(nome_coment, comentario_coment))
-//                    // Limpa os campos de entrada após adicionar
-//                    nome_coment = ""
-//                    comentario_coment = ""
-//                }
-////            },
-//            colors = ButtonDefaults.buttonColors(containerColor = bright_Violet),
-//            modifier = Modifier
-//                .size(width = 156.dp, height = 42.dp),
-//            shape = RoundedCornerShape(10.dp),
-//
-//            ) {
-//            Text(
-//                "Publicar",
-//                fontSize = 15.sp,
-//                fontWeight = FontWeight.Medium,
-//                textAlign = TextAlign.Center,
-//                color = Color.White,
-//            )
-//
-//        }
-//
-//    }
-//}
-    }}
+            ) {
+            Text(
+                "Publicar",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center,
+                color = Color.White,
+            )
+
+        }
+
+
+    }
+}
 
 
 @Preview
@@ -609,6 +599,7 @@ private fun Preview() {
     DevEmpowerTheme {
         ComunidadeSplash(rememberNavController())
     }
+
 }
 
 @Preview
@@ -617,6 +608,7 @@ private fun ComunidadPreview() {
     DevEmpowerTheme {
         Comunidade(rememberNavController())
     }
+
 }
 
 @Preview
