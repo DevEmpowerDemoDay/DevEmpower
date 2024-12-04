@@ -317,7 +317,7 @@ fun Home(navController: NavController) {
                         modifier = Modifier
                             .size(85.dp)
                             .align(Alignment.Center)
-                            .offset(y = (-11).dp)
+                            .offset(y = (-10).dp)
                             .offset(x = 0.5.dp)
                     )
 

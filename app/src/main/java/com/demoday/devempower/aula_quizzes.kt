@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -57,6 +60,8 @@ import kotlin.math.round
 var condition = false
 val correto = Color(0xFF00440C)
 val errado = Color(0xFF670000)
+var corbotao_false = white_smoke
+var corbotao_true = white_smoke
 var corborda = correto
 var certoouerradocor = correto
 var certoouerrado = ""
@@ -116,14 +121,17 @@ fun timer(navController: NavController) {
 
 @Composable
 fun card_feedback() {
-    Card(
-        colors = CardDefaults.cardColors(indigo_dye,),
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(end = 10.dp, start = 10.dp)
-            .size(width = 370.dp, height = 185.dp)
-            .clip(shape = RoundedCornerShape(30.dp))
-            .border(5.dp, color = corborda, shape = RoundedCornerShape(30.dp))
+    ) {Card(
+        colors = CardDefaults.cardColors(white_smoke) ,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(end = 10.dp, start = 10.dp, top = 20.dp)
+            .width(329.dp)
+            .wrapContentHeight()
+            .clip(shape = RoundedCornerShape(25.dp))
 
 
     ) {
@@ -131,33 +139,33 @@ fun card_feedback() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxSize()
+
         ) {
             Text( certoouerrado,
-                fontSize = 17.sp,
+                fontSize = 24.sp,
                 color = certoouerradocor,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
                 fontFamily = fontPoppins,
                 modifier = Modifier
-                    .fillMaxWidth()
-                   .padding(start = 5.dp,end = 5.dp)
+                    .padding(start = 20.dp, end = 20.dp)
             )
             Text(
                 texto,
                 fontSize = 19.sp,
-                color = white_smoke,
+                color = indigo_dye,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
                 fontFamily = fontPoppins,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 10.dp)
+
 
             )
         }
     }
 
-}
+}}
 @Composable
 fun Quizz_Pergunta1(navController: NavController) {
     val context = LocalContext.current
@@ -235,6 +243,8 @@ fun Quizz_Pergunta1(navController: NavController) {
                     texto = feedbackcorreto1
                     certoouerrado = "Resposta Correta!"
                     certoouerradocor = correto
+                        corbotao_true =  correto.copy(alpha = 0.5f)
+                    corbotao_false = white_smoke
                 },
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -264,6 +274,8 @@ fun Quizz_Pergunta1(navController: NavController) {
                     texto = feedbackerrado1
                     certoouerrado = "Resposta Incorreta!"
                     certoouerradocor = errado
+                    corbotao_false =  errado.copy(alpha = 0.5f)
+                    corbotao_true = white_smoke
                 },
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -297,18 +309,19 @@ fun Quizz_Correção1(navController: NavController) {
     val paddingValue = (screenWidth * 0.12)
     val splashScreenDuration = 7000L
 
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        condition = true
-        navController.navigate("quizz3") {
-            popUpTo("quizz2") { inclusive = true }
-        }
-    }
+//    LaunchedEffect(Unit) {
+//        delay(splashScreenDuration)
+//        condition = true
+//        navController.navigate("quizz3") {
+//            popUpTo("quizz2") { inclusive = true }
+//        }
+//    }
 
     Column(
         modifier = Modifier
             .background(uranium_blue)
             .fillMaxSize()
+            .clickable { navController.navigate("quizz3") }
     ) {
 
         Column(
@@ -367,7 +380,7 @@ fun Quizz_Correção1(navController: NavController) {
             )
 
             Button(
-                colors = ButtonDefaults.buttonColors(indigo_dye),
+                colors = ButtonDefaults.buttonColors(corbotao_true),
                 onClick = {},
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -394,7 +407,7 @@ fun Quizz_Correção1(navController: NavController) {
             }
             Spacer(modifier = Modifier.padding(paddingValue1.dp))
             Button(
-                colors = ButtonDefaults.buttonColors(indigo_dye),
+                colors = ButtonDefaults.buttonColors(corbotao_false),
                 onClick = {},
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -496,8 +509,10 @@ fun Quizz_Pergunta2(navController: NavController) {
                     condition = false
                     corborda = errado
                     texto = feedbackerrado2
-                    certoouerrado = "Resposta Inorreta!"
+                    certoouerrado = "Resposta Incorreta!"
                     certoouerradocor = errado
+                    corbotao_true = errado.copy(alpha = 0.5f)
+                    corbotao_false = white_smoke
                 },
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -527,6 +542,9 @@ fun Quizz_Pergunta2(navController: NavController) {
                     texto = feedbackcorreto2
                     certoouerrado = "Resposta Correta!"
                     certoouerradocor = correto
+                    corbotao_false = correto.copy(alpha = 0.5f)
+                    corbotao_true = white_smoke
+
                 },
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -558,18 +576,19 @@ fun Quizz_Correção2(navController: NavController) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val paddingValue = (screenWidth * 0.12)
     val splashScreenDuration = 7000L
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        condition = true
-        navController.navigate("quizz5") {
-            popUpTo("quizz4") { inclusive = true }
-        }
-    }
+//    LaunchedEffect(Unit) {
+//        delay(splashScreenDuration)
+//        condition = true
+//        navController.navigate("quizz5") {
+//            popUpTo("quizz4") { inclusive = true }
+//        }
+//    }
 
     Column(
         modifier = Modifier
             .background(uranium_blue)
             .fillMaxSize()
+            .clickable { navController.navigate("quizz5") }
     ) {
 
         Column(
@@ -627,7 +646,7 @@ fun Quizz_Correção2(navController: NavController) {
             )
 
             Button(
-                colors = ButtonDefaults.buttonColors(indigo_dye),
+                colors = ButtonDefaults.buttonColors(corbotao_true),
                 onClick = {},
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -654,7 +673,7 @@ fun Quizz_Correção2(navController: NavController) {
             }
             Spacer(modifier = Modifier.padding(paddingValue1.dp))
             Button(
-                colors = ButtonDefaults.buttonColors(indigo_dye),
+                colors = ButtonDefaults.buttonColors(corbotao_false),
                 onClick = {},
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -757,6 +776,8 @@ fun Quizz_Pergunta3(navController: NavController) {
                     texto = feedbackerrado3
                     certoouerrado = "Resposta Incorreta!"
                     certoouerradocor = errado
+                    corbotao_true = errado.copy(alpha = 0.5f)
+                    corbotao_false = white_smoke
 
                 },
                 modifier = Modifier
@@ -787,6 +808,9 @@ fun Quizz_Pergunta3(navController: NavController) {
                     texto = feedbackcorreto3
                     certoouerrado = "Resposta Correta!"
                     certoouerradocor = correto
+                    corbotao_false = correto.copy(alpha = 0.5f)
+                    corbotao_true = white_smoke
+
 
                 },
                 modifier = Modifier
@@ -819,17 +843,18 @@ fun Quizz_Correção3(navController: NavController) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val paddingValue = (screenWidth * 0.12)
     val splashScreenDuration = 7000L
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        condition = true
-        navController.navigate("aprovação_quizz") {
-            popUpTo("quizz6") { inclusive = true }
-        }
-    }
+//    LaunchedEffect(Unit) {
+//        delay(splashScreenDuration)
+//        condition = true
+//        navController.navigate("aprovação_quizz") {
+//            popUpTo("quizz6") { inclusive = true }
+//        }
+//    }
     Column(
         modifier = Modifier
             .background(uranium_blue)
             .fillMaxSize()
+            .clickable { navController.navigate("aprovação_quizz") }
     ) {
 
         Column(
@@ -887,7 +912,7 @@ fun Quizz_Correção3(navController: NavController) {
             )
 
             Button(
-                colors = ButtonDefaults.buttonColors(indigo_dye),
+                colors = ButtonDefaults.buttonColors(corbotao_true),
                 onClick = {},
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
@@ -914,7 +939,7 @@ fun Quizz_Correção3(navController: NavController) {
             }
             Spacer(modifier = Modifier.padding(paddingValue1.dp))
             Button(
-                colors = ButtonDefaults.buttonColors(indigo_dye),
+                colors = ButtonDefaults.buttonColors(corbotao_false),
                 onClick = {},
                 modifier = Modifier
                     .size(width = 280.dp, height = 80.dp)
