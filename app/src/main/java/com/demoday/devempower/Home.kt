@@ -214,7 +214,7 @@ fun Home(navController: NavController) {
                     )
                     .weight(1f)
                     .padding(horizontal = 5.dp)
-                    .clickable { navController.navigate("comunidade") }
+                    .clickable { navController.navigate("comentario") }
             ) {
                 ContentBox(
                     "Comunidade",
@@ -305,7 +305,7 @@ fun Home(navController: NavController) {
                     modifier = Modifier
                         .size(30.dp)
                         .clickable {
-                            navController.navigate("comunidade")
+                            navController.navigate("comentario")
                         }
                 )
 
