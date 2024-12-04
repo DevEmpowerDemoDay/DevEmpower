@@ -65,7 +65,7 @@ fun Materiais(navController: NavController) {
                 "  Aulas",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -79,7 +79,7 @@ fun Materiais(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 18.sp,
                             color = indigo_dye,
-                            // fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("Assista os vídeos e teste seus conhecimentos com ")
@@ -88,7 +88,7 @@ fun Materiais(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            // fontFamily = fontPoppins,
+                             fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -355,7 +355,7 @@ fun Botões_Materiais(
                     color = white_smoke,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
-                    // fontFamily = fontPoppins,
+                     fontFamily = fontPoppins,
                     textAlign = TextAlign.Center
                 )
 
@@ -365,7 +365,7 @@ fun Botões_Materiais(
                     color = white_smoke,
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold,
-                    // fontFamily = fontPoppins,
+                     fontFamily = fontPoppins,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .offset(y = (-5).dp)

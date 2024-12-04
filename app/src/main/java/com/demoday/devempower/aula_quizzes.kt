@@ -106,7 +106,7 @@ fun timer(navController: NavController) {
             Text(
                 seconds.toString(),
                 color = white_smoke,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontSize = 30.sp
             )
         }
@@ -138,7 +138,7 @@ fun card_feedback() {
                 color = certoouerradocor,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 modifier = Modifier
                     .fillMaxWidth()
                    .padding(start = 5.dp,end = 5.dp)
@@ -149,7 +149,7 @@ fun card_feedback() {
                 color = white_smoke,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 modifier = Modifier
                     .fillMaxWidth()
 
@@ -200,7 +200,7 @@ fun Quizz_Pergunta1(navController: NavController) {
                 "Questão 1 de 3",
                 textAlign = TextAlign.Start,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontSize = 18.sp,
                 style = TextStyle(color = corText),
                 modifier = Modifier
@@ -215,7 +215,7 @@ fun Quizz_Pergunta1(navController: NavController) {
                         "a melhorarem suas soft skills",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -249,7 +249,7 @@ fun Quizz_Pergunta1(navController: NavController) {
                         "True",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -278,7 +278,7 @@ fun Quizz_Pergunta1(navController: NavController) {
                         "False",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -340,7 +340,7 @@ fun Quizz_Correção1(navController: NavController) {
                 "Questão 1 de 3",
                 textAlign = TextAlign.Start,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontSize = 18.sp,
                 style = TextStyle(color = corText),
                 modifier = Modifier
@@ -355,7 +355,7 @@ fun Quizz_Correção1(navController: NavController) {
                         "a melhorarem suas soft skills",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -385,7 +385,7 @@ fun Quizz_Correção1(navController: NavController) {
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = correto,
-                        //fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         style = TextStyle(corText)
 
                     )
@@ -410,7 +410,7 @@ fun Quizz_Correção1(navController: NavController) {
                         fontSize = 32.sp,
                         color = errado,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -463,7 +463,7 @@ fun Quizz_Pergunta2(navController: NavController) {
                 "Questão 2 de 3",
                 textAlign = TextAlign.Start,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontSize = 18.sp,
                 style = TextStyle(color = corText),
                 modifier = Modifier
@@ -478,7 +478,7 @@ fun Quizz_Pergunta2(navController: NavController) {
                         "da DevEmpower.",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -512,7 +512,7 @@ fun Quizz_Pergunta2(navController: NavController) {
                         "True",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -541,7 +541,7 @@ fun Quizz_Pergunta2(navController: NavController) {
                         "False",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -600,7 +600,7 @@ fun Quizz_Correção2(navController: NavController) {
                 "Questão 2 de 3",
                 textAlign = TextAlign.Start,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontSize = 18.sp,
                 style = TextStyle(color = corText),
                 modifier = Modifier
@@ -615,7 +615,7 @@ fun Quizz_Correção2(navController: NavController) {
                         "da DevEmpower.",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -645,7 +645,7 @@ fun Quizz_Correção2(navController: NavController) {
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = errado,
-                        //fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         style = TextStyle(corText)
 
                     )
@@ -670,7 +670,7 @@ fun Quizz_Correção2(navController: NavController) {
                         fontSize = 32.sp,
                         color = correto,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -722,7 +722,7 @@ fun Quizz_Pergunta3(navController: NavController) {
                 "Questão 3 de 3",
                 textAlign = TextAlign.Start,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontSize = 18.sp,
                 style = TextStyle(color = corText),
                 modifier = Modifier
@@ -737,7 +737,7 @@ fun Quizz_Pergunta3(navController: NavController) {
                         "não oferece mentorias ou quizzes interativos.",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -772,7 +772,7 @@ fun Quizz_Pergunta3(navController: NavController) {
                         "True",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -802,7 +802,7 @@ fun Quizz_Pergunta3(navController: NavController) {
                         "False",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -860,7 +860,7 @@ fun Quizz_Correção3(navController: NavController) {
                 "Questão 3 de 3",
                 textAlign = TextAlign.Start,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontSize = 18.sp,
                 style = TextStyle(color = corText),
                 modifier = Modifier
@@ -875,7 +875,7 @@ fun Quizz_Correção3(navController: NavController) {
                         "não oferece mentorias ou quizzes interativos.",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -905,7 +905,7 @@ fun Quizz_Correção3(navController: NavController) {
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = errado,
-                        //fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         style = TextStyle(corText)
 
                     )
@@ -930,7 +930,7 @@ fun Quizz_Correção3(navController: NavController) {
                         fontSize = 32.sp,
                         color = correto,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
 
                     )
                 }
@@ -970,7 +970,7 @@ fun Aprovação_Quizz(navController: NavController) {
                     "PARABÉNS",
                     fontSize = 40.sp,
                     fontWeight = FontWeight.Bold,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = indigo_dye
                 )
                 Image(
@@ -994,7 +994,7 @@ fun Aprovação_Quizz(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 24.sp,
                             color = indigo_dye,
-                            //fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("Você ")
@@ -1003,7 +1003,7 @@ fun Aprovação_Quizz(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -1012,7 +1012,7 @@ fun Aprovação_Quizz(navController: NavController) {
                     withStyle(
                         style = SpanStyle(
                             fontSize = 24.sp,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -1022,7 +1022,7 @@ fun Aprovação_Quizz(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -1031,7 +1031,7 @@ fun Aprovação_Quizz(navController: NavController) {
                     withStyle(
                         style = SpanStyle(
                             fontSize = 24.sp,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -1062,7 +1062,7 @@ fun Aprovação_Quizz(navController: NavController) {
                         "Finalizar",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.Bold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
                     )
                 }
             }
