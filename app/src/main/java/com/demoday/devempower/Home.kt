@@ -184,11 +184,11 @@ fun Home(navController: NavController) {
                     append("Explorar por ")
                     withStyle(
                         style = SpanStyle(
-                            fontWeight = FontWeight.Bold, fontSize = 25.sp,
+                            fontWeight = FontWeight.Bold, fontSize = 22.sp,
                             fontFamily = fontPoppins
                         )
                     ) {
-                        append("Categorias")
+                        append("Categorias",)
                     }
                 }, color = indigo_dye,
                 modifier = Modifier
@@ -407,7 +407,7 @@ fun ContainerEvents(text_titulo: String, onClick: () -> Unit) {
 
                 Text(
                     text = text_titulo,
-                    fontSize = 22.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = fontPoppins,
                     color = indigo_dye,

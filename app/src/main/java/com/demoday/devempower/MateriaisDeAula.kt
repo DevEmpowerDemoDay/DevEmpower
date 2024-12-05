@@ -78,7 +78,7 @@ fun Materiais(navController: NavController) {
         ) {
             Text(
                 "  Aulas",
-                fontSize = 23.sp,
+                fontSize = 21.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = fontPoppins,
                 color = indigo_dye,
@@ -92,7 +92,7 @@ fun Materiais(navController: NavController) {
                 text = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 16.sp,
+                            fontSize = 15.sp,
                             color = indigo_dye,
                              fontFamily = fontPoppins
                         )
@@ -101,7 +101,7 @@ fun Materiais(navController: NavController) {
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 16.sp,
+                            fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = fontPoppins,
                             color = indigo_dye
@@ -150,7 +150,7 @@ fun Materiais(navController: NavController) {
                     Text(
                         "Sobre nós",
                         color = white_smoke,
-                        fontSize = 22.sp,
+                        fontSize = 21.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
