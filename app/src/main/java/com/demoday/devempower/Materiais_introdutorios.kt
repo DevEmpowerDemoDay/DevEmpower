@@ -265,7 +265,7 @@ fun IntroduçãoAula2(navController: NavController) {
                         color = white_smoke,
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Medium,
-                        fontFamily = fontPoppins,
+                         fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
 
                         )
@@ -455,7 +455,7 @@ fun IntroduçãoAula3(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = fontPoppins,
+                             fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {

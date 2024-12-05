@@ -102,7 +102,7 @@ fun PerfilAtividade(navController: NavController) {
                 color = indigo_dye,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Medium,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 modifier = Modifier.padding(10.dp)
             )
 
@@ -154,7 +154,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Pontuação",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                    // fontFamily = fontPoppins
+                                     fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -190,7 +190,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "informações",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                    //  fontFamily = fontPoppins
+                                     fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -238,7 +238,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Atividades",
                                     color = white_smoke,
                                     fontSize = 13.sp,
-                                    //fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -250,7 +250,7 @@ fun PerfilAtividade(navController: NavController) {
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
-                        // fontFamily = fontPoppins,
+                         fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -279,7 +279,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Testes técnicos",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-                                    // fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_testes_tecnicos),
@@ -314,7 +314,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Live Coding",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-                                    //  fontFamily = fontPoppins
+                                     fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_live_coding),
@@ -331,7 +331,7 @@ fun PerfilAtividade(navController: NavController) {
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
-                        //  fontFamily = fontPoppins,
+                         fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -361,7 +361,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Oratória",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-                                    //fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_100_),
@@ -395,7 +395,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Pitch perfeito",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-//                                    fontFamily = fontPoppins
+                              fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_100_),
@@ -476,7 +476,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                 color = indigo_dye,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Medium,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 modifier = Modifier.padding(10.dp)
             )
 
@@ -531,7 +531,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                     "Pontuação",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-//                                    fontFamily = fontPoppins
+                  fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -578,7 +578,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                     "Informações",
                                     color = white_smoke,
                                     fontSize = 13.sp,
-                                    //fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -626,7 +626,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                     "Atividades",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                    // fontFamily = fontPoppins
+                                     fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -651,7 +651,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
                     )
                     Column {
                         Text(
@@ -659,7 +659,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = indigo_dye,
-                            // fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             textAlign = TextAlign.Start,
                             modifier = Modifier
                                 .padding(top = 5.dp)
@@ -684,7 +684,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = indigo_dye,
-                            // fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             textAlign = TextAlign.Start,
                             modifier = Modifier
                                 .padding(top = 5.dp)
@@ -709,7 +709,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = indigo_dye,
-                            // fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             textAlign = TextAlign.Start,
                             modifier = Modifier
                                 .padding(top = 5.dp)
@@ -735,7 +735,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 color = indigo_dye,
-                                // fontFamily = fontPoppins,
+                                 fontFamily = fontPoppins,
                                 textAlign = TextAlign.Start,
                                 modifier = Modifier
                                     .padding(top = 5.dp)
@@ -767,7 +767,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 color = indigo_dye,
-                                // fontFamily = fontPoppins,
+                                 fontFamily = fontPoppins,
                                 textAlign = TextAlign.Start,
                                 modifier = Modifier
                                     .padding(top = 5.dp)
@@ -847,7 +847,7 @@ fun PerfilPontuação(navController: NavController) {
                 color = indigo_dye,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Medium,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 modifier = Modifier.padding(10.dp)
             )
 
@@ -913,7 +913,7 @@ fun PerfilPontuação(navController: NavController) {
                                     "Pontuação",
                                     color = white_smoke,
                                     fontSize = 13.sp,
-                                    //fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -960,7 +960,7 @@ fun PerfilPontuação(navController: NavController) {
                                     "Informações",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                    //fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -1008,7 +1008,7 @@ fun PerfilPontuação(navController: NavController) {
                                     "Atividades",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                    //fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -1028,14 +1028,14 @@ fun PerfilPontuação(navController: NavController) {
                         color = midnight_blue,
                         fontSize = 32.sp,
                         fontWeight = FontWeight.Medium,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
                     )
                     Text(
                         "590",
                         color = indigo_dye,
                         fontSize = 36.sp,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
                     )
                     Image(
                         painter = painterResource(R.drawable.progress_bar_pontuacao),
@@ -1046,7 +1046,7 @@ fun PerfilPontuação(navController: NavController) {
                         color = indigo_dye,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
-                        //fontFamily = fontPoppins
+                        fontFamily = fontPoppins
                     )
                     Row(
                         horizontalArrangement = Arrangement.Center,
@@ -1078,7 +1078,7 @@ fun PerfilPontuação(navController: NavController) {
                                     textAlign = TextAlign.Center,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    // fontFamily = fontPoppins
+                                     fontFamily = fontPoppins
                                 )
 
                             }
@@ -1111,7 +1111,7 @@ fun PerfilPontuação(navController: NavController) {
                                     textAlign = TextAlign.Center,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    // fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
 
                             }
@@ -1151,7 +1151,7 @@ fun PerfilPontuação(navController: NavController) {
                                     textAlign = TextAlign.Center,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    // fontFamily = fontPoppins
+                                     fontFamily = fontPoppins
                                 )
 
 
@@ -1185,7 +1185,7 @@ fun PerfilPontuação(navController: NavController) {
                                     textAlign = TextAlign.Center,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    // fontFamily = fontPoppins
+                                     fontFamily = fontPoppins
                                 )
                             }
                         }

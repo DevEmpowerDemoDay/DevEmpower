@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,18 +19,16 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,9 +36,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -64,6 +58,7 @@ fun Mentorias(navController: NavController) {
                     .size(width = 370.dp, height = 690.dp)
                     .border(3.dp, indigo_dye, shape = RoundedCornerShape(50.dp))
             ) {
+                var date = remember { mutableStateOf("") }
                 val calendario = Calendario()
                 calendario.calendarioDisponivel(navController)
             }
@@ -71,19 +66,9 @@ fun Mentorias(navController: NavController) {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
-@Composable
 
-fun parseDateFromString(dateString: String): LocalDate? {
-    return try {
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault())
-        LocalDate.parse(dateString, formatter)
-    } catch (e: Exception) {
-        null
-    }
-}
 @Composable
-fun Mentores(navController: NavController) {
+fun Mentores(navController: NavController,date:String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -116,7 +101,7 @@ fun Mentores(navController: NavController) {
                     painter = painterResource(id = R.drawable.mentoria_murilo),
                     Text_descricao = "Foto Murilo",
                     Text_nome = "Murilo",
-                    onClick = {navController.navigate("mentoria_confirm")}
+                    onClick = {navController.navigate("mentoria_confirmação")}
                 )
                     Mentores1(
                         painter = painterResource(id = R.drawable.mentoria_andressa),
@@ -220,7 +205,7 @@ Row(
                     "9:00",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Medium,
-                    //fontFamily = fontPoppins,
+                  //  fontFamily = fontPoppins,
                     color = Color.White,
                 )
             }
@@ -233,10 +218,12 @@ Row(
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun Confirmação_mentoria(navController: NavController,dateString: String) {
-    val localDate = parseDateFromString(dateString)
+fun Confirmação_mentoria(navController: NavController) {
     Text(
-        text = localDate?.toString() ?: "Data inválida",
+        text = "mentoria confirmada",
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Medium,
+       // fontFamily = fontPoppins,
         color = Color.Black
     )
     Column(
@@ -250,7 +237,8 @@ fun Confirmação_mentoria(navController: NavController,dateString: String) {
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Text(dateString,fontSize = 20.sp, color = Color.White)
+            Text("data: $date",fontSize = 20.sp, color = Color.Black, //fontFamily = fontPoppins
+         )
         }
     }
 
@@ -258,11 +246,22 @@ fun Confirmação_mentoria(navController: NavController,dateString: String) {
 
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
 private fun Mentoria_Preview() {
     DevEmpowerTheme {
-        Mentores(rememberNavController())
+        Mentores(rememberNavController(), date = "")
     }
 }
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview
+@Composable
+private fun Mentoria_Preview1() {
+    DevEmpowerTheme {
+        Confirmação_mentoria(rememberNavController())
+    }
+}
+
+
 

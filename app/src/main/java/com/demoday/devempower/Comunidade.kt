@@ -102,7 +102,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                     text = nome1,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Medium,
-                    fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = pale_hex,
                     textAlign = TextAlign.Center
                 )
@@ -180,6 +180,7 @@ fun Comunidade(navController: NavController) {
                         "Comunidade",
                         fontSize = 23.sp,
                         fontWeight = FontWeight.Medium,
+                        fontFamily = fontPoppins,
                         color = Color.White,
                     )
                 }
@@ -250,6 +251,7 @@ fun Comunidade(navController: NavController) {
                     "Fazer uma postagem ",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
+                    fontFamily = fontPoppins    ,
                     color = Color.White,
                     modifier = Modifier.padding(top = 2.dp)
                 )
@@ -301,8 +303,8 @@ fun Comunidade(navController: NavController) {
                         painter = painterResource(R.drawable.bottombar),
                         contentDescription = "",
                         modifier = Modifier
-                            .size(85.dp)
-                            .offset(y = (-10).dp)
+                            .size(80.dp)
+                            .offset(y = (-11).dp)
                             .offset(x = (-10).dp)
                     )
                 androidx.compose.material3.Card(
@@ -311,8 +313,8 @@ fun Comunidade(navController: NavController) {
                     modifier = Modifier
                         .size(width = 55.dp, height = 56.dp)
                         .fillMaxWidth()
-                        .offset(y = (-22).dp)
-                        .offset(x = 5.dp)
+                        .offset(y = (-20).dp)
+                        .offset(x = 2.dp)
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -329,7 +331,7 @@ fun Comunidade(navController: NavController) {
                             painter = painterResource(R.drawable.comunidade_icon),
                             contentDescription = "",
                             modifier = Modifier
-                                .size(26.dp)
+                                .size(25.dp)
                         )
                     }
                 }
@@ -408,6 +410,7 @@ fun Camera(navController: NavController) {
                         "Comunidade",
                         fontSize = 23.sp,
                         fontWeight = FontWeight.Medium,
+                        fontFamily = fontPoppins,
                         color = Color.White,
                     )
                 }
@@ -538,6 +541,7 @@ fun Camera(navController: NavController) {
                 "Publicar",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 color = Color.White,
             )

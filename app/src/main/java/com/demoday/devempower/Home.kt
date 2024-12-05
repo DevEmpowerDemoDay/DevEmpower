@@ -118,8 +118,10 @@ fun Home(navController: NavController) {
 
                 Column() {
                     Text(
-                        "Bem vindo,", color = white_smoke, fontSize = 15.sp
-                      , fontFamily = fontPoppins
+                        "Bem vindo,",
+                      color = white_smoke,
+                      fontSize = 15.sp,
+                      fontFamily = fontPoppins
                                 )
                     Text(
                         "Desenvolvedor",
@@ -184,11 +186,11 @@ fun Home(navController: NavController) {
                     append("Explorar por ")
                     withStyle(
                         style = SpanStyle(
-                            fontWeight = FontWeight.Bold, fontSize = 25.sp,
+                            fontWeight = FontWeight.Bold, fontSize = 22.sp,
                             fontFamily = fontPoppins
                         )
                     ) {
-                        append("Categorias")
+                        append("Categorias",)
                     }
                 }, color = indigo_dye,
                 modifier = Modifier
@@ -315,9 +317,9 @@ fun Home(navController: NavController) {
                         painter = painterResource(R.drawable.bottombar),
                         contentDescription = "",
                         modifier = Modifier
-                            .size(85.dp)
+                            .size(82.dp)
                             .align(Alignment.Center)
-                            .offset(y = (-10).dp)
+                            .offset(y = (-11).dp)
                             .offset(x = 0.5.dp)
                     )
 
@@ -407,7 +409,7 @@ fun ContainerEvents(text_titulo: String, onClick: () -> Unit) {
 
                 Text(
                     text = text_titulo,
-                    fontSize = 22.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = fontPoppins,
                     color = indigo_dye,
