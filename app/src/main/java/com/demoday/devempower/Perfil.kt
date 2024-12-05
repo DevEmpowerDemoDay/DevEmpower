@@ -25,6 +25,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,6 +48,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.delay
 
 
 @Composable
@@ -641,8 +643,10 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 .clickable { navController.navigate("personalização") })
                         Image(painter = painterResource(R.drawable.atividade_icon),
                             contentDescription = "Icon que simboliza atualização da foto de perfil",
+                            colorFilter = ColorFilter.tint(indigo_dye),
                             modifier = Modifier
                                 .offset(x = 50.dp)
+
 
                             )
                     }
@@ -728,69 +732,60 @@ fun PerfilInformaçãoes(navController: NavController) {
                         )
 
                     }
-                    Row {
-                        Column {
-                            Text(
-                                "Idade:",
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = indigo_dye,
-                                 fontFamily = fontPoppins,
-                                textAlign = TextAlign.Start,
-                                modifier = Modifier
-                                    .padding(top = 5.dp)
-                                    .width(73.dp)
-                                    .align(alignment = Alignment.CenterHorizontally)
-                            )
-                            OutlinedTextField(
-                                value = idade,
-                                onValueChange = {
-                                    idade = it
-                                },
-                                keyboardOptions = KeyboardOptions.Default.copy(
-                                    keyboardType = KeyboardType.Number
-                                ),
-                                modifier = Modifier.width(73.dp),
-                                shape = RoundedCornerShape(7.dp),
-                                textStyle = TextStyle(
-                                    fontSize = 13.sp, textAlign = TextAlign.Start
-                                ),
-                                singleLine = true
-                            )
-                        }
 
-                        Spacer(modifier = Modifier.padding(start = 10.dp))
+Spacer(
+    modifier = Modifier
+        .padding(top = 15.dp)
+)
 
-                        Column {
-                            Text(
-                                "LinkedIn:",
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = indigo_dye,
-                                 fontFamily = fontPoppins,
-                                textAlign = TextAlign.Start,
-                                modifier = Modifier
-                                    .padding(top = 5.dp)
-                                    .width(212.dp)
-                                    .align(alignment = Alignment.CenterHorizontally)
-                            )
-                            OutlinedTextField(
-                                value = linkedin,
-                                onValueChange = {
-                                    linkedin = it
+                            Button(
+                                onClick = {
+                                    navController.navigate("info_alt")
                                 },
-                                modifier = Modifier.width(212.dp),
-                                shape = RoundedCornerShape(7.dp),
-                                textStyle = TextStyle(
-                                    fontSize = 13.sp, textAlign = TextAlign.Start
-                                ),
-                                singleLine = true
-                            )
-                        }
-                    }
+                                colors = ButtonDefaults.buttonColors(indigo_dye),
+                                modifier = Modifier
+                                    .size(width = 156.dp, height = 42.dp),
+                                shape = RoundedCornerShape(10.dp),
+                            ) {
+                                Column {
+                                    Text("Confirmar",
+                                        fontSize = 20.sp,
+                                        color = white_smoke,
+                                        fontWeight = FontWeight.Medium,
+                                        fontFamily = fontPoppins)
+                                }
+                            }
                 }
             }
         }
+    }
+}
+
+@Composable
+fun informações_alt(navController: NavController) {
+    val splashScreenDuration = 1000L // 1000 ms = 1 segundos
+
+    LaunchedEffect(Unit) {
+        delay(splashScreenDuration)
+        navController.navigate("home") {
+            popUpTo("login") { inclusive = true }
+        }
+    }
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(uranium_blue)
+    ) {
+        Text(
+            "Informações alteradas!",
+            fontSize = 28.sp,
+            fontFamily = fontPoppins,
+            fontWeight = FontWeight.SemiBold,
+            color = midnight_blue
+        )
     }
 }
 

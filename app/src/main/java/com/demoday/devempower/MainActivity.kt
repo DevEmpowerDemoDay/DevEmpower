@@ -139,6 +139,7 @@ fun  Inicio() {
                     composable("mentoria") { Mentorias(navController) }
                     composable("mentores") { Mentores(navController,date = "") }
                     composable("mentoria_confirmação") { Confirmação_mentoria(navController)}
+                    composable("info_alt") { informações_alt(navController) }
 
 
                 }
