@@ -102,7 +102,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                     text = nome1,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Medium,
-                   // fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = pale_hex,
                     textAlign = TextAlign.Center
                 )
@@ -121,7 +121,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                     text = comentario1,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                   //fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = Color.Black,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -180,6 +180,7 @@ fun Comunidade(navController: NavController) {
                         "Comunidade",
                         fontSize = 23.sp,
                         fontWeight = FontWeight.Medium,
+                        fontFamily = fontPoppins,
                         color = Color.White,
                     )
                 }
@@ -212,7 +213,7 @@ fun Comunidade(navController: NavController) {
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                   // fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = Color(0xFFFFAEDFF7)
                 )
 
@@ -250,6 +251,7 @@ fun Comunidade(navController: NavController) {
                     "Fazer uma postagem ",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
+                    fontFamily = fontPoppins    ,
                     color = Color.White,
                     modifier = Modifier.padding(top = 2.dp)
                 )
@@ -408,6 +410,7 @@ fun Camera(navController: NavController) {
                         "Comunidade",
                         fontSize = 23.sp,
                         fontWeight = FontWeight.Medium,
+                        fontFamily = fontPoppins,
                         color = Color.White,
                     )
                 }
@@ -538,6 +541,7 @@ fun Camera(navController: NavController) {
                 "Publicar",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 color = Color.White,
             )

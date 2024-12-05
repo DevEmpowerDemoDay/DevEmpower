@@ -183,7 +183,7 @@ Row(
         Text_nome,
         fontSize = 20.sp,
         fontWeight = FontWeight.Medium,
-        //fontFamily = fontPoppins,
+        fontFamily = fontPoppins,
         color = Color.White,
     )
         Card(
@@ -205,7 +205,7 @@ Row(
                     "9:00",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Medium,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = Color.White,
                 )
             }
@@ -221,6 +221,9 @@ Row(
 fun Confirmação_mentoria(navController: NavController) {
     Text(
         text = "mentoria confirmada",
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Medium,
+        fontFamily = fontPoppins,
         color = Color.Black
     )
     Column(
@@ -234,7 +237,7 @@ fun Confirmação_mentoria(navController: NavController) {
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Text("data: $date",fontSize = 20.sp, color = Color.Black)
+            Text("data: $date",fontSize = 20.sp, color = Color.Black, fontFamily = fontPoppins)
         }
     }
 

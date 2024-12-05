@@ -100,7 +100,7 @@ fun IntroduçãoAula1(navController: NavController) {
                         color = white_smoke,
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Medium,
-                        //fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
 
                         )
@@ -113,7 +113,7 @@ fun IntroduçãoAula1(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             color = indigo_dye,
-                            //fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("Você já ouviu falar sobre  ")
@@ -122,7 +122,7 @@ fun IntroduçãoAula1(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -131,7 +131,7 @@ fun IntroduçãoAula1(navController: NavController) {
                     withStyle(
                         style = SpanStyle(
                             fontSize = 20.sp,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -141,7 +141,7 @@ fun IntroduçãoAula1(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -265,7 +265,7 @@ fun IntroduçãoAula2(navController: NavController) {
                         color = white_smoke,
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Medium,
-                        // fontFamily = fontPoppins,
+                         fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
 
                         )
@@ -278,7 +278,7 @@ fun IntroduçãoAula2(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             color = indigo_dye,
-                            //fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("A ")
@@ -287,7 +287,7 @@ fun IntroduçãoAula2(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -296,7 +296,7 @@ fun IntroduçãoAula2(navController: NavController) {
                     withStyle(
                         style = SpanStyle(
                             fontSize = 20.sp,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -306,7 +306,7 @@ fun IntroduçãoAula2(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -433,7 +433,7 @@ fun IntroduçãoAula3(navController: NavController) {
                         color = white_smoke,
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Medium,
-                        //fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
 
                         )
@@ -446,7 +446,7 @@ fun IntroduçãoAula3(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             color = indigo_dye,
-                            //fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("Com conteúdos práticos e simulações, a  ")
@@ -455,7 +455,7 @@ fun IntroduçãoAula3(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            // fontFamily = fontPoppins,
+                             fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -464,7 +464,7 @@ fun IntroduçãoAula3(navController: NavController) {
                     withStyle(
                         style = SpanStyle(
                             fontSize = 20.sp,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -474,7 +474,7 @@ fun IntroduçãoAula3(navController: NavController) {
                         style = SpanStyle(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            //fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {

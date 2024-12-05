@@ -49,9 +49,8 @@ class Calendario {
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            // Exibindo a data selecionada
             if (date.isNotEmpty()) {
-                Text(text = "Data selecionada: $date", color = Color.Black)
+                Text(text = "Data selecionada: $date", color = Color.Black, fontFamily = fontPoppins)
             }
 
             // Estado do DatePicker
@@ -59,25 +58,29 @@ class Calendario {
 
             AnimatedVisibility(visible = openDatePicker) {
                 DatePickerDialog(
-                    onDismissRequest = { openDatePicker = false }, // Fecha o dialog quando descartado
+                    onDismissRequest = {
+                        openDatePicker = false
+                    },
                     confirmButton = {
                         Button(
                             colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
                             onClick = {
                                 val selectedMillis = state.selectedDateMillis
-                                // Atualiza a variável 'date' com a data selecionada
                                 data = if (selectedMillis != null) {
-                                    // Convertendo milissegundos para LocalDate
                                     val localDate = Instant.ofEpochMilli(selectedMillis)
                                         .atZone(ZoneId.systemDefault())
                                         .toLocalDate()
-                                    // Formatando a data
-                                    localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault()))
+                                    localDate.format(
+                                        DateTimeFormatter.ofPattern(
+                                            "dd/MM/yyyy",
+                                            Locale.getDefault()
+                                        )
+                                    )
                                 } else {
                                     ""
                                 }
-                                openDatePicker = false // Fecha o DatePicker
-                                navController.navigate("mentores") // Navega para a tela "mentores"
+                                openDatePicker = false
+                                navController.navigate("mentores")
                             }
                         ) {
                             Text("Confirmar")
@@ -88,14 +91,14 @@ class Calendario {
                             colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
                             onClick = {
                                 openDatePicker = false
-                                navController.navigate("home") // Navega para a tela "home" caso o usuário cancele
+                                navController.navigate("home")
                             }
                         ) {
                             Text("Cancelar")
                         }
                     }
                 ) {
-                    DatePicker(state = state) // Exibe o DatePicker
+                    DatePicker(state = state)
                 }
             }
         }

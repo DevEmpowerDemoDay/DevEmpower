@@ -78,9 +78,9 @@ fun Materiais(navController: NavController) {
         ) {
             Text(
                 "  Aulas",
-                fontSize = 24.sp,
+                fontSize = 23.sp,
                 fontWeight = FontWeight.Bold,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 color = indigo_dye,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -92,18 +92,18 @@ fun Materiais(navController: NavController) {
                 text = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 18.sp,
+                            fontSize = 16.sp,
                             color = indigo_dye,
-                            // fontFamily = fontPoppins
+                             fontFamily = fontPoppins
                         )
                     ) {
                         append("Assista os vídeos e teste seus conhecimentos com ")
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 18.sp,
+                            fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
-                            // fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -150,8 +150,9 @@ fun Materiais(navController: NavController) {
                     Text(
                         "Sobre nós",
                         color = white_smoke,
-                        fontSize = 24.sp,
+                        fontSize = 22.sp,
                         fontWeight = FontWeight.SemiBold,
+                        fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -368,9 +369,9 @@ fun Botões_Materiais(
                 Text(
                     text = Text_titulo,
                     color = white_smoke,
-                    fontSize = 12.sp,
+                    fontSize = 11.sp,
                     fontWeight = FontWeight.Normal,
-                    // fontFamily = fontPoppins,
+                     fontFamily = fontPoppins,
                     textAlign = TextAlign.Center
                 )
 
@@ -378,9 +379,9 @@ fun Botões_Materiais(
                 Text(
                     text = Text_aula,
                     color = white_smoke,
-                    fontSize = 17.sp,
+                    fontSize = 15.sp,
                     fontWeight = FontWeight.SemiBold,
-                    // fontFamily = fontPoppins,
+                     fontFamily = fontPoppins,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .offset(y = (-5).dp)

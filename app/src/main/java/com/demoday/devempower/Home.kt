@@ -118,14 +118,14 @@ fun Home(navController: NavController) {
 
                 Column() {
                     Text(
-                        "Bem vindo,", color = white_smoke, fontSize = 15.sp
-                      // fontFamily = fontPoppins
+                        "Bem vindo,", color = white_smoke, fontSize = 15.sp,
+                      fontFamily = fontPoppins
                                 )
                     Text(
                         "Desenvolvedor",
                         color = white_smoke,
                         fontSize = 40.sp,
-                        //fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.align(Alignment.CenterHorizontally),
                         textAlign = TextAlign.Center
@@ -159,7 +159,7 @@ fun Home(navController: NavController) {
                     color = white_smoke,
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
-                   // fontFamily = fontPoppins
+                   fontFamily = fontPoppins
                 )
                 Spacer(modifier = Modifier.padding(start = 6.dp))
                 Image(
@@ -185,7 +185,7 @@ fun Home(navController: NavController) {
                     withStyle(
                         style = SpanStyle(
                             fontWeight = FontWeight.Bold, fontSize = 25.sp,
-                           // fontFamily = fontPoppins
+                            fontFamily = fontPoppins
                         )
                     ) {
                         append("Categorias")
@@ -409,7 +409,7 @@ fun ContainerEvents(text_titulo: String, onClick: () -> Unit) {
                     text = text_titulo,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 2.dp)
@@ -440,7 +440,7 @@ fun ContentBox(text: String, modifier: Modifier) {
             color = white_smoke,
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
-            //fontFamily = fontPoppins,
+            fontFamily = fontPoppins,
             modifier = Modifier
                 .align(Alignment.Center)
                 .zIndex(1f)
