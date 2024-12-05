@@ -58,7 +58,7 @@ fun Materiais(navController: NavController) {
 
     // define cores da barra de status e da barra de navegação
     systemUiController.setStatusBarColor(
-        indigo_dye
+        uranium_blue
     )
 
     systemUiController.setNavigationBarColor(
