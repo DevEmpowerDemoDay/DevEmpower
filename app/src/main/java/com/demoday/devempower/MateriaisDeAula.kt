@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun Materiais(navController: NavController) {
@@ -50,6 +51,20 @@ fun Materiais(navController: NavController) {
     val paddingValue1 = (screenWidth * 0.05)
     val paddingValue2 = (screenWidth * 0.20)
     val paddingValue3 = (screenWidth * 0.09)
+
+
+    val systemUiController = rememberSystemUiController()
+
+
+    // define cores da barra de status e da barra de navegação
+    systemUiController.setStatusBarColor(
+        uranium_blue
+    )
+
+    systemUiController.setNavigationBarColor(
+        uranium_blue, darkIcons = true
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -63,7 +78,7 @@ fun Materiais(navController: NavController) {
         ) {
             Text(
                 "  Aulas",
-                fontSize = 24.sp,
+                fontSize = 21.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = fontPoppins,
                 color = indigo_dye,
@@ -77,18 +92,18 @@ fun Materiais(navController: NavController) {
                 text = buildAnnotatedString {
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 18.sp,
+                            fontSize = 15.sp,
                             color = indigo_dye,
-                            fontFamily = fontPoppins
+                             fontFamily = fontPoppins
                         )
                     ) {
                         append("Assista os vídeos e teste seus conhecimentos com ")
                     }
                     withStyle(
                         style = SpanStyle(
-                            fontSize = 18.sp,
+                            fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
-                             fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = indigo_dye
                         )
                     ) {
@@ -135,8 +150,9 @@ fun Materiais(navController: NavController) {
                     Text(
                         "Sobre nós",
                         color = white_smoke,
-                        fontSize = 24.sp,
+                        fontSize = 21.sp,
                         fontWeight = FontWeight.SemiBold,
+                        fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -227,7 +243,7 @@ fun Materiais(navController: NavController) {
                         modifier = Modifier
                             .size(30.dp)
                             .clickable {
-                                navController.navigate("comunidade")
+                                navController.navigate("comentario")
                             }
                     )
                     Spacer(
@@ -353,7 +369,7 @@ fun Botões_Materiais(
                 Text(
                     text = Text_titulo,
                     color = white_smoke,
-                    fontSize = 12.sp,
+                    fontSize = 11.sp,
                     fontWeight = FontWeight.Normal,
                      fontFamily = fontPoppins,
                     textAlign = TextAlign.Center
@@ -363,7 +379,7 @@ fun Botões_Materiais(
                 Text(
                     text = Text_aula,
                     color = white_smoke,
-                    fontSize = 17.sp,
+                    fontSize = 15.sp,
                     fontWeight = FontWeight.SemiBold,
                      fontFamily = fontPoppins,
                     textAlign = TextAlign.Center,

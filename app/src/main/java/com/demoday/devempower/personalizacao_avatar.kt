@@ -68,7 +68,7 @@ fun tela_avatares(navController: NavController) {
                                 fontWeight = FontWeight.Medium,
                                 color = white_smoke,
                                 textAlign = TextAlign.Center,
-//                            fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .padding(top = 20.dp)
