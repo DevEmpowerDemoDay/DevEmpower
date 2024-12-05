@@ -118,7 +118,9 @@ fun Home(navController: NavController) {
 
                 Column() {
                     Text(
-                        "Bem vindo,", color = white_smoke, fontSize = 15.sp,
+                        "Bem vindo,",
+                      color = white_smoke,
+                      fontSize = 15.sp,
                       fontFamily = fontPoppins
                                 )
                     Text(
@@ -315,9 +317,9 @@ fun Home(navController: NavController) {
                         painter = painterResource(R.drawable.bottombar),
                         contentDescription = "",
                         modifier = Modifier
-                            .size(85.dp)
+                            .size(82.dp)
                             .align(Alignment.Center)
-                            .offset(y = (-10).dp)
+                            .offset(y = (-11).dp)
                             .offset(x = 0.5.dp)
                     )
 
