@@ -303,8 +303,8 @@ fun Comunidade(navController: NavController) {
                         painter = painterResource(R.drawable.bottombar),
                         contentDescription = "",
                         modifier = Modifier
-                            .size(85.dp)
-                            .offset(y = (-10).dp)
+                            .size(80.dp)
+                            .offset(y = (-11).dp)
                             .offset(x = (-10).dp)
                     )
                 androidx.compose.material3.Card(
@@ -313,8 +313,8 @@ fun Comunidade(navController: NavController) {
                     modifier = Modifier
                         .size(width = 55.dp, height = 56.dp)
                         .fillMaxWidth()
-                        .offset(y = (-22).dp)
-                        .offset(x = 5.dp)
+                        .offset(y = (-20).dp)
+                        .offset(x = 2.dp)
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -331,7 +331,7 @@ fun Comunidade(navController: NavController) {
                             painter = painterResource(R.drawable.comunidade_icon),
                             contentDescription = "",
                             modifier = Modifier
-                                .size(26.dp)
+                                .size(25.dp)
                         )
                     }
                 }
