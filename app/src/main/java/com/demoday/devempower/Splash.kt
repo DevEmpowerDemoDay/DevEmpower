@@ -50,7 +50,7 @@ fun Splash(navController: NavController) {
             contentDescription = "Logo DevEmpower",
             modifier = Modifier
                 .padding(top = 180.dp)
-                .size(width = 270.dp, height = 185.dp)
+                .size(width = 300.dp, height = 200.dp)
 
         )
 

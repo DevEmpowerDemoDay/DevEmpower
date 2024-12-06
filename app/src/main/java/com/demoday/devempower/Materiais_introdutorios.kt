@@ -3,6 +3,7 @@ package com.demoday.devempower
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -53,12 +54,12 @@ fun IntroduçãoAula1(navController: NavController) {
         uranium_blue, darkIcons = true
     )
 
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        navController.navigate("introdução2") {
-            popUpTo("introdução1") { inclusive = true }
-        }
-    }
+//    LaunchedEffect(Unit) {
+//        delay(splashScreenDuration)
+//        navController.navigate("introdução2") {
+//            popUpTo("introdução1") { inclusive = true }
+//        }
+//    }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -66,6 +67,7 @@ fun IntroduçãoAula1(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(uranium_blue)
+            .clickable { navController.navigate("introdução2") }
     ) {
         Box(
             modifier = Modifier
@@ -216,13 +218,13 @@ fun IntroduçãoAula2(navController: NavController) {
     systemUiController.setNavigationBarColor(
         uranium_blue, darkIcons = true
     )
-
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        navController.navigate("introdução3") {
-            popUpTo("introdução2") { inclusive = true }
-        }
-    }
+//
+//    LaunchedEffect(Unit) {
+//        delay(splashScreenDuration)
+//        navController.navigate("introdução3") {
+//            popUpTo("introdução2") { inclusive = true }
+//        }
+//    }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -230,6 +232,7 @@ fun IntroduçãoAula2(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(uranium_blue)
+            .clickable { navController.navigate("introdução3") }
     ) {
         Box(
             modifier = Modifier
@@ -262,7 +265,7 @@ fun IntroduçãoAula2(navController: NavController) {
                         color = white_smoke,
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Medium,
-                        fontFamily = fontPoppins,
+                         fontFamily = fontPoppins,
                         textDecoration = TextDecoration.Underline,
 
                         )
@@ -381,12 +384,12 @@ fun IntroduçãoAula3(navController: NavController) {
         uranium_blue, darkIcons = true
     )
 
-    LaunchedEffect(Unit) {
-        delay(splashScreenDuration)
-        navController.navigate("material") {
-            popUpTo("introdução3") { inclusive = true }
-        }
-    }
+//    LaunchedEffect(Unit) {
+//        delay(splashScreenDuration)
+//        navController.navigate("material") {
+//            popUpTo("introdução3") { inclusive = true }
+//        }
+//    }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -394,6 +397,10 @@ fun IntroduçãoAula3(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(uranium_blue)
+            .clickable {
+                navController.navigate("quizz")
+                condition = true
+            }
     ) {
         Box(
             modifier = Modifier

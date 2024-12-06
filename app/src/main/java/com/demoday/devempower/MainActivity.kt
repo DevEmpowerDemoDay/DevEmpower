@@ -54,6 +54,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import kotlinx.coroutines.delay
+import java.time.LocalDate
 
 
 val uranium_blue = Color(0xFFAEDFF7)
@@ -65,7 +66,15 @@ val indigo_dye = Color(0xFF005377)
 val bright_blue = Color(0xFF009ADD)
 val pale_sky_blue = Color(0xFFD2EAF6)
 val pale_hex = Color(0xFF03022C)
+val bright_Violet = Color(0xFFFF6135FF)
 val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
+
+// variavel de nome para uso global
+var nome1 by mutableStateOf("")
+
+//variavel de comentario para uso da comunidade
+var comentario1 by mutableStateOf("")
+var date by mutableStateOf("")
 
 
 class MainActivity : ComponentActivity() {
@@ -100,7 +109,7 @@ fun  Inicio() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                NavHost(navController = navController, startDestination = "material") {
+                NavHost(navController = navController, startDestination = "splash") {
                     composable("splash") { Splash(navController) }
                     composable("home") { Home(navController) }
                     composable("telaalt") { TelaAlt(navController) }
@@ -114,13 +123,26 @@ fun  Inicio() {
                     composable("perfil2") { PerfilInformaçãoes(navController) }
                     composable("perfil3") { PerfilPontuação(navController) }
                     composable("material") { Materiais(navController) }
-                    composable("comunidade") { ComunidadeSplash(navController) }
                     composable("comentario") { Comunidade(navController) }
                     composable("introdução1") { IntroduçãoAula1(navController) }
                     composable("introdução2") { IntroduçãoAula2(navController) }
                     composable("introdução3") { IntroduçãoAula3(navController) }
                     composable("personalização") { tela_avatares(navController) }
+                    composable("quizz") { Quizz_Pergunta1(navController) }
+                    composable("quizz2") { Quizz_Correção1(navController) }
+                    composable("quizz3") { Quizz_Pergunta2(navController) }
+                    composable("quizz4") { Quizz_Correção2(navController) }
+                    composable("quizz5") { Quizz_Pergunta3(navController) }
+                    composable("quizz6") { Quizz_Correção3(navController) }
+                    composable("aprovação_quizz") { Aprovação_Quizz(navController) }
                     composable("camera") { Camera(navController) }
+                    composable("mentoria") { Mentorias(navController) }
+                    composable("mentores") { Mentores(navController,date = "") }
+                    composable("mentoria_confirmação") { Confirmação_mentoria(navController)}
+                    composable("info_alt") { informações_alt(navController) }
+                    composable("confirm_email") { Confirmação_email(navController) }
+
+
                 }
             }
         },
