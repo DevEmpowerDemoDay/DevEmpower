@@ -49,6 +49,142 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Composable
+fun TopBar(navController: NavController) {
+
+    Box(
+        modifier = Modifier
+            .border(
+                2.dp,
+                color = Color.Transparent,
+                shape = RoundedCornerShape(topStart = 20.dp)
+            )
+            .background(Color.Transparent)
+    ) {
+        Column(verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .border(
+                    2.dp,
+                    color = Color.Transparent,
+                    shape = RoundedCornerShape(topStart = 20.dp)
+                )
+                .size(height = 97.dp, width = 118.dp)
+                .clickable {
+                    navController.navigate("perfil3")
+                }) {
+            Image(
+                painter = painterResource(R.drawable.pontuacao_icon),
+                contentDescription = "pontuação",
+                colorFilter = ColorFilter.tint(indigo_dye),
+                modifier = Modifier.size(25.dp)
+            )
+            Text(
+                "Pontuação",
+                color = indigo_dye,
+                fontSize = 13.sp,
+                fontFamily = fontPoppins
+            )
+        }
+    }
+
+    Box(modifier = Modifier
+        .background(midnight_blue)
+        .drawBehind {
+            val borderWidth = 2.dp.toPx()
+            drawRect(
+                color = indigo_dye,
+                topLeft = androidx.compose.ui.geometry.Offset(
+                    0f, size.height - borderWidth
+                ),
+                size = androidx.compose.ui.geometry.Size(
+                    size.width, borderWidth
+                )
+            )
+        }
+        .border(
+            2.dp,
+            color = Color.Transparent,
+            shape = RoundedCornerShape(topEnd = 20.dp, topStart = 20.dp)
+        )) {
+        Column(verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .clip(RoundedCornerShape(topEnd = 20.dp))
+                .border(
+                    2.dp,
+                    color = Color.Transparent,
+                    shape = RoundedCornerShape(topEnd = 20.dp, topStart = 20.dp)
+                )
+                .size(height = 97.dp, width = 118.dp)
+                .clickable {
+                    navController.navigate("perfil2")
+                }) {
+            Image(
+                painter = painterResource(R.drawable.informa__es_icon),
+                contentDescription = "informações",
+                colorFilter = ColorFilter.tint(Color.White),
+                modifier = Modifier.size(30.dp)
+            )
+            Text(
+                "Informações",
+                color = white_smoke,
+                fontSize = 13.sp,
+                fontFamily = fontPoppins
+            )
+        }
+    }
+
+    Box(modifier = Modifier
+        .clip(RoundedCornerShape(topEnd = 20.dp))
+        .background(Color.Transparent)
+        .drawBehind {
+            val borderWidth = 2.dp.toPx()
+            drawRect(
+                color = indigo_dye,
+                topLeft = androidx.compose.ui.geometry.Offset(
+                    0f, size.height - borderWidth
+                ),
+                size = androidx.compose.ui.geometry.Size(
+                    size.width, borderWidth
+                )
+            )
+        }
+        .border(
+            2.dp,
+            color = Color.Transparent,
+            shape = RoundedCornerShape(topEnd = 20.dp)
+        )) {
+        Column(verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .clip(RoundedCornerShape(topEnd = 20.dp))
+                .border(
+                    2.dp,
+                    color = Color.Transparent,
+                    shape = RoundedCornerShape(topEnd = 20.dp)
+                )
+                .size(height = 97.dp, width = 118.dp)
+                .clickable {
+                    navController.navigate("perfil1")
+                }) {
+            Image(
+                painter = painterResource(R.drawable.atividade_icon),
+                contentDescription = "atidades",
+                colorFilter = ColorFilter.tint(indigo_dye),
+                modifier = Modifier.size(25.dp)
+            )
+            Text(
+                "Atividades",
+                color = indigo_dye,
+                fontSize = 13.sp,
+                fontFamily = fontPoppins
+            )
+        }
+    }
+
+}
+
+@Composable
 fun PerfilAtividade(navController: NavController) {
     val systemUiController = rememberSystemUiController()
 
@@ -403,7 +539,7 @@ fun PerfilAtividade(navController: NavController) {
 }
 
 @Composable
-fun PerfilInformaçãoes(navController: NavController) {
+fun PerfilInformacoes(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     var nome_completo by remember { mutableStateOf("") }
     var apelido by remember { mutableStateOf("") }
@@ -437,13 +573,6 @@ fun PerfilInformaçãoes(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
-//                Image(
-//                    painter = painterResource(R.drawable.return_icon),
-//                    contentDescription = "botão de voltar",
-//                   modifier = Modifier
-//                        .size(40.dp)
-//                       .clickable { navController.navigate("home") }
-//               )
                 Image(
                     painter = painterResource(R.drawable.logo),
                     contentDescription = "Logo",
@@ -476,137 +605,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                             .fillMaxWidth()
                             .height(97.dp)
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .border(
-                                    2.dp,
-                                    color = Color.Transparent,
-                                    shape = RoundedCornerShape(topStart = 20.dp)
-                                )
-                                .background(Color.Transparent)
-                        ) {
-                            Column(verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .border(
-                                        2.dp,
-                                        color = Color.Transparent,
-                                        shape = RoundedCornerShape(topStart = 20.dp)
-                                    )
-                                    .size(height = 97.dp, width = 118.dp)
-                                    .clickable {
-                                        navController.navigate("perfil3")
-                                    }) {
-                                Image(
-                                    painter = painterResource(R.drawable.pontuacao_icon),
-                                    contentDescription = "pontuação",
-                                    colorFilter = ColorFilter.tint(indigo_dye),
-                                    modifier = Modifier.size(25.dp)
-                                )
-                                Text(
-                                    "Pontuação",
-                                    color = indigo_dye,
-                                    fontSize = 13.sp,
-                                    fontFamily = fontPoppins
-                                )
-                            }
-                        }
-
-                        Box(modifier = Modifier
-                            .background(midnight_blue)
-                            .drawBehind {
-                                val borderWidth = 2.dp.toPx()
-                                drawRect(
-                                    color = indigo_dye,
-                                    topLeft = androidx.compose.ui.geometry.Offset(
-                                        0f, size.height - borderWidth
-                                    ),
-                                    size = androidx.compose.ui.geometry.Size(
-                                        size.width, borderWidth
-                                    )
-                                )
-                            }
-                            .border(
-                                2.dp,
-                                color = Color.Transparent,
-                                shape = RoundedCornerShape(topEnd = 20.dp, topStart = 20.dp)
-                            )) {
-                            Column(verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(topEnd = 20.dp))
-                                    .border(
-                                        2.dp,
-                                        color = Color.Transparent,
-                                        shape = RoundedCornerShape(topEnd = 20.dp, topStart = 20.dp)
-                                    )
-                                    .size(height = 97.dp, width = 118.dp)
-                                    .clickable {
-                                        navController.navigate("perfil2")
-                                    }) {
-                                Image(
-                                    painter = painterResource(R.drawable.informa__es_icon),
-                                    contentDescription = "informações",
-                                    colorFilter = ColorFilter.tint(Color.White),
-                                    modifier = Modifier.size(30.dp)
-                                )
-                                Text(
-                                    "Informações",
-                                    color = white_smoke,
-                                    fontSize = 13.sp,
-                                    fontFamily = fontPoppins
-                                )
-                            }
-                        }
-
-                        Box(modifier = Modifier
-                            .clip(RoundedCornerShape(topEnd = 20.dp))
-                            .background(Color.Transparent)
-                            .drawBehind {
-                                val borderWidth = 2.dp.toPx()
-                                drawRect(
-                                    color = indigo_dye,
-                                    topLeft = androidx.compose.ui.geometry.Offset(
-                                        0f, size.height - borderWidth
-                                    ),
-                                    size = androidx.compose.ui.geometry.Size(
-                                        size.width, borderWidth
-                                    )
-                                )
-                            }
-                            .border(
-                                2.dp,
-                                color = Color.Transparent,
-                                shape = RoundedCornerShape(topEnd = 20.dp)
-                            )) {
-                            Column(verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(topEnd = 20.dp))
-                                    .border(
-                                        2.dp,
-                                        color = Color.Transparent,
-                                        shape = RoundedCornerShape(topEnd = 20.dp)
-                                    )
-                                    .size(height = 97.dp, width = 118.dp)
-                                    .clickable {
-                                        navController.navigate("perfil1")
-                                    }) {
-                                Image(
-                                    painter = painterResource(R.drawable.atividade_icon),
-                                    contentDescription = "atidades",
-                                    colorFilter = ColorFilter.tint(indigo_dye),
-                                    modifier = Modifier.size(25.dp)
-                                )
-                                Text(
-                                    "Atividades",
-                                    color = indigo_dye,
-                                    fontSize = 13.sp,
-                                    fontFamily = fontPoppins
-                                )
-                            }
-                        }
-
+                        TopBar(navController)
                     }
                     Spacer(modifier = Modifier.padding(top = 20.dp))
                     Image(painter = painterResource(R.drawable.edit_profile_icon),
@@ -762,7 +761,7 @@ fun PerfilInformaçãoes(navController: NavController) {
 }
 
 @Composable
-fun PerfilPontuação(navController: NavController) {
+fun PerfilPontuacao(navController: NavController) {
     val systemUiController = rememberSystemUiController()
 
     systemUiController.setStatusBarColor(
@@ -820,151 +819,7 @@ fun PerfilPontuação(navController: NavController) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(97.dp)
-                    ) {
-                        Box(modifier = Modifier
-                            .clip(RoundedCornerShape(topStart = 20.dp))
-                            .background(midnight_blue)
-                            .drawBehind {
-                                val borderWidth = 2.dp.toPx()
-                                drawRect(
-                                    color = indigo_dye,
-                                    topLeft = androidx.compose.ui.geometry.Offset(
-                                        0f, size.height - borderWidth
-                                    ),
-                                    size = androidx.compose.ui.geometry.Size(
-                                        size.width, borderWidth
-                                    )
-                                )
-                            }
-                            .border(
-                                2.dp,
-                                color = Color.Transparent,
-                                shape = RoundedCornerShape(topStart = 20.dp)
-                            )) {
-                            Column(verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(topStart = 20.dp))
-                                    .border(
-                                        2.dp,
-                                        color = Color.Transparent,
-                                        shape = RoundedCornerShape(topStart = 20.dp)
-                                    )
-                                    .size(height = 97.dp, width = 118.dp)
-                                    .clickable {
-                                        navController.navigate("perfil3")
-                                    }) {
-                                Image(
-                                    painter = painterResource(R.drawable.pontuacao_icon),
-                                    contentDescription = "pontuação",
-                                    colorFilter = ColorFilter.tint(Color.White),
-                                    modifier = Modifier.size(30.dp)
-                                )
-                                Text(
-                                    "Pontuação",
-                                    color = white_smoke,
-                                    fontSize = 13.sp,
-                                    //fontFamily = fontPoppins
-                                )
-                            }
-                        }
-
-                        Box(modifier = Modifier
-                            .background(Color.Transparent)
-                            .drawBehind {
-                                val borderWidth = 2.dp.toPx()
-                                drawRect(
-                                    color = indigo_dye,
-                                    topLeft = androidx.compose.ui.geometry.Offset(
-                                        0f, size.height - borderWidth
-                                    ),
-                                    size = androidx.compose.ui.geometry.Size(
-                                        size.width, borderWidth
-                                    )
-                                )
-                            }
-                            .border(
-                                2.dp,
-                                color = Color.Transparent,
-                                shape = RoundedCornerShape(topEnd = 20.dp, topStart = 20.dp)
-                            )) {
-                            Column(verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(topEnd = 20.dp))
-                                    .border(
-                                        2.dp,
-                                        color = Color.Transparent,
-                                        shape = RoundedCornerShape(topEnd = 20.dp, topStart = 20.dp)
-                                    )
-                                    .size(height = 97.dp, width = 118.dp)
-                                    .clickable {
-                                        navController.navigate("perfil2")
-                                    }) {
-                                Image(
-                                    painter = painterResource(R.drawable.informa__es_icon),
-                                    contentDescription = "informações",
-                                    colorFilter = ColorFilter.tint(indigo_dye),
-                                    modifier = Modifier.size(25.dp)
-                                )
-                                Text(
-                                    "Informações",
-                                    color = indigo_dye,
-                                    fontSize = 13.sp,
-                                    //fontFamily = fontPoppins
-                                )
-                            }
-                        }
-
-                        Box(modifier = Modifier
-                            .clip(RoundedCornerShape(topEnd = 20.dp))
-                            .background(Color.Transparent)
-                            .drawBehind {
-                                val borderWidth = 2.dp.toPx()
-                                drawRect(
-                                    color = indigo_dye,
-                                    topLeft = androidx.compose.ui.geometry.Offset(
-                                        0f, size.height - borderWidth
-                                    ),
-                                    size = androidx.compose.ui.geometry.Size(
-                                        size.width, borderWidth
-                                    )
-                                )
-                            }
-                            .border(
-                                2.dp,
-                                color = Color.Transparent,
-                                shape = RoundedCornerShape(topEnd = 20.dp)
-                            )) {
-                            Column(verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(topEnd = 20.dp))
-                                    .border(
-                                        2.dp,
-                                        color = Color.Transparent,
-                                        shape = RoundedCornerShape(topEnd = 20.dp)
-                                    )
-                                    .size(height = 97.dp, width = 118.dp)
-                                    .clickable {
-                                        navController.navigate("perfil1")
-                                    }) {
-                                Image(
-                                    painter = painterResource(R.drawable.atividade_icon),
-                                    contentDescription = "atidades",
-                                    colorFilter = ColorFilter.tint(indigo_dye),
-                                    modifier = Modifier.size(25.dp)
-                                )
-                                Text(
-                                    "Atividades",
-                                    color = indigo_dye,
-                                    fontSize = 13.sp,
-                                    //fontFamily = fontPoppins
-                                )
-                            }
-                        }
-
-                    }
+                    ) {}
 
 
                     Spacer(modifier = Modifier.padding(top = 20.dp))
@@ -1151,7 +1006,7 @@ fun PerfilPontuação(navController: NavController) {
 
 @Preview
 @Composable
-private fun perfilPreview() {
+private fun PerfilPreview() {
     DevEmpowerTheme {
         PerfilAtividade(rememberNavController())
     }
@@ -1159,16 +1014,16 @@ private fun perfilPreview() {
 
 @Preview
 @Composable
-private fun perfil2Preview() {
+private fun Perfil2Preview() {
     DevEmpowerTheme {
-        PerfilInformaçãoes(rememberNavController())
+        PerfilInformacoes(rememberNavController())
     }
 }
 
 @Preview
 @Composable
-private fun perfil3Preview() {
+private fun Perfil3Preview() {
     DevEmpowerTheme {
-        PerfilPontuação(rememberNavController())
+        PerfilPontuacao(rememberNavController())
     }
 }
