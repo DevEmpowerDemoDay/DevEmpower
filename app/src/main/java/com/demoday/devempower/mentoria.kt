@@ -107,7 +107,7 @@ fun Mentores(navController: NavController, date: String) {
                         "Mentores",
                         fontSize = 40.sp,
                         fontWeight = FontWeight.Bold,
-                        //    fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         color = indigo_dye
                     )
                     Image(
@@ -249,7 +249,7 @@ fun Mentores1(Text_nome: String, Text_descricao: String, painter: Painter, onCli
                     Text_nome,
                     fontSize = 26.sp,
                     fontWeight = FontWeight.Medium,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = Color.White,
                 )
                 Card(
@@ -271,7 +271,7 @@ fun Mentores1(Text_nome: String, Text_descricao: String, painter: Painter, onCli
                             "9:00",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Medium,
-                            //  fontFamily = fontPoppins,
+                            fontFamily = fontPoppins,
                             color = Color.White,
                         )
                     }
@@ -321,7 +321,7 @@ fun Confirmação_mentoria(navController: NavController) {
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = indigo_dye,
-                // fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(top = 5.dp)
@@ -341,7 +341,7 @@ fun Confirmação_mentoria(navController: NavController) {
                     "Sim",
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
-                    // fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
             }
 
@@ -358,7 +358,7 @@ fun Confirmação_mentoria(navController: NavController) {
                     "Não",
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
-                    // fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
             }
 
@@ -396,7 +396,7 @@ Column(
         fontSize = 35.sp,
         fontWeight = FontWeight.Bold,
         color = indigo_dye,
-        // fontFamily = fontPoppins,
+        fontFamily = fontPoppins,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .padding(top = 5.dp)
@@ -418,7 +418,7 @@ Column(
             "Confirmar",
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
-            // fontFamily = fontPoppins,
+             fontFamily = fontPoppins,
         )
     }
 

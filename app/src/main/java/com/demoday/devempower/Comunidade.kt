@@ -1,5 +1,6 @@
 package com.demoday.devempower
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -61,12 +62,24 @@ import kotlinx.coroutines.delay
 
 
 var listaDeComentarios = mutableStateListOf<String>()
-
+var listaDeImagens = mutableStateListOf(
+    R.drawable.mentoria_murilo,
+    R.drawable.mentoria_andressa,
+    R.drawable.mentoria_anna,
+    R.drawable.mentoria_maykon,
+    R.drawable.mentoria_kauan,
+    R.drawable.mentoria_matheus,
+    R.drawable.mentoria_victor
+)
 var listaDeNomes = mutableStateListOf<String>()
-
+var foto_comunidade by mutableStateOf(0)
+var escolha_foto = 0
 
 @Composable
-fun CardComentario(nome1: String = "", comentario1: String = "") {
+fun CardComentario(nome1: String = "", comentario1: String = "",foto_comunidade1: Int = 0) {
+
+
+
 
     Spacer(modifier = Modifier.padding(top = 10.dp))
 
@@ -91,7 +104,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                 Spacer(modifier = Modifier.padding(start = 20.dp))
 
                 Image(
-                    painter = painterResource(id = R.drawable.avatar),
+                    painter = painterResource(id = foto_comunidade1),
                     contentDescription = "Avatar",
                     modifier = Modifier
                         .size(40.dp)
@@ -224,13 +237,21 @@ fun Comunidade(navController: NavController) {
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
                 ) {
-                    for (i in listaDeComentarios.indices) {
-                        var nome1 = listaDeNomes[i]
-                        var comentario1 = listaDeComentarios[i]
-                        CardComentario(nome1 = nome1, comentario1 = comentario1)
 
+                    for (i in listaDeComentarios.indices) {
+                        val nomeAtual = listaDeNomes[i]
+                        val comentarioAtual = listaDeComentarios[i]
+                        val fotoAtual = listaDeImagens[i]
+
+                        CardComentario(
+                            foto_comunidade1 = fotoAtual,
+                            nome1 = nomeAtual,
+                            comentario1 = comentarioAtual
+                        )
                     }
                 }
+
+
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
 
@@ -521,16 +542,18 @@ fun Camera(navController: NavController) {
             onClick = {
                 navController.navigate("comentario")
                 if (nome1.isNotEmpty() && comentario1.isNotEmpty()) {
-                    // Adiciona o comentário à lista
-                    listaDeComentarios.add(
-                        "$comentario1"
-                    )
-                    listaDeNomes.add(
-                        "$nome1"
-                    )
+                    listaDeComentarios.add(comentario1)
+                    listaDeNomes.add(nome1)
                     nome1 = ""
                     comentario1 = ""
+                    escolha_foto = (0..6).random()
+                    listaDeImagens.add(listaDeImagens[escolha_foto])
+
+
+                    // Limpa os campos
+
                 }
+
             },
             colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
             modifier = Modifier
