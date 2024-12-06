@@ -63,16 +63,16 @@ import kotlinx.coroutines.delay
 
 var listaDeComentarios = mutableStateListOf<String>()
 var listaDeImagens = mutableStateListOf(
-    R.drawable.mentoria_murilo,
-    R.drawable.mentoria_andressa,
-    R.drawable.mentoria_anna,
-    R.drawable.mentoria_maykon,
-    R.drawable.mentoria_kauan,
-    R.drawable.mentoria_matheus,
-    R.drawable.mentoria_victor
+    R.drawable.murilo,
+    R.drawable.andressa,
+    R.drawable.anna,
+    R.drawable.maykon,
+    R.drawable.lusbel,
+    R.drawable.matheus,
+    R.drawable.victor,
+    R.drawable.hudson
 )
 var listaDeNomes = mutableStateListOf<String>()
-var foto_comunidade by mutableStateOf(0)
 var escolha_foto = 0
 
 @Composable
@@ -239,6 +239,8 @@ fun Comunidade(navController: NavController) {
                 ) {
 
                     for (i in listaDeComentarios.indices) {
+                        val indiceAleatorio = listaDeImagens.indices.shuffled()
+
                         val nomeAtual = listaDeNomes[i]
                         val comentarioAtual = listaDeComentarios[i]
                         val fotoAtual = listaDeImagens[i]
