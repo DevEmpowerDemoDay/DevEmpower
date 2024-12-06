@@ -166,6 +166,17 @@ fun Mentores(navController: NavController, date: String) {
 
                     )
                 Mentores1(
+                    Text_nome = "Hudson S.",
+                    Text_descricao = "Foto Hudson",
+                    painter = painterResource(id = R.drawable.mentoria_hudson),
+                    onClick = {
+                        nome_mentor = "Hudson Souza"
+                        fotos_button = 8
+                        navController.navigate("mentoria_confirmação")
+                    },
+                )
+
+                Mentores1(
                     Text_nome = "Maykon S.",
                     Text_descricao = "Foto Maykon",
                     painter = painterResource(id = R.drawable.mentoria_maykon),
@@ -294,6 +305,7 @@ fun Confirmação_mentoria(navController: NavController) {
         5 -> R.drawable.mentoria_kauan
         6 -> R.drawable.mentoria_matheus
         7 -> R.drawable.mentoria_victor
+        8 -> R.drawable.mentoria_hudson
         else -> R.drawable.mentoria_murilo
 
     }

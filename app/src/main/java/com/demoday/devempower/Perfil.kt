@@ -672,8 +672,8 @@ fun PerfilInformaçãoes(navController: NavController) {
                         )
                         var nome by remember { mutableStateOf("") }
                         OutlinedTextField(
-                            value = nome,
-                            onValueChange = { newtext -> nome = newtext },
+                            value = nome2,
+                            onValueChange = { newtext -> nome2 = newtext },
                             modifier = Modifier
                                 .width(300.62.dp),
                             textStyle = TextStyle(
@@ -741,6 +741,7 @@ Spacer(
                             Button(
                                 onClick = {
                                     navController.navigate("info_alt")
+                                    nome_usuario = nome2
                                 },
                                 colors = ButtonDefaults.buttonColors(indigo_dye),
                                 modifier = Modifier

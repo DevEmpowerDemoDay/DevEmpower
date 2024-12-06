@@ -71,6 +71,9 @@ val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 
 // variavel de nome para uso global
 var nome1 by mutableStateOf("")
+var nome_usuario by mutableStateOf("Desenvolvedor")
+var nome2 by mutableStateOf("")
+
 
 //variavel de comentario para uso da comunidade
 var comentario1 by mutableStateOf("")
