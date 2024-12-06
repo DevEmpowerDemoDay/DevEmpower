@@ -1,21 +1,28 @@
 package com.demoday.devempower
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -26,6 +33,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -34,8 +42,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -47,34 +57,28 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.delay
 
 
 var listaDeComentarios = mutableStateListOf<String>()
-var listaDeNomes = mutableStateListOf<String>()
-var sorteio by mutableStateOf(1)
-var lista_avatar = mutableStateListOf<Int>()
-
-// salvamento de id
-data class Avatar_dc(
-    val id: Int
-
+var listaDeImagens = mutableStateListOf(
+    R.drawable.murilo,
+    R.drawable.andressa,
+    R.drawable.anna,
+    R.drawable.maykon,
+    R.drawable.lusbel,
+    R.drawable.matheus,
+    R.drawable.victor,
+    R.drawable.hudson
 )
-
-enum class Inter {
-    Murilo,
-    Hudson
-}
-
-
-var avatar1 = when (sorteio) {
-    1 -> R.drawable.avatar
-    2 -> R.drawable.arrow_blue
-    3 -> R.drawable.comunidade_icon
-    else -> R.drawable.bottomback
-}
+var listaDeNomes = mutableStateListOf<String>()
+var escolha_foto = 0
 
 @Composable
-fun CardComentario(nome1: String = "", comentario1: String = "") {
+fun CardComentario(nome1: String = "", comentario1: String = "",foto_comunidade1: Int = 0) {
+
+
 
 
     Spacer(modifier = Modifier.padding(top = 10.dp))
@@ -100,7 +104,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                 Spacer(modifier = Modifier.padding(start = 20.dp))
 
                 Image(
-                    painter = painterResource(avatar1),
+                    painter = painterResource(id = foto_comunidade1),
                     contentDescription = "Avatar",
                     modifier = Modifier
                         .size(40.dp)
@@ -112,7 +116,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                     text = nome1,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Medium,
-                    fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = pale_hex,
                     textAlign = TextAlign.Center
                 )
@@ -131,7 +135,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "") {
                     text = comentario1,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = Color.Black,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -223,7 +227,7 @@ fun Comunidade(navController: NavController) {
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                    fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = Color(0xFFFFAEDFF7)
                 )
 
@@ -233,13 +237,18 @@ fun Comunidade(navController: NavController) {
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
                 ) {
+
                     for (i in listaDeComentarios.indices) {
-                        var nome1 = listaDeNomes[i]
-                        var comentario1 = listaDeComentarios[i]
-                        var avatar1 = lista_avatar[i]
+                        val indiceAleatorio = listaDeImagens.indices.shuffled()
+
+                        val nomeAtual = listaDeNomes[i]
+                        val comentarioAtual = listaDeComentarios[i]
+                        val fotoAtual = listaDeImagens[i]
+
                         CardComentario(
-                            nome1 = nome1,
-                            comentario1 = comentario1,
+                            foto_comunidade1 = fotoAtual,
+                            nome1 = nomeAtual,
+                            comentario1 = comentarioAtual
                         )
                     }
                 }
@@ -264,7 +273,7 @@ fun Comunidade(navController: NavController) {
                     "Fazer uma postagem ",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    fontFamily = fontPoppins,
+                    fontFamily = fontPoppins    ,
                     color = Color.White,
                     modifier = Modifier.padding(top = 2.dp)
                 )
@@ -310,7 +319,7 @@ fun Comunidade(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                Box() {
+                Box( ){
 
                     Image(
                         painter = painterResource(R.drawable.bottombar),
@@ -320,34 +329,34 @@ fun Comunidade(navController: NavController) {
                             .offset(y = (-11).dp)
                             .offset(x = (-10).dp)
                     )
-                    androidx.compose.material3.Card(
-                        shape = RoundedCornerShape(50.dp),
-                        colors = CardDefaults.cardColors(indigo_dye),
+                androidx.compose.material3.Card(
+                    shape = RoundedCornerShape(50.dp),
+                    colors = CardDefaults.cardColors(indigo_dye),
+                    modifier = Modifier
+                        .size(width = 55.dp, height = 56.dp)
+                        .fillMaxWidth()
+                        .offset(y = (-20).dp)
+                        .offset(x = 2.dp)
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
                         modifier = Modifier
-                            .size(width = 55.dp, height = 56.dp)
-                            .fillMaxWidth()
-                            .offset(y = (-20).dp)
-                            .offset(x = 2.dp)
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
-                            modifier = Modifier
-                                .fillMaxSize()
+                            .fillMaxSize()
 //                            .border(
 //                                5.dp,
 //                                uranium_blue,
 //                                shape = androidx.compose.foundation.shape.CircleShape
 //                            )
-                        ) {
-                            Image(
-                                painter = painterResource(R.drawable.comunidade_icon),
-                                contentDescription = "",
-                                modifier = Modifier
-                                    .size(25.dp)
-                            )
-                        }
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.comunidade_icon),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .size(25.dp)
+                        )
                     }
+                }
                 }
                 Image(
                     painter = painterResource(R.drawable.home_icon),
@@ -533,27 +542,28 @@ fun Camera(navController: NavController) {
             onClick = {
                 navController.navigate("comentario")
                 if (nome1.isNotEmpty() && comentario1.isNotEmpty()) {
-                    // Adiciona o comentário à lista
-                    listaDeComentarios.add(
-                        "$comentario1"
-                    )
-                    listaDeNomes.add(
-                        "$nome1"
-                    )
+                    listaDeComentarios.add(comentario1)
+                    listaDeNomes.add(nome1)
                     nome1 = ""
                     comentario1 = ""
-                    sorteio = 1
+                    escolha_foto = (0..6).random()
+                    listaDeImagens.add(listaDeImagens[escolha_foto])
+
+
+                    // Limpa os campos
+
                 }
+
             },
             colors = ButtonDefaults.buttonColors(containerColor = indigo_dye),
             modifier = Modifier
-                .size(width = 170.dp, height = 60.dp),
+                .size(width = 156.dp, height = 42.dp),
             shape = RoundedCornerShape(10.dp),
 
             ) {
             Text(
                 "Publicar",
-                fontSize = 18.sp,
+                fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
                 fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,

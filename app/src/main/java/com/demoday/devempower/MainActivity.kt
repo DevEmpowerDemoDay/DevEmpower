@@ -140,6 +140,7 @@ fun  Inicio() {
                     composable("mentores") { Mentores(navController,date = "") }
                     composable("mentoria_confirmação") { Confirmação_mentoria(navController)}
                     composable("info_alt") { informações_alt(navController) }
+                    composable("confirm_email") { Confirmação_email(navController) }
 
 
                 }
