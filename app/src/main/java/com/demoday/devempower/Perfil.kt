@@ -156,7 +156,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Pontuação",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -192,7 +192,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "informações",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -672,8 +672,8 @@ fun PerfilInformaçãoes(navController: NavController) {
                         )
                         var nome by remember { mutableStateOf("") }
                         OutlinedTextField(
-                            value = nome2,
-                            onValueChange = { newtext -> nome2 = newtext },
+                            value = nome,
+                            onValueChange = { newtext -> nome = newtext },
                             modifier = Modifier
                                 .width(300.62.dp),
                             textStyle = TextStyle(
