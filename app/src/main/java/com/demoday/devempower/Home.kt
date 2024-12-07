@@ -124,7 +124,7 @@ fun Home(navController: NavController) {
                       fontFamily = fontPoppins
                                 )
                     Text(
-                        "Desenvolvedor",
+                        "$nome_usuario",
                         color = white_smoke,
                         fontSize = 40.sp,
                         fontFamily = fontPoppins,

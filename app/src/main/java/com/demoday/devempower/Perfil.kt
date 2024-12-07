@@ -156,7 +156,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Pontuação",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -192,7 +192,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "informações",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -741,6 +741,7 @@ Spacer(
                             Button(
                                 onClick = {
                                     navController.navigate("info_alt")
+                                    nome_usuario = nome2
                                 },
                                 colors = ButtonDefaults.buttonColors(indigo_dye),
                                 modifier = Modifier

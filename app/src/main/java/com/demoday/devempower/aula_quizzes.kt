@@ -65,12 +65,18 @@ var corbotao_true = white_smoke
 var corborda = correto
 var certoouerradocor = correto
 var certoouerrado = ""
-var feedbackcorreto1 = "Perfeito! A DevEmpower realmente foca no desenvolvimento das soft skills dos desenvolvedores para o sucesso no mercado de trabalho."
-var feedbackerrado1 = "Quase lá! A DevEmpower ajuda desenvolvedores a aprimorar suas soft skills, essenciais para se destacarem em processos seletivos."
-var feedbackcorreto2 = "Perfeito! O polvo representa inteligência, adaptabilidade e a força de uma rede de apoio na identidade da DevEmpower."
-var feedbackerrado2 = "Não só inteligência! O polvo também simboliza adaptabilidade e a força de uma rede de apoio na identidade da DevEmpower."
-var feedbackcorreto3 = "Isso mesmo! A DevEmpower vai além de materiais de aula, oferecendo mentorias, quizzes interativos e diversas ferramentas para aprendizado."
-var feedbackerrado3 = "A DevEmpower também oferece mentorias e quizzes interativos, indo além de apenas materiais de aula para apoiar seu desenvolvimento."
+var feedbackcorreto1 =
+    "Perfeito! A DevEmpower realmente foca no desenvolvimento das soft skills dos desenvolvedores para o sucesso no mercado de trabalho."
+var feedbackerrado1 =
+    "Quase lá! A DevEmpower ajuda desenvolvedores a aprimorar suas soft skills, essenciais para se destacarem em processos seletivos."
+var feedbackcorreto2 =
+    "Perfeito! O polvo representa inteligência, adaptabilidade e a força de uma rede de apoio na identidade da DevEmpower."
+var feedbackerrado2 =
+    "Não só inteligência! O polvo também simboliza adaptabilidade e a força de uma rede de apoio na identidade da DevEmpower."
+var feedbackcorreto3 =
+    "Isso mesmo! A DevEmpower vai além de materiais de aula, oferecendo mentorias, quizzes interativos e diversas ferramentas para aprendizado."
+var feedbackerrado3 =
+    "A DevEmpower também oferece mentorias e quizzes interativos, indo além de apenas materiais de aula para apoiar seu desenvolvimento."
 var texto = ""
 
 
@@ -124,48 +130,52 @@ fun card_feedback() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-    ) {Card(
-        colors = CardDefaults.cardColors(white_smoke) ,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(end = 10.dp, start = 10.dp, top = 20.dp)
-            .width(329.dp)
-            .wrapContentHeight()
-            .clip(shape = RoundedCornerShape(25.dp))
-
-
     ) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
+        Card(
+            colors = CardDefaults.cardColors(white_smoke),
             modifier = Modifier
+                .fillMaxWidth()
+                .padding(end = 10.dp, start = 10.dp, top = 20.dp)
+                .width(329.dp)
+                .wrapContentHeight()
+                .clip(shape = RoundedCornerShape(25.dp))
+
 
         ) {
-            Text( certoouerrado,
-                fontSize = 24.sp,
-                color = certoouerradocor,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
-                fontFamily = fontPoppins,
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .padding(start = 20.dp, end = 20.dp)
-            )
-            Text(
-                texto,
-                fontSize = 19.sp,
-                color = indigo_dye,
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
-                fontFamily = fontPoppins,
-                modifier = Modifier
-                    .padding(start = 10.dp, end = 10.dp)
+
+            ) {
+                Text(
+                    certoouerrado,
+                    fontSize = 24.sp,
+                    color = certoouerradocor,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = fontPoppins,
+                    modifier = Modifier
+                        .padding(start = 20.dp, end = 20.dp)
+                )
+                Text(
+                    texto,
+                    fontSize = 19.sp,
+                    color = indigo_dye,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = fontPoppins,
+                    modifier = Modifier
+                        .padding(start = 10.dp, end = 10.dp)
 
 
-            )
+                )
+            }
         }
-    }
 
-}}
+    }
+}
+
 @Composable
 fun Quizz_Pergunta1(navController: NavController) {
     val context = LocalContext.current
@@ -241,9 +251,9 @@ fun Quizz_Pergunta1(navController: NavController) {
                     condition = false
                     corborda = correto
                     texto = feedbackcorreto1
-                    certoouerrado = "Resposta Correta!"
+                    certoouerrado = "Isso aí!"
                     certoouerradocor = correto
-                        corbotao_true =  correto.copy(alpha = 0.5f)
+                    corbotao_true = correto.copy(alpha = 0.5f)
                     corbotao_false = white_smoke
                 },
                 modifier = Modifier
@@ -256,7 +266,7 @@ fun Quizz_Pergunta1(navController: NavController) {
                         .fillMaxSize()
                 ) {
                     Text(
-                        "True",
+                        "Verdadeiro",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = fontPoppins
@@ -272,9 +282,9 @@ fun Quizz_Pergunta1(navController: NavController) {
                     condition = false
                     corborda = errado
                     texto = feedbackerrado1
-                    certoouerrado = "Resposta Incorreta!"
+                    certoouerrado = "Quase lá!"
                     certoouerradocor = errado
-                    corbotao_false =  errado.copy(alpha = 0.5f)
+                    corbotao_false = errado.copy(alpha = 0.5f)
                     corbotao_true = white_smoke
                 },
                 modifier = Modifier
@@ -287,7 +297,7 @@ fun Quizz_Pergunta1(navController: NavController) {
                         .fillMaxSize()
                 ) {
                     Text(
-                        "False",
+                        "Falso",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = fontPoppins
@@ -321,7 +331,10 @@ fun Quizz_Correção1(navController: NavController) {
         modifier = Modifier
             .background(uranium_blue)
             .fillMaxSize()
-            .clickable { navController.navigate("quizz3") }
+            .clickable {
+                navController.navigate("quizz3")
+                condition = true
+            }
     ) {
 
         Column(
@@ -394,7 +407,7 @@ fun Quizz_Correção1(navController: NavController) {
 
 
                     Text(
-                        "True",
+                        "Verdadeiro",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = correto,
@@ -419,7 +432,7 @@ fun Quizz_Correção1(navController: NavController) {
                         .fillMaxSize()
                 ) {
                     Text(
-                        "False",
+                        "Falso",
                         fontSize = 32.sp,
                         color = errado,
                         fontWeight = FontWeight.SemiBold,
@@ -509,7 +522,7 @@ fun Quizz_Pergunta2(navController: NavController) {
                     condition = false
                     corborda = errado
                     texto = feedbackerrado2
-                    certoouerrado = "Resposta Incorreta!"
+                    certoouerrado = "Quase lá!"
                     certoouerradocor = errado
                     corbotao_true = errado.copy(alpha = 0.5f)
                     corbotao_false = white_smoke
@@ -540,7 +553,7 @@ fun Quizz_Pergunta2(navController: NavController) {
                     condition = false
                     corborda = correto
                     texto = feedbackcorreto2
-                    certoouerrado = "Resposta Correta!"
+                    certoouerrado = "Isso aí!"
                     certoouerradocor = correto
                     corbotao_false = correto.copy(alpha = 0.5f)
                     corbotao_true = white_smoke
@@ -588,7 +601,10 @@ fun Quizz_Correção2(navController: NavController) {
         modifier = Modifier
             .background(uranium_blue)
             .fillMaxSize()
-            .clickable { navController.navigate("quizz5") }
+            .clickable {
+                navController.navigate("quizz5")
+                condition = true
+            }
     ) {
 
         Column(
@@ -660,7 +676,7 @@ fun Quizz_Correção2(navController: NavController) {
 
 
                     Text(
-                        "True",
+                        "Verdadeiro",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = errado,
@@ -685,7 +701,7 @@ fun Quizz_Correção2(navController: NavController) {
                         .fillMaxSize()
                 ) {
                     Text(
-                        "False",
+                        "Falso",
                         fontSize = 32.sp,
                         color = correto,
                         fontWeight = FontWeight.SemiBold,
@@ -774,7 +790,7 @@ fun Quizz_Pergunta3(navController: NavController) {
                     condition = false
                     corborda = errado
                     texto = feedbackerrado3
-                    certoouerrado = "Resposta Incorreta!"
+                    certoouerrado = "Quase lá!"
                     certoouerradocor = errado
                     corbotao_true = errado.copy(alpha = 0.5f)
                     corbotao_false = white_smoke
@@ -790,7 +806,7 @@ fun Quizz_Pergunta3(navController: NavController) {
                         .fillMaxSize()
                 ) {
                     Text(
-                        "True",
+                        "Verdadeiro",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = fontPoppins
@@ -806,7 +822,7 @@ fun Quizz_Pergunta3(navController: NavController) {
                     condition = false
                     corborda = correto
                     texto = feedbackcorreto3
-                    certoouerrado = "Resposta Correta!"
+                    certoouerrado = "Isso aí!"
                     certoouerradocor = correto
                     corbotao_false = correto.copy(alpha = 0.5f)
                     corbotao_true = white_smoke
@@ -823,7 +839,7 @@ fun Quizz_Pergunta3(navController: NavController) {
                         .fillMaxSize()
                 ) {
                     Text(
-                        "False",
+                        "Falso",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = fontPoppins
@@ -926,7 +942,7 @@ fun Quizz_Correção3(navController: NavController) {
 
 
                     Text(
-                        "True",
+                        "Verdadeiro",
                         fontSize = 32.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = errado,
@@ -951,7 +967,7 @@ fun Quizz_Correção3(navController: NavController) {
                         .fillMaxSize()
                 ) {
                     Text(
-                        "False",
+                        "Falso",
                         fontSize = 32.sp,
                         color = correto,
                         fontWeight = FontWeight.SemiBold,
