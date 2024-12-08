@@ -1,6 +1,7 @@
 package com.demoday.devempower
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -45,12 +46,7 @@ fun RedefinirSenha(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .paint(
-                painter = painterResource(
-                    R.drawable.background_color
-                ),
-                contentScale = ContentScale.Crop
-            )
+            .background(uranium_blue)
     ) {
         Text(
             "Redefinir a senha",
@@ -77,7 +73,7 @@ fun RedefinirSenha(navController: NavController) {
                     "Esqueceu sua senha?",
                     fontSize = 13.sp,
                     color = bright_blue,
-                    //fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                 )
                 Spacer(modifier = Modifier.padding(start = 5.dp))
                 Text(
@@ -108,7 +104,7 @@ fun RedefinirSenha(navController: NavController) {
                         "associado a sua conta. Enviaremos um \n" +
                         "link para redefinir sua senha.",
                 fontSize = 13.sp,
-                //fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 fontWeight = FontWeight.SemiBold,
                 color = midnight_blue,
                 textAlign = TextAlign.Center
@@ -179,12 +175,7 @@ fun MudarSenha(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .paint(
-                painter = painterResource(
-                    R.drawable.background_color
-                ),
-                contentScale = ContentScale.Crop
-            )
+            .background(uranium_blue)
     ) {
         Text(
             "Redefinir a senha",
@@ -314,12 +305,7 @@ fun SenhaAlterada(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .paint(
-                painter = painterResource(
-                    R.drawable.background_color
-                ),
-                contentScale = ContentScale.Crop
-            )
+            .background(uranium_blue)
     ) {
         Text(
             "Senha alterada!",
