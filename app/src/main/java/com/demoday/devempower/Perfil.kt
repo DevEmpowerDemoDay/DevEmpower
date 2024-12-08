@@ -252,7 +252,7 @@ fun PerfilAtividade(navController: NavController) {
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
-                         fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -316,7 +316,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Live Coding",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_live_coding),
@@ -333,7 +333,7 @@ fun PerfilAtividade(navController: NavController) {
                         fontSize = 20.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = indigo_dye,
-                         fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -397,7 +397,7 @@ fun PerfilAtividade(navController: NavController) {
                                     "Pitch perfeito",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
-                              fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                                 Image(
                                     painter = painterResource(R.drawable.progress_bar_100_),
@@ -462,7 +462,7 @@ fun PerfilInformaçãoes(navController: NavController) {
 
 
                 Image(
-                    painter = painterResource(R.drawable.avatar),
+                    painter = painterResource(R.drawable.logo),
                     contentDescription = "Logo",
                     modifier = Modifier
                         .size(60.dp)
@@ -533,7 +533,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                     "Pontuação",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                  fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -628,7 +628,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                                     "Atividades",
                                     color = indigo_dye,
                                     fontSize = 13.sp,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
@@ -641,14 +641,15 @@ fun PerfilInformaçãoes(navController: NavController) {
                             modifier = Modifier
                                 .size(width = 67.33.dp, height = 65.dp)
                                 .clickable { navController.navigate("personalização") })
-                        Image(painter = painterResource(R.drawable.atividade_icon),
+                        Image(
+                            painter = painterResource(R.drawable.atividade_icon),
                             contentDescription = "Icon que simboliza atualização da foto de perfil",
                             colorFilter = ColorFilter.tint(indigo_dye),
                             modifier = Modifier
                                 .offset(x = 50.dp)
 
 
-                            )
+                        )
                     }
                     Text(
                         "Editar ícones",
@@ -733,29 +734,31 @@ fun PerfilInformaçãoes(navController: NavController) {
 
                     }
 
-Spacer(
-    modifier = Modifier
-        .padding(top = 15.dp)
-)
+                    Spacer(
+                        modifier = Modifier
+                            .padding(top = 15.dp)
+                    )
 
-                            Button(
-                                onClick = {
-                                    navController.navigate("info_alt")
-                                    nome_usuario = nome2
-                                },
-                                colors = ButtonDefaults.buttonColors(indigo_dye),
-                                modifier = Modifier
-                                    .size(width = 156.dp, height = 42.dp),
-                                shape = RoundedCornerShape(10.dp),
-                            ) {
-                                Column {
-                                    Text("Confirmar",
-                                        fontSize = 20.sp,
-                                        color = white_smoke,
-                                        fontWeight = FontWeight.Medium,
-                                        fontFamily = fontPoppins)
-                                }
-                            }
+                    Button(
+                        onClick = {
+                            navController.navigate("info_alt")
+                            nome_usuario = nome2
+                        },
+                        colors = ButtonDefaults.buttonColors(indigo_dye),
+                        modifier = Modifier
+                            .size(width = 156.dp, height = 42.dp),
+                        shape = RoundedCornerShape(10.dp),
+                    ) {
+                        Column {
+                            Text(
+                                "Confirmar",
+                                fontSize = 20.sp,
+                                color = white_smoke,
+                                fontWeight = FontWeight.Medium,
+                                fontFamily = fontPoppins
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -1072,9 +1075,10 @@ fun PerfilPontuação(navController: NavController) {
                                 Text(
                                     "Oratória",
                                     textAlign = TextAlign.Center,
+                                    color = Color.White,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
 
                             }
@@ -1105,6 +1109,7 @@ fun PerfilPontuação(navController: NavController) {
                                 Text(
                                     "Pitch \n Perfeito",
                                     textAlign = TextAlign.Center,
+                                    color = Color.White,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     fontFamily = fontPoppins
@@ -1145,9 +1150,10 @@ fun PerfilPontuação(navController: NavController) {
                                 Text(
                                     "Testes \n Técnicos",
                                     textAlign = TextAlign.Center,
+                                    color = Color.White,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
 
 
@@ -1179,9 +1185,10 @@ fun PerfilPontuação(navController: NavController) {
                                 Text(
                                     "live \n Coding",
                                     textAlign = TextAlign.Center,
+                                    color = Color.White,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                     fontFamily = fontPoppins
+                                    fontFamily = fontPoppins
                                 )
                             }
                         }
