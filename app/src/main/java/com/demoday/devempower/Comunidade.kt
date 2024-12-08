@@ -438,7 +438,7 @@ fun Camera(navController: NavController) {
         Spacer(modifier = Modifier.padding(top = 10.dp))
 
         Button(
-            onClick = { navController.navigate("comunidade") },
+            onClick = { navController.navigate("comentario") },
             modifier = Modifier
                 .size(width = 170.dp, height = 53.6.dp),
             shape = RoundedCornerShape(10.dp),

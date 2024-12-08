@@ -124,7 +124,7 @@ fun Home(navController: NavController) {
                         .clip(RoundedCornerShape(50.dp))
                         .padding(horizontal = 14.dp)
                         .clickable {
-                            navController.navigate("home")
+                            navController.navigate("personalização")
                         }
                 )
 

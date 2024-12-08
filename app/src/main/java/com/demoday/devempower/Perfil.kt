@@ -55,6 +55,19 @@ import kotlinx.coroutines.delay
 fun PerfilAtividade(navController: NavController) {
     val systemUiController = rememberSystemUiController()
 
+    foto_avatar = when (avatar_escolhido) {
+        1 -> R.drawable.debora
+        2 -> R.drawable.andressa
+        3 -> R.drawable.anna
+        4 -> R.drawable.murilo
+        5 -> R.drawable.lusbel
+        6 -> R.drawable.hudson
+        7 -> R.drawable.matheus
+        8 -> R.drawable.victor
+        else -> R.drawable.maykon
+
+    }
+
     systemUiController.setStatusBarColor(
         uranium_blue
     )
@@ -88,7 +101,7 @@ fun PerfilAtividade(navController: NavController) {
 
 
                 Image(
-                    painter = painterResource(R.drawable.avatar),
+                    painter = painterResource(foto_avatar),
                     contentDescription = "Logo",
                     modifier = Modifier
                         .size(60.dp)
@@ -100,7 +113,7 @@ fun PerfilAtividade(navController: NavController) {
             }
 
             Text(
-                "DevKotlin",
+                "$nome_usuario",
                 color = indigo_dye,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Medium,
@@ -425,6 +438,19 @@ fun PerfilInformaçãoes(navController: NavController) {
     var idade by remember { mutableStateOf("") }
     var linkedin by remember { mutableStateOf("") }
 
+    foto_avatar = when (avatar_escolhido) {
+        1 -> R.drawable.debora
+        2 -> R.drawable.andressa
+        3 -> R.drawable.anna
+        4 -> R.drawable.murilo
+        5 -> R.drawable.lusbel
+        6 -> R.drawable.hudson
+        7 -> R.drawable.matheus
+        8 -> R.drawable.victor
+        else -> R.drawable.maykon
+
+    }
+
 
     // define cores da barra de status e da barra de navegação
     systemUiController.setStatusBarColor(
@@ -462,7 +488,7 @@ fun PerfilInformaçãoes(navController: NavController) {
 
 
                 Image(
-                    painter = painterResource(R.drawable.logo),
+                    painter = painterResource(foto_avatar),
                     contentDescription = "Logo",
                     modifier = Modifier
                         .size(60.dp)
@@ -474,7 +500,7 @@ fun PerfilInformaçãoes(navController: NavController) {
             }
 
             Text(
-                "DevKotlin",
+                "$nome_usuario",
                 color = indigo_dye,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Medium,
@@ -636,7 +662,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                     }
                     Spacer(modifier = Modifier.padding(top = 20.dp))
                     Box() {
-                        Image(painter = painterResource(R.drawable.avatar),
+                        Image(painter = painterResource(foto_avatar),
                             contentDescription = "Icon que simboliza atualização da foto de perfil",
                             modifier = Modifier
                                 .size(width = 67.33.dp, height = 65.dp)
@@ -671,10 +697,10 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 .width(300.62.dp)
                                 .align(alignment = Alignment.CenterHorizontally)
                         )
-                        var nome by remember { mutableStateOf("") }
+
                         OutlinedTextField(
-                            value = nome,
-                            onValueChange = { newtext -> nome = newtext },
+                            value = nome2,
+                            onValueChange = { newtext -> nome2 = newtext },
                             modifier = Modifier
                                 .width(300.62.dp),
                             textStyle = TextStyle(
@@ -795,6 +821,19 @@ fun informações_alt(navController: NavController) {
 
 @Composable
 fun PerfilPontuação(navController: NavController) {
+    foto_avatar = when (avatar_escolhido) {
+        1 -> R.drawable.debora
+        2 -> R.drawable.andressa
+        3 -> R.drawable.anna
+        4 -> R.drawable.murilo
+        5 -> R.drawable.lusbel
+        6 -> R.drawable.hudson
+        7 -> R.drawable.matheus
+        8 -> R.drawable.victor
+        else -> R.drawable.maykon
+
+    }
+
     val systemUiController = rememberSystemUiController()
 
     systemUiController.setStatusBarColor(
@@ -830,7 +869,7 @@ fun PerfilPontuação(navController: NavController) {
 
 
                 Image(
-                    painter = painterResource(R.drawable.avatar),
+                    painter = painterResource(foto_avatar),
                     contentDescription = "Logo",
                     modifier = Modifier
                         .size(60.dp)
@@ -842,7 +881,7 @@ fun PerfilPontuação(navController: NavController) {
             }
 
             Text(
-                "DevKotlin",
+                "$nome_usuario",
                 color = indigo_dye,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Medium,
