@@ -25,7 +25,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,7 +33,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
@@ -45,7 +43,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -54,7 +51,8 @@ import com.demoday.devempower.ui.theme.DevEmpowerTheme
 var fotos_button = 0
 var foto_mentor = 1
 var nome_mentor = ""
-var condicao by mutableStateOf(true)
+var condicao by mutableStateOf(false)
+var horario by mutableStateOf(0)
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -91,12 +89,18 @@ fun Mentores(navController: NavController, date: String) {
         modifier = Modifier
             .fillMaxSize()
             .background(uranium_blue)
+
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
+                .pointerInput(Unit) {
+                    detectTapGestures { // Detecta cliques na tela
+                        condition = false // Quando clicar fora, define como falso
+                    }
+                }
         ) {
 
             Box(
@@ -234,7 +238,7 @@ fun Mentores(navController: NavController, date: String) {
         }
     }
     if (condicao) {
-        confirmação_horario()
+        confirmação_horario(navController = navController)
     }
 }
 
@@ -261,7 +265,11 @@ fun Mentores1(Text_nome: String, Text_descricao: String, painter: Painter, onCli
         Box(
             modifier = Modifier
                 .size(width = 360.dp, height = 180.dp)
-                .border(3.dp, white_smoke.copy(alpha = if (condicao) 0.5f else 1f), shape = RoundedCornerShape(30.dp))
+                .border(
+                    3.dp,
+                    white_smoke.copy(alpha = if (condicao) 0.5f else 1f),
+                    shape = RoundedCornerShape(30.dp)
+                )
 
         ) {}
         Row(
@@ -338,7 +346,7 @@ fun Confirmação_mentoria(navController: NavController) {
             androidx.compose.material.Text(
                 "Você deseja confirmar\n" +
                         "sua mentoria com \n" +
-                        "$nome_mentor às 9 horas? ",
+                        "$nome_mentor às $horario horas? ",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = indigo_dye,
@@ -390,29 +398,213 @@ fun Confirmação_mentoria(navController: NavController) {
 }
 
 @Composable
-fun confirmação_horario(onDismiss: () -> Unit = {}) {
-
+fun confirmação_horario(navController: NavController) {
+    var condicao_cor_button1 by remember { mutableStateOf(false) }
+    var condicao_cor_button2 by remember { mutableStateOf(false) }
+    var condicao_cor_button3 by remember { mutableStateOf(false) }
+    var condicao_cor_button4 by remember { mutableStateOf(false) }
     if (condicao) {
-        Dialog(onDismissRequest = { onDismiss() }) { // Dialog que envolve o Card
+        Box(
+            modifier = Modifier
+                .fillMaxSize() // O Box ocupa toda a tela
+                .pointerInput(Unit) {
+                    detectTapGestures(onTap = {
+                        // Define a condição como falsa ao clicar fora do Card
+                        condicao = false
+                    })
+                }
+        ) {
             Column(
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxSize()
+                modifier = Modifier.fillMaxSize()
             ) {
                 Card(
                     backgroundColor = uranium_blue,
                     shape = RoundedCornerShape(topStart = 50.dp, topEnd = 50.dp),
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .size(width = 350.dp, height = 390.dp)
+                        .fillMaxWidth() // O Card ocupa toda a largura
+                        .height(390.dp) // Altura fixa para o Card
+                        .pointerInput(Unit) {
+                            detectTapGestures(onTap = {
+                                // O clique dentro do Card não faz nada
+                            })
+                        }
                 ) {
                     // Conteúdo do Card
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Top,
+                            modifier = Modifier
+                                .fillMaxSize()
+                        ) {
+                            Spacer(modifier = Modifier.padding(top = 45.dp))
+                            Text(
+                                "Horarios disponiveis",
+                                fontSize = 33.sp,
+                                fontWeight = FontWeight.Bold,
+                                // fontFamily = fontPoppins,
+                                color = indigo_dye
+                            )
 
+                            Spacer(modifier = Modifier.padding(top = 45.dp))
+
+
+
+
+                            Row(modifier = Modifier) {
+                                androidx.compose.material3.Card(
+                                    modifier = Modifier
+                                        .clickable {
+                                            condicao_cor_button1 = true
+                                            condicao_cor_button2 = false
+                                            condicao_cor_button3 = false
+                                            condicao_cor_button4 = false
+                                            horario = 9
+                                        }
+                                        .size(width = 124.dp, height = 48.17.dp),
+                                    colors = androidx.compose.material3.CardDefaults.cardColors(
+                                        if (condicao_cor_button1) Color.White else indigo_dye
+                                    ),
+                                    shape = RoundedCornerShape(5.dp)
+                                ) {
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        verticalArrangement = Arrangement.Center,
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                    ) {
+                                        Text(
+                                            "09:00",
+                                            fontSize = 25.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            // fontFamily = fontPoppins,
+                                            color = if (condicao_cor_button1) indigo_dye else white_smoke
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.padding(start = 25.dp))
+                                androidx.compose.material3.Card(
+                                    modifier = Modifier
+                                        .clickable {
+                                            condicao_cor_button1 = false
+                                            condicao_cor_button2 = true
+                                            condicao_cor_button3 = false
+                                            condicao_cor_button4 = false
+                                            horario = 12
+                                        }
+                                        .size(width = 124.dp, height = 48.17.dp),
+                                    colors = androidx.compose.material3.CardDefaults.cardColors(
+                                        if (condicao_cor_button2) Color.White else indigo_dye
+                                    ),
+                                    shape = RoundedCornerShape(5.dp)
+                                ) {
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        verticalArrangement = Arrangement.Center,
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                    ) {
+                                        Text(
+                                            "12:00",
+                                            fontSize = 25.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            // fontFamily = fontPoppins,
+                                            color = if (condicao_cor_button2) indigo_dye else white_smoke
+                                        )
+                                    }
+                                }
+                            }
+
+                            Spacer(modifier = Modifier.padding(top = 20.dp))
+
+                            Row(modifier = Modifier) {
+                                androidx.compose.material3.Card(
+                                    modifier = Modifier
+                                        .clickable {
+                                            condicao_cor_button1 = false
+                                            condicao_cor_button2 = false
+                                            condicao_cor_button3 = true
+                                            condicao_cor_button4 = false
+                                            horario = 15
+                                        }
+                                        .size(width = 124.dp, height = 48.17.dp),
+                                    colors = androidx.compose.material3.CardDefaults.cardColors(
+                                        if (condicao_cor_button3) Color.White else indigo_dye
+                                    ),
+                                    shape = RoundedCornerShape(5.dp)
+                                ) {
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        verticalArrangement = Arrangement.Center,
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                    ) {
+                                        Text(
+                                            "15:00",
+                                            fontSize = 25.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            // fontFamily = fontPoppins,
+                                            color = if (condicao_cor_button3) indigo_dye else white_smoke
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.padding(start = 25.dp))
+                                androidx.compose.material3.Card(
+                                    modifier = Modifier
+                                        .clickable {
+                                            condicao_cor_button1 = false
+                                            condicao_cor_button2 = false
+                                            condicao_cor_button3 = false
+                                            condicao_cor_button4 = true
+                                            horario = 17
+                                        }
+                                        .size(width = 124.dp, height = 48.17.dp),
+                                    colors = androidx.compose.material3.CardDefaults.cardColors(
+                                        if (condicao_cor_button4) Color.White else indigo_dye
+                                    ),
+                                    shape = RoundedCornerShape(5.dp)
+                                ) {
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        verticalArrangement = Arrangement.Center,
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                    ) {
+                                        Text(
+                                            "17:00",
+                                            fontSize = 25.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            // fontFamily = fontPoppins,
+                                            color = if (condicao_cor_button4) indigo_dye else white_smoke
+                                        )
+                                    }
+                                }
+                            }
+
+                            Spacer(modifier = Modifier.padding(top = 30.dp))
+                            Button(
+                                onClick = {
+                                    navController.navigate("mentoria_confirmação")
+                                },
+                                colors = ButtonDefaults.buttonColors(indigo_dye),
+                                modifier = Modifier
+                                    .size(width = 156.dp, height = 42.dp),
+                                shape = RoundedCornerShape(10.dp),
+                            ) {
+                                Text(
+                                    "confirmar",
+                                    fontSize = 22.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    // fontFamily = fontPoppins,
+                                    color = white_smoke
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -490,14 +682,6 @@ private fun Mentoria_Preview() {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview
-@Composable
-private fun Mentoria_Preview1() {
-    DevEmpowerTheme {
-        Confirmação_mentoria(rememberNavController())
-    }
-}
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview
