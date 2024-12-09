@@ -1,5 +1,7 @@
 package com.demoday.devempower
 
+import android.view.Gravity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -33,6 +35,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -211,7 +214,7 @@ fun Comunidade(navController: NavController) {
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                   fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = Color(0xFFFFAEDFF7)
                 )
 
@@ -233,6 +236,24 @@ fun Comunidade(navController: NavController) {
                             comentario1 = comentarioAtual
                         )
                     }
+                }
+                val context = LocalContext.current
+                if (listaDeComentarios.count() == 7) {
+                listaDeImagens.add(
+                    R.drawable.mentoria_murilo
+                )
+                    if (listaDeComentarios.count() == 20) {
+                        listaDeImagens.add(R.drawable.mentoria_murilo)
+                    }
+                }
+                else if (listaDeComentarios.count() == 50) {
+                    val toast = Toast.makeText(context, "Material Bloqueado", Toast.LENGTH_SHORT)
+                    toast.setGravity(
+                        Gravity.TOP,
+                        0,
+                        100
+                    ) // TOP posiciona no topo, com deslocamento vertical
+                    toast.show()
                 }
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
@@ -526,8 +547,8 @@ fun Camera(navController: NavController) {
                 if (nome1.isNotEmpty() && comentario1.isNotEmpty()) {
                     listaDeComentarios.add(comentario1)
                     listaDeNomes.add(nome1)
-                    nome1 = ""
-                    comentario1 = ""
+                   // nome1 = ""
+                   // comentario1 = ""
                     escolha_foto = (0..6).random()
                     listaDeImagens.add(listaDeImagens[escolha_foto])
 
