@@ -71,6 +71,19 @@ fun Home(navController: NavController) {
 
     val systemUiController = rememberSystemUiController()
 
+    foto_avatar = when (avatar_escolhido) {
+        1 -> R.drawable.debora
+        2 -> R.drawable.andressa
+        3 -> R.drawable.anna
+        4 -> R.drawable.murilo
+        5 -> R.drawable.lusbel
+        6 -> R.drawable.hudson
+        7 -> R.drawable.matheus
+        8 -> R.drawable.victor
+        else -> R.drawable.maykon
+
+    }
+
 
     // define cores da barra de status e da barra de navegação
     systemUiController.setStatusBarColor(
@@ -103,16 +116,15 @@ fun Home(navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = painterResource(R.drawable.logo),
+                    painter = painterResource(foto_avatar),
                     contentDescription = "Logo",
                     modifier = Modifier
-                        .padding(vertical = 20.dp)
-                        .size(70.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .size(width = 87.19.dp, height = 85.4.dp)
                         .clip(RoundedCornerShape(50.dp))
-                        .background(white_smoke)
                         .padding(horizontal = 14.dp)
                         .clickable {
-                            navController.navigate("home")
+                            navController.navigate("personalização")
                         }
                 )
 
@@ -121,13 +133,13 @@ fun Home(navController: NavController) {
                         "Bem vindo,",
                       color = white_smoke,
                       fontSize = 15.sp,
-                      fontFamily = fontPoppins
+                     // fontFamily = fontPoppins
                                 )
                     Text(
                         "$nome_usuario",
                         color = white_smoke,
                         fontSize = 40.sp,
-                        fontFamily = fontPoppins,
+                       // fontFamily = fontPoppins,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.align(Alignment.CenterHorizontally),
                         textAlign = TextAlign.Center
@@ -161,7 +173,7 @@ fun Home(navController: NavController) {
                     color = white_smoke,
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
-                   fontFamily = fontPoppins
+                  // fontFamily = fontPoppins
                 )
                 Spacer(modifier = Modifier.padding(start = 6.dp))
                 Image(
@@ -187,7 +199,7 @@ fun Home(navController: NavController) {
                     withStyle(
                         style = SpanStyle(
                             fontWeight = FontWeight.Bold, fontSize = 22.sp,
-                            fontFamily = fontPoppins
+                          //  fontFamily = fontPoppins
                         )
                     ) {
                         append("Categorias",)
@@ -411,7 +423,7 @@ fun ContainerEvents(text_titulo: String, onClick: () -> Unit) {
                     text = text_titulo,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    fontFamily = fontPoppins,
+                   // fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 2.dp)
@@ -442,7 +454,7 @@ fun ContentBox(text: String, modifier: Modifier) {
             color = white_smoke,
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
-            fontFamily = fontPoppins,
+            //fontFamily = fontPoppins,
             modifier = Modifier
                 .align(Alignment.Center)
                 .zIndex(1f)

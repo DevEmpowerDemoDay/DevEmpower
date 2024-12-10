@@ -1,5 +1,7 @@
 package com.demoday.devempower
 
+import android.view.Gravity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -26,9 +28,12 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -337,12 +342,27 @@ fun Botões_Materiais(
     Painter: Painter,
     navController: NavController
 ) {
+    val context = LocalContext.current
     Box(
         modifier = Modifier
             .clip(shape = RoundedCornerShape(19.dp))
             .background(pale_sky_blue)
             .size(width = 171.dp, height = 150.dp)
+            .clickable {
+                val toast = Toast.makeText(context, "Material Bloqueado", Toast.LENGTH_SHORT)
+                toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical
+                toast.show()
+
+            }
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_outline_lock),
+            contentDescription = "",
+            modifier = Modifier
+                .size(50.dp)
+                .align(alignment = Alignment.TopCenter)
+                .offset(y = (25).dp)
+        )
         Image(
             painter = Painter,
             contentDescription = Text_descrição,
@@ -350,6 +370,10 @@ fun Botões_Materiais(
                 .size(width = 297.dp, height = 198.dp)
                 .fillMaxSize()
                 .align(alignment = Alignment.Center)
+                .graphicsLayer(alpha = 1f), // Deixa a imagem mais transparente
+            colorFilter = ColorFilter.tint(
+                color = Color.LightGray.copy(alpha = 0.6f) // Aplica um tom cinza claro
+            )
         )
         Card(
             colors = CardDefaults.cardColors(indigo_dye),
