@@ -240,6 +240,10 @@ fun Cadastro(navController: NavController) {
                     email = emailCad
                     senha = senhaCad
                     nome_usuario = nomeCad
+                    emailCad = ""
+                    senhaCad = ""
+                    confirmaCad = ""
+                    nomeCad = ""
                 }else{
                     val toast = Toast.makeText( context, "Senhas nao conferem!", Toast.LENGTH_SHORT)
                     toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical

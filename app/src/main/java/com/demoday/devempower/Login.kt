@@ -1,5 +1,7 @@
 package com.demoday.devempower
 
+import android.content.Intent
+import android.net.Uri
 import android.view.Gravity
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -255,7 +257,12 @@ fun Login(navController: NavController) {
                     contentDescription = "Logo Facebook",
                     modifier = Modifier
                         .size(width = 48.15.dp, height = 47.23.dp)
-                        .clickable { }
+                        .clickable {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/?stype=lo&flo=1&deoia=1&jlou=AfeCKG9q2XPrVCXpbgosek7XHKvFO-uUarnvwuVqhTR8aUQAzKjJosiP3Ar0dkIGy-PZ9m7WA5R7Lh--q4h-vhBh5yYrMRGu8pRsHNB4LyM_xQ&smuh=18637&lh=Ac9XkVfzMTj1aNaOfok")).apply {
+                                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // Garante que abrirá em uma nova task
+                            }
+                            context.startActivity(intent)
+                        }
                 )
                 Spacer(modifier = Modifier.padding(start = 20.dp))
                 Image(
@@ -265,7 +272,12 @@ fun Login(navController: NavController) {
                     contentDescription = "Logo Facebook",
                     modifier = Modifier
                         .size(width = 48.15.dp, height = 47.23.dp)
-                        .clickable { }
+                        .clickable {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://myaccount.google.com/?hl=pt&pli=1&nlr=1")).apply {
+                                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // Garante que abrirá em uma nova task
+                            }
+                            context.startActivity(intent)
+                        }
 
                 )
             }

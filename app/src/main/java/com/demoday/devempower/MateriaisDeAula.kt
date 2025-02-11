@@ -352,7 +352,6 @@ fun Botões_Materiais(
                 val toast = Toast.makeText(context, "Material Bloqueado", Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical
                 toast.show()
-
             }
     ) {
         Image(
