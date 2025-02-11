@@ -143,15 +143,21 @@ fun RedefinirSenha(navController: NavController) {
         val context = LocalContext.current
 
         Button(
-            onClick = { if (redEmail == email){
-                navController.navigate("mudarsenha")
-            } else {
-                val toast = Toast.makeText( context, "E-mail não encontrado!", Toast.LENGTH_SHORT)
-                toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical
-                toast.show()
-                redEmail = ""
-            }
-                      },
+            onClick = {
+                if (redEmail == email) {
+                    navController.navigate("mudarsenha")
+                } else {
+                    val toast =
+                        Toast.makeText(context, "E-mail não encontrado!", Toast.LENGTH_SHORT)
+                    toast.setGravity(
+                        Gravity.TOP,
+                        0,
+                        100
+                    ) // TOP posiciona no topo, com deslocamento vertical
+                    toast.show()
+                    redEmail = ""
+                }
+            },
             colors = ButtonDefaults.buttonColors(
                 containerColor = indigo_dye
             ),
@@ -203,7 +209,7 @@ fun MudarSenha(navController: NavController) {
 
         Spacer(modifier = Modifier.padding(top = 25.dp))
 
-        var senha by remember {
+        var senhaRed by remember {
             mutableStateOf("")
         }
 
@@ -224,8 +230,8 @@ fun MudarSenha(navController: NavController) {
         Spacer(modifier = Modifier.padding(top = 10.dp))
 
         androidx.compose.material3.OutlinedTextField(
-            value = senha,
-            onValueChange = { novoTexto -> senha = novoTexto },
+            value = senhaRed,
+            onValueChange = { novoTexto -> senhaRed = novoTexto },
             modifier = Modifier
                 .width(321.62.dp),
             shape = RoundedCornerShape(7.dp),
@@ -272,10 +278,26 @@ fun MudarSenha(navController: NavController) {
         )
 
         Spacer(modifier = Modifier.padding(top = 20.dp))
-
+        val context = LocalContext.current
 
         Button(
-            onClick = { navController.navigate("senhaalterada") },
+            onClick = {
+                if (senhaRed == confirma) {
+                    navController.navigate("senhaalterada")
+                    senha = confirma
+                } else {
+                    val toast =
+                        Toast.makeText(context, "As senhas são diferentes!", Toast.LENGTH_SHORT)
+                    toast.setGravity(
+                        Gravity.TOP,
+                        0,
+                        100
+                    ) // TOP posiciona no topo, com deslocamento vertical
+                    toast.show()
+                    senhaRed = ""
+                    confirma = ""
+                }
+            },
             colors = ButtonDefaults.buttonColors(
                 containerColor = indigo_dye
             ),

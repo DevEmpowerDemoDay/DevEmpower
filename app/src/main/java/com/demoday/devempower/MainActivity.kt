@@ -12,6 +12,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,13 +43,19 @@ val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 var nome1 by mutableStateOf("")
 var nome_usuario by mutableStateOf("Desenvolvedor")
 var nome2 by mutableStateOf("")
-var email = "a@b.com.br"
-var senha = "123456"
+var email by mutableStateOf("a@b.com.br")
+var senha by mutableStateOf("123456")
 var numero by mutableStateOf("xxxx-xxxx")
 
 //variavel de comentario para uso da comunidade
 var comentario1 by mutableStateOf("")
 var date by mutableStateOf("")
+
+// variavel de cadastro
+var confirmaCad by mutableStateOf("")
+var senhaCad by mutableStateOf("")
+var emailCad by mutableStateOf("")
+
 
 
 class MainActivity : ComponentActivity() {

@@ -1,5 +1,7 @@
 package com.demoday.devempower
 
+import android.view.Gravity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -99,13 +102,13 @@ fun Cadastro(navController: NavController) {
             Spacer(modifier = Modifier.padding(top = 5.dp))
 
 
-            var nome by remember {
+            var nomeCad by remember {
                 mutableStateOf("")
             }
 
             OutlinedTextField(
-                value = nome,
-                onValueChange = { novoTexto -> nome = novoTexto },
+                value = nomeCad,
+                onValueChange = { novoTexto -> nomeCad = novoTexto },
                 modifier = Modifier
                     .width(321.62.dp)
                     .height(50.dp),
@@ -137,13 +140,11 @@ fun Cadastro(navController: NavController) {
             Spacer(modifier = Modifier.padding(top = 5.dp))
 
 
-            var email by remember {
-                mutableStateOf("")
-            }
+
 
             OutlinedTextField(
-                value = email,
-                onValueChange = { novoTexto -> email = novoTexto },
+                value = emailCad,
+                onValueChange = { novoTexto -> emailCad = novoTexto },
                 modifier = Modifier
                     .width(321.62.dp)
                     .height(50.dp),
@@ -175,13 +176,11 @@ fun Cadastro(navController: NavController) {
             Spacer(modifier = Modifier.padding(top = 5.dp))
 
 
-            var senha by remember {
-                mutableStateOf("")
-            }
+
 
             OutlinedTextField(
-                value = senha,
-                onValueChange = { novoTexto -> senha = novoTexto },
+                value = senhaCad,
+                onValueChange = { novoTexto -> senhaCad = novoTexto },
                 modifier = Modifier
                     .width(321.62.dp)
                     .height(50.dp),
@@ -213,13 +212,11 @@ fun Cadastro(navController: NavController) {
             Spacer(modifier = Modifier.padding(top = 5.dp))
 
 
-            var senha1 by remember {
-                mutableStateOf("")
-            }
+
 
             OutlinedTextField(
-                value = senha1,
-                onValueChange = { novoTexto -> senha1 = novoTexto },
+                value = confirmaCad,
+                onValueChange = { novoTexto -> confirmaCad = novoTexto },
                 modifier = Modifier
                     .width(321.62.dp)
                     .height(50.dp),
@@ -233,9 +230,22 @@ fun Cadastro(navController: NavController) {
             )
 
             Spacer(modifier = Modifier.padding(top = 15.dp))
+            val context = LocalContext.current
 
             Button(
-                onClick = { navController.navigate("novocadastro") },
+                onClick = { if (
+                    senhaCad == confirmaCad
+                ){
+                    navController.navigate("novocadastro")
+                    email = emailCad
+                    senha = senhaCad
+                    nome_usuario = nomeCad
+                }else{
+                    val toast = Toast.makeText( context, "Senhas nao conferem!", Toast.LENGTH_SHORT)
+                    toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical
+                    toast.show()
+                }
+                          },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = indigo_dye
                 ),

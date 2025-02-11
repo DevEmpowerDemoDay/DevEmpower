@@ -180,6 +180,7 @@ fun Login(navController: NavController) {
             Button(
                 onClick = { if (email1 == email && senha1 == senha){
                     navController.navigate("home")
+
                 } else{
                     val toast = Toast.makeText( context, "E-mail ou senha incorretos", Toast.LENGTH_SHORT)
                     toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical
@@ -288,17 +289,19 @@ fun Login(navController: NavController) {
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier
                         .size(width = 281.dp, height = 48.dp)
-                        .fillMaxSize()
+
                 ) {
 
-                    Row {
+                    Row (
+
+                    ){
 
                         Text(
-                            text = "Não tem uma conta?",
+                            text = "Não tem uma conta? ",
                             color = Color.White,
                             fontSize = 14.sp,
                             fontFamily = fontPoppins,
-                            modifier = Modifier.align(alignment = Alignment.CenterVertically)
+
                         )
                         Text(
                             text = "Cadastre-se",
@@ -306,8 +309,7 @@ fun Login(navController: NavController) {
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier
-                                .align(alignment = Alignment.CenterVertically)
-                                .padding(start = 5.dp)
+
                         )
                     }
                 }
