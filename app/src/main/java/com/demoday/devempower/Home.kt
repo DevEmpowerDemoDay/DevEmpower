@@ -90,9 +90,6 @@ fun Home(navController: NavController) {
         indigo_dye
     )
 
-    systemUiController.setNavigationBarColor(
-        uranium_blue, darkIcons = true
-    )
 
     Column(
         modifier = Modifier
@@ -133,13 +130,13 @@ fun Home(navController: NavController) {
                         "Bem vindo,",
                       color = white_smoke,
                       fontSize = 15.sp,
-                     // fontFamily = fontPoppins
+                      fontFamily = fontPoppins
                                 )
                     Text(
                         "$nome_usuario",
                         color = white_smoke,
                         fontSize = 40.sp,
-                       // fontFamily = fontPoppins,
+                       fontFamily = fontPoppins,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.align(Alignment.CenterHorizontally),
                         textAlign = TextAlign.Center
@@ -173,15 +170,15 @@ fun Home(navController: NavController) {
                     color = white_smoke,
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
-                  // fontFamily = fontPoppins
+                   fontFamily = fontPoppins
                 )
                 Spacer(modifier = Modifier.padding(start = 6.dp))
                 Image(
-                    painter = painterResource(R.drawable.icon),
+                    painter = painterResource(R.drawable.icon_quality),
                     contentDescription = "Icon",
                     modifier = Modifier
-                        .size(25.dp)
-                        .fillMaxSize()
+                        .size(21.dp)
+                        .offset(y = (-2).dp, x = 2.dp)
                         .align(Alignment.CenterVertically)
                 )
             }
@@ -331,7 +328,7 @@ fun Home(navController: NavController) {
                         modifier = Modifier
                             .size(82.dp)
                             .align(Alignment.Center)
-                            .offset(y = (-11).dp)
+                            .offset(y = (-12).dp)
                             .offset(x = 0.5.dp)
                     )
 

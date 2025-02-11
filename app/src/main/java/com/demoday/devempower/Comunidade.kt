@@ -329,7 +329,7 @@ fun Comunidade(navController: NavController) {
                         contentDescription = "",
                         modifier = Modifier
                             .size(80.dp)
-                            .offset(y = (-11).dp)
+                            .offset(y = (-13).dp)
                             .offset(x = (-10).dp)
                     )
                 androidx.compose.material3.Card(
@@ -467,7 +467,7 @@ fun Camera(navController: NavController) {
 
         ) {
             Text(
-                "Tirar uma foto ?",
+                "Comentarios",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Normal,
                 textAlign = TextAlign.Center,
@@ -547,8 +547,8 @@ fun Camera(navController: NavController) {
                 if (nome1.isNotEmpty() && comentario1.isNotEmpty()) {
                     listaDeComentarios.add(comentario1)
                     listaDeNomes.add(nome1)
-                   // nome1 = ""
-                   // comentario1 = ""
+                   nome1 = ""
+                   comentario1 = ""
                     escolha_foto = (0..6).random()
                     listaDeImagens.add(listaDeImagens[escolha_foto])
 

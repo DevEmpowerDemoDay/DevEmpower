@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 var avatar_escolhido = 0
 var foto_avatar = 1
@@ -47,6 +48,11 @@ var foto_avatar = 1
 
 @Composable
 fun tela_avatares(navController: NavController) {
+    val systemUiController = rememberSystemUiController()
+
+    systemUiController.setStatusBarColor(
+        uranium_blue
+    )
 
 
     Column(
@@ -65,7 +71,7 @@ fun tela_avatares(navController: NavController) {
             Box(
                 modifier = Modifier
                     .padding(top = 60.dp)
-                    .size(width = 373.dp, height = 642.dp)
+                    .size(width = 373.dp, height = 550.dp)
                     .border(5.dp, color = indigo_dye, shape = RoundedCornerShape(50.dp))
             ) {
                 Column(
@@ -74,7 +80,7 @@ fun tela_avatares(navController: NavController) {
                 ) {
                     Card(
                         modifier = Modifier
-                            .size(width = 242.dp, height = 99.dp)
+                            .size(width = 242.dp, height = 73.dp)
                             .fillMaxWidth()
                             .align(alignment = Alignment.CenterHorizontally)
                             .offset(y = (-48).dp),
@@ -83,13 +89,12 @@ fun tela_avatares(navController: NavController) {
 
                     ) {
                         Text(
-                            "Escolha\n" +
-                                    "um Avatar ",
+                            "Escolha o seu Avatar",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Medium,
                             color = white_smoke,
                             textAlign = TextAlign.Center,
-                            // fontFamily = fontPoppins,
+                           fontFamily = fontPoppins,
                             modifier = Modifier
                                 .fillMaxSize()
                                 .padding(top = 20.dp)
@@ -107,6 +112,7 @@ fun tela_avatares(navController: NavController) {
                         modifier = Modifier.align(
                             alignment = Alignment.CenterHorizontally
                         )
+
 
                     ) {
                         Column {

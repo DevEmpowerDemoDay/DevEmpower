@@ -1,5 +1,7 @@
 package com.demoday.devempower
 
+import android.view.Gravity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -43,9 +46,11 @@ import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
+
 @Composable
 fun Login(navController: NavController) {
     val systemUiController = rememberSystemUiController()
+    val context = LocalContext.current
 
 
     // define cores da barra de status e da barra de navegação
@@ -58,10 +63,10 @@ fun Login(navController: NavController) {
     )
 
 
-    var email by remember {
+    var email1 by remember {
         mutableStateOf("")
     }
-    var senha by remember {
+    var senha1 by remember {
         mutableStateOf("")
     }
     var rememberMe by remember { mutableStateOf(false) }
@@ -96,8 +101,8 @@ fun Login(navController: NavController) {
                     .height(10.dp)
             )
             OutlinedTextField(
-                value = email,
-                onValueChange = { newText -> email = newText },
+                value = email1,
+                onValueChange = { newText -> email1 = newText },
                 label = {
                     Text(
                         "E-mail ou nome de usuário",
@@ -122,8 +127,9 @@ fun Login(navController: NavController) {
             )
 
             OutlinedTextField(
-                value = senha,
-                onValueChange = { newText -> senha = newText },
+                value = senha1,
+                onValueChange = { newText -> senha1 = newText },
+                visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
                 label = { Text("Senha", fontSize = 16.sp, fontWeight = FontWeight.Medium, fontFamily = fontPoppins) },
                 leadingIcon = {
                     Image(
@@ -148,9 +154,9 @@ fun Login(navController: NavController) {
                 fontWeight = FontWeight.Medium,
                 fontFamily = fontPoppins,
                 modifier = Modifier
-                    .fillMaxWidth()
                     .padding(start = 45.dp)
                     .padding(end = 180.dp)
+                    .padding(top = 5.dp)
                     .clickable { navController.navigate("recsenha") })
 
             Row(
@@ -172,7 +178,16 @@ fun Login(navController: NavController) {
             }
 
             Button(
-                onClick = { navController.navigate("home") }, colors = ButtonDefaults.buttonColors(
+                onClick = { if (email1 == email && senha1 == senha){
+                    navController.navigate("home")
+                } else{
+                    val toast = Toast.makeText( context, "E-mail ou senha incorretos", Toast.LENGTH_SHORT)
+                    toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical
+                    toast.show()
+                    email1 = ""
+                    senha1 = ""
+                }
+                          }, colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent
                 ),
 

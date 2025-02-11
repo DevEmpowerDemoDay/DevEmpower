@@ -42,7 +42,9 @@ val fontPoppins = FontFamily(Font(R.font.poppins, FontWeight.Normal))
 var nome1 by mutableStateOf("")
 var nome_usuario by mutableStateOf("Desenvolvedor")
 var nome2 by mutableStateOf("")
-
+var email = "a@b.com.br"
+var senha = "123456"
+var numero by mutableStateOf("xxxx-xxxx")
 
 //variavel de comentario para uso da comunidade
 var comentario1 by mutableStateOf("")

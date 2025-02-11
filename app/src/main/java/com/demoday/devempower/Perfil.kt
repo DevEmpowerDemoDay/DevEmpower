@@ -433,10 +433,6 @@ fun PerfilAtividade(navController: NavController) {
 @Composable
 fun PerfilInformaçãoes(navController: NavController) {
     val systemUiController = rememberSystemUiController()
-    var apelido by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var idade by remember { mutableStateOf("") }
-    var linkedin by remember { mutableStateOf("") }
 
     foto_avatar = when (avatar_escolhido) {
         1 -> R.drawable.debora
@@ -686,7 +682,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                     )
                     Column {
                         Text(
-                            "Nome Completo:",
+                            "Usuário",
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = indigo_dye,
@@ -711,7 +707,7 @@ fun PerfilInformaçãoes(navController: NavController) {
                     }
                     Column {
                         Text(
-                            "Apelido:",
+                            "Número:",
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = indigo_dye,
@@ -723,8 +719,8 @@ fun PerfilInformaçãoes(navController: NavController) {
                                 .align(alignment = Alignment.CenterHorizontally)
                         )
                         OutlinedTextField(
-                            value = apelido,
-                            onValueChange = { newtext -> apelido = newtext },
+                            value = numero,
+                            onValueChange = { newValue-> numero = newValue},
                             modifier = Modifier.width(300.62.dp),
                             shape = RoundedCornerShape(7.dp),
                             textStyle = TextStyle(

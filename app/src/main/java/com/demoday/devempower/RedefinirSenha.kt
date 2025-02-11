@@ -1,5 +1,7 @@
 package com.demoday.devempower
 
+import android.view.Gravity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -71,14 +74,14 @@ fun RedefinirSenha(navController: NavController) {
             Row {
                 Text(
                     "Esqueceu sua senha?",
-                    fontSize = 13.sp,
+                    fontSize = 16.sp,
                     color = bright_blue,
                     fontFamily = fontPoppins,
                 )
                 Spacer(modifier = Modifier.padding(start = 5.dp))
                 Text(
                     "Sem problemas!",
-                    fontSize = 13.sp,
+                    fontSize = 16.sp,
                     fontFamily = fontPoppins,
                     color = midnight_blue
                 )
@@ -89,7 +92,7 @@ fun RedefinirSenha(navController: NavController) {
             ) {
                 Text(
                     " Vamos ajudá-lo a criar uma nova",
-                    fontSize = 13.sp,
+                    fontSize = 16.sp,
                     fontFamily = fontPoppins,
                     color = midnight_blue
                 )
@@ -103,7 +106,7 @@ fun RedefinirSenha(navController: NavController) {
                 "Por favor, insira o endereço de e-mail \n" +
                         "associado a sua conta. Enviaremos um \n" +
                         "link para redefinir sua senha.",
-                fontSize = 13.sp,
+                fontSize = 16.sp,
                 fontFamily = fontPoppins,
                 fontWeight = FontWeight.SemiBold,
                 color = midnight_blue,
@@ -112,13 +115,12 @@ fun RedefinirSenha(navController: NavController) {
         }
         Spacer(modifier = Modifier.padding(top = 15.dp))
 
-        var email by remember {
-            mutableStateOf("")
-        }
+        var redEmail by remember { mutableStateOf("") }
+
 
         androidx.compose.material3.OutlinedTextField(
-            value = email,
-            onValueChange = { novoTexto -> email = novoTexto },
+            value = redEmail,
+            onValueChange = { novoTexto -> redEmail = novoTexto },
             label = {
                 androidx.compose.material3.Text(
                     "Email",
@@ -137,14 +139,19 @@ fun RedefinirSenha(navController: NavController) {
             singleLine = true
         )
 
-
-
-
-
         Spacer(modifier = Modifier.padding(top = 30.dp))
+        val context = LocalContext.current
 
         Button(
-            onClick = { navController.navigate("mudarsenha") },
+            onClick = { if (redEmail == email){
+                navController.navigate("mudarsenha")
+            } else {
+                val toast = Toast.makeText( context, "E-mail não encontrado!", Toast.LENGTH_SHORT)
+                toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical
+                toast.show()
+                redEmail = ""
+            }
+                      },
             colors = ButtonDefaults.buttonColors(
                 containerColor = indigo_dye
             ),
