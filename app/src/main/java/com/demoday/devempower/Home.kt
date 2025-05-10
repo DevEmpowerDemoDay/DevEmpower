@@ -1,5 +1,7 @@
 package com.demoday.devempower
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -45,6 +47,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -71,15 +74,25 @@ fun Home(navController: NavController) {
 
     val systemUiController = rememberSystemUiController()
 
+    foto_avatar = when (avatar_escolhido) {
+        1 -> R.drawable.debora
+        2 -> R.drawable.andressa
+        3 -> R.drawable.anna
+        4 -> R.drawable.murilo
+        5 -> R.drawable.lusbel
+        6 -> R.drawable.hudson
+        7 -> R.drawable.matheus
+        8 -> R.drawable.victor
+        else -> R.drawable.maykon
+
+    }
+
 
     // define cores da barra de status e da barra de navegação
     systemUiController.setStatusBarColor(
         indigo_dye
     )
 
-    systemUiController.setNavigationBarColor(
-        uranium_blue, darkIcons = true
-    )
 
     Column(
         modifier = Modifier
@@ -103,28 +116,27 @@ fun Home(navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = painterResource(R.drawable.logo),
+                    painter = painterResource(foto_avatar),
                     contentDescription = "Logo",
                     modifier = Modifier
-                        .padding(vertical = 20.dp)
-                        .size(70.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .size(width = 87.19.dp, height = 85.4.dp)
                         .clip(RoundedCornerShape(50.dp))
-                        .background(white_smoke)
                         .padding(horizontal = 14.dp)
                         .clickable {
-                            navController.navigate("home")
+                            navController.navigate("personalização")
                         }
                 )
 
                 Column() {
                     Text(
                         "Bem vindo,",
-                      color = white_smoke,
-                      fontSize = 15.sp,
-                      fontFamily = fontPoppins
-                                )
+                        color = white_smoke,
+                        fontSize = 15.sp,
+                        fontFamily = fontPoppins
+                    )
                     Text(
-                        "Desenvolvedor",
+                        "$nome_usuario",
                         color = white_smoke,
                         fontSize = 40.sp,
                         fontFamily = fontPoppins,
@@ -161,15 +173,15 @@ fun Home(navController: NavController) {
                     color = white_smoke,
                     fontWeight = FontWeight.Medium,
                     fontSize = 20.sp,
-                   fontFamily = fontPoppins
+                    fontFamily = fontPoppins
                 )
                 Spacer(modifier = Modifier.padding(start = 6.dp))
                 Image(
-                    painter = painterResource(R.drawable.icon),
+                    painter = painterResource(R.drawable.icon_quality),
                     contentDescription = "Icon",
                     modifier = Modifier
-                        .size(25.dp)
-                        .fillMaxSize()
+                        .size(21.dp)
+                        .offset(y = (-2).dp, x = 2.dp)
                         .align(Alignment.CenterVertically)
                 )
             }
@@ -190,7 +202,7 @@ fun Home(navController: NavController) {
                             fontFamily = fontPoppins
                         )
                     ) {
-                        append("Categorias",)
+                        append("Categorias")
                     }
                 }, color = indigo_dye,
                 modifier = Modifier
@@ -218,6 +230,7 @@ fun Home(navController: NavController) {
                     .padding(horizontal = 5.dp)
                     .clickable { navController.navigate("comentario") }
             ) {
+
                 ContentBox(
                     "Comunidade",
                     Modifier
@@ -227,16 +240,19 @@ fun Home(navController: NavController) {
                         .clip(RoundedCornerShape(6.dp))
                         .background(indigo_dye)
                         .align(Alignment.BottomCenter)
-                        .clickable { }
+                        .clickable {         }
                 )
             }
 
             Spacer(modifier = Modifier.width(8.dp))
-
+            val context = LocalContext.current
             Box(
                 modifier = Modifier
                     .clickable {
-                        navController.navigate("home")
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/embed/mavid3kyRZA")).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // Garante que abrirá em uma nova task
+                        }
+                        context.startActivity(intent)
                     }
                     .width(150.dp)
                     .height(150.dp)
@@ -311,7 +327,7 @@ fun Home(navController: NavController) {
                         }
                 )
 
-                Box(){
+                Box() {
 
                     Image(
                         painter = painterResource(R.drawable.bottombar),
@@ -319,31 +335,31 @@ fun Home(navController: NavController) {
                         modifier = Modifier
                             .size(82.dp)
                             .align(Alignment.Center)
-                            .offset(y = (-11).dp)
+                            .offset(y = (-12).dp)
                             .offset(x = 0.5.dp)
                     )
 
-                androidx.compose.material3.Card(
-                    colors = CardDefaults.cardColors(indigo_dye),
-                    shape = androidx.compose.foundation.shape.CircleShape,
-                    modifier = Modifier
-                        .size(width = 55.dp, height = 56.dp)
-                        .fillMaxWidth()
-                        .align(alignment = Alignment.Center)
-                        .offset(y = (-22).dp)
-
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center,
+                    androidx.compose.material3.Card(
+                        colors = CardDefaults.cardColors(indigo_dye),
+                        shape = androidx.compose.foundation.shape.CircleShape,
                         modifier = Modifier
-                            .fillMaxSize()
+                            .size(width = 55.dp, height = 56.dp)
+                            .fillMaxWidth()
+                            .align(alignment = Alignment.Center)
+                            .offset(y = (-22).dp)
+
+                    ) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
+                            modifier = Modifier
+                                .fillMaxSize()
 //                            .border(
 //                                5.dp,
 //                                uranium_blue,
 //                                shape = androidx.compose.foundation.shape.CircleShape
 //                            )
-                    ) {
+                        ) {
 
                             Image(
                                 painter = painterResource(R.drawable.home_icon),
@@ -353,8 +369,8 @@ fun Home(navController: NavController) {
                             )
 
 
+                        }
                     }
-                }
                 }
 
 
@@ -411,7 +427,7 @@ fun ContainerEvents(text_titulo: String, onClick: () -> Unit) {
                     text = text_titulo,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    fontFamily = fontPoppins,
+                    // fontFamily = fontPoppins,
                     color = indigo_dye,
                     modifier = Modifier
                         .padding(start = 2.dp)
@@ -442,7 +458,7 @@ fun ContentBox(text: String, modifier: Modifier) {
             color = white_smoke,
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
-            fontFamily = fontPoppins,
+            //fontFamily = fontPoppins,
             modifier = Modifier
                 .align(Alignment.Center)
                 .zIndex(1f)

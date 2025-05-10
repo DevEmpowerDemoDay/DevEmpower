@@ -1,28 +1,23 @@
 package com.demoday.devempower
 
-import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -33,20 +28,14 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -57,8 +46,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import kotlinx.coroutines.delay
 
 
 var listaDeComentarios = mutableStateListOf<String>()
@@ -116,7 +103,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "",foto_comunidade1
                     text = nome1,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Medium,
-                 //  fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = pale_hex,
                     textAlign = TextAlign.Center
                 )
@@ -135,7 +122,7 @@ fun CardComentario(nome1: String = "", comentario1: String = "",foto_comunidade1
                     text = comentario1,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                 //  fontFamily = fontPoppins,
+                   fontFamily = fontPoppins,
                     color = Color.Black,
                     modifier = Modifier
                         .padding(start = 10.dp)
@@ -194,7 +181,7 @@ fun Comunidade(navController: NavController) {
                         "Comunidade",
                         fontSize = 23.sp,
                         fontWeight = FontWeight.Medium,
-                     //   fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         color = Color.White,
                     )
                 }
@@ -227,7 +214,7 @@ fun Comunidade(navController: NavController) {
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                  // fontFamily = fontPoppins,
+                    fontFamily = fontPoppins,
                     color = Color(0xFFFFAEDFF7)
                 )
 
@@ -239,8 +226,6 @@ fun Comunidade(navController: NavController) {
                 ) {
 
                     for (i in listaDeComentarios.indices) {
-                        val indiceAleatorio = listaDeImagens.indices.shuffled()
-
                         val nomeAtual = listaDeNomes[i]
                         val comentarioAtual = listaDeComentarios[i]
                         val fotoAtual = listaDeImagens[i]
@@ -252,8 +237,24 @@ fun Comunidade(navController: NavController) {
                         )
                     }
                 }
-
-
+                val context = LocalContext.current
+                if (listaDeComentarios.count() == 7) {
+                listaDeImagens.add(
+                    R.drawable.mentoria_murilo
+                )
+                    if (listaDeComentarios.count() == 20) {
+                        listaDeImagens.add(R.drawable.mentoria_murilo)
+                    }
+                }
+                else if (listaDeComentarios.count() == 50) {
+                    val toast = Toast.makeText(context, "Material Bloqueado", Toast.LENGTH_SHORT)
+                    toast.setGravity(
+                        Gravity.TOP,
+                        0,
+                        100
+                    ) // TOP posiciona no topo, com deslocamento vertical
+                    toast.show()
+                }
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
 
@@ -275,7 +276,7 @@ fun Comunidade(navController: NavController) {
                     "Fazer uma postagem ",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal,
-                    //fontFamily = fontPoppins    ,
+                    fontFamily = fontPoppins    ,
                     color = Color.White,
                     modifier = Modifier.padding(top = 2.dp)
                 )
@@ -328,7 +329,7 @@ fun Comunidade(navController: NavController) {
                         contentDescription = "",
                         modifier = Modifier
                             .size(80.dp)
-                            .offset(y = (-11).dp)
+                            .offset(y = (-13).dp)
                             .offset(x = (-10).dp)
                     )
                 androidx.compose.material3.Card(
@@ -434,7 +435,7 @@ fun Camera(navController: NavController) {
                         "Comunidade",
                         fontSize = 23.sp,
                         fontWeight = FontWeight.Medium,
-                       // fontFamily = fontPoppins,
+                        fontFamily = fontPoppins,
                         color = Color.White,
                     )
                 }
@@ -451,14 +452,14 @@ fun Camera(navController: NavController) {
             "Lembre-se de Sorrir ",
             fontSize = 23.sp,
             fontWeight = FontWeight.Bold,
-          //  fontFamily = fontPoppins,
+            fontFamily = fontPoppins,
             color = pale_hex,
         )
 
         Spacer(modifier = Modifier.padding(top = 10.dp))
 
         Button(
-            onClick = { navController.navigate("comunidade") },
+            onClick = { navController.navigate("comentario") },
             modifier = Modifier
                 .size(width = 170.dp, height = 53.6.dp),
             shape = RoundedCornerShape(10.dp),
@@ -466,7 +467,7 @@ fun Camera(navController: NavController) {
 
         ) {
             Text(
-                "Tirar uma foto ?",
+                "Comentarios",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Normal,
                 textAlign = TextAlign.Center,
@@ -485,7 +486,7 @@ fun Camera(navController: NavController) {
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = indigo_dye,
-               // fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(top = 5.dp)
@@ -517,7 +518,7 @@ fun Camera(navController: NavController) {
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = indigo_dye,
-               // fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .padding(top = 5.dp)
@@ -546,8 +547,8 @@ fun Camera(navController: NavController) {
                 if (nome1.isNotEmpty() && comentario1.isNotEmpty()) {
                     listaDeComentarios.add(comentario1)
                     listaDeNomes.add(nome1)
-                    nome1 = ""
-                    comentario1 = ""
+                   nome1 = ""
+                   comentario1 = ""
                     escolha_foto = (0..6).random()
                     listaDeImagens.add(listaDeImagens[escolha_foto])
 
@@ -567,7 +568,7 @@ fun Camera(navController: NavController) {
                 "Publicar",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
-              //  fontFamily = fontPoppins,
+                fontFamily = fontPoppins,
                 textAlign = TextAlign.Center,
                 color = Color.White,
             )

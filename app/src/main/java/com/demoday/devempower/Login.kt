@@ -1,5 +1,9 @@
 package com.demoday.devempower
 
+import android.content.Intent
+import android.net.Uri
+import android.view.Gravity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -43,9 +48,11 @@ import androidx.navigation.compose.rememberNavController
 import com.demoday.devempower.ui.theme.DevEmpowerTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
+
 @Composable
 fun Login(navController: NavController) {
     val systemUiController = rememberSystemUiController()
+    val context = LocalContext.current
 
 
     // define cores da barra de status e da barra de navegação
@@ -58,10 +65,10 @@ fun Login(navController: NavController) {
     )
 
 
-    var email by remember {
+    var email1 by remember {
         mutableStateOf("")
     }
-    var senha by remember {
+    var senha1 by remember {
         mutableStateOf("")
     }
     var rememberMe by remember { mutableStateOf(false) }
@@ -96,8 +103,8 @@ fun Login(navController: NavController) {
                     .height(10.dp)
             )
             OutlinedTextField(
-                value = email,
-                onValueChange = { newText -> email = newText },
+                value = email1,
+                onValueChange = { newText -> email1 = newText },
                 label = {
                     Text(
                         "E-mail ou nome de usuário",
@@ -122,8 +129,9 @@ fun Login(navController: NavController) {
             )
 
             OutlinedTextField(
-                value = senha,
-                onValueChange = { newText -> senha = newText },
+                value = senha1,
+                onValueChange = { newText -> senha1 = newText },
+                visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
                 label = { Text("Senha", fontSize = 16.sp, fontWeight = FontWeight.Medium, fontFamily = fontPoppins) },
                 leadingIcon = {
                     Image(
@@ -148,9 +156,9 @@ fun Login(navController: NavController) {
                 fontWeight = FontWeight.Medium,
                 fontFamily = fontPoppins,
                 modifier = Modifier
-                    .fillMaxWidth()
                     .padding(start = 45.dp)
                     .padding(end = 180.dp)
+                    .padding(top = 5.dp)
                     .clickable { navController.navigate("recsenha") })
 
             Row(
@@ -172,7 +180,17 @@ fun Login(navController: NavController) {
             }
 
             Button(
-                onClick = { navController.navigate("home") }, colors = ButtonDefaults.buttonColors(
+                onClick = { if (email1 == email && senha1 == senha){
+                    navController.navigate("home")
+
+                } else{
+                    val toast = Toast.makeText( context, "E-mail ou senha incorretos", Toast.LENGTH_SHORT)
+                    toast.setGravity(Gravity.TOP, 0, 100) // TOP posiciona no topo, com deslocamento vertical
+                    toast.show()
+                    email1 = ""
+                    senha1 = ""
+                }
+                          }, colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Transparent
                 ),
 
@@ -239,7 +257,12 @@ fun Login(navController: NavController) {
                     contentDescription = "Logo Facebook",
                     modifier = Modifier
                         .size(width = 48.15.dp, height = 47.23.dp)
-                        .clickable { }
+                        .clickable {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/?stype=lo&flo=1&deoia=1&jlou=AfeCKG9q2XPrVCXpbgosek7XHKvFO-uUarnvwuVqhTR8aUQAzKjJosiP3Ar0dkIGy-PZ9m7WA5R7Lh--q4h-vhBh5yYrMRGu8pRsHNB4LyM_xQ&smuh=18637&lh=Ac9XkVfzMTj1aNaOfok")).apply {
+                                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // Garante que abrirá em uma nova task
+                            }
+                            context.startActivity(intent)
+                        }
                 )
                 Spacer(modifier = Modifier.padding(start = 20.dp))
                 Image(
@@ -249,7 +272,12 @@ fun Login(navController: NavController) {
                     contentDescription = "Logo Facebook",
                     modifier = Modifier
                         .size(width = 48.15.dp, height = 47.23.dp)
-                        .clickable { }
+                        .clickable {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://myaccount.google.com/?hl=pt&pli=1&nlr=1")).apply {
+                                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // Garante que abrirá em uma nova task
+                            }
+                            context.startActivity(intent)
+                        }
 
                 )
             }
@@ -273,17 +301,19 @@ fun Login(navController: NavController) {
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier
                         .size(width = 281.dp, height = 48.dp)
-                        .fillMaxSize()
+
                 ) {
 
-                    Row {
+                    Row (
+
+                    ){
 
                         Text(
-                            text = "Não tem uma conta?",
+                            text = "Não tem uma conta? ",
                             color = Color.White,
                             fontSize = 14.sp,
                             fontFamily = fontPoppins,
-                            modifier = Modifier.align(alignment = Alignment.CenterVertically)
+
                         )
                         Text(
                             text = "Cadastre-se",
@@ -291,8 +321,7 @@ fun Login(navController: NavController) {
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier
-                                .align(alignment = Alignment.CenterVertically)
-                                .padding(start = 5.dp)
+
                         )
                     }
                 }
